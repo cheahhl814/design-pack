@@ -23,11 +23,12 @@ Ninety-three **hand-drawn inline SVG infographic templates** for concept/summary
 
 Every file: `role="img"` + `aria-label` + `<title>`, id-free markup (safe to paste several into one page), token-driven colors wired via `style` attributes (`var(--token, #fallback)` + `color-mix()` — adapts to every template palette and both themes with zero edits), constant 800×450 `viewBox`. Conventions and the add-a-component workflow: [`features/graphics/svg-library/README.md`](./features/graphics/svg-library/README.md). Regenerate the gallery with `node bin/build-svg-gallery.js`. **Need just the graphic, no page?** `node bin/svg-export.js <name|file.svg> [--theme dark] --out <dir>` writes a standalone `.svg` with the palette baked in, which renders in PowerPoint, Word, Figma and Inkscape.
 
-## 📽️ PPTX deck builder (v0.18.0)
+## 📽️ PPTX deck builder (v0.19.0)
 
 Need a real **PowerPoint file** instead of an HTML deck? `bin/make-pptx-deck.py` turns a small JSON/YAML spec into a `.pptx`.
 - **Figures:** svg-library figures are embedded as **native vector SVG** (PowerPoint 2016+/365 on Windows, Mac and Online), with a high-res PNG fallback for Google Slides, Keynote and older Office.
-- **Text:** everything else stays **native and editable**: titles in real title placeholders, bullets, captions, speaker notes. Figures get alt text.
+- **Text:** everything else stays **native and editable**: titles in real title placeholders, bullets, captions, native tables, speaker notes (plus `credits`). Figures get alt text.
+- **Footer:** inner slides get live slide-number fields plus optional footer text and a date (fixed or live).
 
 ```
 python3 bin/make-pptx-deck.py spec.json -o deck.pptx [--theme light|dark] [--base corp.pptx]
@@ -35,9 +36,9 @@ python3 bin/pptx-preview.py deck.pptx --out preview/      # proxy preview via he
 ```
 
 **House base.** Two committed base files, [`templates/deck/house-light.pptx` / `house-dark.pptx`](./templates/deck/), set the design:
-- 16:9 slides with five layouts: **Title**, **Section**, **Figure** (+ caption), **Two Figures**, **Bullets**.
+- 16:9 slides with eleven layouts: **Title**, **Section**, **Figure** (+ caption), **Two Figures**, **Bullets**, plus (v0.19.0) **Agenda** (auto-numbered), **Quote**, **Table** (navy header strip, zebra rows), **KPI** (hero number on a petri-dish medallion, delta chip coloured by sign, up to 3 supporting stats), **Image + Text** (figure left or right) and **Closing**.
 - A theme whose accent colours map onto the library tokens (teal, deep-blue, amber, coral, green, navy).
-- Hand-drawn decor ([`templates/deck/chrome/`](./templates/deck/chrome/)) drawn once onto the slide master and layouts, never baked into individual slides.
+- Hand-drawn decor ([`templates/deck/chrome/`](./templates/deck/chrome/)), including the v0.19.0 science set (molecule corner, agenda DNA-helix strip, KPI medallion, closing orbit art, accent band), drawn once onto the slide master and layouts, never baked into individual slides.
 
 **Corporate templates.** Pass `--base corp.pptx` to use your own template; the builder matches its layouts by name, then by layout type.
 
@@ -46,7 +47,7 @@ python3 bin/pptx-preview.py deck.pptx --out preview/      # proxy preview via he
 ## Contents
 
 - [SVG diagram library (v0.16.0)](#️-svg-diagram-library-v0160)
-- [PPTX deck builder (v0.18.0)](#️-pptx-deck-builder-v0180)
+- [PPTX deck builder (v0.19.0)](#️-pptx-deck-builder-v0190)
 - [Live demo](#-live-demo)
 - [Installation](#-installation)
 - [Usage examples](#-usage-examples)

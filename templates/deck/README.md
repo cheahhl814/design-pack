@@ -1,4 +1,4 @@
-# PPTX deck builder: house base + svg→pptx (v0.18.0)
+# PPTX deck builder: house base + svg→pptx (v0.19.0)
 
 A real PowerPoint deck whose figures are svg-library components, embedded as **native vector SVG**
 (PowerPoint's `svgBlip` extension) with a high-res PNG fallback. All text stays **native and
@@ -47,8 +47,23 @@ python3 bin/make-pptx-deck.py spec.json -o deck.pptx [--theme light|dark] [--bas
      "figures": [{"svg": "water-cycle", "caption": "Water cycle"},
                  {"svg": "my-edited/ocean-zones.svg", "caption": "Ocean zones", "alt": "..."}]},
     {"layout": "bullets", "title": "Takeaways",
-     "bullets": ["Energy flows one way", ["~10% per trophic level"], "Matter cycles"]}
-  ]
+     "bullets": ["Energy flows one way", ["~10% per trophic level"], "Matter cycles"]},
+    {"layout": "agenda", "items": ["Where we stand", "What the data says", "Decisions"]},
+    {"layout": "quote", "title": "From the board", "quote": "Kill bad programmes early.",
+     "attribution": "Dr. A. Anand, CSO"},
+    {"layout": "table", "title": "Programme snapshot", "header": ["Programme", "Stage", "Lead"],
+     "rows": [["QT-101", "Phase 1", "Anand"], ["QT-204", "IND-enabling", "Okafor"]]},
+    {"layout": "kpi", "title": "Screening got faster", "value": "92%", "label": "hit confirmation rate",
+     "delta": "+12 pts", "stats": [{"value": "48 h", "label": "turnaround"}]},
+    {"layout": "image-text", "title": "How a CRISPR edit works", "figure": "crispr-editing",
+     "side": "right", "bullets": ["Guide RNA finds the target", "Cas9 cuts"],
+     "credits": "Mechanism after Addgene's CRISPR guide"},
+    {"layout": "closing", "contact": ["Questions are welcome", "team@example.org"]}
+  ],
+  "footer": "Ecosystems in five slides",
+  "date": "auto",
+  "slide_numbers": true,
+  "credits": ["Deck-level credit lines (e.g. CC-BY attributions) go to the last slide's notes"]
 }
 ```
 
@@ -61,7 +76,31 @@ python3 bin/make-pptx-deck.py spec.json -o deck.pptx [--theme light|dark] [--bas
 - Alt text goes on the picture (`cNvPr@descr`). It defaults to the SVG's `aria-label`.
 - Placeholders you do not fill (e.g. a section with no subtitle) are removed, so nothing reads
   "Click to add text".
-- Bad specs fail loudly: unknown layout, wrong figure count, unknown component.
+- **Slot rules for the v0.19.0 kinds:**
+  - `agenda`: 1–6 `items` (designed for 3–6), numbered natively with `buAutoNum`, so the numbers
+    renumber themselves when edited. The title defaults to "Agenda".
+  - `quote`: `quote` is required. `attribution` is shown as "— Name". `title` is an optional
+    eyebrow line.
+  - `table`: `header` takes 1–8 columns and `rows` 1–12 rows of exactly that width. The result is a
+    native pptx table with a navy (`accent6`) header strip and `bg2` zebra rows, all theme slots, so
+    it follows light/dark and a rebrand.
+  - `kpi`: `value` is required. `label` and `delta` are optional, plus up to 3 `stats`
+    (`{value, label}`). The delta chip is a rounded placeholder whose fill follows the sign:
+    `+`/▲ green (`accent5`), `-`/−/▼ coral (`accent4`), anything else amber (`accent3`).
+  - `image-text`: one `figure`, `side` `left` (default) or `right` (the builder mirrors the
+    layout), and `bullets` (list) or `text` (one unbulleted paragraph).
+  - `closing`: `contact` takes a string or a list of lines. The title defaults to "Thank you".
+- **Footer fields (deck level):**
+  - `footer` is the text to show; `date` is a fixed string or `"auto"` for a live date field.
+  - `slide_numbers` is on by default and writes a live `slidenum` field.
+  - They go into native date / footer / slide-number placeholders on every inner slide. Title,
+    section and closing slides carry none.
+- **Credits:**
+  - Slide-level `credits` (a string or a list) are appended to that slide's notes under
+    "Credits:".
+  - Deck-level `credits` go to the last slide's notes.
+- Bad specs fail loudly: unknown layout, wrong figure count, unknown component, a ragged table row,
+  more than 3 KPI stats or 6 agenda items, a bad `side`.
 
 ## House layouts (13.333 × 7.5 in, 16:9)
 
@@ -72,6 +111,16 @@ python3 bin/make-pptx-deck.py spec.json -o deck.pptx [--theme light|dark] [--bas
 | `figure` | Figure | title, picture (idx 13), caption (idx 14) | footer strip |
 | `two-figures` | Two Figures | title, 2 pictures (idx 13/15), 2 captions (idx 14/16) | footer strip |
 | `bullets` | Bullets (`type="obj"`) | title, body (5 bullet levels) | footer strip |
+| `agenda` | Agenda | title, auto-numbered body (idx 1) | `agenda-helix-strip` + footer strip |
+| `quote` | Quote | eyebrow title, quote (idx 1, italic 32 pt), attribution (idx 13); static native “ glyph | `molecule-corner` + footer strip |
+| `table` | Table | title, table placeholder (idx 13; the builder replaces it with a native table) | `molecule-corner` + footer strip |
+| `kpi` | KPI | title, hero value (idx 13), delta chip (idx 14), label (idx 15), 3 × stat value/label (idx 16–21) | `kpi-medallion` + `molecule-corner` + footer strip |
+| `image-text` | Image + Text | title, picture (idx 13), text (idx 14) | `molecule-corner` + footer strip |
+| `closing` | Closing | title, contact lines (idx 1) | `closing-orbit` + `accent-band` (master decor hidden) |
+
+Every inner layout (all except Title, Section and Closing) also carries native **date (idx 10),
+footer (idx 11) and slide-number (idx 12)** placeholders under the footer strip. The master carries
+them at idx 2–4.
 
 **Theme.** Library tokens map onto theme slots: `accent1` teal, `accent2` deep-blue, `accent3` amber,
 `accent4` coral, `accent5` green, `accent6` navy. `dk2`/`lt2` hold muted text and the light-grey
@@ -85,7 +134,11 @@ fonts, so a rebrand is a single edit in Design → Variants → Fonts. `ea` is l
 per-script `<a:font script="Jpan|Hans|Hant|Hang">` list then picks a proper CJK face.
 
 **Chrome.** The decor SVGs live in `chrome/`, **outside the component catalog**: they are slide
-chrome, not diagrams. They follow the svg-library conventions (token-driven, id-free, offset-shadow
+chrome, not diagrams. The v0.18.0 set is `deck-title-art`, `section-divider-frame` and
+`footer-strip` (slimmed in v0.19.0 so the footer fields fit below it). The v0.19.0 science set adds
+`molecule-corner`, `agenda-helix-strip`, `kpi-medallion`, `closing-orbit` and `accent-band`.
+Their composition takes cues from a 24-layout lab-science theme on ppt-design.com, used as a
+reference only; no assets were used. They follow the svg-library conventions (token-driven, id-free, offset-shadow
 hand-drawn style) on a 1280×720 canvas (1 px = 9525 EMU). They are drawn once onto the master and
 layouts, flagged decorative for screen readers, and never repeated per slide. After editing one,
 rerun `python3 templates/deck/author-base.py` and commit both `.pptx` files.
@@ -95,11 +148,16 @@ rerun `python3 templates/deck/author-base.py` and commit both `.pptx` files.
 `--base corp.pptx` builds on someone else's template. Its existing slides are dropped. Each slide kind
 picks a layout in this order:
 1. by house name;
-2. by OOXML layout type: `title`, `secHead`, `titleOnly` for figures, `obj` for bullets;
+2. by OOXML layout type: `title` (title, closing), `secHead`, `titleOnly` (figures, table,
+   image-text), `obj` (bullets, agenda, quote, KPI);
 3. any layout with a title placeholder.
 
 Without picture placeholders, figures fill the area below the title, and captions become textboxes
-under each figure. Save `.potx` templates as `.pptx` first; python-pptx refuses the template content
+under each figure.
+- Image + text splits the area into a figure half and a textbox half.
+- Tables go below the title.
+- Quote and KPI degrade to plain lines in the body placeholder.
+- Corporate layouts that have date / footer / slide-number placeholders get them filled too. Save `.potx` templates as `.pptx` first; python-pptx refuses the template content
 type.
 
 ## QA: three layers
@@ -112,11 +170,22 @@ type.
    - no empty or unfilled placeholders, and nothing off-slide (slides, layouts, master);
    - alt text on every figure and the decorative flag on every decor picture;
    - notes, bullet levels and fallback PNG widths;
-   - the bases' size, layout set, accents, `clrMap`, and latin/ea/cs fonts.
+   - the bases' size, layout set, accents, `clrMap`, and latin/ea/cs fonts;
+   - per-kind slots (v0.19.0): agenda auto-numbering, quote + attribution, table cells / header
+     strip / zebra fills, KPI value / label / chip colour by sign / unused stats removed, image-text
+     mirroring;
+   - live `slidenum` fields matching the slide index, footer text, a live date field, footer-field
+     placeholders present on exactly the inner layouts, and slide + deck credits in the notes;
+   - bad-spec fixtures that must be rejected.
+
+   The suite was verified to fail on mutants (old v0.18.0 bases, a builder with no footer fields, an
+   always-green delta chip).
 2. **Proxy preview (automated render, human eyeball):**
    `python3 bin/pptx-preview.py deck.pptx --out DIR`. It rebuilds each slide as HTML at EMU→px:
-   - master/layout decor, the embedded SVGs, and text with sizes, colours, bullets and alignment
-     resolved through the placeholder inheritance chain;
+   - master/layout decor, the embedded SVGs, and text with sizes, colours, bullets (incl.
+     auto-numbering), fills/rounded chips and alignment resolved through the placeholder inheritance
+     chain;
+   - native tables;
    - a headless-Chrome screenshot of every slide;
    - a red dashed outline on any text that overflows its box.
 

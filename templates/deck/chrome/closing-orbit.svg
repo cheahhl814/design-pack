@@ -1,0 +1,35 @@
+<!--
+html-template-pack · deck chrome · closing-orbit
+  Full-bleed decor for the Closing layout (1280x720): soft teal-tinted field,
+  orbit rings and a node network on the right 45% (an echo of deck-title-art),
+  a short accent rule above the "Thank you" title. The left 55% stays clear for
+  the native title + contact placeholders. Decor only: no text.
+  Tokens: teal amber coral green deep-blue text-muted border-bright surface.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Decorative closing-slide art: orbit rings and a node network" style="width:100%;height:auto">
+  <title>Closing orbit art</title>
+  <rect x="0" y="0" width="1280" height="720" style="fill:color-mix(in srgb, var(--teal,#0d9488) 6%, var(--surface,#ffffff))"/>
+  <line x1="80" y1="226" x2="196" y2="226" style="stroke:var(--teal,#0d9488);stroke-width:8" stroke-linecap="round"/>
+  <line x1="214" y1="226" x2="238" y2="226" style="stroke:var(--amber,#f59e0b);stroke-width:8" stroke-linecap="round"/>
+  <!-- orbit rings -->
+  <circle cx="1010" cy="350" r="250" fill="none" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-dasharray="3 10"/>
+  <circle cx="1010" cy="350" r="170" fill="none" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:2"/>
+  <!-- network -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round">
+    <line x1="1010" y1="350" x2="1150" y2="254"/>
+    <line x1="1010" y1="350" x2="890" y2="470"/>
+    <line x1="1010" y1="350" x2="1120" y2="490"/>
+    <line x1="1010" y1="350" x2="860" y2="240"/>
+    <line x1="1150" y1="254" x2="1215" y2="150"/>
+    <line x1="890" y1="470" x2="820" y2="560"/>
+  </g>
+  <circle cx="1010" cy="350" r="48" transform="translate(5 7)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 18%, transparent)"/>
+  <circle cx="1010" cy="350" r="48" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <circle cx="1010" cy="350" r="14" style="fill:var(--teal,#0d9488)"/>
+  <circle cx="1150" cy="254" r="22" style="fill:color-mix(in srgb, var(--coral,#ef4444) 16%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:3"/>
+  <circle cx="890" cy="470" r="26" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 18%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <circle cx="1120" cy="490" r="14" style="fill:var(--green,#10b981)"/>
+  <circle cx="860" cy="240" r="10" style="fill:var(--surface,#ffffff);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 60%, var(--text-muted,#64748b));stroke-width:3"/>
+  <circle cx="1215" cy="150" r="8" style="fill:var(--teal,#0d9488)"/>
+  <circle cx="820" cy="560" r="7" style="fill:var(--coral,#ef4444)"/>
+</svg>

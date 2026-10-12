@@ -1,7 +1,7 @@
 ---
 name: html-template-pack
 description: 'Four self-contained HTML templates — report (5-tab sticky sidebar, offset-anchored annotations, JSON export), slide deck (prev/next nav, inline annotations, JSON export), bento one-pager (2026 bento-grid snapshot briefing, full v2 annotation engine), and htmx dashboard (topbar, KPI row, sparkline, table, demo-mode mock backend). Pick report for ≥3 long sections, slide for ≤12 beats, bento for a one-page briefing, dashboard for live data. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", "one-pager", "briefing", "recap page", "SVG diagram", "infographic", "ecosystem" (HTML or standalone .svg), or MD/DOCX/PDF → HTML conversion. Ships a 93-template hand-drawn SVG diagram library + a zero-dep CSS graphics pack. Report/slide/bento ship the v2 annotation system; dashboard omits it (live data is not a stable anchor). All four are dark-first with glass chrome and density + font-size toggles.'
-version: 0.18.0
+version: 0.19.0
 updated: "2026-10-13"
 triggers:
   - "HTML report"
@@ -88,9 +88,9 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 │   ├── dashboard/
 │   │   └── dashboard-template.html              ← finalized dashboard template (htmx + demo-mode mock backend)
 │   ├── deck/                                   ← v0.18.0 PPTX deck builder assets (see templates/deck/README.md)
-│   │   ├── house-light.pptx / house-dark.pptx   ← house bases: 5 layouts, 16:9, token-mapped theme, decor on master/layouts
+│   │   ├── house-light.pptx / house-dark.pptx   ← house bases: 11 layouts (v0.19.0), 16:9, token-mapped theme, native footer fields, decor on master/layouts
 │   │   ├── author-base.py                      ← one-time OOXML author script for the bases
-│   │   └── chrome/                             ← deck decor SVGs (title art, section frame, footer strip; not catalog components)
+│   │   └── chrome/                             ← deck decor SVGs (title art, section frame, footer strip + v0.19.0 science set: molecule corner, helix strip, KPI medallion, closing orbit, accent band; not catalog components)
 │   └── graphics/
 │       ├── graphics.css                        ← v0.8.0 shared graphics pack (donut, gauge, bars, heatmap, flow, mstrip, compare, pull-quote, motion; inlined into each template)
 │       └── snippets.html                       ← copy-paste reference for every component
@@ -330,7 +330,7 @@ When the user wants **only a diagram or a few graphics**, for a PowerPoint/Keyno
 
 When the deliverable is a **`.pptx` file**, not an HTML page, build it with the deck builder. It needs the optional Python deps `python-pptx lxml cairosvg pillow`, plus `node`. Full spec, layouts and pitfalls: `templates/deck/README.md`.
 
-1. Write a JSON (or YAML) spec. There are 5 layouts: `title`, `section`, `figure` (one figure + caption), `two-figures`, `bullets`. Each slide can carry `notes`, and each figure an optional `alt`. A figure is an svg-library component name or a path to an edited `.svg`.
+1. Write a JSON (or YAML) spec. There are 11 layouts: `title`, `section`, `figure` (one figure + caption), `two-figures`, `bullets`, `agenda` (1–6 `items`), `quote` (`quote` + `attribution`), `table` (`header` + `rows`, ≤8×12), `kpi` (`value`, `label`, `delta`, ≤3 `stats`), `image-text` (`figure` + `bullets`/`text`, `side` left|right) and `closing` (`contact` lines). Each slide can carry `notes` and `credits`, and each figure an optional `alt`. Deck-level `footer`, `date` (fixed or `"auto"`) and `slide_numbers` (default on) fill native footer fields on inner slides. Deck-level `credits` go to the last slide's notes. A figure is an svg-library component name or a path to an edited `.svg`.
 2. `python3 <skill>/bin/make-pptx-deck.py spec.json -o deck.pptx [--theme light|dark] [--base corp.pptx]`. Figures are baked through `svg-export.js`, embedded as native SVG (`svgBlip`) with a 2400/1800 px PNG fallback, contain-fitted into the picture rectangle, and given alt text. Titles, bullets, captions and notes stay native text in real placeholders, and unused placeholders are removed. `--base` builds on a corporate template (layouts are matched by name, then by layout type).
 3. Preview without Office: `python3 <skill>/bin/pptx-preview.py deck.pptx --out <dir>` renders every slide as HTML and screenshots it with headless Chrome. It is a proxy, so look at composition, overlaps and red overflow outlines, not exact typography.
 4. Tell the user honestly that no Office renderer was run. Checking in PowerPoint Online / Google Slides / LibreOffice is a **manual, once-per-theme-release gate**. Don't claim a deck is "verified in PowerPoint".
@@ -397,6 +397,21 @@ Positioning differs: report/slide float the button `position: fixed` top-right; 
 - `dashboard-template.html` (added 2026-07-11) — htmx dashboard shell, new template family for live/polling data views
 - `bento-template.html` (added 2026-09-08, v0.7.0) — bento-grid one-pager. The full v2 annotation engine is inlined from the slide template with its token-mapping `:root` block stripped (the bento defines generic token names directly); density/font-size IIFEs reused with `bento-density`/`bento-font-size` storage keys. Bar chart is pure CSS, no Mermaid/htmx. Aesthetic sourced from the 2026 UI-trends research pass (bento grids as the default snapshot pattern, dark-first design, restrained glass, hover-glow micro-interactions).
 - v0.13.0 SVG library to 40 components (2026-10-07) — second delegation round (claude code via herdr, svglib-v13-claude; 18 inspiration page fetches incl. subpages of infodiagram/free-powerpoint-templates-design/presentationgo; **magnific.com 403'd WebFetch and curl — its pages were never seen**). 20 new templates: timeline-vertical, swimlane-gantt, honeycomb-cluster, dual-hub, petal-cycle, decision-tree, snake-path, onion-layers, pillars-foundation, versus-columns, lightbulb-layers, matrix-nine-box, s-curve-adoption, growth-tree, spiral-growth, domino-chain, network-mesh, merge-paths, five-w-agenda, orbit-satellites. Professional polish pass on all 20 originals now standardised into one type scale (hero 20/700 · label 16/600 · annotation 13 · caption 12 · eyebrow 11/700 ls-1.2 · badge 13/700), normalised arrowheads (13×13 connectors, 16×16 spines), quadrant got the offset shadow, puzzle label overlap + radar glyph fixed. Validator hardened: rejects `<mask>/<pattern>/<clipPath>` and `fill="var(...)"`/`stroke="var(...)` presentation attributes; **XML-comment `--` check added** (staircase-steps had illegal `--accent` inside a comment that xml.etree rejected but the old validator missed). New techniques documented: pre-computed polygon sampling instead of clipPath (bulb slices), knockout label halos via `paint-order:stroke` for labels-on-lines. Verified: 40/40 build + independent convention recheck (my ET.parse loop) + both-theme screenshots + 60/60 tests; agent-side rotation-aware getBBox check (final: 0 clipped, 0 overlaps; earlier runs caught 4 real overlaps, fixed).
+- v0.19.0 PPTX deck design library (2026-10-13) — the house bases grow from 5 to 11 layouts.
+  - **New layouts:**
+    - Agenda: native `buAutoNum` numbering.
+    - Quote: italic quote, attribution and a static native “ glyph.
+    - Table: a native table on theme slots, with an `accent6` header strip and `bg2` zebra rows.
+    - KPI: hero value on a petri-dish medallion, a rounded delta chip the builder recolours by sign (`accent5`/`accent4`/`accent3`) and up to 3 stats.
+    - Image + Text: one layout, mirrored by the builder for `side: right`.
+    - Closing.
+  - **Chrome science set:** `molecule-corner`, `agenda-helix-strip`, `kpi-medallion`, `closing-orbit`, `accent-band`. The footer strip was slimmed to make room for the fields.
+  - **Footer fields:** native date / footer / slide-number placeholders on the master and every inner layout. The builder copies them onto inner slides with live `slidenum` (and `datetime1` for `date: "auto"`) fields.
+  - **Credits:** slide and deck `credits` go to the notes.
+  - **`--base` fallback:** agenda / quote / KPI degrade to body lines, while table and image-text use the area below the title.
+  - **Preview:** `bin/pptx-preview.py` now renders native tables, auto-numbering, filled/rounded placeholders and italics. Footer fields take `otherStyle`, and the last-paragraph margin no longer causes false overflow flags.
+  - **Tests:** the smoke test grows to 1192 checks and was verified to fail on three mutants.
+  - **Design research:** composition referenced (no assets) from ppt-design.com's 24-layout Lab Science theme (slide previews 01–24 fetched).
 - v0.18.0 PPTX deck builder (2026-10-13) — `bin/make-pptx-deck.py` turns a JSON/YAML spec into a `.pptx`.
   - **Figures:** svg-library figures are embedded as native SVG (python-pptx `Part(PackURI, 'image/svg+xml')` + `relate_to` + an lxml `svgBlip` extLst on the picture blip, replacing the PoC's zip/regex post-processing), with a cairosvg PNG fallback at 2400/1800 px, contain-fit placement and alt text.
   - **Text:** titles, bullets, captions and speaker notes are native.

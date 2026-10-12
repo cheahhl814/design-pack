@@ -25,6 +25,8 @@ from pptx.oxml.ns import qn
 PX = 9525
 SVG_NS = "http://schemas.microsoft.com/office/drawing/2016/SVG/main"
 TITLES = (PP_PLACEHOLDER.TITLE, PP_PLACEHOLDER.CENTER_TITLE)
+# date / footer / slide-number placeholders take the master otherStyle, not bodyStyle
+FIELD_TYPES = (PP_PLACEHOLDER.DATE, PP_PLACEHOLDER.FOOTER, PP_PLACEHOLDER.SLIDE_NUMBER)
 
 
 class Theme:
@@ -65,7 +67,8 @@ def lvl_chain(shape, theme, lvl):
     lists = [shape._element.find(".//" + qn("a:lstStyle"))]
     style = "p:otherStyle"
     if shape.is_placeholder:
-        style = "p:titleStyle" if shape.placeholder_format.type in TITLES else "p:bodyStyle"
+        kind = shape.placeholder_format.type
+        style = ("p:titleStyle" if kind in TITLES else "p:otherStyle" if kind in FIELD_TYPES else "p:bodyStyle")
         base = shape
         while True:
             base = getattr(base, "_base_placeholder", None)
@@ -96,8 +99,12 @@ def anchor_of(shape):
     return "t"
 
 
+AUTONUM = {"arabicPeriod": "{}.", "arabicParenR": "{})", "arabicPlain": "{}"}
+
+
 def text_html(shape, theme, scale):
     paras = []
+    counters = {}
     for p in shape.text_frame.paragraphs:
         if not p.text:
             continue
@@ -108,6 +115,7 @@ def text_html(shape, theme, scale):
         rpr = [r._r.find(qn("a:rPr")) for r in p.runs[:1]] + defs
         sz = int(first(rpr, None, "sz") or 1800) / 100
         bold = first(rpr, None, "b") in ("1", "true")
+        italic = first(rpr, None, "i") in ("1", "true")
         color = theme.color(first(rpr, qn("a:solidFill"))) or theme.color_default
         face = theme.font(first(rpr, qn("a:latin"), "typeface")) or theme.font("+mn") or "Arial"
         algn = {"ctr": "center", "r": "right", "just": "justify"}.get(first(chain, None, "algn"), "left")
@@ -119,14 +127,20 @@ def text_html(shape, theme, scale):
                 continue
             if c.find(qn("a:buNone")) is not None:
                 break
-            ch = c.find(qn("a:buChar"))
-            if ch is not None:
+            ch, num = c.find(qn("a:buChar")), c.find(qn("a:buAutoNum"))
+            if ch is not None or num is not None:
                 bc = theme.color(first(chain, qn("a:buClr"))) or color
-                bullet = f'<span style="display:inline-block;width:{-indent}px;text-indent:0;color:{bc}">{html.escape(ch.get("char"))}</span>'
+                if num is not None:
+                    counters[lvl] = counters.get(lvl, int(num.get("startAt", 1)) - 1) + 1
+                    glyph = AUTONUM.get(num.get("type"), "{}.").format(counters[lvl])
+                else:
+                    glyph = ch.get("char")
+                bullet = (f'<span style="display:inline-block;width:{-indent}px;text-indent:0;color:{bc};'
+                          f'font-weight:700">{html.escape(glyph)}</span>')
                 break
         paras.append(
             f'<p style="margin:0 0 {sz * 0.35 * scale:.1f}px 0;padding-left:{marl}px;text-indent:{indent}px;'
-            f'font:{"700" if bold else "400"} {sz * 96 / 72 * scale:.1f}px/1.15 \'{face}\',sans-serif;'
+            f'font:{"italic " if italic else ""}{"700" if bold else "400"} {sz * 96 / 72 * scale:.1f}px/1.15 \'{face}\',sans-serif;'
             f'color:{color};text-align:{algn}">{bullet}{html.escape(p.text)}</p>')
     return "".join(paras)
 
@@ -143,6 +157,55 @@ def box(shape, scale):
             f"width:{shape.width / PX * scale:.1f}px;height:{shape.height / PX * scale:.1f}px")
 
 
+def inherited(shape, path):
+    """First match of `path` under the shape's own element, then its base placeholders."""
+    base = shape
+    while base is not None:
+        hit = base._element.find(path)
+        if hit is not None:
+            return hit
+        base = getattr(base, "_base_placeholder", None)
+    return None
+
+
+def shape_style(shape, theme, scale):
+    """Fill + rounded geometry + bodyPr insets (placeholders inherit them from the layout)."""
+    css = []
+    fill = inherited(shape, f"{qn('p:spPr')}/{qn('a:solidFill')}")
+    if theme.color(fill):
+        css.append(f"background:{theme.color(fill)}")
+    geom = inherited(shape, f"{qn('p:spPr')}/{qn('a:prstGeom')}")
+    if geom is not None and geom.get("prst") == "roundRect":
+        css.append("border-radius:999px")
+    pad = []
+    for attr, default in (("tIns", 45720), ("rIns", 91440), ("bIns", 45720), ("lIns", 91440)):
+        bp = inherited(shape, f".//{qn('a:bodyPr')}[@{attr}]")
+        pad.append(f"{int(bp.get(attr) if bp is not None else default) / PX * scale:.1f}px")
+    css.append("padding:" + " ".join(pad))
+    return ";".join(css)
+
+
+def table_html(gf, theme, scale):
+    rows = []
+    for r, row in enumerate(gf.table.rows):
+        cells = []
+        for cell in row.cells:
+            tcpr = cell._tc.find(qn("a:tcPr"))
+            bg = theme.color(tcpr.find(qn("a:solidFill"))) if tcpr is not None else None
+            run = next((rn for p in cell.text_frame.paragraphs for rn in p.runs), None)
+            rpr = run._r.find(qn("a:rPr")) if run is not None else None
+            sz = int(rpr.get("sz") or 1800) / 100 if rpr is not None else 18
+            bold = rpr is not None and rpr.get("b") in ("1", "true")
+            color = (theme.color(rpr.find(qn("a:solidFill"))) if rpr is not None else None) or theme.color_default
+            cells.append(f'<td style="background:{bg or "transparent"};color:{color};font:{"700" if bold else "400"} '
+                         f'{sz * 96 / 72 * scale:.1f}px/1.2 \'{theme.font("+mn") or "Arial"}\',sans-serif;'
+                         f'padding:{4.8 * scale:.1f}px {9.6 * scale:.1f}px;height:{row.height / PX * scale:.1f}px;'
+                         f'box-sizing:border-box">{html.escape(cell.text)}</td>')
+        rows.append("<tr>" + "".join(cells) + "</tr>")
+    return (f'<table class="tx" style="position:absolute;{box(gf, scale)};height:auto;border-collapse:collapse;'
+            f'table-layout:fixed">{"".join(rows)}</table>')
+
+
 def render_shapes(shapes, part, theme, scale, skip_placeholders):
     out = []
     for sh in shapes:
@@ -150,10 +213,12 @@ def render_shapes(shapes, part, theme, scale, skip_placeholders):
             out.append(f'<img style="position:absolute;{box(sh, scale)}" src="{media_uri(part, sh._element)}">')
         elif skip_placeholders and sh.is_placeholder:
             continue
+        elif getattr(sh, "has_table", False) and sh.has_table:
+            out.append(table_html(sh, theme, scale))
         elif sh.has_text_frame and sh.text_frame.text.strip():
             just = {"t": "flex-start", "ctr": "center", "b": "flex-end"}.get(anchor_of(sh), "flex-start")
             out.append(f'<div class="tx" style="position:absolute;{box(sh, scale)};display:flex;flex-direction:column;'
-                       f'justify-content:{just};padding:{3.6 * 96 / 72 * scale:.1f}px {7.2 * 96 / 72 * scale:.1f}px">'
+                       f'justify-content:{just};{shape_style(sh, theme, scale)}">'
                        f'<div>{text_html(sh, theme, scale)}</div></div>')
     return out
 
@@ -180,7 +245,7 @@ def render(path, out_dir, width_px=1280, screenshot=True):
         doc = (f'<!doctype html><meta charset="utf-8"><title>slide {n}</title>'
                f'<style>html,body{{margin:0;overflow:hidden}}.slide{{position:relative;width:{W}px;height:{H}px;'
                f'background:{bg};overflow:hidden}}.tx{{box-sizing:border-box;overflow:hidden}}'
-               f'.overflow{{outline:3px dashed red}}</style>'
+               f'.tx p:last-child{{margin-bottom:0!important}}.overflow{{outline:3px dashed red}}</style>'
                f'<div class="slide">{"".join(layers)}</div>'
                '<script>document.querySelectorAll(".tx").forEach(e=>{if(e.scrollHeight>e.clientHeight+1)'
                'e.classList.add("overflow")})</script>')
