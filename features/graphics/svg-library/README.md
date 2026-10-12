@@ -316,6 +316,15 @@ fails if any `var()` or `color-mix()` would survive. Want PNG? Render the **expo
 
 ## Adding a new component
 
+0. **Research first (mandatory when the design isn't obvious).** Before drawing, search
+   online for existing examples/infographics of the concept (2–4 varied queries; fetch the
+   best 2–4 pages so you're inspired by real layouts, not inventing from a name). This is
+   the same step the SKILL.md standalone-SVG routing points at when the library lacks a
+   graphic type. Productive, fetchable sources: BioRender template gallery, Wikimedia
+   Commons diagrams, USGS / NOAA / NPS, edu.rsc.org, Kuraplan, LivePhysics infographics,
+   Mind the Graph. Do not fetch Magnific, Shutterstock, Dreamstime, Adobe Stock or
+   Dribbble (403 bot walls or empty responses) or Britannica (403'd in the v0.16.0
+   round) — fall back to the federal/educational sources instead.
 1. Hand-draw it in `svg/<kebab-name>.svg` following the conventions above — agent-drawn
    SVG is the point of the library; treat the shipped files as style reference
    (rounded rx=12 cards — 8 for bars, 4–6 for slabs, 14 for large panels; 2px primary
