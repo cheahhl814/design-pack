@@ -181,6 +181,17 @@ with tempfile.TemporaryDirectory(prefix="pptxdeck-test-") as tmp:
     check(len(files) == len(SPEC["slides"]), "preview: one HTML per slide")
     check("data:image/svg+xml" in open(files[2]).read(), "preview: figure drawn from the embedded SVG")
 
+    # preview treats the pptx as untrusted: hostile typeface/colour values must not reach the HTML
+    evil = Presentation(os.path.join(tmp, "light.pptx"))
+    run0 = evil.slides[0].shapes.title.text_frame.paragraphs[0].runs[0]._r
+    rpr = run0.get_or_add_rPr()
+    payload = '"></p><script>alert(1)</script>'
+    etree.SubElement(etree.SubElement(rpr, qn("a:solidFill")), qn("a:srgbClr"), val="000000;}</style><script>x</script>")
+    etree.SubElement(rpr, qn("a:latin"), typeface=payload)
+    evil.save(os.path.join(tmp, "evil.pptx"))
+    html_out = open(preview.render(os.path.join(tmp, "evil.pptx"), os.path.join(tmp, "evil"), screenshot=False)[0]).read()
+    check("<script>alert" not in html_out and "<script>x" not in html_out, "preview: injected markup from pptx attributes")
+
 print(f"  pptx deck: 2 house bases + 3 decks (light, dark, --base 4:3) × {len(SPEC['slides'])} layouts")
 print(f"  TOTAL: {passed} passed · {failed} failed")
 sys.exit(1 if failed else 0)

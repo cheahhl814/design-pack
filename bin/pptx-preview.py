@@ -14,7 +14,7 @@ manual once-per-theme-release gate (see templates/deck/README.md).
 
     python3 bin/pptx-preview.py deck.pptx --out DIR    # DIR/slide-01.html + .png ...
 """
-import argparse, base64, html, os, shutil, subprocess, sys
+import argparse, base64, html, os, re, shutil, subprocess, sys
 
 from lxml import etree
 from pptx import Presentation
@@ -49,13 +49,15 @@ class Theme:
             v = c.get("val")
             if c.tag == qn("a:schemeClr"):
                 v = self.colors.get(self.clrmap.get(v, v), "000000")
-            return "#" + v
+            # values come from the (untrusted) pptx and land in style attrs / <style>
+            return "#" + v if v and re.fullmatch(r"[0-9A-Fa-f]{6}", v) else None
         return None
 
     def font(self, typeface):
         if typeface and typeface.startswith("+"):
-            return self.fonts[typeface[1:3]]
-        return typeface
+            typeface = self.fonts.get(typeface[1:3])
+        # whitelist: the name is interpolated into a style attribute
+        return typeface if typeface and re.fullmatch(r"[\w .-]{1,64}", typeface) else None
 
 
 def lvl_chain(shape, theme, lvl):
@@ -107,7 +109,7 @@ def text_html(shape, theme, scale):
         sz = int(first(rpr, None, "sz") or 1800) / 100
         bold = first(rpr, None, "b") in ("1", "true")
         color = theme.color(first(rpr, qn("a:solidFill"))) or theme.color_default
-        face = theme.font(first(rpr, qn("a:latin"), "typeface")) or theme.fonts["mn"]
+        face = theme.font(first(rpr, qn("a:latin"), "typeface")) or theme.font("+mn") or "Arial"
         algn = {"ctr": "center", "r": "right", "just": "justify"}.get(first(chain, None, "algn"), "left")
         marl = int(first(chain, None, "marL") or 0) / PX * scale
         indent = int(first(chain, None, "indent") or 0) / PX * scale
@@ -163,7 +165,8 @@ def render(path, out_dir, width_px=1280, screenshot=True):
     W, H = round(prs.slide_width / PX * scale), round(prs.slide_height / PX * scale)
     bg_el = prs.slide_master._element.find(".//" + qn("p:bg"))
     bg = theme.color(bg_el) or "#ffffff"
-    theme.color_default = "#" + theme.colors.get(theme.clrmap.get("tx1", "dk1"), "000000")
+    theme.color_default = theme.color(etree.fromstring(
+        f'<a:schemeClr xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" val="tx1"/>')) or "#000000"
     os.makedirs(out_dir, exist_ok=True)
     chrome = shutil.which("google-chrome") or shutil.which("chromium") or shutil.which("chromium-browser")
     files = []
