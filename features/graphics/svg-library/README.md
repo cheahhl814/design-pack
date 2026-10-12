@@ -314,6 +314,12 @@ The export bakes the slide palette (light or dark) into plain hex + `fill-opacit
 get a background rect, since light text on a transparent canvas disappears on white pages. The script
 fails if any `var()` or `color-mix()` would survive. Want PNG? Render the **exported** file.
 
+Building a whole **PowerPoint deck** from components? Use `bin/make-pptx-deck.py` instead of exporting
+and pasting by hand. It runs this export per figure, embeds each one as native SVG with a PNG
+fallback, and lays it out on the house layouts. See [`templates/deck/README.md`](../../../templates/deck/README.md).
+The deck's decor SVGs (`templates/deck/chrome/`) follow these conventions but are deliberately **not**
+catalog components: they are slide chrome, not diagrams.
+
 ## Adding a new component
 
 0. **Research first (mandatory when the design isn't obvious).** Before drawing, search

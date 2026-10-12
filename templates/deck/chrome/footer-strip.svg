@@ -1,0 +1,17 @@
+<!--
+html-template-pack · deck chrome · footer-strip
+  Footer decor placed on the house deck's slide master (1280x36, bottom of
+  the slide), so it shows on every content layout; the Title and Section
+  layouts hide master shapes. Four colour segments + a dotted rule + an end dot.
+  Decor only: no text.
+  Tokens: teal amber coral green border-bright.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 36" role="img" aria-label="Decorative footer strip: four colour segments and a dotted rule" style="width:100%;height:auto">
+  <title>Footer strip</title>
+  <line x1="64" y1="18" x2="92" y2="18" style="stroke:var(--teal,#0d9488);stroke-width:5" stroke-linecap="round"/>
+  <line x1="104" y1="18" x2="120" y2="18" style="stroke:var(--amber,#f59e0b);stroke-width:5" stroke-linecap="round"/>
+  <line x1="132" y1="18" x2="144" y2="18" style="stroke:var(--coral,#ef4444);stroke-width:5" stroke-linecap="round"/>
+  <line x1="156" y1="18" x2="164" y2="18" style="stroke:var(--green,#10b981);stroke-width:5" stroke-linecap="round"/>
+  <line x1="184" y1="18" x2="1196" y2="18" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-dasharray="2 10" stroke-linecap="round"/>
+  <circle cx="1210" cy="18" r="5" style="fill:var(--teal,#0d9488)"/>
+</svg>
