@@ -1,0 +1,127 @@
+<!--
+html-template-pack · svg-library · api-request-lifecycle
+  Sequence diagram of one web API call across six lifelines: client,
+  DNS, API gateway, two services and a database. Numbered solid arrows
+  are requests, dashed arrows responses; the gateway self-loop is token
+  validation and rate limiting; the final return is 200 OK with JSON.
+  Activation bars show who is busy. Follows the client-server model
+  (AlgoMaster client-server architecture, Akamai client-server
+  glossary).
+  Tokens: deep-blue amber teal coral green border-bright text text-muted surface font-head font-sans.
+  Edit: participant names and message labels; add or drop a service by
+  moving lifelines 125 px apart.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="API request lifecycle: the client resolves the domain via DNS, sends an HTTPS request to the API gateway, which validates the token and routes to service A, which calls service B and the database; responses return the same way ending in 200 OK" style="width:100%;height:auto">
+  <title>Web API request lifecycle sequence diagram</title>
+  <!-- lifelines -->
+  <g>
+  <line x1="95" y1="90" x2="95" y2="396" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5;stroke-linecap:butt;stroke-dasharray:5 5"/>
+  <line x1="220" y1="90" x2="220" y2="396" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5;stroke-linecap:butt;stroke-dasharray:5 5"/>
+  <line x1="345" y1="90" x2="345" y2="396" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5;stroke-linecap:butt;stroke-dasharray:5 5"/>
+  <line x1="470" y1="90" x2="470" y2="396" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5;stroke-linecap:butt;stroke-dasharray:5 5"/>
+  <line x1="595" y1="90" x2="595" y2="396" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5;stroke-linecap:butt;stroke-dasharray:5 5"/>
+  <line x1="720" y1="90" x2="720" y2="396" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5;stroke-linecap:butt;stroke-dasharray:5 5"/>
+  <rect x="90" y="108" width="10" height="282" rx="2" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 40%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5"/>
+  <rect x="340" y="166" width="10" height="216" rx="2" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 40%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:1.5"/>
+  <rect x="465" y="222" width="10" height="138" rx="2" style="fill:color-mix(in srgb, var(--teal,#0d9488) 40%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <rect x="590" y="248" width="10" height="88" rx="2" style="fill:color-mix(in srgb, var(--teal,#0d9488) 40%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <rect x="715" y="274" width="10" height="38" rx="2" style="fill:color-mix(in srgb, var(--coral,#ef4444) 40%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:1.5"/>
+  </g>
+  <!-- participants -->
+  <g>
+  <rect x="39" y="46" width="112" height="44" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="39" y="46" width="112" height="44" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 16%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="95" y="66" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Client</text>
+  <text x="95" y="82" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">browser / app</text>
+  <rect x="164" y="46" width="112" height="44" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke:color-mix(in srgb, var(--text-muted,#64748b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="164" y="46" width="112" height="44" rx="12" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 16%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <text x="220" y="66" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">DNS</text>
+  <text x="220" y="82" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">name lookup</text>
+  <rect x="289" y="46" width="112" height="44" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="289" y="46" width="112" height="44" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="345" y="66" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">API gateway</text>
+  <text x="345" y="82" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">auth, routing</text>
+  <rect x="414" y="46" width="112" height="44" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="414" y="46" width="112" height="44" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="470" y="66" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Service A</text>
+  <text x="470" y="82" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">business logic</text>
+  <rect x="539" y="46" width="112" height="44" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="539" y="46" width="112" height="44" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="595" y="66" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Service B</text>
+  <text x="595" y="82" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">internal API</text>
+  <rect x="664" y="46" width="112" height="44" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="664" y="46" width="112" height="44" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 16%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="720" y="66" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Database</text>
+  <text x="720" y="82" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">storage</text>
+  </g>
+  <!-- messages -->
+  <g>
+  <line x1="100" y1="120" x2="204" y2="120" style="stroke:var(--text,#0f172a);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="215,120 204,125.5 204,114.5" style="fill:var(--text,#0f172a)"/>
+  <circle cx="116" cy="120" r="9" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="116" y="124.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">1</text>
+  <text x="165.5" y="114" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">DNS lookup</text>
+  <line x1="215" y1="144" x2="111" y2="144" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:butt;stroke-dasharray:6 4"/>
+  <polygon points="100,144 111,138.5 111,149.5" style="fill:var(--text-muted,#64748b)"/>
+  <circle cx="116" cy="144" r="9" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="116" y="148.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">2</text>
+  <text x="165.5" y="138" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">IP address</text>
+  <line x1="100" y1="174" x2="329" y2="174" style="stroke:var(--text,#0f172a);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="340,174 329,179.5 329,168.5" style="fill:var(--text,#0f172a)"/>
+  <circle cx="116" cy="174" r="9" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="116" y="178.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">3</text>
+  <text x="228" y="168" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">HTTPS request + token</text>
+  <path d="M 350 192 L 380 192 L 380 210 L 362 210" style="fill:none;stroke:var(--text,#0f172a);stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/>
+  <polygon points="351,210 362,204.5 362,215.5" style="fill:var(--text,#0f172a)"/>
+  <circle cx="380" cy="201" r="10" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="380" y="205.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">4</text>
+  <text x="396" y="205" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">validate token, rate limit</text>
+  <line x1="350" y1="230" x2="454" y2="230" style="stroke:var(--text,#0f172a);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="465,230 454,235.5 454,224.5" style="fill:var(--text,#0f172a)"/>
+  <circle cx="366" cy="230" r="9" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="366" y="234.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">5</text>
+  <text x="415.5" y="224" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">route request</text>
+  <line x1="475" y1="256" x2="579" y2="256" style="stroke:var(--text,#0f172a);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="590,256 579,261.5 579,250.5" style="fill:var(--text,#0f172a)"/>
+  <circle cx="491" cy="256" r="9" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="491" y="260.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">6</text>
+  <text x="540.5" y="250" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">internal call</text>
+  <line x1="600" y1="282" x2="704" y2="282" style="stroke:var(--text,#0f172a);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="715,282 704,287.5 704,276.5" style="fill:var(--text,#0f172a)"/>
+  <circle cx="616" cy="282" r="9" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="616" y="286.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">7</text>
+  <text x="665.5" y="276" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">SQL query</text>
+  <line x1="715" y1="306" x2="611" y2="306" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:butt;stroke-dasharray:6 4"/>
+  <polygon points="600,306 611,300.5 611,311.5" style="fill:var(--text-muted,#64748b)"/>
+  <circle cx="616" cy="306" r="9" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="616" y="310.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">8</text>
+  <text x="665.5" y="300" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">rows</text>
+  <line x1="590" y1="330" x2="486" y2="330" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:butt;stroke-dasharray:6 4"/>
+  <polygon points="475,330 486,324.5 486,335.5" style="fill:var(--text-muted,#64748b)"/>
+  <circle cx="491" cy="330" r="9" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="491" y="334.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">9</text>
+  <text x="540.5" y="324" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">result</text>
+  <line x1="465" y1="354" x2="361" y2="354" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:butt;stroke-dasharray:6 4"/>
+  <polygon points="350,354 361,348.5 361,359.5" style="fill:var(--text-muted,#64748b)"/>
+  <circle cx="366" cy="354" r="9" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="366" y="358.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">10</text>
+  <text x="415.5" y="348" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">response</text>
+  <line x1="340" y1="378" x2="111" y2="378" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:butt;stroke-dasharray:6 4"/>
+  <polygon points="100,378 111,372.5 111,383.5" style="fill:var(--text-muted,#64748b)"/>
+  <circle cx="116" cy="378" r="9" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="116" y="382.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">11</text>
+  <rect x="168" y="368" width="104" height="20" rx="10" style="fill:color-mix(in srgb, var(--green,#10b981) 30%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:1.5"/>
+  <text x="220" y="382" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">200 OK + JSON</text>
+  </g>
+  <!-- legend and captions -->
+  <g>
+  <text x="40" y="30" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">API REQUEST LIFECYCLE</text>
+  <line x1="470" y1="26" x2="500" y2="26" style="stroke:var(--text,#0f172a);stroke-width:2.5;stroke-linecap:round"/>
+  <text x="506" y="30" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">request</text>
+  <line x1="570" y1="26" x2="600" y2="26" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:butt;stroke-dasharray:6 4"/>
+  <text x="606" y="30" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">response</text>
+  <text x="40" y="428" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Errors return early: 401/403 from the gateway, 429 when rate-limited, 404 or 5xx from a service.</text>
+  <text x="40" y="443" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">DNS answers are cached, so step 1 is often skipped on repeat calls.</text>
+  </g>
+</svg>

@@ -1,0 +1,67 @@
+<!--
+html-template-pack · svg-library · reaction-coordinate
+  Reaction-energy profile of an exothermic reaction: reactants plateau,
+  activation-energy hump to the transition state (double dagger),
+  products plateau lower than reactants. A dashed catalysed path shares
+  both end states but has a lower hump. Sign conventions (ChadsPrep
+  reaction coordinate diagrams): Ea is measured from reactants to the
+  transition state; for an exothermic reaction products lie below
+  reactants and Delta H is negative; a catalyst lowers Ea only, Delta H
+  and the end states are unchanged. Energies are not numeric.
+  Tokens: deep-blue teal coral text text-muted surface font-head font-sans.
+  Edit: for an endothermic version raise the products plateau above 260
+  and flip the Delta H label to greater than 0.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Reaction energy profile: reactants climb an activation energy hump to a transition state then fall to lower-energy products, releasing heat; a catalysed path has a lower hump and the same energy change" style="width:100%;height:auto">
+  <title>Reaction coordinate diagram with catalysed path</title>
+  <!-- axes -->
+  <g>
+  <line x1="100" y1="60" x2="100" y2="380" style="stroke:var(--text,#0f172a);stroke-width:2;stroke-linecap:round"/>
+  <line x1="100" y1="380" x2="730" y2="380" style="stroke:var(--text,#0f172a);stroke-width:2;stroke-linecap:round"/>
+  <polygon points="100,52 105.5,63 94.5,63" style="fill:var(--text,#0f172a)"/>
+  <polygon points="738,380 727,385.5 727,374.5" style="fill:var(--text,#0f172a)"/>
+  <text x="78" y="220" text-anchor="middle" transform="rotate(-90 78 220)" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Potential energy</text>
+  <text x="415" y="404" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Reaction progress (reaction coordinate)</text>
+  </g>
+  <!-- energy curves -->
+  <g>
+  <path d="M 240 260 C 320 260 340 190 400 190 C 460 190 480 320 560 320" style="fill:none;stroke:var(--teal,#0d9488);stroke-width:3;stroke-linecap:round;stroke-dasharray:9 6"/>
+  <path d="M 130 260 L 240 260 C 320 260 340 100 400 100 C 460 100 480 320 560 320 L 680 320" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round"/>
+  </g>
+  <!-- annotations -->
+  <g>
+  <line x1="178" y1="100" x2="390" y2="100" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:4 4"/>
+  <line x1="222" y1="190" x2="390" y2="190" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:4 4"/>
+  <line x1="178" y1="249" x2="178" y2="111" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:butt"/>
+  <polygon points="178,100 183.5,111 172.5,111" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <polygon points="178,260 172.5,249 183.5,249" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="170" y="176" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Eₐ</text>
+  <text x="170" y="192" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">uncatalysed</text>
+  <line x1="222" y1="249" x2="222" y2="201" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:butt"/>
+  <polygon points="222,190 227.5,201 216.5,201" style="fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))"/>
+  <polygon points="222,260 216.5,249 227.5,249" style="fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))"/>
+  <text x="230" y="222" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">Eₐ</text>
+  <text x="230" y="238" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">catalysed</text>
+  <line x1="560" y1="260" x2="712" y2="260" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:4 4"/>
+  <line x1="700" y1="271" x2="700" y2="309" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:butt"/>
+  <polygon points="700,320 694.5,309 705.5,309" style="fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))"/>
+  <polygon points="700,260 705.5,271 694.5,271" style="fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))"/>
+  <text x="710" y="286" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">ΔH &lt; 0</text>
+  <text x="710" y="302" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">heat out</text>
+  <circle cx="400" cy="100" r="5" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:2"/>
+  <text x="400" y="84" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Transition state ‡</text>
+  <text x="400" y="210" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">catalysed</text>
+  <text x="190" y="284" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Reactants</text>
+  <text x="620" y="344" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Products</text>
+  </g>
+  <!-- legend -->
+  <g>
+  <text x="40" y="30" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">REACTION ENERGY PROFILE · EXOTHERMIC</text>
+  <line x1="480" y1="58" x2="516" y2="58" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3.5;stroke-linecap:round"/>
+  <text x="524" y="62" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">without catalyst</text>
+  <line x1="630" y1="58" x2="666" y2="58" style="stroke:var(--teal,#0d9488);stroke-width:3;stroke-linecap:butt;stroke-dasharray:9 6"/>
+  <text x="674" y="62" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">with catalyst</text>
+  <text x="40" y="432" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Products sit below reactants, so heat is released (ΔH &lt; 0). A catalyst lowers Eₐ but leaves ΔH unchanged.</text>
+  </g>
+</svg>

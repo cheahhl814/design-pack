@@ -1,13 +1,14 @@
-# svg-library — hand-drawn SVG diagram templates (html-template-pack v0.15.0)
+# svg-library — hand-drawn SVG diagram templates (html-template-pack v0.16.0)
 
-Seventy-seven agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
+Ninety-three agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
 explanatory and summary visuals — the complement to the pure-CSS graphics pack
 (`features/graphics/graphics.css`). Where the CSS pack covers charts built from real
 data (donut, gauge, heatmap, bars), the SVG library covers **concept diagrams**:
 processes, loops, hierarchies, matrices, funnels, roadmaps, cause-effect maps, goals,
 maturity ladders, phases, hidden-vs-visible, trade-offs, assessments, journeys,
 converging forces, parts-of-a-whole, interdependencies, decisions, adoption curves,
-networks, nested scopes, cause chains, comparisons and briefs.
+networks, nested scopes, cause chains, comparisons and briefs, plus science visuals: climate,
+lab and life science, cladograms, ecosystems, earth and physical science, and technology.
 
 ```
 features/graphics/svg-library/
@@ -107,6 +108,22 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
 | 75 | `nested-clades.svg` | Nested trait sets (jointed legs ⊃ mandibles & antennae ⊃ six legs ⊃ complete metamorphosis) beside the matching slanted cladogram with colour-matched ticks | Explaining clades as nested groups, the Venn-to-tree link |
 | 76 | `circular-cladogram.svg` | Circular (fan) cladogram of 16 vertebrates, radial labels, amphibians / mammals / reptiles-incl.-birds coloured as clades, fishes as a grade | Big-picture trees of life, many-taxa overviews (real trees from data → chartz PhyloTree) |
 | 77 | `cladogram-styles.svg` | One primate tree drawn three ways: diagonal, rectangular, and rotated at two nodes, chimp + human clade highlighted in each | Teaching that branch shape and tip order carry no meaning, reading tree diagrams |
+| 78 | `food-web.svg` | Four-tier food web (producers, herbivores, carnivores, apex) with energy arrows thickening toward the base, plus decomposers returning nutrients | Teaching energy flow, ecosystem overviews, biodiversity briefs |
+| 79 | `trophic-pyramid.svg` | Four-level energy pyramid with the ten-percent rule between levels and heat losses leaving each level | Teaching trophic levels, energy transfer, why food chains are short |
+| 80 | `water-cycle.svg` | Landscape water cycle: evaporation, transpiration, condensation, precipitation, runoff, infiltration and groundwater flow | Teaching the hydrological cycle, water-resource and catchment briefs |
+| 81 | `nitrogen-cycle.svg` | Nitrogen cycle from atmospheric N2: fixation (bacteria, lightning), nitrification NH4+ to NO2- to NO3-, plant uptake, ammonification, denitrification | Teaching nutrient cycles, soil and agriculture briefs, eutrophication context |
+| 82 | `symbiosis-types.svg` | Mutualism, commensalism and parasitism as paired organisms with + / 0 / − badges (cleaner wrasse and grouper, remora and shark, tick and deer) | Teaching species interactions, ecology lessons |
+| 83 | `ecological-succession.svg` | Four-stage primary succession (bare rock, pioneers, grasses and shrubs, young forest) with soil thickening and a time arrow | Teaching succession, restoration and land-recovery stories |
+| 84 | `ocean-zones.svg` | Water column on a square-root depth axis: epipelagic to hadal zones, fading light strip, shelf, abyssal plain and trench | Marine-science lessons, deep-sea and sampling-depth context |
+| 85 | `plate-boundaries.svg` | Divergent, convergent (subduction) and transform (map view) plate boundaries with motion arrows, magma and earthquake marks | Teaching plate tectonics, hazard and geology overviews |
+| 86 | `reaction-coordinate.svg` | Exothermic reaction-energy profile: reactants, activation energy, transition state, products, ΔH, plus a lower catalysed path | Teaching kinetics and catalysis, enzyme and catalyst explainers |
+| 87 | `states-of-matter.svg` | Solid, liquid and gas particle models in beakers with melting, freezing, vaporisation, condensation, sublimation and deposition arrows | Teaching states of matter and phase changes |
+| 88 | `em-spectrum.svg` | Log-wavelength electromagnetic spectrum from gamma to radio, visible band expanded 400–700 nm, chirped wave, frequency and energy direction | Teaching light and radiation, remote-sensing and imaging context |
+| 89 | `crispr-editing.svg` | CRISPR-Cas9: guide RNA, NGG PAM, double-strand break 3 bp upstream, then NHEJ (indel knockout) vs HDR (donor template) outcomes | Explaining gene editing, methods overviews, biotech briefs |
+| 90 | `immune-response.svg` | Innate vs adaptive response (APC, helper T, cytotoxic T, B cell, plasma cells, memory) plus an IgG antibody with heavy and light chains | Teaching immunology, vaccine explainers |
+| 91 | `pcr-thermal-cycle.svg` | Thermocycler temperature profile (denature ~95 °C, anneal ~55–65 °C, extend ~72 °C) with a copies-double-each-cycle inset | PCR and qPCR methods, teaching amplification |
+| 92 | `transformer-block.svg` | Transformer encoder and decoder stacks: embeddings plus positional encoding, attention, feed-forward, residual Add & Norm, N× marker, linear + softmax head | Explaining LLM / transformer architecture at a schematic level |
+| 93 | `api-request-lifecycle.svg` | Sequence diagram of a web API call: client, DNS, gateway auth and rate limit, two services, database, numbered request/response arrows ending in 200 OK | Explaining backend request flow, API docs, onboarding |
 
 **When to use which graphics system:**
 
@@ -219,6 +236,66 @@ tick so it sits between the node before and the node after the taxa that share t
 inferred from real data (Newick, with branch lengths or support values) use the `chartz` skill's
 PhyloTree engine.
 
+## Ecosystems
+
+Seven components (78 to 84) cover ecology visuals. Like the lab set, their science is meant to be
+**correct as drawn**. In `food-web`, arrows point from food to feeder (the direction energy flows),
+stroke width shrinks up the levels, and decomposers return *nutrients*, not energy: energy flows one
+way and leaves as heat (Texas Gateway, National Geographic energy-flow resources). `trophic-pyramid`
+follows Lindeman's ten-percent rule (real transfer efficiencies run about 5 to 20%), and its kJ values
+are placeholders. `water-cycle` follows the USGS Water Science School processes and the RSC teaching
+infographic; the ocean is labelled the largest store (about 96% of Earth's water). `nitrogen-cycle` gives
+the chemical form at each step: N₂ fixed by bacteria (Rhizobium in legume nodules) to NH₄⁺ or by
+lightning to nitrate, nitrification NH₄⁺ → NO₂⁻ (Nitrosomonas) → NO₃⁻ (Nitrobacter), uptake of both
+ions, ammonification by decomposers, and denitrification back to N₂ in low-oxygen soil (BioRender,
+Mind the Graph templates). `symbiosis-types` uses the textbook pairs (Wikimedia symbiotic-relationships
+diagram, ScienceFacts); the remora is footnoted because some argue it costs the shark a little drag.
+`ecological-succession` orders the primary-succession stages as pioneers (lichens, mosses), then herbs
+and grasses, then shrubs, then shade-intolerant trees, then a climax community (Wikipedia *Primary
+succession* after Walker & del Moral; Britannica's page could not be fetched). `ocean-zones` uses the
+NOAA JetStream boundaries (200, 1,000, 4,000 and 6,000 m; hadal to ≈10,994 m, also WHOI and the
+Wikimedia *Pelagiczone* figure) on a **square-root depth axis** (formula in the file header), so the
+thin sunlit zone stays visible; boundaries are approximate.
+
+## Earth & physical science
+
+Four components (85 to 88). `plate-boundaries` draws divergent (ridge, new crust) and convergent
+(oceanic plate subducting under a continent: trench, quakes along the slab, volcanic arc) boundaries in
+cross-section, and the transform boundary in **map view**, because sideways sliding is invisible in a
+cross-section (NPS *Types of plate boundaries*, IRIS animations, Earth at Home). `reaction-coordinate`
+is exothermic (products below reactants, ΔH < 0); Eₐ is measured from reactants to the transition state
+and the catalysed path lowers Eₐ only, leaving ΔH and both end states unchanged (ChadsPrep reaction
+coordinate diagrams). `states-of-matter` follows the RSC particle model: the same particles in every
+beaker, regular and touching in the solid, touching but disordered in the liquid, far apart in the gas;
+plasma is left out. `em-spectrum` uses a log-wavelength axis (48 px per decade, 1 pm to 1 km) with the
+conventional band edges (gamma < 10 pm, X-ray to 10 nm, UV to 400 nm, visible 400 to 700 nm, IR to 1 mm,
+microwave to 1 m; NASA EM spectrum, Wikipedia band table; some sources give visible as 380 to 750 nm).
+Its six rainbow colours are fixed physical colours (fallback-only `--spectrum-*` names), not theme
+tokens.
+
+## Laboratory & biotech
+
+Three components (89 to 91) extend the lab set. `crispr-editing` places the guide RNA's 20-nt spacer
+on the target strand, the NGG PAM on the other strand right after the protospacer (SpCas9), and the
+blunt double-strand break 3 bp upstream of the PAM; NHEJ is shown as the error-prone default (indel,
+frameshift, knockout) and HDR as copying a donor with homology arms (Addgene CRISPR guide, NIGMS image
+7036, BioRender CRISPR editing modes). `immune-response` keeps the cell story schematic but accurate:
+an antigen-presenting cell (macrophage or dendritic cell, the same phagocyte as on the innate side)
+presents antigen on MHC to a CD4 helper T cell, which activates CD8 cytotoxic T cells and B cells; B cells
+become antibody-secreting plasma cells, and memory cells remain. The IgG has two heavy chains (inner,
+forming the Fc stem) and two light chains on the arms, binding antigen at both tips (Wikimedia *Immune
+Response*, BioRender, Kuraplan). `pcr-thermal-cycle` labels its temperatures as typical
+(≈95 / 55–65 / 72 °C) and protocol-specific, and its inset assumes ideal doubling (Bio-Rad bulletin
+5279, PCR Biosystems qPCR guide).
+
+## Technology
+
+Two components (92 and 93). `transformer-block` follows the encoder–decoder figure in Vaswani et al.
+(2017), with post-norm Add & Norm as in the paper (many modern models use pre-norm); for a decoder-only
+LLM, delete the encoder and the cross-attention pair (Transformer Explainer, The Illustrated
+Transformer). `api-request-lifecycle` is a sequence diagram of one client-server call, with requests as
+solid arrows, responses dashed and numbered in order (AlgoMaster, Akamai client-server glossary).
+
 ## Standalone use (no HTML page)
 
 For a diagram going into PowerPoint, Word, Keynote, Figma, Inkscape/Illustrator, a poster or a
@@ -243,7 +320,7 @@ fails if any `var()` or `color-mix()` would survive. Want PNG? Render the **expo
    SVG is the point of the library; treat the shipped files as style reference
    (rounded rx=12 cards — 8 for bars, 4–6 for slabs, 14 for large panels; 2px primary
    strokes, 1.5px shadows/leaders, 2.5px connectors, 3px spines; dashed 1.5px leaders
-   start at a 3.5px dot). **Type scale (shared by all 77):** hero 20/700 (one central
+   start at a 3.5px dot). **Type scale (shared by all 93):** hero 20/700 (one central
    subject or headline) · label 16/600 · annotation 13/400 muted · caption 12/400 muted ·
    eyebrow 11/700 caps with `letter-spacing="1.2"` · badge number 13/700.
    **Arrowheads:** 13×13 on connectors, 11×11 on small cue arrows, 16×16 on thick spines

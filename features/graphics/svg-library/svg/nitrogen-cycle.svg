@@ -1,0 +1,99 @@
+<!--
+html-template-pack · svg-library · nitrogen-cycle
+  Nitrogen cycle: atmospheric N2 is fixed by bacteria (Rhizobium in
+  legume nodules, free-living soil bacteria) to ammonium, or by
+  lightning to nitrogen oxides that reach the soil as nitrate in rain.
+  Nitrifying bacteria oxidise ammonium to nitrite (Nitrosomonas) then
+  nitrate (Nitrobacter); plants take up ammonium and nitrate; dead matter
+  and waste return to ammonium by ammonification (decomposers);
+  denitrifying bacteria in low-oxygen soil reduce nitrate back to N2.
+  Checked against the BioRender and Mind the Graph nitrogen-cycle
+  templates and standard textbook accounts. N2 is about 78% of air.
+  Tokens: deep-blue amber green coral text text-muted surface font-head font-sans.
+  Edit: labels only; the chemistry is fixed.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Nitrogen cycle: nitrogen fixation and lightning turn atmospheric N2 into ammonium and nitrate, nitrification converts ammonium to nitrite to nitrate, plants take them up, decomposers return ammonium and denitrification releases N2" style="width:100%;height:auto">
+  <title>Nitrogen cycle with chemical forms</title>
+  <!-- stores and organisms -->
+  <g>
+  <rect x="40" y="46" width="720" height="56" rx="14" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 10%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="400" y="72" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Atmospheric nitrogen  N₂</text>
+  <text x="400" y="90" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">about 78% of air · unusable by most organisms</text>
+  <rect x="0" y="300" width="800" height="114" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff))"/>
+  <line x1="0" y1="300" x2="800" y2="300" style="stroke:var(--green,#10b981);stroke-width:2.5;stroke-linecap:round"/>
+  <text x="788" y="318" text-anchor="end" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">SOIL</text>
+  <line x1="400" y1="300" x2="400" y2="210" style="stroke:var(--green,#10b981);stroke-width:3;stroke-linecap:round"/>
+  <ellipse cx="418" cy="260" rx="18" ry="8" transform="rotate(-30 418 260)" style="fill:color-mix(in srgb, var(--green,#10b981) 40%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <ellipse cx="418" cy="230" rx="18" ry="8" transform="rotate(-30 418 230)" style="fill:color-mix(in srgb, var(--green,#10b981) 40%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <ellipse cx="382" cy="260" rx="18" ry="8" transform="rotate(30 382 260)" style="fill:color-mix(in srgb, var(--green,#10b981) 40%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <ellipse cx="382" cy="230" rx="18" ry="8" transform="rotate(30 382 230)" style="fill:color-mix(in srgb, var(--green,#10b981) 40%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <line x1="400" y1="300" x2="386" y2="318" style="stroke:var(--green,#10b981);stroke-width:2;stroke-linecap:round"/>
+  <line x1="400" y1="300" x2="400" y2="318" style="stroke:var(--green,#10b981);stroke-width:2;stroke-linecap:round"/>
+  <line x1="400" y1="300" x2="414" y2="318" style="stroke:var(--green,#10b981);stroke-width:2;stroke-linecap:round"/>
+  <text x="400" y="200" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Plants</text>
+  <rect x="158" y="330" width="124" height="46" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="158" y="330" width="124" height="46" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 30%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="220" y="350" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">NH₄⁺</text>
+  <text x="220" y="368" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Ammonium</text>
+  <rect x="338" y="330" width="124" height="46" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="338" y="330" width="124" height="46" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 30%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="400" y="350" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">NO₂⁻</text>
+  <text x="400" y="368" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Nitrite</text>
+  <rect x="518" y="330" width="124" height="46" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="518" y="330" width="124" height="46" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 30%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="580" y="350" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">NO₃⁻</text>
+  <text x="580" y="368" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Nitrate</text>
+  <rect x="150" y="202" width="140" height="42" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke:color-mix(in srgb, var(--text-muted,#64748b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="150" y="202" width="140" height="42" rx="12" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 12%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <text x="220" y="222" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Dead matter</text>
+  <text x="220" y="237" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">and animal waste</text>
+  </g>
+  <!-- transformations -->
+  <g>
+  <path d="M 90 102 L 90 353 L 145 353" style="fill:none;stroke:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <polygon points="158,353 145,359.5 145,346.5" style="fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))"/>
+  <path d="M 720 102 L 720 353 L 655 353" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:7 5"/>
+  <polygon points="642,353 655,346.5 655,359.5" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))"/>
+  <polygon points="742,128 730,152 740,152 728,176 752,146 742,146 750,128" style="fill:var(--amber,#f59e0b);stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:1.5;stroke-linejoin:round"/>
+  <line x1="282" y1="353" x2="325" y2="353" style="stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="338,353 325,359.5 325,346.5" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="462" y1="353" x2="505" y2="353" style="stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="518,353 505,359.5 505,346.5" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 240 330 Q 300 300 377.1 312.3" style="fill:none;stroke:var(--green,#10b981);stroke-width:2;stroke-linecap:round"/>
+  <polygon points="388,314 376.3,317.7 378,306.8" style="fill:var(--green,#10b981)"/>
+  <path d="M 560 330 Q 500 300 422.9 312.3" style="fill:none;stroke:var(--green,#10b981);stroke-width:2;stroke-linecap:round"/>
+  <polygon points="412,314 422,306.8 423.7,317.7" style="fill:var(--green,#10b981)"/>
+  <line x1="384" y1="236" x2="307" y2="229" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <polygon points="296,228 307.5,223.5 306.5,234.5" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="220" y1="244" x2="220" y2="317" style="stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="220,330 213.5,317 226.5,317" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="612" y1="330" x2="612" y2="115" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="612,102 618.5,115 605.5,115" style="fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))"/>
+  </g>
+  <!-- process labels -->
+  <g>
+  <text x="100" y="150" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Nitrogen fixation</text>
+  <text x="100" y="166" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">bacteria, e.g. Rhizobium</text>
+  <text x="100" y="181" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">in legume root nodules</text>
+  <text x="720" y="210" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">Lightning</text>
+  <text x="720" y="226" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">N₂ → NOₓ → rain</text>
+  <text x="310" y="393" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Nitrification</text>
+  <text x="310" y="409" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Nitrosomonas</text>
+  <text x="490" y="393" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Nitrification</text>
+  <text x="490" y="409" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Nitrobacter</text>
+  <text x="490" y="292" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">uptake</text>
+  <text x="338" y="252" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">death, waste</text>
+  <text x="230" y="270" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">Ammonification</text>
+  <text x="230" y="286" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">decomposers</text>
+  <text x="602" y="160" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">Denitrification</text>
+  <text x="602" y="176" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">bacteria, low-oxygen soil</text>
+  <text x="602" y="191" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">NO₃⁻ → N₂</text>
+  </g>
+  <!-- captions -->
+  <g>
+  <text x="40" y="30" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">NITROGEN CYCLE</text>
+  <text x="760" y="30" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Bacteria drive most steps · schematic, not to scale</text>
+  <text x="40" y="436" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Plants take up both ammonium and nitrate; nitrification converts NH₄⁺ to NO₂⁻ to NO₃⁻ in oxygen-rich soil.</text>
+  </g>
+</svg>

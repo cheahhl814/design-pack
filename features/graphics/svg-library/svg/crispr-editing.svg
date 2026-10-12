@@ -1,0 +1,165 @@
+<!--
+html-template-pack · svg-library · crispr-editing
+  CRISPR-Cas9 mechanism: Cas9 (dashed outline) carries a guide RNA whose
+  20-nt spacer base-pairs with the target strand; the matching
+  protospacer on the other strand is followed by an NGG PAM (SpCas9).
+  Cas9 makes a blunt double-strand break 3 bp upstream of the PAM. Two
+  repair outcomes: NHEJ rejoins the ends, often with an indel causing a
+  frameshift knockout; HDR copies a donor template with homology arms
+  for a precise edit, mainly in dividing cells. Checked against the
+  Addgene CRISPR guide, NIGMS image 7036 and the BioRender CRISPR
+  editing-modes template. 11 px per base pair; the guide scaffold loop
+  is schematic.
+  Tokens: amber coral teal green deep-blue text text-muted surface font-head font-sans.
+  Edit: captions; keep the cut 3 bp from the PAM.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="CRISPR-Cas9: a guide RNA leads Cas9 to a matching DNA site next to an NGG PAM, Cas9 cuts both strands, and the break is repaired either by error-prone NHEJ that disrupts the gene or by HDR that copies in a donor template" style="width:100%;height:auto">
+  <title>CRISPR-Cas9 cut and the two repair outcomes</title>
+  <!-- Cas9 at the target DNA -->
+  <g>
+  <rect x="180" y="66" width="353" height="108" rx="40" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 18%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 60%, transparent);stroke-width:2;stroke-dasharray:6 4"/>
+  <text x="196" y="88" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">Cas9</text>
+  <line x1="60" y1="116" x2="415" y2="116" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:4;stroke-linecap:round"/>
+  <line x1="419" y1="116" x2="740" y2="116" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:4;stroke-linecap:round"/>
+  <line x1="60" y1="140" x2="415" y2="140" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:4;stroke-linecap:round"/>
+  <line x1="419" y1="140" x2="740" y2="140" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:4;stroke-linecap:round"/>
+  <line x1="66" y1="119" x2="66" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="77" y1="119" x2="77" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="88" y1="119" x2="88" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="99" y1="119" x2="99" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="110" y1="119" x2="110" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="121" y1="119" x2="121" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="132" y1="119" x2="132" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="143" y1="119" x2="143" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="154" y1="119" x2="154" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="165" y1="119" x2="165" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="176" y1="119" x2="176" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="187" y1="119" x2="187" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="198" y1="119" x2="198" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="209" y1="119" x2="209" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="220" y1="119" x2="220" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="231" y1="119" x2="231" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="242" y1="119" x2="242" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="253" y1="119" x2="253" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="264" y1="119" x2="264" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="275" y1="119" x2="275" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="286" y1="119" x2="286" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="297" y1="119" x2="297" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="308" y1="119" x2="308" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="319" y1="119" x2="319" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="330" y1="119" x2="330" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="341" y1="119" x2="341" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="352" y1="119" x2="352" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="363" y1="119" x2="363" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="374" y1="119" x2="374" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="385" y1="119" x2="385" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="396" y1="119" x2="396" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="407" y1="119" x2="407" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="429" y1="119" x2="429" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="440" y1="119" x2="440" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="451" y1="119" x2="451" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="462" y1="119" x2="462" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="473" y1="119" x2="473" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="484" y1="119" x2="484" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="495" y1="119" x2="495" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="506" y1="119" x2="506" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="517" y1="119" x2="517" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="528" y1="119" x2="528" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="539" y1="119" x2="539" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="550" y1="119" x2="550" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="561" y1="119" x2="561" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="572" y1="119" x2="572" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="583" y1="119" x2="583" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="594" y1="119" x2="594" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="605" y1="119" x2="605" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="616" y1="119" x2="616" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="627" y1="119" x2="627" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="638" y1="119" x2="638" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="649" y1="119" x2="649" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="660" y1="119" x2="660" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="671" y1="119" x2="671" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="682" y1="119" x2="682" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="693" y1="119" x2="693" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="704" y1="119" x2="704" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="715" y1="119" x2="715" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="726" y1="119" x2="726" y2="137" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <rect x="450" y="107" width="33" height="18" rx="4" style="fill:color-mix(in srgb, var(--coral,#ef4444) 40%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="466.5" y="100" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">PAM</text>
+  <text x="466.5" y="120" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">NGG</text>
+  <text x="52" y="120" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">5′</text>
+  <text x="748" y="120" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">3′</text>
+  <text x="52" y="144" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">3′</text>
+  <text x="748" y="144" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">5′</text>
+  <line x1="230" y1="154" x2="450" y2="154" style="stroke:var(--teal,#0d9488);stroke-width:4;stroke-linecap:round"/>
+  <line x1="235" y1="144" x2="235" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="246" y1="144" x2="246" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="257" y1="144" x2="257" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="268" y1="144" x2="268" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="279" y1="144" x2="279" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="290" y1="144" x2="290" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="301" y1="144" x2="301" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="312" y1="144" x2="312" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="323" y1="144" x2="323" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="334" y1="144" x2="334" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="345" y1="144" x2="345" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="356" y1="144" x2="356" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="367" y1="144" x2="367" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="378" y1="144" x2="378" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="389" y1="144" x2="389" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="400" y1="144" x2="400" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="411" y1="144" x2="411" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="422" y1="144" x2="422" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="433" y1="144" x2="433" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="444" y1="144" x2="444" y2="151" style="stroke:var(--teal,#0d9488);stroke-width:1.5;stroke-linecap:round"/>
+  <path d="M 230 154 C 200 154 190 184 220 184 C 250 184 240 168 216 170" style="fill:none;stroke:var(--teal,#0d9488);stroke-width:4;stroke-linecap:round"/>
+  <text x="182" y="170" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">guide RNA</text>
+  <text x="182" y="185" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">20-nt spacer pairs</text>
+  <text x="182" y="199" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">with the target strand</text>
+  <path d="M 411 106 L 421 114 L 413 118 L 423 126" style="fill:none;stroke:var(--coral,#ef4444);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round"/>
+  <path d="M 411 130 L 421 138 L 413 142 L 423 150" style="fill:none;stroke:var(--coral,#ef4444);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round"/>
+  <text x="417" y="60" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">double-strand break</text>
+  <text x="417" y="74" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">3 bp upstream of PAM</text>
+  <line x1="417" y1="78" x2="417" y2="104" style="stroke:var(--coral,#ef4444);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:3 3"/>
+  </g>
+  <!-- repair fork -->
+  <g>
+  <path d="M 400 196 Q 260 200 220.2 231.9" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="210,240 216.1,226.8 224.2,237" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 400 196 Q 540 200 579.8 231.9" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="590,240 575.8,237 583.9,226.8" style="fill:var(--text-muted,#64748b)"/>
+  <text x="400" y="216" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">cell repairs the break</text>
+  </g>
+  <!-- repair outcomes -->
+  <g>
+  <rect x="40" y="246" width="340" height="140" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="40" y="246" width="340" height="140" rx="14" style="fill:color-mix(in srgb, var(--coral,#ef4444) 8%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <rect x="420" y="246" width="340" height="140" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+  <rect x="420" y="246" width="340" height="140" rx="14" style="fill:color-mix(in srgb, var(--green,#10b981) 8%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <text x="56" y="272" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">NHEJ · non-homologous end joining</text>
+  <text x="436" y="272" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">HDR · homology-directed repair</text>
+  <line x1="70" y1="318" x2="196" y2="318" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:4;stroke-linecap:round"/>
+  <line x1="224" y1="318" x2="350" y2="318" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:4;stroke-linecap:round"/>
+  <rect x="196" y="310" width="28" height="16" rx="3" style="fill:color-mix(in srgb, var(--coral,#ef4444) 55%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="210" y="302" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">indel</text>
+  <text x="56" y="350" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Ends glued back, often with small insertions</text>
+  <text x="56" y="367" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">or deletions → frameshift → gene knocked out</text>
+  <line x1="500" y1="296" x2="560" y2="296" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round"/>
+  <rect x="560" y="290" width="60" height="12" rx="3" style="fill:color-mix(in srgb, var(--green,#10b981) 60%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <line x1="620" y1="296" x2="680" y2="296" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round"/>
+  <text x="690" y="300" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">donor DNA</text>
+  <line x1="450" y1="326" x2="560" y2="326" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:4;stroke-linecap:round"/>
+  <rect x="560" y="319" width="60" height="14" rx="3" style="fill:color-mix(in srgb, var(--green,#10b981) 60%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <line x1="620" y1="326" x2="730" y2="326" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:4;stroke-linecap:round"/>
+  <line x1="560" y1="304" x2="560" y2="316" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:3 3"/>
+  <line x1="620" y1="304" x2="620" y2="316" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:3 3"/>
+  <text x="436" y="350" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Donor with homology arms is copied in →</text>
+  <text x="436" y="367" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">precise edit or insertion (dividing cells)</text>
+  </g>
+  <!-- captions -->
+  <g>
+  <text x="40" y="30" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">CRISPR-CAS9 GENOME EDITING</text>
+  <text x="400" y="418" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Cas9 cuts only where the 20-nt spacer matches the DNA and an NGG PAM follows it (SpCas9).</text>
+  <text x="400" y="434" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">NHEJ is the default, error-prone route; HDR needs a supplied donor template and is less efficient.</text>
+  </g>
+</svg>

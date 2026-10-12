@@ -1,0 +1,112 @@
+<!--
+html-template-pack · svg-library · plate-boundaries
+  Three plate-boundary panels. Divergent: plates move apart at an
+  oceanic ridge, magma rises and forms new crust (Mid-Atlantic Ridge).
+  Convergent: oceanic plate subducts under a continental plate, forming a
+  trench, quakes along the slab and a volcanic arc (Andes, Cascades).
+  Transform: drawn in MAP view (a cross-section shows nothing), plates
+  slide past along a fault that offsets a stream, shallow quakes and
+  little or no volcanism (San Andreas, about 5 cm per year). Checked
+  against NPS Types of Plate Boundaries, IRIS boundary animations and
+  Earth at Home plate tectonics.
+  Tokens: amber coral deep-blue text text-muted surface font-head font-sans.
+  Edit: example names; arrows show relative plate motion.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Three plate boundaries: divergent plates pull apart at a ridge where magma forms new crust, convergent plates collide and one subducts under the other forming a trench and volcanoes, transform plates slide past each other causing earthquakes" style="width:100%;height:auto">
+  <title>Divergent, convergent and transform plate boundaries</title>
+  <!-- panels -->
+  <g>
+  <rect x="30" y="48" width="236" height="300" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke:color-mix(in srgb, var(--text-muted,#64748b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="30" y="48" width="236" height="300" rx="14" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 4%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <text x="148" y="76" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Divergent</text>
+  <text x="148" y="94" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">plates pull apart</text>
+  <rect x="282" y="48" width="236" height="300" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke:color-mix(in srgb, var(--text-muted,#64748b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="282" y="48" width="236" height="300" rx="14" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 4%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <text x="400" y="76" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Convergent</text>
+  <text x="400" y="94" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">plates collide, one subducts</text>
+  <rect x="534" y="48" width="236" height="300" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke:color-mix(in srgb, var(--text-muted,#64748b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="534" y="48" width="236" height="300" rx="14" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 4%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <text x="652" y="76" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Transform</text>
+  <text x="652" y="94" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">plates slide past (map view)</text>
+  </g>
+  <!-- cross-sections -->
+  <g>
+  <rect x="38" y="230" width="220" height="108" style="fill:color-mix(in srgb, var(--coral,#ef4444) 24%, var(--surface,#ffffff))"/>
+  <rect x="38" y="128" width="220" height="52" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 20%, var(--surface,#ffffff))"/>
+  <polygon points="38,186 114,180 142,162 142,228 38,230" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 40%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2;stroke-linejoin:round"/>
+  <polygon points="258,186 182,180 154,162 154,228 258,230" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 40%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2;stroke-linejoin:round"/>
+  <path d="M 148.0 318 C 134.0 290 162.0 262 148.0 236" style="fill:none;stroke:var(--coral,#ef4444);stroke-width:3;stroke-linecap:round"/>
+  <polygon points="148,222 154.5,235 141.5,235" style="fill:var(--coral,#ef4444)"/>
+  <path d="M 118 310 Q 126 292 128.4 289" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <polygon points="134,282 131.9,291.8 124.9,286.2" style="fill:color-mix(in srgb, var(--coral,#ef4444) 70%, transparent)"/>
+  <path d="M 178 310 Q 170 292 167.6 289" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <polygon points="162,282 171.1,286.2 164.1,291.8" style="fill:color-mix(in srgb, var(--coral,#ef4444) 70%, transparent)"/>
+  <path d="M 94 280 Q 102 262 104.4 259" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <polygon points="110,252 107.9,261.8 100.9,256.2" style="fill:color-mix(in srgb, var(--coral,#ef4444) 70%, transparent)"/>
+  <path d="M 202 280 Q 194 262 191.6 259" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <polygon points="186,252 195.1,256.2 188.1,261.8" style="fill:color-mix(in srgb, var(--coral,#ef4444) 70%, transparent)"/>
+  <line x1="126" y1="150" x2="79" y2="150" style="stroke:var(--text,#0f172a);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="66,150 79,143.5 79,156.5" style="fill:var(--text,#0f172a)"/>
+  <line x1="170" y1="150" x2="217" y2="150" style="stroke:var(--text,#0f172a);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="230,150 217,156.5 217,143.5" style="fill:var(--text,#0f172a)"/>
+  <rect x="290" y="200" width="220" height="138" style="fill:color-mix(in srgb, var(--coral,#ef4444) 24%, var(--surface,#ffffff))"/>
+  <polygon points="290,140 394,140 394,182 290,182" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 20%, var(--surface,#ffffff))"/>
+  <polygon points="290,182 386,182 410,194 464,286 452,300 396,206 382,200 290,200" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 40%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2;stroke-linejoin:round"/>
+  <polygon points="398,174 418,160 430,140 440,118 446,116 456,142 468,128 480,146 494,132 510,156 510,214 446,214 404,190" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 62%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2;stroke-linejoin:round"/>
+  <path d="M 444.0 270 C 436.0 230 448.0 180 443.0 128" style="fill:none;stroke:var(--coral,#ef4444);stroke-width:3;stroke-linecap:round;stroke-dasharray:6 4"/>
+  <polygon points="443,119 448.5,130 437.5,130" style="fill:var(--coral,#ef4444)"/>
+  <polygon points="425,210 420.9,211.2 422.9,214.9 419.2,212.9 418,217 416.8,212.9 413.1,214.9 415.1,211.2 411,210 415.1,208.8 413.1,205.1 416.8,207.1 418,203 419.2,207.1 422.9,205.1 420.9,208.8" style="fill:var(--amber,#f59e0b);stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:1.2;stroke-linejoin:round"/>
+  <polygon points="441,236 436.9,237.2 438.9,240.9 435.2,238.9 434,243 432.8,238.9 429.1,240.9 431.1,237.2 427,236 431.1,234.8 429.1,231.1 432.8,233.1 434,229 435.2,233.1 438.9,231.1 436.9,234.8" style="fill:var(--amber,#f59e0b);stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:1.2;stroke-linejoin:round"/>
+  <polygon points="461,262 456.9,263.2 458.9,266.9 455.2,264.9 454,269 452.8,264.9 449.1,266.9 451.1,263.2 447,262 451.1,260.8 449.1,257.1 452.8,259.1 454,255 455.2,259.1 458.9,257.1 456.9,260.8" style="fill:var(--amber,#f59e0b);stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:1.2;stroke-linejoin:round"/>
+  <line x1="302" y1="160" x2="341" y2="160" style="stroke:var(--text,#0f172a);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="354,160 341,166.5 341,153.5" style="fill:var(--text,#0f172a)"/>
+  <line x1="504" y1="196" x2="471" y2="196" style="stroke:var(--text,#0f172a);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="458,196 471,189.5 471,202.5" style="fill:var(--text,#0f172a)"/>
+  <rect x="542" y="112" width="110" height="226" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 30%, var(--surface,#ffffff))"/>
+  <rect x="652" y="112" width="110" height="226" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 52%, var(--surface,#ffffff))"/>
+  <line x1="652" y1="112" x2="652" y2="338" style="stroke:var(--text,#0f172a);stroke-width:2.5;stroke-linecap:butt;stroke-dasharray:8 5"/>
+  <path d="M 542 214 C 582 204 602.0 230 652.0 222" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:4;stroke-linecap:round"/>
+  <path d="M 652.0 262 C 692.0 258 722 276 762 268" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:4;stroke-linecap:round"/>
+  <polygon points="660,150 655.3,151.4 657.7,155.7 653.4,153.3 652,158 650.6,153.3 646.3,155.7 648.7,151.4 644,150 648.7,148.6 646.3,144.3 650.6,146.7 652,142 653.4,146.7 657.7,144.3 655.3,148.6" style="fill:var(--amber,#f59e0b);stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:1.2;stroke-linejoin:round"/>
+  <polygon points="660,242 655.3,243.4 657.7,247.7 653.4,245.3 652,250 650.6,245.3 646.3,247.7 648.7,243.4 644,242 648.7,240.6 646.3,236.3 650.6,238.7 652,234 653.4,238.7 657.7,236.3 655.3,240.6" style="fill:var(--amber,#f59e0b);stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:1.2;stroke-linejoin:round"/>
+  <polygon points="660,312 655.3,313.4 657.7,317.7 653.4,315.3 652,320 650.6,315.3 646.3,317.7 648.7,313.4 644,312 648.7,310.6 646.3,306.3 650.6,308.7 652,304 653.4,308.7 657.7,306.3 655.3,310.6" style="fill:var(--amber,#f59e0b);stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:1.2;stroke-linejoin:round"/>
+  <line x1="600" y1="314" x2="600" y2="145" style="stroke:var(--text,#0f172a);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="600,132 606.5,145 593.5,145" style="fill:var(--text,#0f172a)"/>
+  <line x1="704" y1="132" x2="704" y2="301" style="stroke:var(--text,#0f172a);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="704,314 697.5,301 710.5,301" style="fill:var(--text,#0f172a)"/>
+  </g>
+  <!-- labels -->
+  <g>
+  <text x="148" y="140" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">ridge</text>
+  <text x="44" y="206" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">oceanic crust</text>
+  <text x="158" y="326" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">magma rises</text>
+  <text x="148" y="368" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">new crust forms at the ridge</text>
+  <text x="148" y="386" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">e.g. Mid-Atlantic Ridge</text>
+  <text x="452" y="116" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">volcano</text>
+  <line x1="372" y1="136" x2="390" y2="178" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:3 3"/>
+  <text x="370" y="132" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">trench</text>
+  <text x="296" y="194" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">oceanic</text>
+  <text x="504" y="180" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">continental</text>
+  <text x="388" y="290" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">subducting slab</text>
+  <text x="400" y="368" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">trench, volcanic arc, mountains</text>
+  <text x="400" y="386" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">e.g. Andes, Cascades</text>
+  <text x="644" y="206" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">stream</text>
+  <text x="662" y="288" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">offset</text>
+  <text x="652" y="368" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">shallow quakes, little volcanism</text>
+  <text x="652" y="386" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">e.g. San Andreas Fault</text>
+  </g>
+  <!-- key -->
+  <g>
+  <text x="40" y="30" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">PLATE BOUNDARIES</text>
+  <rect x="40" y="412" width="16" height="12" rx="3" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 50%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="62" y="422" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">lithosphere (crust)</text>
+  <rect x="196" y="412" width="16" height="12" rx="3" style="fill:color-mix(in srgb, var(--coral,#ef4444) 24%, var(--surface,#ffffff))"/>
+  <text x="218" y="422" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">mantle</text>
+  <line x1="290" y1="418" x2="316" y2="418" style="stroke:var(--coral,#ef4444);stroke-width:3;stroke-linecap:round"/>
+  <text x="322" y="422" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">magma</text>
+  <polygon points="393,418 388.9,419.2 390.9,422.9 387.2,420.9 386,425 384.8,420.9 381.1,422.9 383.1,419.2 379,418 383.1,416.8 381.1,413.1 384.8,415.1 386,411 387.2,415.1 390.9,413.1 388.9,416.8" style="fill:var(--amber,#f59e0b);stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:1.2;stroke-linejoin:round"/>
+  <text x="398" y="422" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">earthquakes</text>
+  <text x="760" y="422" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Cross-sections schematic, not to scale</text>
+  </g>
+</svg>

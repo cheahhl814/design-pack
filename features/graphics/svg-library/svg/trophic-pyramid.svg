@@ -1,0 +1,73 @@
+<!--
+html-template-pack · svg-library · trophic-pyramid
+  Energy pyramid of four trophic levels (producers at the base, tertiary
+  consumers at the apex) with the ten-percent rule annotated between
+  levels and heat losses leaving each level. Science: Lindeman (1942)
+  trophic efficiency; about 10% of energy passes to the next level, real
+  values range roughly 5 to 20% (PMF IAS ecological pyramids, Texas
+  Gateway). Energy pyramids are always upright; biomass or number
+  pyramids can invert. The kJ values are illustrative placeholders.
+  Tokens: green amber coral deep-blue text text-muted surface font-head font-sans.
+  Edit: level names, example organisms, values (keep each ~10x the next).
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Energy pyramid: producers 10,000 kJ, primary consumers 1,000 kJ, secondary consumers 100 kJ, tertiary consumers 10 kJ; about 10 percent passes up each level and the rest is lost as heat" style="width:100%;height:auto">
+  <title>Trophic energy pyramid with the ten-percent rule</title>
+  <!-- pyramid levels -->
+  <g>
+  <polygon points="294,64 366,64 416,140 244,140" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <polygon points="294,64 366,64 416,140 244,140" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 30%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2;stroke-linejoin:round"/>
+  <polygon points="244,140 416,140 466,216 194,216" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <polygon points="244,140 416,140 466,216 194,216" style="fill:color-mix(in srgb, var(--coral,#ef4444) 26%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2;stroke-linejoin:round"/>
+  <polygon points="194,216 466,216 516,292 144,292" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <polygon points="194,216 466,216 516,292 144,292" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 26%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2;stroke-linejoin:round"/>
+  <polygon points="144,292 516,292 566,368 94,368" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+  <polygon points="144,292 516,292 566,368 94,368" style="fill:color-mix(in srgb, var(--green,#10b981) 26%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2;stroke-linejoin:round"/>
+  </g>
+  <!-- level labels -->
+  <g>
+  <text x="330" y="104" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Tertiary</text>
+  <text x="330" y="120" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">10 kJ</text>
+  <text x="330" y="174" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Secondary consumers</text>
+  <text x="330" y="192" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">100 kJ · snake, fox</text>
+  <text x="330" y="250" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Primary consumers</text>
+  <text x="330" y="268" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">1,000 kJ · rabbit, insects</text>
+  <text x="330" y="326" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Producers</text>
+  <text x="330" y="344" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">10,000 kJ · plants, algae</text>
+  </g>
+  <!-- ten-percent arrows -->
+  <g>
+  <path d="M 438 166 Q 464 140 445.8 121.8" style="fill:none;stroke:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="438,114 449.7,117.9 441.9,125.7" style="fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))"/>
+  <text x="472" y="138" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">≈10% passed up</text>
+  <text x="472" y="155" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">≈90% used or lost as heat</text>
+  <path d="M 488 242 Q 514 216 495.8 197.8" style="fill:none;stroke:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="488,190 499.7,193.9 491.9,201.7" style="fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))"/>
+  <text x="522" y="214" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">≈10% passed up</text>
+  <text x="522" y="231" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">≈90% used or lost as heat</text>
+  <path d="M 538 318 Q 564 292 545.8 273.8" style="fill:none;stroke:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="538,266 549.7,269.9 541.9,277.7" style="fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))"/>
+  <text x="572" y="290" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">≈10% passed up</text>
+  <text x="572" y="307" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">≈90% used or lost as heat</text>
+  </g>
+  <!-- heat losses -->
+  <g>
+  <path d="M 257 102 q -6 -6 -12 0 t -12 0 t -12 0" style="fill:none;stroke:var(--coral,#ef4444);stroke-width:2;stroke-linecap:round"/>
+  <polygon points="209,102 220,96.5 220,107.5" style="fill:var(--coral,#ef4444)"/>
+  <path d="M 207 178 q -6 -6 -12 0 t -12 0 t -12 0" style="fill:none;stroke:var(--coral,#ef4444);stroke-width:2;stroke-linecap:round"/>
+  <polygon points="159,178 170,172.5 170,183.5" style="fill:var(--coral,#ef4444)"/>
+  <path d="M 157 254 q -6 -6 -12 0 t -12 0 t -12 0" style="fill:none;stroke:var(--coral,#ef4444);stroke-width:2;stroke-linecap:round"/>
+  <polygon points="109,254 120,248.5 120,259.5" style="fill:var(--coral,#ef4444)"/>
+  <path d="M 107 330 q -6 -6 -12 0 t -12 0 t -12 0" style="fill:none;stroke:var(--coral,#ef4444);stroke-width:2;stroke-linecap:round"/>
+  <polygon points="59,330 70,324.5 70,335.5" style="fill:var(--coral,#ef4444)"/>
+  <text x="55" y="334" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">heat</text>
+  <text x="105" y="258" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">heat</text>
+  </g>
+  <!-- captions -->
+  <g>
+  <text x="40" y="34" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">ENERGY PYRAMID · TEN-PERCENT RULE</text>
+  <text x="40" y="410" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Each level keeps only ~10% of the energy below it (typically 5–20%); the rest powers</text>
+  <text x="40" y="426" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">life processes and is lost as heat. This is why food chains rarely exceed four or five links.</text>
+  <text x="760" y="426" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">kJ values: illustrative placeholders</text>
+  </g>
+</svg>

@@ -1,0 +1,116 @@
+<!--
+html-template-pack · svg-library · em-spectrum
+  Electromagnetic spectrum on a log wavelength axis (1 pm to 1 km,
+  48 px per decade, x = 40 + 48 x (log10 lambda + 12)): gamma, X-ray,
+  UV, visible, infrared, microwave, radio, with the visible slice
+  expanded above (400 to 700 nm, violet to red), example uses, a chirped
+  wave whose wavelength grows to the right, and frequency/energy rising
+  to the left. Band edges per the Wikipedia EM spectrum table (gamma
+  under 10 pm, X-ray to 10 nm, UV to 400 nm, visible 400 to 700 nm,
+  IR to 1 mm, microwave to 1 m) and the NASA EM spectrum order; some
+  sources give visible as 380 to 750 nm. Britannica was not reachable.
+  The six spectrum colours use fixed fallback hexes (physical colours,
+  not theme tokens).
+  Tokens: coral amber deep-blue text text-muted surface font-head font-sans.
+  Edit: example uses; recompute x with the formula if you move an edge.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Electromagnetic spectrum from gamma rays through X-rays, ultraviolet, visible light, infrared and microwaves to radio waves; wavelength grows to the right while frequency and energy grow to the left" style="width:100%;height:auto">
+  <title>Electromagnetic spectrum with visible light expanded</title>
+  <!-- band bar -->
+  <g>
+  <rect x="40" y="150" width="48" height="58" style="fill:color-mix(in srgb, var(--coral,#ef4444) 24%, var(--surface,#ffffff))"/>
+  <rect x="88" y="150" width="144" height="58" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 24%, var(--surface,#ffffff))"/>
+  <rect x="232" y="150" width="76.9" height="58" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 24%, var(--surface,#ffffff))"/>
+  <rect x="320.6" y="150" width="151.4" height="58" style="fill:color-mix(in srgb, var(--coral,#ef4444) 24%, var(--surface,#ffffff))"/>
+  <rect x="472" y="150" width="144" height="58" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 24%, var(--surface,#ffffff))"/>
+  <rect x="616" y="150" width="144" height="58" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 24%, var(--surface,#ffffff))"/>
+  <rect x="308.9" y="150" width="2.5" height="58" style="fill:var(--spectrum-violet,#7c3aed)"/>
+  <rect x="311.4" y="150" width="2" height="58" style="fill:var(--spectrum-blue,#2563eb)"/>
+  <rect x="313.3" y="150" width="2.9" height="58" style="fill:var(--spectrum-green,#16a34a)"/>
+  <rect x="316.3" y="150" width="0.7" height="58" style="fill:var(--spectrum-yellow,#facc15)"/>
+  <rect x="317" y="150" width="1" height="58" style="fill:var(--spectrum-orange,#f97316)"/>
+  <rect x="318" y="150" width="2.5" height="58" style="fill:var(--spectrum-red,#dc2626)"/>
+  <rect x="40" y="150" width="720" height="58" rx="6" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <line x1="88" y1="150" x2="88" y2="208" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="232" y1="150" x2="232" y2="208" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="308.9" y1="150" x2="308.9" y2="208" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="320.6" y1="150" x2="320.6" y2="208" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="472" y1="150" x2="472" y2="208" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="616" y1="150" x2="616" y2="208" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  </g>
+  <!-- band labels -->
+  <g>
+  <text x="64" y="184" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">γ-ray</text>
+  <text x="64" y="254" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">nuclear decay</text>
+  <text x="160" y="184" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">X-ray</text>
+  <text x="160" y="254" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">medical imaging</text>
+  <text x="270.4" y="184" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">UV</text>
+  <text x="270.4" y="254" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">sunburn</text>
+  <text x="396.3" y="184" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Infrared</text>
+  <text x="396.3" y="254" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">thermal cameras</text>
+  <text x="544" y="184" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Microwave</text>
+  <text x="544" y="254" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">ovens, Wi-Fi</text>
+  <text x="688" y="184" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Radio</text>
+  <text x="688" y="254" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">FM and AM radio</text>
+  </g>
+  <!-- visible expansion -->
+  <g>
+  <rect x="200" y="62" width="66.7" height="26" style="fill:var(--spectrum-violet,#7c3aed)"/>
+  <rect x="266.7" y="62" width="60" height="26" style="fill:var(--spectrum-blue,#2563eb)"/>
+  <rect x="326.7" y="62" width="100" height="26" style="fill:var(--spectrum-green,#16a34a)"/>
+  <rect x="426.7" y="62" width="26.7" height="26" style="fill:var(--spectrum-yellow,#facc15)"/>
+  <rect x="453.3" y="62" width="40" height="26" style="fill:var(--spectrum-orange,#f97316)"/>
+  <rect x="493.3" y="62" width="106.7" height="26" style="fill:var(--spectrum-red,#dc2626)"/>
+  <rect x="200" y="62" width="400" height="26" rx="4" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <line x1="200" y1="88" x2="308.9" y2="150" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:4 4"/>
+  <line x1="600" y1="88" x2="320.6" y2="150" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:4 4"/>
+  <text x="200" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">400 nm</text>
+  <text x="333.3" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">500 nm</text>
+  <text x="466.7" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">600 nm</text>
+  <text x="600" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">700 nm</text>
+  <text x="400" y="54" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Visible light ≈ 400–700 nm</text>
+  </g>
+  <!-- wavelength scale -->
+  <g>
+  <line x1="40" y1="208" x2="760" y2="208" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="40" y1="208" x2="40" y2="217" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <text x="40" y="232" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">1 pm</text>
+  <line x1="88" y1="208" x2="88" y2="213" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="136" y1="208" x2="136" y2="213" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="184" y1="208" x2="184" y2="217" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <text x="184" y="232" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">1 nm</text>
+  <line x1="232" y1="208" x2="232" y2="213" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="280" y1="208" x2="280" y2="213" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="328" y1="208" x2="328" y2="217" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <text x="328" y="232" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">1 µm</text>
+  <line x1="376" y1="208" x2="376" y2="213" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="424" y1="208" x2="424" y2="213" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="472" y1="208" x2="472" y2="217" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <text x="472" y="232" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">1 mm</text>
+  <line x1="520" y1="208" x2="520" y2="213" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="568" y1="208" x2="568" y2="213" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="616" y1="208" x2="616" y2="217" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <text x="616" y="232" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">1 m</text>
+  <line x1="664" y1="208" x2="664" y2="213" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="712" y1="208" x2="712" y2="213" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="760" y1="208" x2="760" y2="217" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <text x="760" y="232" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">1 km</text>
+  </g>
+  <!-- wave and direction -->
+  <g>
+  <line x1="260" y1="282" x2="747" y2="282" style="stroke:var(--text,#0f172a);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="760,282 747,288.5 747,275.5" style="fill:var(--text,#0f172a)"/>
+  <text x="250" y="286" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Wavelength grows</text>
+  <path d="M 40 322 L 41 308.7 L 42 313.6 L 43 329.9 L 44 335.5 L 45 323.2 L 46 309.3 L 47 311.9 L 48 327.4 L 49 336 L 50 327 L 51 311.8 L 52 309.2 L 53 322.1 L 54 334.9 L 55 332.3 L 56 317.7 L 57 308.1 L 58 314.5 L 59 329.4 L 60 335.9 L 61 327 L 62 312.6 L 63 308.5 L 64 318.9 L 65 332.6 L 66 335.1 L 67 324 L 68 310.9 L 69 309.1 L 70 320.2 L 71 333.1 L 72 335 L 73 324.3 L 74 311.5 L 75 308.6 L 76 318.3 L 77 331.4 L 78 335.8 L 79 327.7 L 80 314.5 L 81 308 L 82 313.7 L 83 326.6 L 84 335.5 L 85 332.9 L 86 321.3 L 87 310.3 L 88 308.9 L 89 318.1 L 90 330.4 L 91 336 L 92 330.7 L 93 318.7 L 94 309.3 L 95 309.5 L 96 318.9 L 97 330.6 L 98 336 L 99 331.3 L 100 320 L 101 310.2 L 102 308.6 L 103 316.2 L 104 327.7 L 105 335.3 L 106 334.1 L 107 325 L 108 314 L 109 308.1 L 110 311.1 L 111 320.8 L 112 331.2 L 113 336 L 114 332.3 L 115 322.6 L 116 312.5 L 117 308 L 118 311.6 L 119 321 L 120 331 L 121 335.9 L 122 333.2 L 123 324.5 L 124 314.4 L 125 308.5 L 126 309.6 L 127 317.1 L 128 327.1 L 129 334.4 L 130 335.6 L 131 330.1 L 132 320.6 L 133 311.9 L 134 308 L 135 310.7 L 136 318.6 L 137 328 L 138 334.6 L 139 335.6 L 140 330.6 L 141 321.8 L 142 313.2 L 143 308.4 L 144 309.3 L 145 315.5 L 146 324.3 L 147 332.2 L 148 335.9 L 149 334.1 L 150 327.6 L 151 319 L 152 311.5 L 153 308.1 L 154 309.8 L 155 316.1 L 156 324.4 L 157 331.9 L 158 335.8 L 159 334.8 L 160 329.4 L 161 321.5 L 162 313.8 L 163 308.9 L 164 308.3 L 165 312.2 L 166 319.2 L 167 327.1 L 168 333.3 L 169 336 L 170 334.3 L 171 329 L 172 321.6 L 173 314.3 L 174 309.4 L 175 308.1 L 176 310.8 L 177 316.6 L 178 323.9 L 179 330.7 L 180 335 L 181 335.9 L 182 333 L 183 327.3 L 184 320.3 L 185 313.7 L 186 309.3 L 187 308 L 188 310.3 L 189 315.3 L 190 321.9 L 191 328.6 L 192 333.6 L 193 335.9 L 194 335 L 195 331.2 L 196 325.4 L 197 318.8 L 198 313 L 199 309.1 L 200 308 L 201 309.9 L 202 314.2 L 203 320.1 L 204 326.4 L 205 331.7 L 206 335.1 L 207 335.9 L 208 334.1 L 209 329.9 L 210 324.3 L 211 318.2 L 212 313 L 213 309.3 L 214 308 L 215 309.2 L 216 312.5 L 217 317.5 L 218 323.3 L 219 328.8 L 220 333.1 L 221 335.6 L 222 335.8 L 223 333.9 L 224 330.1 L 225 325 L 226 319.5 L 227 314.4 L 228 310.5 L 229 308.3 L 230 308.2 L 231 310 L 232 313.6 L 233 318.3 L 234 323.5 L 235 328.5 L 236 332.5 L 237 335.1 L 238 336 L 239 335 L 240 332.3 L 241 328.3 L 242 323.6 L 243 318.6 L 244 314.1 L 245 310.6 L 246 308.5 L 247 308 L 248 309.2 L 249 311.8 L 250 315.6 L 251 320.1 L 252 324.8 L 253 329.1 L 254 332.6 L 255 335 L 256 336 L 257 335.5 L 258 333.6 L 259 330.5 L 260 326.6 L 261 322.2 L 262 317.9 L 263 313.9 L 264 310.8 L 265 308.8 L 266 308 L 267 308.5 L 268 310.3 L 269 313.1 L 270 316.7 L 271 320.7 L 272 324.8 L 273 328.7 L 274 332 L 275 334.4 L 276 335.7 L 277 335.9 L 278 335 L 279 333.1 L 280 330.3 L 281 326.8 L 282 323 L 283 319.2 L 284 315.6 L 285 312.5 L 286 310.1 L 287 308.5 L 288 308 L 289 308.5 L 290 309.8 L 291 312.1 L 292 315 L 293 318.3 L 294 321.9 L 295 325.4 L 296 328.7 L 297 331.6 L 298 333.8 L 299 335.3 L 300 336 L 301 335.8 L 302 334.7 L 303 333 L 304 330.5 L 305 327.7 L 306 324.5 L 307 321.1 L 308 317.9 L 309 314.9 L 310 312.3 L 311 310.2 L 312 308.8 L 313 308.1 L 314 308.1 L 315 308.8 L 316 310.2 L 317 312.2 L 318 314.6 L 319 317.4 L 320 320.4 L 321 323.4 L 322 326.4 L 323 329.1 L 324 331.5 L 325 333.5 L 326 334.9 L 327 335.7 L 328 336 L 329 335.6 L 330 334.7 L 331 333.3 L 332 331.3 L 333 329.1 L 334 326.5 L 335 323.8 L 336 321 L 337 318.3 L 338 315.7 L 339 313.4 L 340 311.5 L 341 309.9 L 342 308.8 L 343 308.1 L 344 308 L 345 308.4 L 346 309.2 L 347 310.5 L 348 312.1 L 349 314.1 L 350 316.3 L 351 318.7 L 352 321.2 L 353 323.7 L 354 326.1 L 355 328.4 L 356 330.5 L 357 332.3 L 358 333.8 L 359 334.9 L 360 335.6 L 361 336 L 362 335.9 L 363 335.5 L 364 334.7 L 365 333.5 L 366 332 L 367 330.3 L 368 328.4 L 369 326.3 L 370 324.1 L 371 321.9 L 372 319.7 L 373 317.5 L 374 315.5 L 375 313.7 L 376 312 L 377 310.6 L 378 309.5 L 379 308.7 L 380 308.2 L 381 308 L 382 308.1 L 383 308.5 L 384 309.2 L 385 310.2 L 386 311.4 L 387 312.9 L 388 314.5 L 389 316.2 L 390 318.1 L 391 320 L 392 322 L 393 323.9 L 394 325.8 L 395 327.6 L 396 329.3 L 397 330.9 L 398 332.2 L 399 333.4 L 400 334.4 L 401 335.1 L 402 335.7 L 403 335.9 L 404 336 L 405 335.8 L 406 335.4 L 407 334.8 L 408 333.9 L 409 332.9 L 410 331.7 L 411 330.4 L 412 329 L 413 327.4 L 414 325.8 L 415 324.2 L 416 322.5 L 417 320.8 L 418 319.2 L 419 317.6 L 420 316.1 L 421 314.6 L 422 313.3 L 423 312.1 L 424 311 L 425 310.1 L 426 309.3 L 427 308.8 L 428 308.3 L 429 308.1 L 430 308 L 431 308.1 L 432 308.3 L 433 308.8 L 434 309.3 L 435 310 L 436 310.9 L 437 311.8 L 438 312.9 L 439 314 L 440 315.3 L 441 316.6 L 442 317.9 L 443 319.3 L 444 320.7 L 445 322.1 L 446 323.5 L 447 324.9 L 448 326.2 L 449 327.5 L 450 328.7 L 451 329.9 L 452 330.9 L 453 331.9 L 454 332.8 L 455 333.6 L 456 334.3 L 457 334.9 L 458 335.3 L 459 335.7 L 460 335.9 L 461 336 L 462 336 L 463 335.9 L 464 335.6 L 465 335.3 L 466 334.9 L 467 334.3 L 468 333.7 L 469 333 L 470 332.2 L 471 331.4 L 472 330.4 L 473 329.5 L 474 328.4 L 475 327.4 L 476 326.3 L 477 325.2 L 478 324.1 L 479 322.9 L 480 321.8 L 481 320.7 L 482 319.6 L 483 318.5 L 484 317.4 L 485 316.4 L 486 315.4 L 487 314.5 L 488 313.6 L 489 312.8 L 490 312 L 491 311.3 L 492 310.7 L 493 310.1 L 494 309.6 L 495 309.1 L 496 308.8 L 497 308.5 L 498 308.2 L 499 308.1 L 500 308 L 501 308 L 502 308.1 L 503 308.2 L 504 308.4 L 505 308.6 L 506 309 L 507 309.3 L 508 309.8 L 509 310.3 L 510 310.8 L 511 311.4 L 512 312 L 513 312.7 L 514 313.4 L 515 314.1 L 516 314.9 L 517 315.7 L 518 316.5 L 519 317.3 L 520 318.1 L 521 319 L 522 319.8 L 523 320.7 L 524 321.5 L 525 322.4 L 526 323.2 L 527 324.1 L 528 324.9 L 529 325.7 L 530 326.5 L 531 327.3 L 532 328 L 533 328.7 L 534 329.4 L 535 330.1 L 536 330.7 L 537 331.3 L 538 331.9 L 539 332.5 L 540 333 L 541 333.4 L 542 333.8 L 543 334.2 L 544 334.6 L 545 334.9 L 546 335.2 L 547 335.4 L 548 335.6 L 549 335.8 L 550 335.9 L 551 335.9 L 552 336 L 553 336 L 554 336 L 555 335.9 L 556 335.8 L 557 335.7 L 558 335.5 L 559 335.3 L 560 335.1 L 561 334.8 L 562 334.5 L 563 334.2 L 564 333.9 L 565 333.5 L 566 333.1 L 567 332.7 L 568 332.3 L 569 331.8 L 570 331.3 L 571 330.9 L 572 330.4 L 573 329.8 L 574 329.3 L 575 328.8 L 576 328.2 L 577 327.7 L 578 327.1 L 579 326.5 L 580 325.9 L 581 325.4 L 582 324.8 L 583 324.2 L 584 323.6 L 585 323 L 586 322.5 L 587 321.9 L 588 321.3 L 589 320.7 L 590 320.2 L 591 319.6 L 592 319.1 L 593 318.5 L 594 318 L 595 317.5 L 596 316.9 L 597 316.4 L 598 315.9 L 599 315.5 L 600 315 L 601 314.5 L 602 314.1 L 603 313.7 L 604 313.3 L 605 312.9 L 606 312.5 L 607 312.1 L 608 311.8 L 609 311.4 L 610 311.1 L 611 310.8 L 612 310.5 L 613 310.2 L 614 310 L 615 309.7 L 616 309.5 L 617 309.3 L 618 309.1 L 619 308.9 L 620 308.8 L 621 308.6 L 622 308.5 L 623 308.4 L 624 308.3 L 625 308.2 L 626 308.1 L 627 308.1 L 628 308 L 629 308 L 630 308 L 631 308 L 632 308 L 633 308.1 L 634 308.1 L 635 308.2 L 636 308.2 L 637 308.3 L 638 308.4 L 639 308.5 L 640 308.6 L 641 308.7 L 642 308.9 L 643 309 L 644 309.2 L 645 309.4 L 646 309.5 L 647 309.7 L 648 309.9 L 649 310.1 L 650 310.3 L 651 310.5 L 652 310.8 L 653 311 L 654 311.2 L 655 311.5 L 656 311.7 L 657 312 L 658 312.3 L 659 312.5 L 660 312.8 L 661 313.1 L 662 313.4 L 663 313.7 L 664 313.9 L 665 314.2 L 666 314.5 L 667 314.8 L 668 315.1 L 669 315.4 L 670 315.8 L 671 316.1 L 672 316.4 L 673 316.7 L 674 317 L 675 317.3 L 676 317.6 L 677 317.9 L 678 318.3 L 679 318.6 L 680 318.9 L 681 319.2 L 682 319.5 L 683 319.8 L 684 320.1 L 685 320.4 L 686 320.8 L 687 321.1 L 688 321.4 L 689 321.7 L 690 322 L 691 322.3 L 692 322.6 L 693 322.9 L 694 323.2 L 695 323.5 L 696 323.8 L 697 324.1 L 698 324.3 L 699 324.6 L 700 324.9 L 701 325.2 L 702 325.5 L 703 325.7 L 704 326 L 705 326.3 L 706 326.5 L 707 326.8 L 708 327 L 709 327.3 L 710 327.5 L 711 327.8 L 712 328 L 713 328.3 L 714 328.5 L 715 328.7 L 716 328.9 L 717 329.2 L 718 329.4 L 719 329.6 L 720 329.8 L 721 330 L 722 330.2 L 723 330.4 L 724 330.6 L 725 330.8 L 726 331 L 727 331.2 L 728 331.4 L 729 331.5 L 730 331.7 L 731 331.9 L 732 332 L 733 332.2 L 734 332.3 L 735 332.5 L 736 332.7 L 737 332.8 L 738 332.9 L 739 333.1 L 740 333.2 L 741 333.3 L 742 333.5 L 743 333.6 L 744 333.7 L 745 333.8 L 746 333.9 L 747 334.1 L 748 334.2 L 749 334.3 L 750 334.4 L 751 334.5 L 752 334.6 L 753 334.6 L 754 334.7 L 755 334.8 L 756 334.9 L 757 335 L 758 335 L 759 335.1 L 760 335.2" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2;stroke-linejoin:round"/>
+  <line x1="560" y1="362" x2="53" y2="362" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="40,362 53,355.5 53,368.5" style="fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))"/>
+  <text x="570" y="366" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Frequency and energy grow</text>
+  </g>
+  <!-- captions -->
+  <g>
+  <text x="40" y="30" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">ELECTROMAGNETIC SPECTRUM</text>
+  <text x="40" y="400" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Log scale: each tick is ×10 in wavelength. Band edges are conventional and approximate; gamma rays,</text>
+  <text x="40" y="416" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">X-rays and part of the UV are ionising. All bands travel at the speed of light, c = λ × f.</text>
+  </g>
+</svg>

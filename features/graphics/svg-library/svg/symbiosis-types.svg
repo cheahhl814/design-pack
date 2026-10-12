@@ -1,0 +1,113 @@
+<!--
+html-template-pack · svg-library · symbiosis-types
+  Three symbiosis types as paired-organism vignettes with
+  benefit/harm/unaffected badges: mutualism (+/+, cleaner wrasse and
+  grouper), commensalism (+/0, remora and shark), parasitism (+/-, tick
+  and deer). Classic textbook pairs (Wikimedia symbiotic relationships
+  diagram, ScienceFacts). Remora commensalism is the standard example
+  though some argue a small drag cost or a mutual cleaning benefit,
+  hence the footnote.
+  Tokens: green amber coral teal deep-blue text text-muted surface font-head font-sans.
+  Edit: example names and benefit lines; keep the sign badges consistent.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Three symbiosis types: mutualism, where cleaner wrasse and grouper both benefit; commensalism, where a remora benefits and the shark is unaffected; parasitism, where a tick benefits and the deer is harmed" style="width:100%;height:auto">
+  <title>Symbiosis types: mutualism, commensalism, parasitism</title>
+  <!-- panels -->
+  <g>
+  <rect x="27" y="52" width="236" height="336" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+  <rect x="27" y="52" width="236" height="336" rx="14" style="fill:color-mix(in srgb, var(--green,#10b981) 8%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <text x="145" y="84" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Mutualism</text>
+  <rect x="111" y="96" width="68" height="26" rx="13" style="fill:color-mix(in srgb, var(--green,#10b981) 35%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:1.5"/>
+  <text x="145" y="114" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">+ / +</text>
+  <rect x="282" y="52" width="236" height="336" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="282" y="52" width="236" height="336" rx="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 8%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="400" y="84" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Commensalism</text>
+  <rect x="366" y="96" width="68" height="26" rx="13" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 35%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:1.5"/>
+  <text x="400" y="114" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">+ / 0</text>
+  <rect x="537" y="52" width="236" height="336" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="537" y="52" width="236" height="336" rx="14" style="fill:color-mix(in srgb, var(--coral,#ef4444) 8%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="655" y="84" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Parasitism</text>
+  <rect x="621" y="96" width="68" height="26" rx="13" style="fill:color-mix(in srgb, var(--coral,#ef4444) 35%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:1.5"/>
+  <text x="655" y="114" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">+ / −</text>
+  </g>
+  <!-- organisms -->
+  <g>
+  <polygon points="205,222 242.6,189 242.6,255" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 37%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2;stroke-linejoin:round"/>
+  <ellipse cx="149" cy="222" rx="54" ry="30" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <circle cx="115.5" cy="214.5" r="3.6" style="fill:var(--text,#0f172a)"/>
+  <path d="M 99 232 q 6 4 12 0" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2;stroke-linecap:round"/>
+  <polygon points="50,214 44.1,207.4 44.1,220.6" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2;stroke-linejoin:round"/>
+  <ellipse cx="69" cy="214" rx="17" ry="6" style="fill:color-mix(in srgb, var(--teal,#0d9488) 40%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <circle cx="79.5" cy="212.5" r="1.8" style="fill:var(--text,#0f172a)"/>
+  <line x1="55" y1="214" x2="83" y2="214" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2;stroke-linecap:round"/>
+  <text x="157" y="284" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">grouper  ·  cleaner wrasse</text>
+  <polygon points="320,214 296,190 302,214 294,238" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 30%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2;stroke-linejoin:round"/>
+  <path d="M 316 214 Q 360 186 440 196 Q 470 200 486 214 Q 460 232 390 234 Q 340 234 316 214 Z" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2;stroke-linejoin:round"/>
+  <polygon points="394,194 410,164 422,196" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 30%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2;stroke-linejoin:round"/>
+  <circle cx="462" cy="206" r="2.5" style="fill:var(--text,#0f172a)"/>
+  <line x1="436" y1="206" x2="433" y2="220" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="442" y1="206" x2="439" y2="220" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="448" y1="206" x2="445" y2="220" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5;stroke-linecap:round"/>
+  <polygon points="378,244 372.1,237.4 372.1,250.6" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 55%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2;stroke-linejoin:round"/>
+  <ellipse cx="404" cy="244" rx="24" ry="6" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 40%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <circle cx="418.9" cy="242.5" r="1.8" style="fill:var(--text,#0f172a)"/>
+  <text x="400" y="284" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">shark  ·  remora</text>
+  <ellipse cx="645" cy="218" rx="48" ry="22" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 30%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2"/>
+  <line x1="611" y1="234" x2="613" y2="268" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round"/>
+  <line x1="625" y1="234" x2="627" y2="268" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round"/>
+  <line x1="667" y1="234" x2="665" y2="268" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round"/>
+  <line x1="681" y1="234" x2="679" y2="268" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round"/>
+  <path d="M 683 206 L 701 172" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:9;stroke-linecap:round"/>
+  <ellipse cx="709" cy="166" rx="14" ry="9" transform="rotate(-20 709 166)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 30%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2"/>
+  <path d="M 699 158 l -6 -18 m 3 9 l -8 -4 M 707 156 l 4 -18 m -2 8 l 8 -5" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/>
+  <circle cx="715" cy="163" r="2" style="fill:var(--text,#0f172a)"/>
+  <circle cx="649" cy="210" r="3.5" style="fill:var(--coral,#ef4444)"/>
+  <line x1="653" y1="206" x2="707" y2="226" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:3 3"/>
+  <circle cx="731" cy="236" r="20" style="fill:var(--surface,#ffffff);stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-dasharray:3 3"/>
+  <ellipse cx="731" cy="238" rx="8" ry="10" style="fill:color-mix(in srgb, var(--coral,#ef4444) 55%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:1.5"/>
+  <circle cx="731" cy="226" r="3.5" style="fill:var(--coral,#ef4444)"/>
+  <line x1="724" y1="232" x2="718" y2="227.4" style="stroke:var(--coral,#ef4444);stroke-width:1.2;stroke-linecap:round"/>
+  <line x1="724" y1="236" x2="718" y2="233" style="stroke:var(--coral,#ef4444);stroke-width:1.2;stroke-linecap:round"/>
+  <line x1="724" y1="240" x2="718" y2="238.6" style="stroke:var(--coral,#ef4444);stroke-width:1.2;stroke-linecap:round"/>
+  <line x1="724" y1="244" x2="718" y2="244.2" style="stroke:var(--coral,#ef4444);stroke-width:1.2;stroke-linecap:round"/>
+  <line x1="738" y1="232" x2="744" y2="227.4" style="stroke:var(--coral,#ef4444);stroke-width:1.2;stroke-linecap:round"/>
+  <line x1="738" y1="236" x2="744" y2="233" style="stroke:var(--coral,#ef4444);stroke-width:1.2;stroke-linecap:round"/>
+  <line x1="738" y1="240" x2="744" y2="238.6" style="stroke:var(--coral,#ef4444);stroke-width:1.2;stroke-linecap:round"/>
+  <line x1="738" y1="244" x2="744" y2="244.2" style="stroke:var(--coral,#ef4444);stroke-width:1.2;stroke-linecap:round"/>
+  <text x="655" y="284" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">deer  ·  tick (enlarged)</text>
+  </g>
+  <!-- effects -->
+  <g>
+  <circle cx="47" cy="314" r="10" style="fill:var(--green,#10b981);stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="47" y="318.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">+</text>
+  <text x="63" y="316" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Cleaner wrasse</text>
+  <text x="63" y="330" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">eats parasites as food</text>
+  <circle cx="47" cy="354" r="10" style="fill:var(--green,#10b981);stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="47" y="358.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">+</text>
+  <text x="63" y="356" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Grouper</text>
+  <text x="63" y="370" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">gets parasites removed</text>
+  <circle cx="302" cy="314" r="10" style="fill:var(--green,#10b981);stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="302" y="318.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">+</text>
+  <text x="318" y="316" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Remora</text>
+  <text x="318" y="330" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">free ride and food scraps</text>
+  <circle cx="302" cy="354" r="10" style="fill:var(--text-muted,#64748b);stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="302" y="358.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">0</text>
+  <text x="318" y="356" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Shark</text>
+  <text x="318" y="370" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">largely unaffected</text>
+  <circle cx="557" cy="314" r="10" style="fill:var(--green,#10b981);stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="557" y="318.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">+</text>
+  <text x="573" y="316" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Tick</text>
+  <text x="573" y="330" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">feeds on blood</text>
+  <circle cx="557" cy="354" r="10" style="fill:var(--coral,#ef4444);stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="557" y="358.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">−</text>
+  <text x="573" y="356" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Deer</text>
+  <text x="573" y="370" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">loses blood, can catch disease</text>
+  </g>
+  <!-- captions -->
+  <g>
+  <text x="40" y="34" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">SYMBIOSIS · TWO SPECIES LIVING CLOSELY</text>
+  <text x="400" y="418" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">+ benefits  ·  0 unaffected  ·  − harmed</text>
+  <text x="400" y="436" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Signs: effect on each partner. Some pairs are debated; remoras may slightly cost a shark through drag.</text>
+  </g>
+</svg>

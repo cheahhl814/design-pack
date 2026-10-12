@@ -1,0 +1,117 @@
+<!--
+html-template-pack · svg-library · immune-response
+  Innate vs adaptive immune response with a schematic antibody.
+  Innate column: barriers, phagocytes, inflammation, NK cells and
+  complement. Adaptive: an antigen-presenting cell (macrophage or
+  dendritic cell; the same phagocyte, hence the link) shows antigen on
+  MHC to a CD4 helper T cell, which activates CD8 cytotoxic T cells
+  (kill infected cells) and B cells (which also bind antigen
+  themselves); B cells become plasma cells that secrete antibodies;
+  memory B and T cells remain. Antibody: IgG Y with two heavy chains
+  (inner, form the Fc stem, joined by disulfide bonds) and two light
+  chains on the arms; antigen binds at both Fab tips. Checked against
+  the Wikimedia Immune Response diagram, BioRender general principles
+  template and the Kuraplan immune response figure.
+  Tokens: amber teal coral deep-blue border-bright text text-muted surface font-head font-sans.
+  Edit: captions; keep heavy chains inside, light chains outside.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Immune response: innate barriers, phagocytes, inflammation and NK cells act fast; in the adaptive response an antigen-presenting cell activates helper T cells, which activate cytotoxic T cells and B cells that become antibody-secreting plasma cells, leaving memory cells; an antibody has two heavy and two light chains" style="width:100%;height:auto">
+  <title>Innate and adaptive immune response with antibody structure</title>
+  <!-- cells -->
+  <g>
+  <text x="130" y="62" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">INNATE</text>
+  <text x="130" y="78" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">minutes to hours · non-specific</text>
+  <text x="420" y="62" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">ADAPTIVE</text>
+  <text x="420" y="78" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">days · specific · remembers</text>
+  <line x1="255" y1="56" x2="255" y2="380" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:4 5"/>
+  <rect x="30" y="92" width="200" height="50" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="30" y="92" width="200" height="50" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="44" y="114" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Barriers</text>
+  <text x="44" y="131" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">skin, mucus, stomach acid</text>
+  <rect x="30" y="164" width="200" height="50" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="30" y="164" width="200" height="50" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="44" y="186" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Phagocytes</text>
+  <text x="44" y="203" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">neutrophils, macrophages engulf</text>
+  <rect x="30" y="236" width="200" height="50" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="30" y="236" width="200" height="50" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="44" y="258" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Inflammation</text>
+  <text x="44" y="275" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">heat, swelling, recruits cells</text>
+  <rect x="30" y="308" width="200" height="50" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="30" y="308" width="200" height="50" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="44" y="330" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">NK cells, complement</text>
+  <text x="44" y="347" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">kill infected cells, tag microbes</text>
+  <rect x="272" y="92" width="140" height="50" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="272" y="92" width="140" height="50" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="284" y="114" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Presenting cell</text>
+  <text x="284" y="131" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">macrophage, dendritic</text>
+  <rect x="428" y="92" width="140" height="50" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="428" y="92" width="140" height="50" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="440" y="114" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Helper T cell</text>
+  <text x="440" y="131" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">CD4⁺, coordinates</text>
+  <rect x="272" y="182" width="140" height="50" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="272" y="182" width="140" height="50" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="284" y="204" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Cytotoxic T cell</text>
+  <text x="284" y="221" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">CD8⁺</text>
+  <rect x="428" y="182" width="140" height="50" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="428" y="182" width="140" height="50" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="440" y="204" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">B cell</text>
+  <text x="440" y="221" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">binds the antigen too</text>
+  <rect x="272" y="272" width="140" height="50" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="272" y="272" width="140" height="50" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="284" y="294" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Infected cells</text>
+  <text x="284" y="311" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">killed directly</text>
+  <rect x="428" y="272" width="140" height="50" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="428" y="272" width="140" height="50" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="440" y="294" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Plasma cells</text>
+  <text x="440" y="311" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">secrete antibodies</text>
+  <rect x="272" y="362" width="296" height="30" rx="8" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 12%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="420" y="382" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Memory B and T cells: faster response next time</text>
+  </g>
+  <!-- signals -->
+  <g>
+  <path d="M 230 189 L 255 189 L 255 117 L 261 117" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <polygon points="272,117 261,122.5 261,111.5" style="fill:var(--text-muted,#64748b)"/>
+  <text x="249" y="157" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">same cell</text>
+  <line x1="412" y1="117" x2="417" y2="117" style="stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="428,117 417,122.5 417,111.5" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="498" y1="142" x2="498" y2="171" style="stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="498,182 492.5,171 503.5,171" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="448" y1="142" x2="408.5" y2="175" style="stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="400,182 404.9,170.7 412,179.2" style="fill:var(--text-muted,#64748b)"/>
+  <text x="506" y="166" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">activates</text>
+  <line x1="342" y1="232" x2="342" y2="261" style="stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="342,272 336.5,261 347.5,261" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="498" y1="232" x2="498" y2="261" style="stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="498,272 492.5,261 503.5,261" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="568" y1="297" x2="597" y2="297" style="stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="610,297 597,303.5 597,290.5" style="fill:var(--text-muted,#64748b)"/>
+  <text x="589" y="286" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">antibodies</text>
+  </g>
+  <!-- antibody -->
+  <g>
+  <path d="M 684 330 L 684 222 L 632 144" style="fill:none;stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:9;stroke-linecap:round;stroke-linejoin:round"/>
+  <line x1="664" y1="208" x2="624" y2="152" style="stroke:var(--coral,#ef4444);stroke-width:8;stroke-linecap:round"/>
+  <circle cx="626" cy="130" r="9" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 55%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <path d="M 696 330 L 696 222 L 748 144" style="fill:none;stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:9;stroke-linecap:round;stroke-linejoin:round"/>
+  <line x1="716" y1="208" x2="756" y2="152" style="stroke:var(--coral,#ef4444);stroke-width:8;stroke-linecap:round"/>
+  <circle cx="754" cy="130" r="9" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 55%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <line x1="684" y1="236" x2="696" y2="236" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <line x1="684" y1="248" x2="696" y2="248" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <text x="690" y="92" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Antibody (IgG)</text>
+  <text x="690" y="108" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">binds antigen at both tips</text>
+  <text x="706" y="312" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Fc stem</text>
+  <text x="690" y="196" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Fab</text>
+  </g>
+  <!-- legend and captions -->
+  <g>
+  <line x1="600" y1="352" x2="622" y2="352" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:7;stroke-linecap:round"/>
+  <text x="628" y="356" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">heavy chain ×2</text>
+  <line x1="600" y1="370" x2="622" y2="370" style="stroke:var(--coral,#ef4444);stroke-width:7;stroke-linecap:round"/>
+  <text x="628" y="374" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">light chain ×2</text>
+  <circle cx="611" cy="389" r="6" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 55%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="628" y="393" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">antigen</text>
+  <text x="40" y="30" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">IMMUNE RESPONSE</text>
+  <text x="40" y="432" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Innate defences act at once; adaptive cells take days to expand but leave lasting memory (the basis of vaccines).</text>
+  </g>
+</svg>

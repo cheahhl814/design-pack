@@ -1,0 +1,111 @@
+<!--
+html-template-pack · svg-library · transformer-block
+  Transformer schematic after Vaswani et al. 2017 (Attention Is All You
+  Need): input embedding plus positional encoding feeds an encoder block
+  (multi-head self-attention, feed-forward, each wrapped by a dashed
+  residual connection and Add and Norm) repeated N times; the decoder
+  block adds masked self-attention and cross-attention that takes keys
+  and values from the encoder output and queries from below, then a
+  linear plus softmax head gives next-token probabilities. N = 6 in the
+  original paper. Post-norm placement as in the paper; many modern
+  models use pre-norm. Labels kept generic; token-level detail belongs
+  in text or ML tools (Transformer Explainer, Illustrated Transformer,
+  Wikimedia full-architecture figure).
+  Tokens: deep-blue amber teal coral text text-muted surface font-head font-sans.
+  Edit: sublayer names; for a decoder-only model delete the encoder and
+  the cross-attention pair.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Transformer architecture: embeddings with positional encoding feed an encoder stack of self-attention and feed-forward layers and a decoder stack of masked self-attention, cross-attention and feed-forward layers, each with residual Add and Norm, ending in linear and softmax" style="width:100%;height:auto">
+  <title>Transformer encoder and decoder blocks</title>
+  <!-- stacks -->
+  <g>
+  <rect x="110" y="180" width="220" height="148" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="110" y="180" width="220" height="148" rx="14" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 6%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <rect x="450" y="122" width="240" height="206" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="450" y="122" width="240" height="206" rx="14" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 6%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  </g>
+  <!-- connections -->
+  <g>
+  <line x1="220" y1="284" x2="220" y2="278" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <path d="M 220 324 L 118 324 L 118 270 L 126 270" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linejoin:round;stroke-dasharray:4 3"/>
+  <line x1="220" y1="220" x2="220" y2="214" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <path d="M 220 260 L 118 260 L 118 206 L 126 206" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linejoin:round;stroke-dasharray:4 3"/>
+  <line x1="220" y1="262" x2="220" y2="254" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <line x1="570" y1="284" x2="570" y2="278" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <path d="M 570 324 L 458 324 L 458 270 L 466 270" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linejoin:round;stroke-dasharray:4 3"/>
+  <line x1="570" y1="220" x2="570" y2="214" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <path d="M 570 260 L 458 260 L 458 206 L 466 206" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linejoin:round;stroke-dasharray:4 3"/>
+  <line x1="570" y1="262" x2="570" y2="254" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <line x1="570" y1="156" x2="570" y2="150" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <path d="M 570 196 L 458 196 L 458 142 L 466 142" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linejoin:round;stroke-dasharray:4 3"/>
+  <line x1="570" y1="198" x2="570" y2="190" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <line x1="220" y1="384" x2="220" y2="377" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <polygon points="220,368 224.5,377 215.5,377" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="220" y1="349" x2="220" y2="329" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <polygon points="220,318 225.5,329 214.5,329" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="570" y1="384" x2="570" y2="377" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <polygon points="570,368 574.5,377 565.5,377" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="570" y1="349" x2="570" y2="329" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <polygon points="570,318 575.5,329 564.5,329" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 220 198 L 220 150 L 400 150 L 400 237 L 455 237" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <polygon points="466,237 455,242.5 455,231.5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <line x1="570" y1="134" x2="570" y2="109" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <polygon points="570,98 575.5,109 564.5,109" style="fill:var(--text-muted,#64748b)"/>
+  </g>
+  <!-- layers -->
+  <g>
+  <rect x="126" y="284" width="188" height="34" rx="8" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 24%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="220" y="306" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Multi-head self-attention</text>
+  <rect x="126" y="262" width="188" height="16" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 10%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <text x="220" y="274" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Add &amp; Norm</text>
+  <rect x="126" y="220" width="188" height="34" rx="8" style="fill:color-mix(in srgb, var(--teal,#0d9488) 24%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="220" y="242" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Feed-forward</text>
+  <rect x="126" y="198" width="188" height="16" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 10%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <text x="220" y="210" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Add &amp; Norm</text>
+  <rect x="466" y="284" width="208" height="34" rx="8" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 24%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="570" y="306" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Masked self-attention</text>
+  <rect x="466" y="262" width="208" height="16" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 10%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <text x="570" y="274" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Add &amp; Norm</text>
+  <rect x="466" y="220" width="208" height="34" rx="8" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 24%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="570" y="242" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Cross-attention</text>
+  <rect x="466" y="198" width="208" height="16" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 10%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <text x="570" y="210" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Add &amp; Norm</text>
+  <rect x="466" y="156" width="208" height="34" rx="8" style="fill:color-mix(in srgb, var(--teal,#0d9488) 24%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="570" y="178" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Feed-forward</text>
+  <rect x="466" y="134" width="208" height="16" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 10%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <text x="570" y="146" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Add &amp; Norm</text>
+  <rect x="148" y="384" width="144" height="28" rx="8" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="220" y="403" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Input embedding</text>
+  <circle cx="220" cy="358" r="9" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:2"/>
+  <line x1="215" y1="358" x2="225" y2="358" style="stroke:var(--text,#0f172a);stroke-width:2;stroke-linecap:round"/>
+  <line x1="220" y1="353" x2="220" y2="363" style="stroke:var(--text,#0f172a);stroke-width:2;stroke-linecap:round"/>
+  <path d="M 204 358 L 196 358 q -4 -8 -8 0 t -8 0" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2;stroke-linecap:round"/>
+  <rect x="498" y="384" width="144" height="28" rx="8" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="570" y="403" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Output embedding</text>
+  <circle cx="570" cy="358" r="9" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:2"/>
+  <line x1="565" y1="358" x2="575" y2="358" style="stroke:var(--text,#0f172a);stroke-width:2;stroke-linecap:round"/>
+  <line x1="570" y1="353" x2="570" y2="363" style="stroke:var(--text,#0f172a);stroke-width:2;stroke-linecap:round"/>
+  <path d="M 586 358 L 594 358 q 4 -8 8 0 t 8 0" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2;stroke-linecap:round"/>
+  <rect x="500" y="70" width="140" height="28" rx="8" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 20%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="570" y="89" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Linear + softmax</text>
+  </g>
+  <!-- labels -->
+  <g>
+  <text x="168" y="362" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">positional encoding</text>
+  <text x="622" y="362" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">positional encoding</text>
+  <text x="220" y="432" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">inputs (tokens)</text>
+  <text x="570" y="432" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">outputs so far, shifted right</text>
+  <text x="310" y="142" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">encoder output: keys + values</text>
+  <text x="570" y="60" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">next-token probabilities</text>
+  <text x="98" y="214" text-anchor="end" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">ENCODER</text>
+  <text x="98" y="244" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">N×</text>
+  <text x="98" y="262" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">stacked</text>
+  <text x="702" y="214" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">DECODER</text>
+  <text x="702" y="244" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">N×</text>
+  <text x="702" y="262" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">stacked</text>
+  <text x="40" y="30" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">TRANSFORMER BLOCK · ENCODER–DECODER</text>
+  <line x1="700" y1="400" x2="726" y2="400" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:4 3"/>
+  <text x="732" y="404" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">residual</text>
+  </g>
+</svg>

@@ -1,0 +1,146 @@
+<!--
+html-template-pack · svg-library · states-of-matter
+  Solid, liquid and gas particle arrangements in three beakers (same
+  teal particles throughout), joined by labelled phase-change arrows:
+  melting and freezing, vaporisation (boiling or evaporation) and
+  condensation, and the long elbows for sublimation and deposition.
+  Warm arrows take energy in, cool arrows release it. Particle models
+  follow the RSC states-of-matter teaching guide: solid regular and
+  touching, liquid touching but disordered, gas far apart with random
+  motion. Plasma is omitted (optional in the brief).
+  Tokens: teal coral deep-blue text text-muted surface font-head font-sans.
+  Edit: captions; keep particle size equal across beakers.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="States of matter: solid, liquid and gas particle models with melting, freezing, vaporisation, condensation, sublimation and deposition arrows between them" style="width:100%;height:auto">
+  <title>States of matter and phase changes</title>
+  <!-- beakers -->
+  <g>
+  <path d="M 74.0 150 L 80.0 156 L 80.0 282 Q 80.0 292 90.0 292 L 210.0 292 Q 220.0 292 220.0 282 L 220.0 156 L 226.0 150" transform="translate(4 5)" style="fill:none;stroke:color-mix(in srgb, var(--text-muted,#64748b) 45%, transparent);stroke-width:1.5;stroke-linejoin:round"/>
+  <path d="M 74.0 150 L 80.0 156 L 80.0 282 Q 80.0 292 90.0 292 L 210.0 292 Q 220.0 292 220.0 282 L 220.0 156 L 226.0 150" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round"/>
+  <line x1="204" y1="190" x2="216" y2="190" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="204" y1="220" x2="216" y2="220" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="204" y1="250" x2="216" y2="250" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <path d="M 324.0 150 L 330.0 156 L 330.0 282 Q 330.0 292 340.0 292 L 460.0 292 Q 470.0 292 470.0 282 L 470.0 156 L 476.0 150" transform="translate(4 5)" style="fill:none;stroke:color-mix(in srgb, var(--text-muted,#64748b) 45%, transparent);stroke-width:1.5;stroke-linejoin:round"/>
+  <path d="M 324.0 150 L 330.0 156 L 330.0 282 Q 330.0 292 340.0 292 L 460.0 292 Q 470.0 292 470.0 282 L 470.0 156 L 476.0 150" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round"/>
+  <line x1="454" y1="190" x2="466" y2="190" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="454" y1="220" x2="466" y2="220" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="454" y1="250" x2="466" y2="250" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <path d="M 574.0 150 L 580.0 156 L 580.0 282 Q 580.0 292 590.0 292 L 710.0 292 Q 720.0 292 720.0 282 L 720.0 156 L 726.0 150" transform="translate(4 5)" style="fill:none;stroke:color-mix(in srgb, var(--text-muted,#64748b) 45%, transparent);stroke-width:1.5;stroke-linejoin:round"/>
+  <path d="M 574.0 150 L 580.0 156 L 580.0 282 Q 580.0 292 590.0 292 L 710.0 292 Q 720.0 292 720.0 282 L 720.0 156 L 726.0 150" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round"/>
+  <line x1="704" y1="190" x2="716" y2="190" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="704" y1="220" x2="716" y2="220" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="704" y1="250" x2="716" y2="250" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  </g>
+  <!-- particles -->
+  <g>
+  <circle cx="105" cy="282" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="123" cy="282" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="141" cy="282" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="159" cy="282" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="177" cy="282" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="195" cy="282" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="105" cy="264" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="123" cy="264" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="141" cy="264" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="159" cy="264" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="177" cy="264" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="195" cy="264" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="105" cy="246" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="123" cy="246" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="141" cy="246" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="159" cy="246" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="177" cy="246" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="195" cy="246" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="105" cy="228" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="123" cy="228" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="141" cy="228" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="159" cy="228" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="177" cy="228" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="195" cy="228" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <line x1="93" y1="242" x2="89" y2="242" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="183" y1="242" x2="179" y2="242" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <rect x="332" y="218" width="136" height="72" rx="8" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#ffffff))"/>
+  <circle cx="344.9" cy="279.3" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="364.9" cy="278.9" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="382.2" cy="280.3" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="397.3" cy="281" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="415.2" cy="280.7" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="433.4" cy="279" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="453.5" cy="282.6" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="352.7" cy="263.6" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="373.8" cy="267.2" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="391.5" cy="264.5" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="411.9" cy="262.7" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="429.2" cy="263.9" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="442.9" cy="263.1" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="344.1" cy="249.4" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="364.8" cy="248.4" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="382.3" cy="246.8" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="397.4" cy="247.5" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="419.1" cy="248.6" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="434.9" cy="249.4" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="453.7" cy="248" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="356.8" cy="234" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="391.2" cy="234.9" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="410.4" cy="231.9" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="444.5" cy="234.3" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <line x1="586.9" y1="169" x2="596.5" y2="174.5" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:3 3"/>
+  <circle cx="606" cy="180" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <line x1="682.7" y1="164.5" x2="672.3" y2="168.2" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:3 3"/>
+  <circle cx="662" cy="172" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <line x1="712.9" y1="228.1" x2="704.4" y2="221.1" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:3 3"/>
+  <circle cx="696" cy="214" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <line x1="624.2" y1="214.3" x2="626.1" y2="225.2" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:3 3"/>
+  <circle cx="628" cy="236" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <line x1="669" y1="287.1" x2="674.5" y2="277.5" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:3 3"/>
+  <circle cx="680" cy="268" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <line x1="579.3" y1="262.5" x2="589.7" y2="266.2" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:3 3"/>
+  <circle cx="600" cy="270" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <line x1="659.5" y1="226.7" x2="655.8" y2="216.3" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:3 3"/>
+  <circle cx="652" cy="206" r="8.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  </g>
+  <!-- state labels -->
+  <g>
+  <text x="150" y="318" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Solid</text>
+  <text x="150" y="336" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">fixed shape and volume</text>
+  <text x="150" y="352" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">particles vibrate in place</text>
+  <text x="400" y="318" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Liquid</text>
+  <text x="400" y="336" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">fixed volume, takes the container shape</text>
+  <text x="400" y="352" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">particles touch but slide past</text>
+  <text x="650" y="318" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Gas</text>
+  <text x="650" y="336" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">fills any container</text>
+  <text x="650" y="352" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">particles far apart and fast</text>
+  </g>
+  <!-- phase changes -->
+  <g>
+  <line x1="222" y1="200" x2="315" y2="200" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="328,200 315,206.5 315,193.5" style="fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))"/>
+  <text x="275" y="188" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Melting</text>
+  <line x1="328" y1="240" x2="235" y2="240" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="222,240 235,233.5 235,246.5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="275" y="260" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Freezing</text>
+  <line x1="472" y1="200" x2="565" y2="200" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="578,200 565,206.5 565,193.5" style="fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))"/>
+  <text x="525" y="172" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Vaporisation</text>
+  <line x1="578" y1="240" x2="485" y2="240" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="472,240 485,233.5 485,246.5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="525" y="260" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Condensation</text>
+  <text x="525" y="188" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">boiling or evaporation</text>
+  <path d="M 80 176 L 54 176 L 54 112 L 746 112 L 746 176 L 733 176" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <polygon points="720,176 733,169.5 733,182.5" style="fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))"/>
+  <text x="400" y="106" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">Sublimation (solid → gas)</text>
+  <path d="M 720 270 L 746 270 L 746 384 L 54 384 L 54 270 L 67 270" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <polygon points="80,270 67,276.5 67,263.5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="400" y="380" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">Deposition (gas → solid)</text>
+  </g>
+  <!-- legend -->
+  <g>
+  <text x="40" y="34" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">STATES OF MATTER · PHASE CHANGES</text>
+  <line x1="470" y1="32" x2="500" y2="32" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round"/>
+  <text x="506" y="36" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">energy taken in</text>
+  <line x1="620" y1="32" x2="650" y2="32" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round"/>
+  <text x="656" y="36" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">energy released</text>
+  <text x="400" y="432" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Same particles in every beaker: only their arrangement and motion change, not the particles themselves.</text>
+  </g>
+</svg>

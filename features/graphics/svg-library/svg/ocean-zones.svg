@@ -1,0 +1,93 @@
+<!--
+html-template-pack · svg-library · ocean-zones
+  Pelagic ocean zones as a water column: epipelagic 0 to 200 m,
+  mesopelagic 200 to 1,000 m, bathypelagic 1,000 to 4,000 m,
+  abyssopelagic 4,000 to 6,000 m, hadalpelagic below 6,000 m in
+  trenches to about 10,994 m (Challenger Deep). Boundaries from NOAA
+  JetStream Layers of the Ocean (also WHOI ocean zones, Wikimedia
+  Pelagiczone). A light strip fades through the top 1,000 m (sunlight
+  is very faint by 200 to 1,000 m, none below), a shelf, slope,
+  abyssal plain and trench form the benthic floor. The depth axis is a
+  square-root scale, y = 56 + 334 x sqrt(depth / 11000); boundaries are
+  approximate.
+  Tokens: deep-blue amber text text-muted surface font-head font-sans.
+  Edit: zone captions; recompute y with the formula if you move a boundary.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Ocean zones by depth: epipelagic to 200 metres, mesopelagic to 1,000, bathypelagic to 4,000, abyssopelagic to 6,000 and hadalpelagic trenches to about 11,000 metres, with light fading in the top 1,000 metres" style="width:100%;height:auto">
+  <title>Ocean depth zones</title>
+  <!-- water column -->
+  <g>
+  <rect x="100" y="56" width="460" height="45" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 8%, var(--surface,#ffffff))"/>
+  <line x1="100" y1="101" x2="560" y2="101" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1;stroke-linecap:round;stroke-dasharray:4 4"/>
+  <rect x="100" y="101" width="460" height="55.7" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 18%, var(--surface,#ffffff))"/>
+  <line x1="100" y1="156.7" x2="560" y2="156.7" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1;stroke-linecap:round;stroke-dasharray:4 4"/>
+  <rect x="100" y="156.7" width="460" height="100.7" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 28%, var(--surface,#ffffff))"/>
+  <line x1="100" y1="257.4" x2="560" y2="257.4" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1;stroke-linecap:round;stroke-dasharray:4 4"/>
+  <rect x="100" y="257.4" width="460" height="45.3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 38%, var(--surface,#ffffff))"/>
+  <line x1="100" y1="302.7" x2="560" y2="302.7" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1;stroke-linecap:round;stroke-dasharray:4 4"/>
+  <rect x="100" y="302.7" width="460" height="87.3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 48%, var(--surface,#ffffff))"/>
+  <line x1="100" y1="390" x2="560" y2="390" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1;stroke-linecap:round;stroke-dasharray:4 4"/>
+  <rect x="520" y="56" width="20" height="31.8" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 80%, transparent)"/>
+  <rect x="520" y="87.8" width="20" height="13.2" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 72%, transparent)"/>
+  <rect x="520" y="101" width="20" height="10.1" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 64%, transparent)"/>
+  <rect x="520" y="111.2" width="20" height="8.5" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 56%, transparent)"/>
+  <rect x="520" y="119.7" width="20" height="7.5" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 48%, transparent)"/>
+  <rect x="520" y="127.2" width="20" height="6.8" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 40%, transparent)"/>
+  <rect x="520" y="134" width="20" height="6.3" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 32%, transparent)"/>
+  <rect x="520" y="140.3" width="20" height="5.8" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 24%, transparent)"/>
+  <rect x="520" y="146.1" width="20" height="5.5" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, transparent)"/>
+  <rect x="520" y="151.5" width="20" height="5.2" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 8%, transparent)"/>
+  <rect x="520" y="56" width="20" height="100.7" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:1"/>
+  <path d="M 100 56 q 10 -5 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0 t 20 0" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round"/>
+  <circle cx="470" cy="32" r="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 55%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  </g>
+  <!-- seafloor -->
+  <g>
+  <polygon points="100,101 150,101 250,302.7 392,302.7 424,388.5 444,388.5 476,302.7 560,302.7 560,410 100,410" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 34%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2;stroke-linejoin:round"/>
+  <text x="320" y="332.7" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">Benthic zone · seafloor</text>
+  <text x="124" y="123" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">shelf</text>
+  <text x="486" y="358.1" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">trench</text>
+  </g>
+  <!-- depth axis -->
+  <g>
+  <line x1="90" y1="56" x2="90" y2="390" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <line x1="84" y1="56" x2="90" y2="56" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <text x="80" y="60" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">0 m</text>
+  <line x1="84" y1="101" x2="90" y2="101" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <text x="80" y="105" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">200 m</text>
+  <line x1="84" y1="156.7" x2="90" y2="156.7" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <text x="80" y="160.7" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">1,000 m</text>
+  <line x1="84" y1="198.4" x2="90" y2="198.4" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <text x="80" y="202.4" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">2,000 m</text>
+  <line x1="84" y1="257.4" x2="90" y2="257.4" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <text x="80" y="261.4" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">4,000 m</text>
+  <line x1="84" y1="302.7" x2="90" y2="302.7" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <text x="80" y="306.7" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">6,000 m</text>
+  <line x1="84" y1="340.8" x2="90" y2="340.8" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <text x="80" y="344.8" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">8,000 m</text>
+  <line x1="84" y1="390" x2="90" y2="390" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <text x="80" y="394" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">≈11,000 m</text>
+  <text x="40" y="34" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">OCEAN ZONES · DEPTH</text>
+  <text x="40" y="434" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Depth axis uses a square-root scale so the thin upper zones stay readable. Boundaries are approximate (NOAA).</text>
+  </g>
+  <!-- zone labels -->
+  <g>
+  <rect x="568" y="59" width="8" height="39" rx="3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 28%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1"/>
+  <text x="586" y="75.5" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Epipelagic · sunlight zone</text>
+  <text x="586" y="91.5" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">0–200 m · photosynthesis</text>
+  <rect x="568" y="104" width="8" height="49.7" rx="3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 38%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1"/>
+  <text x="586" y="125.9" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Mesopelagic · twilight zone</text>
+  <text x="586" y="141.9" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">200–1,000 m · faint light</text>
+  <rect x="568" y="159.7" width="8" height="94.7" rx="3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 48%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1"/>
+  <text x="586" y="204.1" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Bathypelagic · midnight zone</text>
+  <text x="586" y="220.1" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">1,000–4,000 m · no sunlight</text>
+  <rect x="568" y="260.4" width="8" height="39.3" rx="3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 58%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1"/>
+  <text x="586" y="277" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Abyssopelagic · abyss</text>
+  <text x="586" y="293" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">4,000–6,000 m · near freezing</text>
+  <rect x="568" y="305.7" width="8" height="81.3" rx="3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 68%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1"/>
+  <text x="586" y="343.3" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Hadalpelagic · trenches</text>
+  <text x="586" y="359.3" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">6,000 m to ≈11,000 m</text>
+  <text x="530" y="172.7" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">light</text>
+  </g>
+</svg>

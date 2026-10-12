@@ -8,22 +8,24 @@ Four self-contained HTML templates — **report** (sticky sidebar, 5 icon+label 
 
 **Repository**: https://github.com/cheahhl814/html-template-pack
 
-## 🖍️ SVG diagram library (v0.15.0)
+## 🖍️ SVG diagram library (v0.16.0)
 
-Seventy-seven **hand-drawn inline SVG infographic templates** for concept/summary diagrams — a sibling to the CSS graphics pack below. Canonical files in [`features/graphics/svg-library/svg/`](./features/graphics/svg-library/) with a generated, token-driven **preview gallery** ([`gallery.html`](./features/graphics/svg-library/gallery.html), ◐ theme toggle): pick a component, copy the inline `<svg>`, edit the `<text>` labels.
+Ninety-three **hand-drawn inline SVG infographic templates** for concept/summary diagrams — a sibling to the CSS graphics pack below. Canonical files in [`features/graphics/svg-library/svg/`](./features/graphics/svg-library/) with a generated, token-driven **preview gallery** ([`gallery.html`](./features/graphics/svg-library/gallery.html), ◐ theme toggle): pick a component, copy the inline `<svg>`, edit the `<text>` labels.
 
 `flow-pipeline` · `cycle-loop` · `hub-spoke` · `pyramid-hierarchy` · `venn-overlap` · `quadrant-matrix` · `funnel-stages` · `roadmap-timeline` · `fishbone-causal` · `layer-stack` · `target-bullseye` · `staircase-steps` · `chevron-progression` · `iceberg-depth` · `balance-scale` · `radar-spider` · `journey-map` · `converging-forces` · `puzzle-pieces` · `gear-mechanism`  \
 `timeline-vertical` · `swimlane-gantt` · `honeycomb-cluster` · `dual-hub` · `petal-cycle` · `decision-tree` · `snake-path` · `onion-layers` · `pillars-foundation` · `versus-columns` · `lightbulb-layers` · `matrix-nine-box` · `s-curve-adoption` · `growth-tree` · `spiral-growth` · `domino-chain` · `network-mesh` · `merge-paths` · `five-w-agenda` · `orbit-satellites` · `metro-map`  \
 `hanging-tags` · `helix-ribbon-timeline` · `ring-chain` · `semicircle-segments` · `wavy-timeline` · `pictogram-grid` · `mind-map` · `eight-step-ring` · `radial-bars` · `org-chart` · `world-dot-map` · `europe-tile-grid`  \
 `warming-stripes` · `climate-zones-globe` · `sector-landscape` · `sea-level-rise` · `carbon-cycle` · `thermometer-gauge` · `energy-mix-icons` · `planet-actions`  \
 `dna-helix-steps` · `central-dogma` · `cell-to-dna-zoom` · `lab-glassware-steps` · `cell-membrane` · `punnett-square` · `mutation-types` · `gel-electrophoresis` · `well-plate-layout` · `scientific-method`  \
-`cladogram-ladder` · `cladogram-anatomy` · `cladogram-matrix` · `nested-clades` · `circular-cladogram` · `cladogram-styles`
+`cladogram-ladder` · `cladogram-anatomy` · `cladogram-matrix` · `nested-clades` · `circular-cladogram` · `cladogram-styles`  \
+`food-web` · `trophic-pyramid` · `water-cycle` · `nitrogen-cycle` · `symbiosis-types` · `ecological-succession` · `ocean-zones`  \
+`plate-boundaries` · `reaction-coordinate` · `states-of-matter` · `em-spectrum` · `crispr-editing` · `immune-response` · `pcr-thermal-cycle` · `transformer-block` · `api-request-lifecycle`
 
 Every file: `role="img"` + `aria-label` + `<title>`, id-free markup (safe to paste several into one page), token-driven colors wired via `style` attributes (`var(--token, #fallback)` + `color-mix()` — adapts to every template palette and both themes with zero edits), constant 800×450 `viewBox`. Conventions and the add-a-component workflow: [`features/graphics/svg-library/README.md`](./features/graphics/svg-library/README.md). Regenerate the gallery with `node bin/build-svg-gallery.js`. **Need just the graphic, no page?** `node bin/svg-export.js <name|file.svg> [--theme dark] --out <dir>` writes a standalone `.svg` with the palette baked in, which renders in PowerPoint, Word, Figma and Inkscape.
 
 ## Contents
 
-- [SVG diagram library (v0.15.0)](#️-svg-diagram-library-v0150)
+- [SVG diagram library (v0.16.0)](#️-svg-diagram-library-v0160)
 - [Live demo](#-live-demo)
 - [Installation](#-installation)
 - [Usage examples](#-usage-examples)
@@ -46,7 +48,7 @@ All four templates are deployed as a working demo on GitHub Pages. Open any of t
 | 🎞️ **[Slide demo](https://cheahhl814.github.io/html-template-pack/slide/)** | "Helios 2 — Real-Time Inference for the Edge" (7 slides incl. graphics-pack demos) |
 | 🍱 **[Bento demo](https://cheahhl814.github.io/html-template-pack/bento/)** | "Project Phoenix — One-page Recap" (bento grid, full annotation engine) |
 | 🧩 **[Components demo](https://cheahhl814.github.io/html-template-pack/components/)** | The graphics pack in one page — donut, gauge, bars, heatmap, flow, compare, pull-quote, motion legend |
-| 🖍️ **[SVG library demo](https://cheahhl814.github.io/html-template-pack/svg-library/)** | All 77 SVG infographic templates, token-driven, with source blocks — ◐ toggle previews both palettes |
+| 🖍️ **[SVG library demo](https://cheahhl814.github.io/html-template-pack/svg-library/)** | All 93 SVG infographic templates, token-driven, with source blocks — ◐ toggle previews both palettes |
 | 📊 **[Dashboard demo](https://cheahhl814.github.io/html-template-pack/dashboard/)** | "Northwind Logistics — Operations Dashboard" (mock data, live polling) |
 
 Each demo is a curated showcase with realistic content (not a blank template). Try the **◐ theme toggle**, **▤ density toggle**, **S/M/L font size toggle** in the top-right of every demo. In the report, slide, and bento demos, select any text to leave tracked-changes-style annotations, then export them as JSON from the 💬 Notes panel.
