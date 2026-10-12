@@ -88,7 +88,7 @@ If auto-detection works, you can just use natural language prompts — the harne
 
 ### Natural language prompts that trigger the skill
 
-These phrases auto-invoke the skill via the global `AGENTS.md` decision matrix:
+These phrases auto-invoke the skill via your agent's global skill-routing guide:
 
 <details>
 <summary><b>Report</b> (≥3 long sections, prose, charts, references)</summary>
