@@ -1,7 +1,7 @@
 ---
 name: html-template-pack
 description: 'Four self-contained HTML templates — report (5-tab sticky sidebar, offset-anchored annotations, JSON export), slide deck (prev/next nav, inline annotations, JSON export), bento one-pager (2026 bento-grid snapshot briefing, full v2 annotation engine), and htmx dashboard (topbar, KPI row, sparkline, table, demo-mode mock backend). Pick report for ≥3 long sections, slide for ≤12 beats, bento for a one-page briefing, dashboard for live data. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", "one-pager", "briefing", "recap page", "SVG diagram", "infographic", "ecosystem" (HTML or standalone .svg), or MD/DOCX/PDF → HTML conversion. Ships a 94-template hand-drawn SVG diagram library + a zero-dep CSS graphics pack. Report/slide/bento ship the v2 annotation system; dashboard omits it (live data is not a stable anchor). All four are dark-first with glass chrome and density + font-size toggles.'
-version: 0.21.0
+version: 0.21.1
 updated: "2026-10-13"
 triggers:
   - "HTML report"
@@ -444,6 +444,7 @@ Positioning differs: report/slide float the button `position: fixed` top-right; 
   - **Chrome:** decor SVGs (`templates/deck/chrome/`) are drawn onto the master/layouts and flagged decorative.
   - **`--base`:** corporate templates are supported, with layout fallback by type.
   - **QA:** structural checks in `test/smoke-test-pptx-deck.py` (wired into `run-all.js`), a proxy preview in `bin/pptx-preview.py` (HTML + headless Chrome), and a documented manual real-renderer gate per theme release (no Office or LibreOffice in CI).
+- v0.21.1 svg-slides polish (2026-10-13) — eyeball-review fixes: `content-two-col` cards now fill the slide height (body 250 px, callout at 452, figure frame 384 px, caption at 580); `full-diagram` graphic panel narrowed to 900 px so an 800 x 450 component fills it (no letterbox) with the takeaway moved to a right rail card (6 x 24 ch); `section-break` number panel brightened for the dark theme, chapter number now mixes toward --text.
 - v0.21.0 SVG slide-design library + slot-marker composer (2026-10-14).
   - **Designs:** `templates/svg-slides/` holds six hand-drawn 1280×720 slide designs in the svg-library look: `title-hero`, `section-break`, `big-statement`, `content-two-col`, `full-diagram`, `closing`. Slots are `data-slot` groups (never ids) that carry a box, a type and a text budget, and each design previews as a complete slide.
   - **Composer:** `bin/compose-slide.js` places the text with one documented layout rule (baseline = top + 1.15·size, +1.25·size per line) and inlines svg-library components as nested viewBox carriers. It bakes colours through the new shared `bin/svg-bake.js` (extracted from `svg-export.js`, so there is no second copy) and gates on DESIGN-UNKNOWN/INVALID, PAYLOAD-MALFORMED, SLOT-UNKNOWN/MISSING, TEXT-OVERFLOW, GRAPHIC-UNREADABLE and BAKE-LEFTOVER.

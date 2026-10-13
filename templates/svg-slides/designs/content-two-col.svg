@@ -3,7 +3,7 @@ html-template-pack · svg-slides · content-two-col
   Content slide (1280x720): eyebrow + heading across the top, a body-text card
   (up to six lines) and an amber key-point callout on the left, a framed
   graphic slot on the right for one svg-library component, and a caption under
-  it. The bottom 44 px stay clear for the native footer fields.
+  it. Cards fill the slide height; the bottom 44 px stay clear for the native footer fields.
   Slots: eyebrow (text, optional) · heading (text, 1 × 48 ch) · body (text, 6 × 46 ch)
          · callout (text, optional) · figure (graphic) · caption (text, optional).
   Tokens: teal amber deep-blue text text-muted border border-bright surface font-head font-sans.
@@ -21,9 +21,9 @@ html-template-pack · svg-slides · content-two-col
   <line x1="80" y1="152" x2="140" y2="152" style="stroke:var(--teal,#0d9488);stroke-width:5" stroke-linecap="round"/>
   <line x1="152" y1="152" x2="164" y2="152" style="stroke:var(--amber,#f59e0b);stroke-width:5" stroke-linecap="round"/>
   <!-- body card -->
-  <rect x="64" y="176" width="600" height="226" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 35%, transparent);stroke-width:1.5"/>
-  <rect x="64" y="176" width="600" height="226" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 5%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke-width:2"/>
-  <g data-slot="body" data-slot-kind="text" data-slot-box="88 196 552 186" data-slot-font="sans" data-slot-weight="400" data-slot-size="24" data-slot-maxlines="6" data-slot-maxchars="46" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+  <rect x="64" y="176" width="600" height="250" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 35%, transparent);stroke-width:1.5"/>
+  <rect x="64" y="176" width="600" height="250" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 5%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke-width:2"/>
+  <g data-slot="body" data-slot-kind="text" data-slot-box="88 196 552 210" data-slot-font="sans" data-slot-weight="400" data-slot-size="24" data-slot-maxlines="6" data-slot-maxchars="46" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
     <text x="88" y="223.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:24px;font-weight:400;fill:var(--text,#0f172a)">Body copy, up to six lines of about</text>
     <text x="88" y="253.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:24px;font-weight:400;fill:var(--text,#0f172a)">forty-six characters each. Break the</text>
     <text x="88" y="283.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:24px;font-weight:400;fill:var(--text,#0f172a)">lines yourself: SVG does not wrap,</text>
@@ -31,25 +31,25 @@ html-template-pack · svg-slides · content-two-col
     <text x="88" y="343.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:24px;font-weight:400;fill:var(--text,#0f172a)">per line and checks the budget.</text>
   </g>
   <!-- key-point callout -->
-  <rect x="64" y="428" width="600" height="108" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
-  <rect x="64" y="428" width="600" height="108" rx="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 12%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
-  <circle cx="80" cy="470" r="5" style="fill:var(--amber,#f59e0b)"/>
-  <g data-slot="callout" data-slot-kind="text" data-slot-box="96 452 540 60" data-slot-font="head" data-slot-weight="600" data-slot-size="20" data-slot-maxlines="2" data-slot-maxchars="50" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)" data-slot-optional="true">
-    <text x="96" y="475" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:600;fill:var(--text,#0f172a)">Key point the audience should keep,</text>
-    <text x="96" y="500" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:600;fill:var(--text,#0f172a)">in one or two lines</text>
+  <rect x="64" y="452" width="600" height="108" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="64" y="452" width="600" height="108" rx="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 12%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <circle cx="80" cy="494" r="5" style="fill:var(--amber,#f59e0b)"/>
+  <g data-slot="callout" data-slot-kind="text" data-slot-box="96 476 540 60" data-slot-font="head" data-slot-weight="600" data-slot-size="20" data-slot-maxlines="2" data-slot-maxchars="50" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)" data-slot-optional="true">
+    <text x="96" y="499" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:600;fill:var(--text,#0f172a)">Key point the audience should keep,</text>
+    <text x="96" y="524" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:600;fill:var(--text,#0f172a)">in one or two lines</text>
   </g>
   <!-- figure frame -->
-  <rect x="690" y="176" width="540" height="340" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 12%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 35%, transparent);stroke-width:1.5"/>
-  <rect x="690" y="176" width="540" height="340" rx="14" style="fill:var(--surface,#ffffff);stroke:var(--border-bright,#cbd5e1);stroke-width:2"/>
-  <g data-slot="figure" data-slot-kind="graphic" data-slot-box="700 186 520 320">
-    <rect x="700" y="186" width="520" height="320" rx="10" style="fill:color-mix(in srgb, var(--teal,#0d9488) 4%, transparent);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-dasharray="6 6"/>
-    <rect x="890" y="300" width="36" height="28" rx="6" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
-    <rect x="942" y="300" width="36" height="28" rx="6" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
-    <rect x="994" y="300" width="36" height="28" rx="6" style="fill:color-mix(in srgb, var(--coral,#ef4444) 16%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
-    <text x="960" y="362" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b);letter-spacing:1.2px">GRAPHIC SLOT</text>
-    <text x="960" y="382" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">place an svg-library component here (800 × 450)</text>
+  <rect x="690" y="176" width="540" height="384" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 12%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 35%, transparent);stroke-width:1.5"/>
+  <rect x="690" y="176" width="540" height="384" rx="14" style="fill:var(--surface,#ffffff);stroke:var(--border-bright,#cbd5e1);stroke-width:2"/>
+  <g data-slot="figure" data-slot-kind="graphic" data-slot-box="700 186 520 364">
+    <rect x="700" y="186" width="520" height="364" rx="10" style="fill:color-mix(in srgb, var(--teal,#0d9488) 4%, transparent);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-dasharray="6 6"/>
+    <rect x="890" y="322" width="36" height="28" rx="6" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <rect x="942" y="322" width="36" height="28" rx="6" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <rect x="994" y="322" width="36" height="28" rx="6" style="fill:color-mix(in srgb, var(--coral,#ef4444) 16%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+    <text x="960" y="384" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b);letter-spacing:1.2px">GRAPHIC SLOT</text>
+    <text x="960" y="404" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">place an svg-library component here (800 × 450)</text>
   </g>
-  <g data-slot="caption" data-slot-kind="text" data-slot-box="700 532 520 40" data-slot-font="sans" data-slot-weight="400" data-slot-size="14" data-slot-maxlines="2" data-slot-maxchars="70" data-slot-anchor="start" data-slot-fill="var(--text-muted,#64748b)" data-slot-optional="true">
-    <text x="700" y="548.1" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text-muted,#64748b)">Figure caption: what to look at, plus the source.</text>
+  <g data-slot="caption" data-slot-kind="text" data-slot-box="700 580 520 40" data-slot-font="sans" data-slot-weight="400" data-slot-size="14" data-slot-maxlines="2" data-slot-maxchars="70" data-slot-anchor="start" data-slot-fill="var(--text-muted,#64748b)" data-slot-optional="true">
+    <text x="700" y="596.1" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text-muted,#64748b)">Figure caption: what to look at, plus the source.</text>
   </g>
 </svg>

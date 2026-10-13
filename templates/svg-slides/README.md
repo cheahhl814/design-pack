@@ -142,8 +142,8 @@ apply: inline SVG, **no `id` / `<defs>` / `<marker>` / `<filter>` / `<mask>` / `
 | 1 | `title-hero` | Cover: eyebrow, 2-line hero title, subtitle, meta row | DNA helix strip along the bottom, dot field top right | no |
 | 2 | `section-break` | Chapter divider: oversized tinted number on a panel, section title, orientation line | molecule ring top right, dotted rule | no |
 | 3 | `big-statement` | Centred 3-line takeaway on a tinted card, attribution | quote glyph astride the card, corner brackets | yes |
-| 4 | `content-two-col` | Heading, body card + key-point callout left, framed graphic + caption right | accent underline, offset cards | yes |
-| 5 | `full-diagram` | Heading over one large graphic slot, one-line takeaway | soft panel, amber takeaway marker | yes |
+| 4 | `content-two-col` | Heading, body card + key-point callout left (full height), framed graphic + caption right | accent underline, offset cards | yes |
+| 5 | `full-diagram` | Heading over a large graphic panel, takeaway rail card on the right | soft panel, amber rail marker | yes |
 | 6 | `closing` | Thanks / summary title, contact lines, meta line | orbit rings around a node network | no |
 
 Budgets are per line. `head 54/700` means the heading font at 54 px, weight 700.
@@ -176,18 +176,18 @@ Budgets are per line. `head 54/700` means the heading font at 54 px, weight 700.
 |---|---|---|---|---|---|
 | `eyebrow` | text | 80 52 700 20 | head 14/700 tracked, start | 1 × 56 ch | optional |
 | `heading` | text | 80 80 1120 54 | head 40/700, start | 1 × 48 ch | yes |
-| `body` | text | 88 196 552 186 | sans 24/400, start | 6 × 46 ch | yes |
-| `callout` | text | 96 452 540 60 | head 20/600, start | 2 × 50 ch | optional |
-| `figure` | graphic | 700 186 520 320 | svg-library component, contain-fit | — | yes |
-| `caption` | text | 700 532 520 40 | sans 14/400 muted, start | 2 × 70 ch | optional |
+| `body` | text | 88 196 552 210 | sans 24/400, start | 6 × 46 ch | yes |
+| `callout` | text | 96 476 540 60 | head 20/600, start | 2 × 50 ch | optional |
+| `figure` | graphic | 700 186 520 364 | svg-library component, contain-fit | — | yes |
+| `caption` | text | 700 580 520 40 | sans 14/400 muted, start | 2 × 70 ch | optional |
 
 ### `full-diagram`
 | Slot | Kind | Box (x y w h) | Type | Budget | Required |
 |---|---|---|---|---|---|
 | `eyebrow` | text | 50 34 600 20 | head 14/700 tracked, start | 1 × 48 ch | optional |
 | `heading` | text | 50 58 1180 48 | head 36/700, start | 1 × 60 ch | yes |
-| `figure` | graphic | 50 134 1180 470 | svg-library component, contain-fit (≈ 836 × 470) | — | yes |
-| `takeaway` | text | 74 622 1156 26 | head 18/600, start | 1 × 110 ch | optional |
+| `figure` | graphic | 50 134 880 508 | svg-library component, contain-fit (≈ 880 × 495) | — | yes |
+| `takeaway` | text | 984 200 240 340 | head 20/600, rail card, start | 6 × 24 ch | optional |
 
 ### `closing` (no native footer)
 | Slot | Kind | Box (x y w h) | Type | Budget | Required |

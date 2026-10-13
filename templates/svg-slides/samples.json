@@ -1,38 +1,73 @@
 {
   "title-hero": {
     "eyebrow": "LAB MEETING · OCTOBER 2026",
-    "hero-title": ["Lab-on-chip diagnostics", "from sample to answer"],
-    "subtitle": ["What we built this quarter, what broke, and what we", "need from the group before the January field trial"],
+    "hero-title": [
+      "Lab-on-chip diagnostics",
+      "from sample to answer"
+    ],
+    "subtitle": [
+      "What we built this quarter, what broke, and what we",
+      "need from the group before the January field trial"
+    ],
     "meta": "A. Researcher · Microfluidics Group · 14 October 2026"
   },
   "section-break": {
     "number": "02",
     "eyebrow": "PART TWO",
-    "section-title": ["How the assay", "actually works"],
+    "section-title": [
+      "How the assay",
+      "actually works"
+    ],
     "orientation": "Sample prep, amplification and the readout"
   },
   "big-statement": {
     "eyebrow": "WHAT WE LEARNED",
-    "statement": ["Most failed runs were not chemistry.", "They were bubbles in the inlet channel,", "and a 2 mm fillet fixed nine in ten."],
+    "statement": [
+      "Most failed runs were not chemistry.",
+      "They were bubbles in the inlet channel,",
+      "and a 2 mm fillet fixed nine in ten."
+    ],
     "attribution": "Run log review, 212 chips, July to September 2026"
   },
   "content-two-col": {
     "eyebrow": "METHODS · STEP 1",
     "heading": "Four stages from sample to result",
-    "body": ["Each chip runs the same four stages. Lysis", "and extraction happen on the card; the", "amplification chamber is held at 65 °C;", "the readout is a lateral-flow strip.", "Total hands-on time is under five minutes."],
-    "callout": ["Stage 3 is the bottleneck: 22 of our", "31 minutes are spent amplifying."],
+    "body": [
+      "Each chip runs the same four stages. Lysis",
+      "and extraction happen on the card; the",
+      "amplification chamber is held at 65 °C;",
+      "the readout is a lateral-flow strip.",
+      "Total hands-on time is under five minutes."
+    ],
+    "callout": [
+      "Stage 3 is the bottleneck: 22 of our",
+      "31 minutes are spent amplifying."
+    ],
     "figure": "flow-pipeline",
-    "caption": ["Stage timings are medians over the 212 runs in the Q3 log."]
+    "caption": [
+      "Stage timings are medians over the 212 runs in the Q3 log."
+    ]
   },
   "full-diagram": {
     "eyebrow": "BACKGROUND",
     "heading": "Amplification doubles the target every cycle",
     "figure": "pcr-thermal-cycle",
-    "takeaway": "Thirty ideal cycles turn one copy into about a billion, which is why one stray template ruins a run."
+    "takeaway": [
+      "Thirty ideal cycles turn",
+      "one copy into about a",
+      "billion, so one stray",
+      "template ruins a run."
+    ]
   },
   "closing": {
-    "title": ["Thank you", "Questions?"],
-    "contact": ["A. Researcher, Microfluidics Group", "a.researcher@example.org"],
+    "title": [
+      "Thank you",
+      "Questions?"
+    ],
+    "contact": [
+      "A. Researcher, Microfluidics Group",
+      "a.researcher@example.org"
+    ],
     "meta": "Slides, run log and chip CAD: example.org/lab-on-chip"
   }
 }
