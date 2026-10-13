@@ -321,6 +321,10 @@ fallback, and lays it out on the house layouts. See [`templates/deck/README.md`]
 The deck's decor SVGs (`templates/deck/chrome/`) follow these conventions but are deliberately **not**
 catalog components: they are slide chrome, not diagrams.
 
+Want a whole **designed slide** around a component (cover, section break, figure slide with heading and
+takeaway)? Use the slide designs in [`templates/svg-slides/`](../../../templates/svg-slides/README.md).
+`bin/compose-slide.js` inlines a component into a design's graphic slot and bakes one finished SVG slide.
+
 ## Adding a new component
 
 0. **Research first (mandatory when the design isn't obvious).** Before drawing, search

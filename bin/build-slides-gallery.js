@@ -1,0 +1,115 @@
+#!/usr/bin/env node
+/**
+ * build-slides-gallery.js: regenerates templates/svg-slides/gallery.html from
+ * templates/svg-slides/designs/*.svg + samples.json.
+ *
+ * Each card shows the design composed with its sample payload, still
+ * token-driven so the ◐ toggle previews both palettes, plus collapsible
+ * blocks with the design source and the sample payload. Run after editing or
+ * adding a design:
+ *
+ *     node bin/build-slides-gallery.js
+ *
+ * Validation (fails the build): every design parses with bin/compose-slide.js
+ * (svg-library hard rules + slot markup) and composes with its sample.
+ */
+const fs = require('fs');
+const path = require('path');
+const { DESIGN_DIR, listDesigns, loadDesign, compose } = require('./compose-slide.js');
+
+const DIR = path.dirname(DESIGN_DIR);
+const OUT = path.join(DIR, 'gallery.html');
+const SAMPLES = JSON.parse(fs.readFileSync(path.join(DIR, 'samples.json'), 'utf8'));
+const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+// catalog order = samples.json order; designs without a sample fail below
+const NAMES = [...new Set([...Object.keys(SAMPLES), ...listDesigns()])];
+const cards = NAMES.map((name, i) => {
+  if (!SAMPLES[name]) throw new Error(`${name}: no sample payload in samples.json`);
+  const design = loadDesign(name);
+  const head = design.src.match(/<!--([\s\S]*?)-->/);
+  // header comment: line 1 is the title, the description runs until "Slots:"
+  const desc = head ? head[1].split(/\n\s*Slots:/)[0].split('\n').slice(2).map((l) => l.trim()).join(' ') : '';
+  const slide = compose(design, SAMPLES[name]).svg.replace(/<!--[\s\S]*?-->\s*/g, '').trim();
+  const slots = design.slots.map((s) => `<code>${s.name}</code>${s.optional ? '?' : ''}`).join(' ');
+  return `    <figure class="card" id="d-${name}">
+      <figcaption>
+        <span class="idx">${String(i + 1).padStart(2, '0')}</span>
+        <span class="info"><strong>${name}</strong><em>${esc(desc)}</em><span class="use">slots: ${slots}</span></span>
+      </figcaption>
+      <div class="stage">${slide}</div>
+      <details><summary>design source (.svg, slot-marked)</summary><pre class="src">${esc(design.src.trim())}</pre></details>
+      <details><summary>sample payload (.json)</summary><pre class="src">${esc(JSON.stringify(SAMPLES[name], null, 2))}</pre></details>
+    </figure>`;
+});
+
+const page = `<!--
+  GENERATED FILE — do not hand-edit.
+  Source of truth: designs/*.svg + samples.json in this directory; regenerate with:
+      node bin/build-slides-gallery.js
+  (html-template-pack v0.21.0 svg-slides design library)
+-->
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>svg-slides · html-template-pack</title>
+<style>
+  :root {
+    --bg: #f8fafc; --surface: #ffffff; --surface2: #f1f5f9;
+    --border: #e2e8f0; --border-bright: #cbd5e1;
+    --text: #0f172a; --text-muted: #64748b; --text-dim: #94a3b8;
+    --accent: #0d9488;
+    --navy: #1a2744; --deep-blue: #2c4a7c; --teal: #0d9488;
+    --coral: #ef4444; --amber: #f59e0b; --green: #10b981;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-head: 'Outfit', sans-serif;
+    --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+  }
+  html[data-theme="dark"] {
+    --bg: #0b0e14; --surface: #131820; --surface2: #1c2230;
+    --border: #232a35; --border-bright: #313a4a;
+    --text: #f8fafc; --text-muted: #94a3b8; --text-dim: #64748b;
+    --accent: #14b8a6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font-sans); background: var(--bg); color: var(--text); padding: 40px clamp(16px, 5vw, 72px) 80px; }
+  header { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+  h1 { font-family: var(--font-head); font-size: clamp(26px, 3.5vw, 38px); }
+  header p { color: var(--text-muted); max-width: 70ch; }
+  .toggle { margin-left: auto; background: var(--surface2); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 6px 14px; cursor: pointer; font-size: 14px; }
+  .catalog { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 620px), 1fr)); gap: 24px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; scroll-margin-top: 20px; min-width: 0; }
+  figcaption { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; }
+  .idx { font-family: var(--font-mono); color: var(--accent); font-size: 13px; padding-top: 2px; }
+  .info strong { font-family: var(--font-head); font-size: 16px; display: block; }
+  .info em { color: var(--text-muted); font-style: normal; font-size: 13px; display: block; margin-top: 2px; }
+  .use { color: var(--text-dim); font-size: 12px; display: block; margin-top: 4px; }
+  .use code { font-family: var(--font-mono); color: var(--text-muted); }
+  .stage { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .stage > svg { display: block; }
+  details { margin-top: 12px; }
+  summary { cursor: pointer; color: var(--text-muted); font-size: 13px; user-select: none; }
+  .src { font-family: var(--font-mono); font-size: 11px; line-height: 1.5; color: var(--text-muted); background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px; overflow: auto; max-height: 340px; white-space: pre; margin-top: 8px; }
+  nav { margin-bottom: 24px; display: flex; flex-wrap: wrap; gap: 8px; }
+  nav a { font-size: 13px; color: var(--accent); text-decoration: none; border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; }
+  nav a:hover { border-color: var(--accent); }
+</style>
+</head>
+<body>
+  <header>
+    <h1>svg-slides</h1>
+    <p>Hand-drawn slide designs with slot markers. Each card is the design composed with its sample payload by <code>bin/compose-slide.js</code>. Real output bakes colours to hex for one theme; here the slide stays token-driven so you can preview both palettes. Graphic slots hold svg-library components.</p>
+    <button class="toggle" onclick="var h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark')">◐</button>
+  </header>
+  <nav>${NAMES.map((n) => `<a href="#d-${n}">${n}</a>`).join('')}</nav>
+  <main class="catalog">
+${cards.join('\n')}
+  </main>
+</body>
+</html>
+`;
+
+fs.writeFileSync(OUT, page);
+console.log(`${path.relative(process.cwd(), OUT)}: ${cards.length} designs`);

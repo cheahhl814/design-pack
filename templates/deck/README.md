@@ -1,4 +1,4 @@
-# PPTX deck builder: house base + svg→pptx (v0.19.0)
+# PPTX deck builder: house base + svg→pptx (v0.19.0; design slides v0.21.0)
 
 A real PowerPoint deck whose figures are svg-library components, embedded as **native vector SVG**
 (PowerPoint's `svgBlip` extension) with a high-res PNG fallback. All text stays **native and
@@ -101,6 +101,26 @@ python3 bin/make-pptx-deck.py spec.json -o deck.pptx [--theme light|dark] [--bas
   - Deck-level `credits` go to the last slide's notes.
 - Bad specs fail loudly: unknown layout, wrong figure count, unknown component, a ragged table row,
   more than 3 KPI stats or 6 agenda items, a bad `side`.
+
+## Design slides (v0.21.0)
+
+A slide can be a hand-drawn **svg-slides design** instead of a house layout:
+
+```json
+{"design": "content-two-col", "notes": "...",
+ "payload": {"heading": "Four stages", "body": ["line 1", "line 2"], "figure": "flow-pipeline"}}
+```
+
+The builder runs `bin/compose-slide.js` and then builds the slide on the Figure layout with every
+placeholder removed:
+- the text-free background (`.bg.svg`) goes in as one full-bleed `svgBlip` + PNG picture,
+  contain-fitted and centred on a non-16:9 `--base`;
+- each filled text slot becomes a native text box named `Slot <name>`, with the slot geometry, size,
+  colour and tracking, and the theme font `+mj-lt` / `+mn-lt`;
+- footer fields are added unless the design root sets `data-native-footer="false"`.
+
+Over-budget text, unknown slots and unknown designs stop the build with the composer's gate message.
+Designs, slot tables and the payload format: [`templates/svg-slides/README.md`](../svg-slides/README.md).
 
 ## House layouts (13.333 × 7.5 in, 16:9)
 

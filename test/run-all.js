@@ -16,7 +16,9 @@ const suites = [
   { name: 'Graphics pack (v0.8.0 shared component library in report + slide + bento)', script: 'test/smoke-test-graphics.js' },
   { name: 'SVG export (standalone, renderer-safe .svg from the svg-library)', script: 'test/smoke-test-svg-export.js' },
   // Python suite (optional deps; skips itself if python-pptx/cairosvg/lxml/Pillow are missing)
-  { name: 'PPTX deck builder (house bases, native SVG embed, structural QA)', cmd: 'python3 test/smoke-test-pptx-deck.py' }
+  { name: 'PPTX deck builder (house bases, native SVG embed, structural QA)', cmd: 'python3 test/smoke-test-pptx-deck.py' },
+  // v0.21.0 svg-slides: design QA + composer gates (node + stdlib) and design slides in pptx (skips without the deps)
+  { name: 'SVG slide designs (slot markers, compose-slide gates, design slides in pptx)', cmd: 'python3 test/smoke-test-slides.py' }
 ];
 
 console.log('html-template-pack · test suite\n' + '─'.repeat(60));

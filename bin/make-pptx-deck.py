@@ -24,10 +24,14 @@ body placeholders, captions in caption placeholders, notes in the notes page.
                  "stats": [{"value": "48 h", "label": "..."}]},
                 {"layout": "image-text", "title": "...", "figure": "food-web", "side": "right",
                  "bullets": ["..."]},
-                {"layout": "closing", "contact": ["Questions?", "team@example.org"]}],
+                {"layout": "closing", "contact": ["Questions?", "team@example.org"]},
+                {"design": "content-two-col", "payload": {"heading": "...", "body": ["..."],
+                 "figure": "flow-pipeline"}}],
               "footer": "Deck title", "date": "auto", "slide_numbers": true,
               "credits": ["deck-level credit lines, added to the last slide's notes"]}
            every slide also takes "notes" and "credits" (both go to the notes page).
+           a "design" slide (v0.21.0) is a templates/svg-slides design composed by
+           bin/compose-slide.js: full-bleed picture + native text boxes per text slot.
            a figure is an svg-library component name or a path to a .svg
            (token-driven or already baked; it is baked again for the deck theme).
   --theme  overrides spec "theme" (default light); picks the house base and
@@ -43,8 +47,10 @@ from xml.sax.saxutils import escape
 
 from lxml import etree
 from pptx import Presentation
+from pptx.dml.color import RGBColor
 from pptx.enum.dml import MSO_THEME_COLOR
 from pptx.enum.shapes import PP_PLACEHOLDER
+from pptx.enum.text import MSO_ANCHOR, MSO_AUTO_SIZE, PP_ALIGN
 from pptx.opc.constants import RELATIONSHIP_TYPE as RT
 from pptx.opc.package import Part
 from pptx.oxml.ns import qn
@@ -78,6 +84,7 @@ NO_STYLE_TABLE = "{2D5ABB26-0587-4C30-8999-92F81FD0307C}"  # PowerPoint's built-
 NS = ('xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" '
       'xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"')
 TITLE_TYPES = (PP_PLACEHOLDER.TITLE, PP_PLACEHOLDER.CENTER_TITLE)
+ALIGN = {"start": PP_ALIGN.LEFT, "middle": PP_ALIGN.CENTER, "end": PP_ALIGN.RIGHT}
 
 PIC_XML = (
     '<p:pic xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" '
@@ -303,6 +310,77 @@ def add_fields(slide, n, spec):
         tree.append(sp)
 
 
+def finish_slide(slide, s, n, spec, fields):
+    """Shared tail: drop unfilled placeholders, footer fields, notes + credits."""
+    # placeholders left empty would show "Click to add ..." in edit view
+    for p in slide.placeholders:
+        if p.placeholder_format.type == PP_PLACEHOLDER.PICTURE or (p.has_text_frame and not p.text_frame.text.strip()):
+            remove(p)
+    if fields:
+        add_fields(slide, n, spec)
+    notes = [s["notes"]] if s.get("notes") else []
+    credits = lines(s.get("credits")) + (lines(spec.get("credits")) if n == len(spec["slides"]) else [])
+    if credits:
+        notes.append("Credits:\n" + "\n".join(f"- {c}" for c in credits))
+    if notes:
+        slide.notes_slide.notes_text_frame.text = "\n\n".join(notes)
+
+
+def compose_design(s, n, theme, work):
+    """Run bin/compose-slide.js -> (slides.json sidecar, background svg bytes)."""
+    name = f"slide{n:02d}"
+    pay = os.path.join(work, f"{name}.payload.json")
+    with open(pay, "w", encoding="utf-8") as f:
+        json.dump(s.get("payload") or {}, f)
+    out = subprocess.run(
+        ["node", os.path.join(ROOT, "bin", "compose-slide.js"), str(s["design"]), "--payload", pay,
+         "--theme", theme, "--out", work, "--name", name], capture_output=True, text=True)
+    if out.returncode:
+        sys.exit(f"slide {n} (design {s['design']}): {out.stderr.strip() or out.stdout.strip()}")
+    with open(os.path.join(work, f"{name}.slides.json"), encoding="utf-8") as f:
+        side = json.load(f)
+    with open(os.path.join(work, side["background"]), "rb") as f:
+        return side, f.read()
+
+
+def add_design_slide(prs, s, n, theme, work, sw, sh):
+    """Composed design as a full-bleed picture (svgBlip + PNG) with the text slots
+    on top as native, editable text boxes. Returns (slide, wants footer fields)."""
+    side, bg = compose_design(s, n, theme, work)
+    # the house Figure layout carries the date / footer / slide-number placeholders
+    slide = prs.slides.add_slide(pick_layout(prs, "figure"))
+    for p in list(slide.placeholders):
+        remove(p)
+    k = min(sw / side["width"], sh / side["height"])  # EMU per design px (9525 on the 16:9 bases)
+    ox, oy = (sw - side["width"] * k) / 2, (sh - side["height"] * k) / 2
+    labels = re.findall(rb'aria-label="([^"]*)"', bg)[1:]  # nested svg-library components
+    add_svg_picture(slide.part, slide.shapes._spTree, bg, raster(bg, 2400),
+                    (ox, oy, side["width"] * k, side["height"] * k), name=f"Design {side['design']}",
+                    descr="; ".join(l.decode() for l in labels), decorative=not labels)
+    pt = k / 9525  # font scale (1.0 on the house bases)
+    for t in side["text"]:
+        tb = slide.shapes.add_textbox(*(Emu(int(v)) for v in (ox + t["x"] * k, oy + t["y"] * k, t["w"] * k, t["h"] * k)))
+        tb.name = f"Slot {t['slot']}"
+        tf = tb.text_frame
+        tf.word_wrap, tf.auto_size, tf.vertical_anchor = False, MSO_AUTO_SIZE.NONE, MSO_ANCHOR.TOP
+        tf.margin_left = tf.margin_right = tf.margin_top = tf.margin_bottom = 0
+        for i, line in enumerate(t["lines"]):
+            p = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
+            p.alignment = ALIGN[t["anchor"]]
+            p.line_spacing = Pt(t["sizePt"] * pt * 1.25)
+            r = p.add_run()
+            r.text = line
+            r.font.size = Pt(t["sizePt"] * pt)
+            r.font.bold = t["weight"] >= 600
+            r.font.color.rgb = RGBColor.from_string(t["colorHex"][1:])
+            rpr = r._r.get_or_add_rPr()
+            if t.get("tracking"):
+                rpr.set("spc", str(round(t["tracking"] * 0.75 * pt * 100)))  # hundredths of a point
+            # theme fonts (+mj = heading, +mn = body), so a rebrand reaches design slides too
+            etree.SubElement(rpr, qn("a:latin"), typeface="+mj-lt" if t["font"] == "head" else "+mn-lt")
+    return slide, side["nativeFooter"]
+
+
 def build(spec, out, theme=None, base=None):
     theme = theme or spec.get("theme", "light")
     if theme not in ("light", "dark"):
@@ -316,6 +394,12 @@ def build(spec, out, theme=None, base=None):
     slides = spec["slides"]
 
     for n, s in enumerate(slides, 1):
+        if "design" in s:  # v0.21.0: svg-slides design -> full-bleed picture + native text boxes
+            if "layout" in s:
+                sys.exit(f"slide {n}: use either layout or design, not both")
+            slide, fields = add_design_slide(prs, s, n, theme, work, sw, sh)
+            finish_slide(slide, s, n, spec, fields)
+            continue
         kind = s.get("layout")
 
         def need(ok, msg):
@@ -424,18 +508,7 @@ def build(spec, out, theme=None, base=None):
             if p._element.getparent() is not None:
                 remove(p)
 
-        # placeholders left empty would show "Click to add ..." in edit view
-        for p in slide.placeholders:
-            if p.placeholder_format.type == PP_PLACEHOLDER.PICTURE or (p.has_text_frame and not p.text_frame.text.strip()):
-                remove(p)
-        if kind not in ("title", "section", "closing"):
-            add_fields(slide, n, spec)
-        notes = [s["notes"]] if s.get("notes") else []
-        credits = lines(s.get("credits")) + (lines(spec.get("credits")) if n == len(slides) else [])
-        if credits:
-            notes.append("Credits:\n" + "\n".join(f"- {c}" for c in credits))
-        if notes:
-            slide.notes_slide.notes_text_frame.text = "\n\n".join(notes)
+        finish_slide(slide, s, n, spec, kind not in ("title", "section", "closing"))
 
     prs.save(out)
     return out

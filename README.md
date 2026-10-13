@@ -10,7 +10,7 @@ Four self-contained HTML templates — **report** (sticky sidebar, 5 icon+label 
 
 ## 🖍️ SVG diagram library (v0.16.0)
 
-Ninety-three **hand-drawn inline SVG infographic templates** for concept/summary diagrams — a sibling to the CSS graphics pack below. Canonical files in [`features/graphics/svg-library/svg/`](./features/graphics/svg-library/) with a generated, token-driven **preview gallery** ([`gallery.html`](./features/graphics/svg-library/gallery.html), ◐ theme toggle): pick a component, copy the inline `<svg>`, edit the `<text>` labels.
+Ninety-four **hand-drawn inline SVG infographic templates** for concept/summary diagrams — a sibling to the CSS graphics pack below. Canonical files in [`features/graphics/svg-library/svg/`](./features/graphics/svg-library/) with a generated, token-driven **preview gallery** ([`gallery.html`](./features/graphics/svg-library/gallery.html), ◐ theme toggle): pick a component, copy the inline `<svg>`, edit the `<text>` labels.
 
 `flow-pipeline` · `cycle-loop` · `hub-spoke` · `pyramid-hierarchy` · `venn-overlap` · `quadrant-matrix` · `funnel-stages` · `roadmap-timeline` · `fishbone-causal` · `layer-stack` · `target-bullseye` · `staircase-steps` · `chevron-progression` · `iceberg-depth` · `balance-scale` · `radar-spider` · `journey-map` · `converging-forces` · `puzzle-pieces` · `gear-mechanism`  \
 `timeline-vertical` · `swimlane-gantt` · `honeycomb-cluster` · `dual-hub` · `petal-cycle` · `decision-tree` · `snake-path` · `onion-layers` · `pillars-foundation` · `versus-columns` · `lightbulb-layers` · `matrix-nine-box` · `s-curve-adoption` · `growth-tree` · `spiral-growth` · `domino-chain` · `network-mesh` · `merge-paths` · `five-w-agenda` · `orbit-satellites` · `metro-map`  \
@@ -44,10 +44,32 @@ python3 bin/pptx-preview.py deck.pptx --out preview/      # proxy preview via he
 
 **Previews and QA.** Previews are a proxy, not PowerPoint's renderer. The real-renderer check (PowerPoint Online / Google Slides / LibreOffice) is a manual once-per-theme-release gate. Spec format, layouts, QA layers and known pitfalls: [`templates/deck/README.md`](./templates/deck/README.md).
 
+## 🎞️ SVG slide designs + composer (v0.21.0)
+
+Whole **slide designs** drawn as SVG in the svg-library style, for decks that need real design and not just layout chrome. The six designs live in [`templates/svg-slides/designs/`](./templates/svg-slides/), with a generated, token-driven [`gallery.html`](./templates/svg-slides/gallery.html):
+
+`title-hero` · `section-break` · `big-statement` · `content-two-col` · `full-diagram` · `closing`
+
+Each design is a complete 1280×720 slide whose text and graphic areas are marked as **slots** (`data-slot` groups with a box, a type and a per-line character budget). `bin/compose-slide.js` fills them from a JSON payload and writes three files:
+- one renderer-safe composed `.svg`, colours baked to hex for light or dark, with svg-library components inlined into graphic slots;
+- a text-free background variant;
+- a sidecar describing each text slot.
+
+```
+node bin/compose-slide.js content-two-col --payload payload.json --theme light --out slides/
+```
+
+In a PowerPoint deck, a `{"design": "title-hero", "payload": {...}}` slide in the `make-pptx-deck.py` spec becomes the background as a full-bleed native-SVG picture, with every text slot on top as a **native, editable text box**. Design slides and house layouts mix freely.
+
+**Gates.** Text is never auto-wrapped: you break the lines, and the composer fails with `TEXT-OVERFLOW`, `SLOT-UNKNOWN`, `SLOT-MISSING` (and friends) instead of shipping a broken slide.
+
+Slot spec, layout rule, per-design slot tables and the add-a-design workflow: [`templates/svg-slides/README.md`](./templates/svg-slides/README.md).
+
 ## Contents
 
 - [SVG diagram library (v0.16.0)](#️-svg-diagram-library-v0160)
 - [PPTX deck builder (v0.19.0)](#️-pptx-deck-builder-v0190)
+- [SVG slide designs + composer (v0.21.0)](#️-svg-slide-designs--composer-v0210)
 - [Live demo](#-live-demo)
 - [Installation](#-installation)
 - [Usage examples](#-usage-examples)

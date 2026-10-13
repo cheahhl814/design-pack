@@ -1,0 +1,55 @@
+<!--
+html-template-pack · svg-slides · section-break
+  Chapter divider (1280x720): a tinted panel on the left carries an oversized,
+  tinted chapter number; the right column holds an eyebrow, the section title
+  and a one-line orientation. A small molecule ring sits in the top-right
+  corner and a dotted rule closes the column. No native footer fields.
+  Slots: number (text, 2 ch) · eyebrow (text, optional) · section-title (text, 2 × 24 ch)
+         · orientation (text, 1 × 52 ch).
+  Tokens: teal amber coral green deep-blue text text-muted border-bright surface font-head font-sans.
+  Compose with bin/compose-slide.js; slot rules in templates/svg-slides/README.md.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Section divider slide with a large chapter number on a tinted panel, a section title and an orientation line" data-native-footer="false" style="width:100%;height:auto">
+  <title>Section break slide design</title>
+  <rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/>
+  <!-- number panel -->
+  <rect x="80" y="120" width="420" height="480" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="80" y="120" width="420" height="480" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 10%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <g data-slot="number" data-slot-kind="text" data-slot-box="110 196 360 280" data-slot-font="head" data-slot-weight="800" data-slot-size="220" data-slot-maxlines="1" data-slot-maxchars="2" data-slot-anchor="middle" data-slot-fill="color-mix(in srgb, var(--teal,#0d9488) 40%, var(--surface,#ffffff))">
+    <text x="290" y="449" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:220px;font-weight:800;fill:color-mix(in srgb, var(--teal,#0d9488) 40%, var(--surface,#ffffff))">02</text>
+  </g>
+  <circle cx="262" cy="540" r="6" style="fill:var(--teal,#0d9488)"/>
+  <circle cx="290" cy="540" r="6" style="fill:var(--amber,#f59e0b)"/>
+  <circle cx="318" cy="540" r="6" style="fill:var(--coral,#ef4444)"/>
+  <!-- right column -->
+  <line x1="580" y1="226" x2="660" y2="226" style="stroke:var(--teal,#0d9488);stroke-width:8" stroke-linecap="round"/>
+  <line x1="678" y1="226" x2="698" y2="226" style="stroke:var(--amber,#f59e0b);stroke-width:8" stroke-linecap="round"/>
+  <g data-slot="eyebrow" data-slot-kind="text" data-slot-box="580 246 620 20" data-slot-font="head" data-slot-weight="700" data-slot-size="14" data-slot-tracking="1.2" data-slot-maxlines="1" data-slot-maxchars="44" data-slot-anchor="start" data-slot-fill="color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))" data-slot-optional="true">
+    <text x="580" y="262.1" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));letter-spacing:1.2px">SECTION</text>
+  </g>
+  <g data-slot="section-title" data-slot-kind="text" data-slot-box="580 284 620 130" data-slot-font="head" data-slot-weight="700" data-slot-size="48" data-slot-maxlines="2" data-slot-maxchars="24" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="580" y="339.2" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:48px;font-weight:700;fill:var(--text,#0f172a)">Section title on</text>
+    <text x="580" y="399.2" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:48px;font-weight:700;fill:var(--text,#0f172a)">up to two lines</text>
+  </g>
+  <g data-slot="orientation" data-slot-kind="text" data-slot-box="580 440 620 30" data-slot-font="sans" data-slot-weight="400" data-slot-size="22" data-slot-maxlines="1" data-slot-maxchars="52" data-slot-anchor="start" data-slot-fill="var(--text-muted,#64748b)">
+    <text x="580" y="465.3" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:22px;font-weight:400;fill:var(--text-muted,#64748b)">One line on what this part covers</text>
+  </g>
+  <line x1="580" y1="600" x2="1176" y2="600" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-dasharray="2 10" stroke-linecap="round"/>
+  <circle cx="1190" cy="600" r="5" style="fill:var(--teal,#0d9488)"/>
+  <!-- molecule ring, top right -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round">
+    <line x1="1120" y1="110" x2="1160" y2="88"/><line x1="1160" y1="88" x2="1200" y2="110"/><line x1="1200" y1="110" x2="1200" y2="152"/>
+    <line x1="1200" y1="152" x2="1160" y2="174"/><line x1="1160" y1="174" x2="1120" y2="152"/><line x1="1120" y1="152" x2="1120" y2="110"/>
+    <line x1="1200" y1="152" x2="1236" y2="176"/><line x1="1120" y1="110" x2="1084" y2="86"/>
+  </g>
+  <circle cx="1160" cy="131" r="22" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="1160" cy="131" r="22" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <circle cx="1120" cy="110" r="8" style="fill:var(--surface,#ffffff);stroke:var(--teal,#0d9488);stroke-width:2.5"/>
+  <circle cx="1160" cy="88" r="8" style="fill:var(--surface,#ffffff);stroke:var(--coral,#ef4444);stroke-width:2.5"/>
+  <circle cx="1200" cy="110" r="8" style="fill:var(--surface,#ffffff);stroke:var(--green,#10b981);stroke-width:2.5"/>
+  <circle cx="1200" cy="152" r="8" style="fill:var(--surface,#ffffff);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2.5"/>
+  <circle cx="1160" cy="174" r="8" style="fill:var(--surface,#ffffff);stroke:var(--teal,#0d9488);stroke-width:2.5"/>
+  <circle cx="1120" cy="152" r="8" style="fill:var(--surface,#ffffff);stroke:var(--amber,#f59e0b);stroke-width:2.5"/>
+  <circle cx="1236" cy="176" r="6" style="fill:var(--coral,#ef4444)"/>
+  <circle cx="1084" cy="86" r="5" style="fill:var(--teal,#0d9488)"/>
+</svg>

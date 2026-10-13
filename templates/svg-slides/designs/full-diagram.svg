@@ -1,0 +1,38 @@
+<!--
+html-template-pack · svg-slides · full-diagram
+  Diagram slide (1280x720): eyebrow + heading at the top, one LARGE graphic slot
+  (1180 × 470; an 800 × 450 library component scales up to about 836 × 470 and
+  is centred, letterboxed left and right) on a soft panel, and a one-line
+  takeaway with an amber marker at the bottom. The bottom 44 px stay clear
+  for the native footer fields.
+  Slots: eyebrow (text, optional) · heading (text, 1 × 60 ch) · figure (graphic)
+         · takeaway (text, optional).
+  Tokens: teal amber text text-muted border-bright surface font-head font-sans.
+  Compose with bin/compose-slide.js; slot rules in templates/svg-slides/README.md.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Full-width diagram slide with a heading, a large diagram area and a one-line takeaway" style="width:100%;height:auto">
+  <title>Full diagram slide design</title>
+  <rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/>
+  <g data-slot="eyebrow" data-slot-kind="text" data-slot-box="50 34 600 20" data-slot-font="head" data-slot-weight="700" data-slot-size="14" data-slot-tracking="1.2" data-slot-maxlines="1" data-slot-maxchars="48" data-slot-anchor="start" data-slot-fill="color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))" data-slot-optional="true">
+    <text x="50" y="50.1" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));letter-spacing:1.2px">EYEBROW · CONTEXT</text>
+  </g>
+  <g data-slot="heading" data-slot-kind="text" data-slot-box="50 58 1180 48" data-slot-font="head" data-slot-weight="700" data-slot-size="36" data-slot-maxlines="1" data-slot-maxchars="60" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="50" y="99.4" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:36px;font-weight:700;fill:var(--text,#0f172a)">Heading for a full-width diagram</text>
+  </g>
+  <line x1="50" y1="118" x2="100" y2="118" style="stroke:var(--teal,#0d9488);stroke-width:5" stroke-linecap="round"/>
+  <line x1="112" y1="118" x2="122" y2="118" style="stroke:var(--amber,#f59e0b);stroke-width:5" stroke-linecap="round"/>
+  <!-- diagram panel -->
+  <rect x="40" y="128" width="1200" height="482" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 3%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--border-bright,#cbd5e1) 70%, transparent);stroke-width:1.5"/>
+  <g data-slot="figure" data-slot-kind="graphic" data-slot-box="50 134 1180 470">
+    <rect x="222" y="144" width="836" height="450" rx="10" style="fill:color-mix(in srgb, var(--teal,#0d9488) 4%, transparent);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-dasharray="6 6"/>
+    <rect x="570" y="320" width="36" height="28" rx="6" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <rect x="622" y="320" width="36" height="28" rx="6" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <rect x="674" y="320" width="36" height="28" rx="6" style="fill:color-mix(in srgb, var(--coral,#ef4444) 16%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+    <text x="640" y="382" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b);letter-spacing:1.2px">GRAPHIC SLOT</text>
+    <text x="640" y="402" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">an 800 × 450 svg-library component scales to fill this height</text>
+  </g>
+  <circle cx="58" cy="636" r="6" style="fill:var(--amber,#f59e0b)"/>
+  <g data-slot="takeaway" data-slot-kind="text" data-slot-box="74 622 1156 26" data-slot-font="head" data-slot-weight="600" data-slot-size="18" data-slot-maxlines="1" data-slot-maxchars="110" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)" data-slot-optional="true">
+    <text x="74" y="642.7" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:600;fill:var(--text,#0f172a)">Takeaway: the one thing this diagram proves, in a single line.</text>
+  </g>
+</svg>

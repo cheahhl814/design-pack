@@ -1,0 +1,77 @@
+<!--
+html-template-pack · svg-slides · title-hero
+  Cover slide (1280x720): eyebrow, two-line hero title, subtitle, meta row
+  (author · org · date) and a DNA-helix strip along the bottom edge with a
+  dot field in the top-right corner. Paints its own footer zone, so the deck
+  builder adds no native footer fields (data-native-footer="false").
+  Slots: eyebrow (text) · hero-title (text, 2 × 38 ch) · subtitle (text, 2 × 72 ch)
+         · meta (text, optional).
+  Tokens: teal amber coral deep-blue text text-muted border-bright surface font-head font-sans.
+  Compose with bin/compose-slide.js; slot rules in templates/svg-slides/README.md.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Cover slide with an eyebrow line, a two-line title, a subtitle, a meta row and a DNA helix strip along the bottom" data-native-footer="false" style="width:100%;height:auto">
+  <title>Title hero slide design</title>
+  <rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/>
+  <!-- dot field, top right -->
+  <g style="fill:var(--border-bright,#cbd5e1)">
+    <circle cx="1030" cy="72" r="4"/><circle cx="1064" cy="72" r="4"/><circle cx="1098" cy="72" r="4"/><circle cx="1132" cy="72" r="4"/><circle cx="1166" cy="72" r="4"/><circle cx="1200" cy="72" r="4"/>
+    <circle cx="1030" cy="102" r="4"/><circle cx="1064" cy="102" r="4"/><circle cx="1098" cy="102" r="4"/><circle cx="1166" cy="102" r="4"/><circle cx="1200" cy="102" r="4"/>
+    <circle cx="1030" cy="132" r="4"/><circle cx="1064" cy="132" r="4"/><circle cx="1098" cy="132" r="4"/><circle cx="1132" cy="132" r="4"/><circle cx="1200" cy="132" r="4"/>
+  </g>
+  <circle cx="1132" cy="102" r="7" style="fill:var(--teal,#0d9488)"/>
+  <circle cx="1166" cy="132" r="6" style="fill:var(--amber,#f59e0b)"/>
+  <circle cx="1234" cy="72" r="5" style="fill:var(--coral,#ef4444)"/>
+  <!-- accent rule above the eyebrow -->
+  <line x1="80" y1="146" x2="196" y2="146" style="stroke:var(--teal,#0d9488);stroke-width:8" stroke-linecap="round"/>
+  <line x1="214" y1="146" x2="238" y2="146" style="stroke:var(--amber,#f59e0b);stroke-width:8" stroke-linecap="round"/>
+  <!-- text slots -->
+  <g data-slot="eyebrow" data-slot-kind="text" data-slot-box="80 168 720 20" data-slot-font="head" data-slot-weight="700" data-slot-size="14" data-slot-tracking="1.2" data-slot-maxlines="1" data-slot-maxchars="48" data-slot-anchor="start" data-slot-fill="color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">
+    <text x="80" y="184.1" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));letter-spacing:1.2px">RESEARCH UPDATE · 2026</text>
+  </g>
+  <g data-slot="hero-title" data-slot-kind="text" data-slot-box="80 214 1120 140" data-slot-font="head" data-slot-weight="700" data-slot-size="54" data-slot-maxlines="2" data-slot-maxchars="38" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="80" y="276.1" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:54px;font-weight:700;fill:var(--text,#0f172a)">Hero title on one or two</text>
+    <text x="80" y="343.6" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:54px;font-weight:700;fill:var(--text,#0f172a)">lines, at most 38 characters</text>
+  </g>
+  <g data-slot="subtitle" data-slot-kind="text" data-slot-box="80 380 900 60" data-slot-font="sans" data-slot-weight="400" data-slot-size="22" data-slot-maxlines="2" data-slot-maxchars="72" data-slot-anchor="start" data-slot-fill="var(--text-muted,#64748b)">
+    <text x="80" y="405.3" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:22px;font-weight:400;fill:var(--text-muted,#64748b)">Subtitle that frames the talk in one or two short lines</text>
+  </g>
+  <line x1="80" y1="466" x2="112" y2="466" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-linecap="round"/>
+  <g data-slot="meta" data-slot-kind="text" data-slot-box="80 486 900 22" data-slot-font="head" data-slot-weight="600" data-slot-size="16" data-slot-maxlines="1" data-slot-maxchars="80" data-slot-anchor="start" data-slot-fill="color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))" data-slot-optional="true">
+    <text x="80" y="504.4" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">Author Name · Organisation · 14 October 2026</text>
+  </g>
+  <!-- DNA helix strip along the bottom edge (rungs first, strands on top) -->
+  <g stroke-linecap="round">
+    <line x1="100" y1="609" x2="100" y2="624" style="stroke:var(--amber,#f59e0b);stroke-width:3"/><line x1="100" y1="624" x2="100" y2="639" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+    <line x1="140" y1="609" x2="140" y2="624" style="stroke:var(--teal,#0d9488);stroke-width:3"/><line x1="140" y1="624" x2="140" y2="639" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+    <line x1="180" y1="609" x2="180" y2="624" style="stroke:var(--amber,#f59e0b);stroke-width:3"/><line x1="180" y1="624" x2="180" y2="639" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+    <line x1="220" y1="609" x2="220" y2="624" style="stroke:var(--teal,#0d9488);stroke-width:3"/><line x1="220" y1="624" x2="220" y2="639" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+    <line x1="260" y1="609" x2="260" y2="624" style="stroke:var(--amber,#f59e0b);stroke-width:3"/><line x1="260" y1="624" x2="260" y2="639" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+    <line x1="300" y1="609" x2="300" y2="624" style="stroke:var(--teal,#0d9488);stroke-width:3"/><line x1="300" y1="624" x2="300" y2="639" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+    <line x1="340" y1="609" x2="340" y2="624" style="stroke:var(--amber,#f59e0b);stroke-width:3"/><line x1="340" y1="624" x2="340" y2="639" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+    <line x1="380" y1="609" x2="380" y2="624" style="stroke:var(--teal,#0d9488);stroke-width:3"/><line x1="380" y1="624" x2="380" y2="639" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+    <line x1="420" y1="609" x2="420" y2="624" style="stroke:var(--amber,#f59e0b);stroke-width:3"/><line x1="420" y1="624" x2="420" y2="639" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+    <line x1="460" y1="609" x2="460" y2="624" style="stroke:var(--teal,#0d9488);stroke-width:3"/><line x1="460" y1="624" x2="460" y2="639" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+    <line x1="500" y1="609" x2="500" y2="624" style="stroke:var(--amber,#f59e0b);stroke-width:3"/><line x1="500" y1="624" x2="500" y2="639" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+    <line x1="540" y1="609" x2="540" y2="624" style="stroke:var(--teal,#0d9488);stroke-width:3"/><line x1="540" y1="624" x2="540" y2="639" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+    <line x1="580" y1="609" x2="580" y2="624" style="stroke:var(--amber,#f59e0b);stroke-width:3"/><line x1="580" y1="624" x2="580" y2="639" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+    <line x1="620" y1="609" x2="620" y2="624" style="stroke:var(--teal,#0d9488);stroke-width:3"/><line x1="620" y1="624" x2="620" y2="639" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+    <line x1="660" y1="609" x2="660" y2="624" style="stroke:var(--amber,#f59e0b);stroke-width:3"/><line x1="660" y1="624" x2="660" y2="639" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+    <line x1="700" y1="609" x2="700" y2="624" style="stroke:var(--teal,#0d9488);stroke-width:3"/><line x1="700" y1="624" x2="700" y2="639" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+    <line x1="740" y1="609" x2="740" y2="624" style="stroke:var(--amber,#f59e0b);stroke-width:3"/><line x1="740" y1="624" x2="740" y2="639" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+    <line x1="780" y1="609" x2="780" y2="624" style="stroke:var(--teal,#0d9488);stroke-width:3"/><line x1="780" y1="624" x2="780" y2="639" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+    <line x1="820" y1="609" x2="820" y2="624" style="stroke:var(--amber,#f59e0b);stroke-width:3"/><line x1="820" y1="624" x2="820" y2="639" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+    <line x1="860" y1="609" x2="860" y2="624" style="stroke:var(--teal,#0d9488);stroke-width:3"/><line x1="860" y1="624" x2="860" y2="639" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+    <line x1="900" y1="609" x2="900" y2="624" style="stroke:var(--amber,#f59e0b);stroke-width:3"/><line x1="900" y1="624" x2="900" y2="639" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+    <line x1="940" y1="609" x2="940" y2="624" style="stroke:var(--teal,#0d9488);stroke-width:3"/><line x1="940" y1="624" x2="940" y2="639" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+    <line x1="980" y1="609" x2="980" y2="624" style="stroke:var(--amber,#f59e0b);stroke-width:3"/><line x1="980" y1="624" x2="980" y2="639" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+    <line x1="1020" y1="609" x2="1020" y2="624" style="stroke:var(--teal,#0d9488);stroke-width:3"/><line x1="1020" y1="624" x2="1020" y2="639" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+    <line x1="1060" y1="609" x2="1060" y2="624" style="stroke:var(--amber,#f59e0b);stroke-width:3"/><line x1="1060" y1="624" x2="1060" y2="639" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+    <line x1="1100" y1="609" x2="1100" y2="624" style="stroke:var(--teal,#0d9488);stroke-width:3"/><line x1="1100" y1="624" x2="1100" y2="639" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+    <line x1="1140" y1="609" x2="1140" y2="624" style="stroke:var(--amber,#f59e0b);stroke-width:3"/><line x1="1140" y1="624" x2="1140" y2="639" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+    <line x1="1180" y1="609" x2="1180" y2="624" style="stroke:var(--teal,#0d9488);stroke-width:3"/><line x1="1180" y1="624" x2="1180" y2="639" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+  </g>
+  <path d="M80 624 Q120 668 160 624 T240 624 T320 624 T400 624 T480 624 T560 624 T640 624 T720 624 T800 624 T880 624 T960 624 T1040 624 T1120 624 T1200 624" transform="translate(4 5)" fill="none" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <path d="M80 624 Q120 668 160 624 T240 624 T320 624 T400 624 T480 624 T560 624 T640 624 T720 624 T800 624 T880 624 T960 624 T1040 624 T1120 624 T1200 624" fill="none" style="stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <path d="M80 624 Q120 580 160 624 T240 624 T320 624 T400 624 T480 624 T560 624 T640 624 T720 624 T800 624 T880 624 T960 624 T1040 624 T1120 624 T1200 624" fill="none" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+  <circle cx="1220" cy="624" r="6" style="fill:var(--amber,#f59e0b)"/>
+</svg>

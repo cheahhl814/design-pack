@@ -1,0 +1,46 @@
+<!--
+html-template-pack · svg-slides · big-statement
+  Takeaway / quote slide (1280x720): a centred statement of up to three lines on
+  a soft tinted card, an opening quote glyph astride the card's corner, corner
+  brackets as a minimal frame, and a centred attribution under a short rule.
+  The bottom 44 px stay clear for the deck builder's native footer fields.
+  Slots: eyebrow (text, optional) · statement (text, 3 × 46 ch) · attribution (text, optional).
+  Tokens: teal amber coral text text-muted border-bright surface font-head font-sans.
+  Compose with bin/compose-slide.js; slot rules in templates/svg-slides/README.md.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Statement slide with a centred three-line takeaway on a tinted card, a quote glyph, corner brackets and an attribution line" style="width:100%;height:auto">
+  <title>Big statement slide design</title>
+  <rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/>
+  <!-- corner brackets -->
+  <path d="M80 210 V80 H210" fill="none" style="stroke:var(--teal,#0d9488);stroke-width:3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1200 510 V640 H1070" fill="none" style="stroke:var(--amber,#f59e0b);stroke-width:3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="230" cy="80" r="4" style="fill:var(--teal,#0d9488)"/>
+  <circle cx="1050" cy="640" r="4" style="fill:var(--amber,#f59e0b)"/>
+  <g data-slot="eyebrow" data-slot-kind="text" data-slot-box="160 132 960 20" data-slot-font="head" data-slot-weight="700" data-slot-size="14" data-slot-tracking="1.2" data-slot-maxlines="1" data-slot-maxchars="48" data-slot-anchor="middle" data-slot-fill="color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))" data-slot-optional="true">
+    <text x="640" y="148.1" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));letter-spacing:1.2px">KEY TAKEAWAY</text>
+  </g>
+  <!-- statement card -->
+  <rect x="140" y="176" width="1000" height="194" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 35%, transparent);stroke-width:1.5"/>
+  <rect x="140" y="176" width="1000" height="194" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 6%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--teal,#0d9488) 60%, var(--surface,#ffffff));stroke-width:2"/>
+  <!-- opening quote glyph across the card corner -->
+  <g style="fill:var(--teal,#0d9488)">
+    <circle cx="150" cy="176" r="16"/>
+    <path d="M164 182 Q166 210 138 222 Q152 204 146 190 Z"/>
+    <circle cx="194" cy="176" r="16"/>
+    <path d="M208 182 Q210 210 182 222 Q196 204 190 190 Z"/>
+  </g>
+  <g data-slot="statement" data-slot-kind="text" data-slot-box="160 196 960 150" data-slot-font="head" data-slot-weight="600" data-slot-size="38" data-slot-maxlines="3" data-slot-maxchars="46" data-slot-anchor="middle" data-slot-fill="var(--text,#0f172a)">
+    <text x="640" y="239.7" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:38px;font-weight:600;fill:var(--text,#0f172a)">One big idea, said plainly,</text>
+    <text x="640" y="287.2" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:38px;font-weight:600;fill:var(--text,#0f172a)">in up to three centred lines of</text>
+    <text x="640" y="334.7" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:38px;font-weight:600;fill:var(--text,#0f172a)">about forty-six characters</text>
+  </g>
+  <line x1="610" y1="398" x2="670" y2="398" style="stroke:var(--amber,#f59e0b);stroke-width:4" stroke-linecap="round"/>
+  <g data-slot="attribution" data-slot-kind="text" data-slot-box="160 410 960 26" data-slot-font="sans" data-slot-weight="500" data-slot-size="18" data-slot-maxlines="1" data-slot-maxchars="70" data-slot-anchor="middle" data-slot-fill="var(--text-muted,#64748b)" data-slot-optional="true">
+    <text x="640" y="430.7" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:18px;font-weight:500;fill:var(--text-muted,#64748b)">Name Surname, Role · Source</text>
+  </g>
+  <!-- scattered accent dots -->
+  <circle cx="1180" cy="120" r="6" style="fill:var(--coral,#ef4444)"/>
+  <circle cx="1210" cy="150" r="4" style="fill:var(--border-bright,#cbd5e1)"/>
+  <circle cx="110" cy="560" r="5" style="fill:var(--border-bright,#cbd5e1)"/>
+  <circle cx="134" cy="590" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff))"/>
+</svg>
