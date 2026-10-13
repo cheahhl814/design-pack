@@ -1,0 +1,55 @@
+<!--
+html-template-pack · svg-slides · bg-slat-panel
+  Background design (1280x720, decor only, zero slots):
+  asymmetric split: a solid teal-tinted panel down the left 28% holding a
+  vertical slat pattern (teal tints, two amber slats), edged by a thin
+  border-bright rule with a short teal tick. After Craftwork's slat
+  patterns.
+  Paints its own bottom edge, so the deck builder adds no native footer fields.
+  Content zone: right ~65% (x 420-1220, y 60-660) is clear.
+  Tokens: teal amber border-bright surface.
+  Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background split by a tinted side panel on the left filled with vertical teal and amber slats and edged by a thin rule, the right two thirds clear" data-decor-only="true" data-native-footer="false" style="width:100%;height:auto">
+  <title>Slat panel background design</title>
+  <rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/>
+  <!-- tinted side panel (28% width) -->
+  <rect x="0" y="0" width="360" height="720" style="fill:color-mix(in srgb, var(--teal,#0d9488) 9%, var(--surface,#ffffff))"/>
+  <!-- vertical slats inside the panel -->
+  <g>
+    <rect x="36" y="180" width="8" height="360" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent)"/>
+    <rect x="58" y="0" width="8" height="240" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent)"/>
+    <rect x="80" y="0" width="8" height="180" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, transparent)"/>
+    <rect x="102" y="300" width="8" height="120" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent)"/>
+    <rect x="124" y="60" width="8" height="180" rx="4" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 40%, transparent)"/>
+    <rect x="146" y="0" width="8" height="360" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent)"/>
+    <rect x="168" y="0" width="8" height="180" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent)"/>
+    <rect x="190" y="60" width="8" height="180" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent)"/>
+    <rect x="212" y="60" width="8" height="180" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, transparent)"/>
+    <rect x="234" y="600" width="8" height="120" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent)"/>
+    <rect x="256" y="60" width="8" height="360" rx="4" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 40%, transparent)"/>
+    <rect x="278" y="540" width="8" height="180" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, transparent)"/>
+    <rect x="300" y="600" width="8" height="120" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, transparent)"/>
+    <rect x="322" y="540" width="8" height="180" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent)"/>
+  </g>
+  <!-- dash columns between the slats -->
+  <g stroke-linecap="round">
+    <line x1="47" y1="8" x2="47" y2="712" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 14%, transparent);stroke-width:2" stroke-dasharray="4 10"/>
+    <line x1="69" y1="14" x2="69" y2="712" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 18%, transparent);stroke-width:2" stroke-dasharray="6 14"/>
+    <line x1="91" y1="20" x2="91" y2="712" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke-width:2" stroke-dasharray="2 8"/>
+    <line x1="113" y1="8" x2="113" y2="712" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:2" stroke-dasharray="4 10"/>
+    <line x1="135" y1="14" x2="135" y2="712" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 14%, transparent);stroke-width:2" stroke-dasharray="6 14"/>
+    <line x1="157" y1="20" x2="157" y2="712" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 18%, transparent);stroke-width:2" stroke-dasharray="2 8"/>
+    <line x1="179" y1="8" x2="179" y2="712" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke-width:2" stroke-dasharray="4 10"/>
+    <line x1="201" y1="14" x2="201" y2="712" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:2" stroke-dasharray="6 14"/>
+    <line x1="223" y1="20" x2="223" y2="712" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 14%, transparent);stroke-width:2" stroke-dasharray="2 8"/>
+    <line x1="245" y1="8" x2="245" y2="712" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 18%, transparent);stroke-width:2" stroke-dasharray="4 10"/>
+    <line x1="267" y1="14" x2="267" y2="712" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke-width:2" stroke-dasharray="6 14"/>
+    <line x1="289" y1="20" x2="289" y2="712" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:2" stroke-dasharray="2 8"/>
+    <line x1="311" y1="8" x2="311" y2="712" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 14%, transparent);stroke-width:2" stroke-dasharray="4 10"/>
+    <line x1="333" y1="14" x2="333" y2="712" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 18%, transparent);stroke-width:2" stroke-dasharray="6 14"/>
+  </g>
+  <line x1="360" y1="0" x2="360" y2="720" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2"/>
+  <line x1="372" y1="96" x2="372" y2="192" style="stroke:var(--teal,#0d9488);stroke-width:4" stroke-linecap="round"/>
+  <circle cx="372" cy="212" r="4" style="fill:var(--amber,#f59e0b)"/>
+</svg>

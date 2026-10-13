@@ -63,6 +63,8 @@ In a PowerPoint deck, a `{"design": "title-hero", "payload": {...}}` slide in th
 
 **Gates.** Text is never auto-wrapped: you break the lines, and the composer fails with `TEXT-OVERFLOW`, `SLOT-UNKNOWN`, `SLOT-MISSING` (and friends) instead of shipping a broken slide.
 
+**Background designs (v0.22.0).** Eight slot-free, full-bleed stages (`bg-helix-field` · `bg-mosaic-triangles` · `bg-flow-dashes` · `bg-concentric-vortex` · `bg-dot-wash` · `bg-molecule-scatter` · `bg-orbit-arc` · `bg-slat-panel`) for graphic-only or native-text slides: compose with an empty payload (`--payload '{}'`), and the motif keeps a documented content zone clear. In a deck they become a picture-only slide.
+
 Slot spec, layout rule, per-design slot tables and the add-a-design workflow: [`templates/svg-slides/README.md`](./templates/svg-slides/README.md).
 
 ## Contents

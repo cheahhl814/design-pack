@@ -3,7 +3,9 @@
  * build-slides-gallery.js: regenerates templates/svg-slides/gallery.html from
  * templates/svg-slides/designs/*.svg + samples.json.
  *
- * Each card shows the design composed with its sample payload, still
+ * Two sections: "Slide designs" (slot-marked) and "Background designs"
+ * (data-decor-only, zero slots, composed with {}). Each card shows the design
+ * composed with its sample payload, still
  * token-driven so the ◐ toggle previews both palettes, plus collapsible
  * blocks with the design source and the sample payload. Run after editing or
  * adding a design:
@@ -24,30 +26,36 @@ const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, 
 
 // catalog order = samples.json order; designs without a sample fail below
 const NAMES = [...new Set([...Object.keys(SAMPLES), ...listDesigns()])];
-const cards = NAMES.map((name, i) => {
+const card = (name, i) => {
   if (!SAMPLES[name]) throw new Error(`${name}: no sample payload in samples.json`);
   const design = loadDesign(name);
   const head = design.src.match(/<!--([\s\S]*?)-->/);
-  // header comment: line 1 is the title, the description runs until "Slots:"
-  const desc = head ? head[1].split(/\n\s*Slots:/)[0].split('\n').slice(2).map((l) => l.trim()).join(' ') : '';
+  // header comment: line 1 is the title, the description runs until "Slots:" (backgrounds: "Content zone:")
+  const desc = head ? head[1].split(/\n\s*(?:Slots|Content zone):/)[0].split('\n').slice(2).map((l) => l.trim()).join(' ') : '';
+  const zone = head && head[1].match(/Content zone:\s*(.+)/);
   const slide = compose(design, SAMPLES[name]).svg.replace(/<!--[\s\S]*?-->\s*/g, '').trim();
-  const slots = design.slots.map((s) => `<code>${s.name}</code>${s.optional ? '?' : ''}`).join(' ');
+  const use = design.decorOnly ? `content zone: ${esc(zone ? zone[1].trim() : '')}`
+    : `slots: ${design.slots.map((s) => `<code>${s.name}</code>${s.optional ? '?' : ''}`).join(' ')}`;
   return `    <figure class="card" id="d-${name}">
       <figcaption>
         <span class="idx">${String(i + 1).padStart(2, '0')}</span>
-        <span class="info"><strong>${name}</strong><em>${esc(desc)}</em><span class="use">slots: ${slots}</span></span>
+        <span class="info"><strong>${name}</strong><em>${esc(desc)}</em><span class="use">${use}</span></span>
       </figcaption>
       <div class="stage">${slide}</div>
-      <details><summary>design source (.svg, slot-marked)</summary><pre class="src">${esc(design.src.trim())}</pre></details>
+      <details><summary>design source (.svg${design.decorOnly ? ', decor only' : ', slot-marked'})</summary><pre class="src">${esc(design.src.trim())}</pre></details>
       <details><summary>sample payload (.json)</summary><pre class="src">${esc(JSON.stringify(SAMPLES[name], null, 2))}</pre></details>
     </figure>`;
-});
+};
+const isBg = (n) => loadDesign(n).decorOnly;
+const SECTIONS = [['Slide designs', 'designs', NAMES.filter((n) => !isBg(n))],
+  ['Background designs', 'backgrounds', NAMES.filter(isBg)]];
+const cards = SECTIONS.flatMap(([, , names]) => names);
 
 const page = `<!--
   GENERATED FILE — do not hand-edit.
   Source of truth: designs/*.svg + samples.json in this directory; regenerate with:
       node bin/build-slides-gallery.js
-  (html-template-pack v0.21.0 svg-slides design library)
+  (html-template-pack v0.22.0 svg-slides design library)
 -->
 <!doctype html>
 <html lang="en" data-theme="dark">
@@ -95,6 +103,8 @@ const page = `<!--
   nav { margin-bottom: 24px; display: flex; flex-wrap: wrap; gap: 8px; }
   nav a { font-size: 13px; color: var(--accent); text-decoration: none; border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; }
   nav a:hover { border-color: var(--accent); }
+  h2 { font-family: var(--font-head); font-size: 22px; margin: 36px 0 6px; }
+  h2 + p { color: var(--text-muted); font-size: 14px; max-width: 80ch; margin-bottom: 16px; }
 </style>
 </head>
 <body>
@@ -103,10 +113,14 @@ const page = `<!--
     <p>Hand-drawn slide designs with slot markers. Each card is the design composed with its sample payload by <code>bin/compose-slide.js</code>. Real output bakes colours to hex for one theme; here the slide stays token-driven so you can preview both palettes. Graphic slots hold svg-library components.</p>
     <button class="toggle" onclick="var h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark')">◐</button>
   </header>
-  <nav>${NAMES.map((n) => `<a href="#d-${n}">${n}</a>`).join('')}</nav>
+${SECTIONS.map(([title, key, names]) => `  <h2 id="${key}">${title}</h2>
+  <p>${key === 'designs'
+    ? 'Slot-marked slides: each is composed with its sample payload from samples.json.'
+    : 'Decor-only stages (<code>data-decor-only="true"</code>, zero slots), each composed with <code>{}</code>. Content goes in the documented content zone: native text in a deck, or svg-library graphics.'}</p>
+  <nav>${names.map((n) => `<a href="#d-${n}">${n}</a>`).join('')}</nav>
   <main class="catalog">
-${cards.join('\n')}
-  </main>
+${names.map(card).join('\n')}
+  </main>`).join('\n')}
 </body>
 </html>
 `;

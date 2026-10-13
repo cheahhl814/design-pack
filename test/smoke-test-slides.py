@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """QA for the svg-slides design library + bin/compose-slide.js + the deck builder's
-"design" slide kind (html-template-pack v0.21.0).
+"design" slide kind (html-template-pack v0.21.0; background designs v0.22.0).
 
 1. Designs: well-formed XML, svg-library hard rules (no ids/defs/..., role +
    aria-label + <title>), slot markers valid (kind, box inside 1280x720, text
    budgets declared and documented in the README), preview text placed by the
    documented layout rule, and every design renders in headless Chrome.
+   Background designs (data-decor-only="true") must have zero slots, a
+   full-bleed painted rect and a documented content zone; they compose with {}
+   to a text-free slide and become a picture-only deck slide.
 2. Composer: happy path per design × light/dark (no var()/color-mix()/data-slot
    left, component inlined, text only in the full slide, sidecar complete), and
    every gate rejects what it should (TEXT-OVERFLOW, SLOT-UNKNOWN, ...).
@@ -64,7 +67,18 @@ def design_errors(src):
     names = [g.get("data-slot") for g in slots_of(root)]
     if len(names) != len(set(names)):
         errs.append("duplicate slot names")
-    if not names:
+    if root.get("data-decor-only") == "true":  # background design: zero slots, painted edge to edge
+        if names:
+            errs.append(f"decor-only design has slots {names}")
+        first = next((el for el in root if el.tag != SVG + "title"), None)
+        if first is None or first.tag != SVG + "rect" or [first.get(a) for a in ("x", "y", "width", "height")] != ["0", "0", "1280", "720"] \
+                or "fill:" not in first.get("style", ""):
+            errs.append("decor-only design must open with a full-bleed painted 1280x720 rect")
+        if not re.search(r"<!--[\s\S]*?Content zone: \S[\s\S]*?-->\s*<svg", src):
+            errs.append("decor-only design must document its content zone in the header comment")
+        if root.get("data-native-footer") not in ("true", "false"):
+            errs.append("decor-only design must set data-native-footer to true or false")
+    elif not names:
         errs.append("no slots")
     for g in slots_of(root):
         n, kind = g.get("data-slot"), g.get("data-slot-kind")
@@ -96,7 +110,11 @@ def compose(design, payload, tmp, theme="light", name=None):
 
 
 names = sorted(f[:-4] for f in os.listdir(DESIGNS) if f.endswith(".svg"))
-check(len(names) >= 6, f"expected ≥6 designs, found {len(names)}")
+ROOTS = {d: ET.parse(os.path.join(DESIGNS, f"{d}.svg")).getroot() for d in names}
+BGS = [d for d in names if ROOTS[d].get("data-decor-only") == "true"]
+NO_FOOTER = {d for d in names if ROOTS[d].get("data-native-footer") == "false"}
+check(len(names) - len(BGS) >= 6 and len(BGS) >= 8, f"expected ≥6 slide + ≥8 background designs, found {len(names) - len(BGS)} + {len(BGS)}")
+check(all(SAMPLES.get(d) == {} for d in BGS), "background samples are empty payloads")
 check(sorted(SAMPLES) == names, "samples.json has exactly one payload per design")
 chrome = shutil.which("google-chrome") or shutil.which("chromium")
 
@@ -139,6 +157,15 @@ with tempfile.TemporaryDirectory(prefix="svgslides-") as tmp:
                         (base.replace(' data-slot-maxchars="46"', "", 1), "text slot without budget"),
                         (base.replace('data-slot="caption"', 'data-slot="body"'), "duplicate slot")):
         check(design_errors(mutant), f"design QA missed a mutant: {why}")
+    # background mutants: a text slot, no full-bleed paint, no documented content zone
+    helix = open(os.path.join(DESIGNS, "bg-helix-field.svg"), encoding="utf-8").read()
+    check(not design_errors(helix), "bg-helix-field must pass before mutating")
+    slot = ('<g data-slot="heading" data-slot-kind="text" data-slot-box="80 80 600 60" data-slot-size="40" '
+            'data-slot-maxlines="1" data-slot-maxchars="30"><text x="80" y="126">x</text></g>\n</svg>')
+    for mutant, why in ((helix.replace("</svg>", slot), "decor design with a text slot"),
+                        (helix.replace('<rect x="0" y="0" width="1280" height="720"', '<rect x="0" y="0" width="1280" height="600"', 1), "decor design not full-bleed"),
+                        (helix.replace("Content zone:", "Zone:", 1), "decor design without a content zone")):
+        check(design_errors(mutant), f"design QA missed a mutant: {why}")
 
 # ── 2. composer ─────────────────────────────────────────────────────────
 TITLE_OF = {"flow-pipeline": "Four-step process pipeline"}
@@ -174,7 +201,12 @@ with tempfile.TemporaryDirectory(prefix="compose-") as tmp:
                 check(f'data-component="{fig}"' in full and f'data-component="{fig}"' in bg, f"{d}: component {fig} not inlined")
                 if fig in TITLE_OF:
                     check(f"<title>{TITLE_OF[fig]}</title>" in full, f"{d}: component subtree missing")
-            check(side["nativeFooter"] == (d not in ("title-hero", "section-break", "closing")), f"{d}: nativeFooter flag")
+            check(side["nativeFooter"] == (d not in NO_FOOTER), f"{d}: nativeFooter flag")
+            if d in BGS:  # zero slots: background == slide, painted edge to edge in the theme's surface
+                check(full == bg and side["text"] == [] and side["graphics"] == [] and side["decorOnly"], f"{d} [{theme}]: decor slide not text-free / bg differs")
+                m = re.search(r'<rect x="0" y="0" width="1280" height="720" style="fill:#([0-9a-f]{6})', full)
+                lum = m and sum(int(m.group(1)[i:i + 2], 16) for i in (0, 2, 4)) / 765
+                check(m is not None and (lum < 0.2 if theme == "dark" else lum > 0.85), f"{d} [{theme}]: full-bleed paint is not {theme}")
 
     # the gates bite
     two = SAMPLES["content-two-col"]
@@ -185,7 +217,8 @@ with tempfile.TemporaryDirectory(prefix="compose-") as tmp:
             ("content-two-col", {k: v for k, v in two.items() if k != "heading"}, "SLOT-MISSING"),
             ("content-two-col", {**two, "figure": "no-such-component"}, "GRAPHIC-UNREADABLE"),
             ("content-two-col", {**two, "body": 42}, "PAYLOAD-MALFORMED"),
-            ("no-such-design", {}, "DESIGN-UNKNOWN")):
+            ("no-such-design", {}, "DESIGN-UNKNOWN"),
+            ("bg-helix-field", {"heading": "x"}, "SLOT-UNKNOWN")):
         r = compose(design, payload, tmp)
         check(r.returncode == 1 and r.stderr.startswith(gate), f"gate {gate} did not fire ({design}): {r.stderr.strip()}")
     mutant = os.path.join(tmp, "mutant.svg")
@@ -193,6 +226,14 @@ with tempfile.TemporaryDirectory(prefix="compose-") as tmp:
         f.write(open(os.path.join(DESIGNS, "closing.svg")).read().replace('data-slot="meta"', 'data-slot="title"'))
     r = compose(mutant, {"title": "x", "contact": "y"}, tmp)
     check(r.returncode == 1 and r.stderr.startswith("DESIGN-INVALID"), f"gate DESIGN-INVALID did not fire: {r.stderr.strip()}")
+    with open(mutant, "w") as f:
+        f.write(open(os.path.join(DESIGNS, "bg-slat-panel.svg")).read().replace(
+            "</svg>", '<g data-slot="t" data-slot-kind="graphic" data-slot-box="400 100 400 300"></g></svg>'))
+    r = compose(mutant, {}, tmp)
+    check(r.returncode == 1 and r.stderr.startswith("DESIGN-INVALID") and "decor-only" in r.stderr, f"decor design with a slot not rejected: {r.stderr.strip()}")
+    # inline JSON payload, the documented background call
+    r = run(["node", COMPOSER, "bg-helix-field", "--payload", "{}", "--theme", "dark", "--out", tmp, "--name", "inline"])
+    check(r.returncode == 0 and os.path.exists(os.path.join(tmp, "inline.bg.svg")), f"inline --payload '{{}}': {r.stderr.strip()}")
     # optional slots may be left out; the composed slide then has no placeholder text
     r = compose("closing", {"title": "Thanks", "contact": "x@example.org"}, tmp, name="bare")
     check(r.returncode == 0 and "Slides and data" not in open(os.path.join(tmp, "bare.svg")).read(), "optional slot left out")
@@ -253,7 +294,9 @@ else:
                     latin = r.find(qn("a:rPr") + "/" + qn("a:latin"))
                     check(latin is not None and latin.get("typeface") in ("+mj-lt", "+mn-lt"), f"{tag}/{k}: theme font")
             fld = [e.get("type") for e in slide._element.iter(qn("a:fld"))]
-            check(("slidenum" in fld) == (d not in ("title-hero", "section-break", "closing")), f"{tag}: footer fields vs data-native-footer")
+            check(("slidenum" in fld) == (d not in NO_FOOTER), f"{tag}: footer fields vs data-native-footer")
+            if d in BGS:
+                check(not boxes and not [x for x in slide.shapes if not x.is_placeholder and x.has_text_frame and x.text_frame.text.strip()], f"{tag}: decor slide has text")
             check(slide.has_notes_slide and slide.notes_slide.notes_text_frame.text == f"notes {d}", f"{tag}: notes")
             check(not list(slide.placeholders) or all(ph.placeholder_format.type in (13, 15, 16) for ph in slide.placeholders), f"{tag}: stray placeholders")
         return prs
@@ -288,6 +331,6 @@ else:
             r = build({"slides": [slide]}, os.path.join(tmp, "bad.pptx"))
             check(r.returncode != 0 and why in r.stderr, f"deck accepted a broken design slide ({why}): {r.stderr.strip()}")
 
-print(f"  svg-slides: {len(names)} designs · composer × 2 themes · deck (light, dark, --base 4:3)")
+print(f"  svg-slides: {len(names) - len(BGS)} slide + {len(BGS)} background designs · composer × 2 themes · deck (light, dark, --base 4:3)")
 print(f"  TOTAL: {passed} passed · {failed} failed")
 sys.exit(1 if failed else 0)

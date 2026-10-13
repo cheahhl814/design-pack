@@ -1,0 +1,174 @@
+<!--
+html-template-pack · svg-slides · bg-helix-field
+  Background design (1280x720, decor only, zero slots):
+  deep surface field with a large DNA double helix (two sine strands +
+  tinted base-pair rungs) climbing the right edge, flanked by faint
+  code-stream dash columns and a few dot accents. After the SlidesCorner
+  science background: the motif anchors the right edge and the rest stays
+  even.
+  Paints its own bottom edge, so the deck builder adds no native footer fields.
+  Content zone: left 55% (x 60-700, y 60-660) is clear for a headline, body text or graphics.
+  Tokens: teal amber coral green deep-blue text text-muted surface.
+  Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with a large DNA double helix climbing the right edge between faint code-stream dash columns, the left side left even and clear" data-decor-only="true" data-native-footer="false" style="width:100%;height:auto">
+  <title>Helix field background design</title>
+  <rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/>
+  <!-- soft tint behind the right third -->
+  <rect x="800" y="0" width="480" height="720" style="fill:color-mix(in srgb, var(--teal,#0d9488) 5%, transparent)"/>
+  <!-- code stream: dash columns near both helix flanks -->
+  <g stroke-linecap="round">
+    <line x1="870" y1="10" x2="870" y2="26" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="52" x2="870" y2="62" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="70" x2="870" y2="78" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="86" x2="870" y2="110" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="118" x2="870" y2="126" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="138" x2="870" y2="148" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="156" x2="870" y2="190" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="216" x2="870" y2="226" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="238" x2="870" y2="248" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="274" x2="870" y2="284" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="292" x2="870" y2="308" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="316" x2="870" y2="324" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="350" x2="870" y2="360" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="372" x2="870" y2="382" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="394" x2="870" y2="418" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="444" x2="870" y2="460" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="468" x2="870" y2="476" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="494" x2="870" y2="502" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="514" x2="870" y2="524" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="536" x2="870" y2="560" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="568" x2="870" y2="576" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="584" x2="870" y2="592" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="600" x2="870" y2="608" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="620" x2="870" y2="654" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="870" y1="680" x2="870" y2="704" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 28%, transparent);stroke-width:3"/>
+    <line x1="900" y1="27" x2="900" y2="61" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="900" y1="79" x2="900" y2="103" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="900" y1="115" x2="900" y2="131" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="900" y1="143" x2="900" y2="153" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="900" y1="171" x2="900" y2="179" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="900" y1="205" x2="900" y2="229" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="900" y1="255" x2="900" y2="279" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="900" y1="287" x2="900" y2="297" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="900" y1="323" x2="900" y2="339" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="900" y1="357" x2="900" y2="373" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="900" y1="399" x2="900" y2="433" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="900" y1="441" x2="900" y2="451" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="900" y1="469" x2="900" y2="493" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="900" y1="511" x2="900" y2="519" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="900" y1="545" x2="900" y2="553" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="900" y1="579" x2="900" y2="589" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="900" y1="597" x2="900" y2="621" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="900" y1="647" x2="900" y2="657" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="900" y1="665" x2="900" y2="689" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="8" x2="1190" y2="42" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="60" x2="1190" y2="70" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="96" x2="1190" y2="120" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="132" x2="1190" y2="140" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="148" x2="1190" y2="182" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="190" x2="1190" y2="206" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="224" x2="1190" y2="240" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="252" x2="1190" y2="286" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="312" x2="1190" y2="346" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="354" x2="1190" y2="370" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="396" x2="1190" y2="430" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="448" x2="1190" y2="464" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="490" x2="1190" y2="498" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="516" x2="1190" y2="550" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="568" x2="1190" y2="602" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="614" x2="1190" y2="630" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="638" x2="1190" y2="654" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="666" x2="1190" y2="682" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1190" y1="694" x2="1190" y2="704" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="27" x2="1222" y2="43" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="61" x2="1222" y2="85" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="93" x2="1222" y2="109" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="135" x2="1222" y2="143" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="161" x2="1222" y2="169" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="187" x2="1222" y2="203" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="211" x2="1222" y2="245" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="271" x2="1222" y2="305" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="331" x2="1222" y2="365" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="373" x2="1222" y2="407" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="433" x2="1222" y2="443" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="455" x2="1222" y2="465" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="477" x2="1222" y2="511" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="523" x2="1222" y2="533" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="551" x2="1222" y2="559" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="567" x2="1222" y2="577" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="585" x2="1222" y2="593" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="605" x2="1222" y2="613" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="621" x2="1222" y2="645" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="653" x2="1222" y2="663" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1222" y1="675" x2="1222" y2="683" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="-1" x2="1252" y2="23" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="41" x2="1252" y2="49" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="67" x2="1252" y2="101" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="109" x2="1252" y2="119" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="145" x2="1252" y2="179" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="205" x2="1252" y2="239" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="257" x2="1252" y2="267" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="279" x2="1252" y2="289" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="307" x2="1252" y2="331" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="357" x2="1252" y2="373" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="381" x2="1252" y2="397" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="415" x2="1252" y2="431" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="439" x2="1252" y2="447" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="465" x2="1252" y2="475" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="493" x2="1252" y2="501" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="519" x2="1252" y2="535" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="553" x2="1252" y2="569" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="587" x2="1252" y2="603" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="615" x2="1252" y2="631" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="657" x2="1252" y2="673" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+    <line x1="1252" y1="685" x2="1252" y2="693" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke-width:3"/>
+  </g>
+  <!-- base-pair rungs (drawn under the strands) -->
+  <g stroke-linecap="round">
+    <line x1="1110.3" y1="-4" x2="969.7" y2="-4" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 38%, transparent);stroke-width:3"/>
+    <line x1="1130.7" y1="18" x2="949.3" y2="18" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 38%, transparent);stroke-width:3"/>
+    <line x1="1126" y1="40" x2="954" y2="40" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 38%, transparent);stroke-width:3"/>
+    <line x1="1097.6" y1="62" x2="982.4" y2="62" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 38%, transparent);stroke-width:3"/>
+    <line x1="1005.3" y1="106" x2="1074.7" y2="106" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 38%, transparent);stroke-width:3"/>
+    <line x1="966.9" y1="128" x2="1113.1" y2="128" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 38%, transparent);stroke-width:3"/>
+    <line x1="948.7" y1="150" x2="1131.3" y2="150" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 38%, transparent);stroke-width:3"/>
+    <line x1="955.7" y1="172" x2="1124.3" y2="172" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 38%, transparent);stroke-width:3"/>
+    <line x1="985.9" y1="194" x2="1094.1" y2="194" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 38%, transparent);stroke-width:3"/>
+    <line x1="1078.8" y1="238" x2="1001.2" y2="238" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 38%, transparent);stroke-width:3"/>
+    <line x1="1115.7" y1="260" x2="964.3" y2="260" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 38%, transparent);stroke-width:3"/>
+    <line x1="1131.8" y1="282" x2="948.2" y2="282" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 38%, transparent);stroke-width:3"/>
+    <line x1="1122.5" y1="304" x2="957.5" y2="304" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 38%, transparent);stroke-width:3"/>
+    <line x1="1090.4" y1="326" x2="989.6" y2="326" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 38%, transparent);stroke-width:3"/>
+    <line x1="997.2" y1="370" x2="1082.8" y2="370" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 38%, transparent);stroke-width:3"/>
+    <line x1="961.8" y1="392" x2="1118.2" y2="392" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 38%, transparent);stroke-width:3"/>
+    <line x1="948" y1="414" x2="1132" y2="414" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 38%, transparent);stroke-width:3"/>
+    <line x1="959.6" y1="436" x2="1120.4" y2="436" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 38%, transparent);stroke-width:3"/>
+    <line x1="993.4" y1="458" x2="1086.6" y2="458" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 38%, transparent);stroke-width:3"/>
+    <line x1="1086.6" y1="502" x2="993.4" y2="502" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 38%, transparent);stroke-width:3"/>
+    <line x1="1120.4" y1="524" x2="959.6" y2="524" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 38%, transparent);stroke-width:3"/>
+    <line x1="1132" y1="546" x2="948" y2="546" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 38%, transparent);stroke-width:3"/>
+    <line x1="1118.2" y1="568" x2="961.8" y2="568" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 38%, transparent);stroke-width:3"/>
+    <line x1="1082.8" y1="590" x2="997.2" y2="590" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 38%, transparent);stroke-width:3"/>
+    <line x1="989.6" y1="634" x2="1090.4" y2="634" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 38%, transparent);stroke-width:3"/>
+    <line x1="957.5" y1="656" x2="1122.5" y2="656" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 38%, transparent);stroke-width:3"/>
+    <line x1="948.2" y1="678" x2="1131.8" y2="678" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 38%, transparent);stroke-width:3"/>
+    <line x1="964.3" y1="700" x2="1115.7" y2="700" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 38%, transparent);stroke-width:3"/>
+    <line x1="1001.2" y1="722" x2="1078.8" y2="722" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 38%, transparent);stroke-width:3"/>
+  </g>
+  <!-- strands: primary with a misregistered-print offset copy -->
+  <path d="M1082.8 -20 L1094.1 -14 L1104.3 -8 L1113.1 -2 L1120.4 4 L1126 10 L1129.8 16 L1131.8 22 L1131.8 28 L1129.8 34 L1126 40 L1120.4 46 L1113.1 52 L1104.3 58 L1094.1 64 L1082.8 70 L1070.5 76 L1057.7 82 L1044.4 88 L1031.1 94 L1018 100 L1005.3 106 L993.4 112 L982.4 118 L972.6 124 L964.3 130 L957.5 136 L952.5 142 L949.3 148 L948 154 L948.7 160 L951.2 166 L955.7 172 L961.8 178 L969.7 184 L979 190 L989.6 196 L1001.2 202 L1013.7 208 L1026.7 214 L1040 220 L1053.3 226 L1066.3 232 L1078.8 238 L1090.4 244 L1101 250 L1110.3 256 L1118.2 262 L1124.3 268 L1128.8 274 L1131.3 280 L1132 286 L1130.7 292 L1127.5 298 L1122.5 304 L1115.7 310 L1107.4 316 L1097.6 322 L1086.6 328 L1074.7 334 L1062 340 L1048.9 346 L1035.6 352 L1022.3 358 L1009.5 364 L997.2 370 L985.9 376 L975.7 382 L966.9 388 L959.6 394 L954 400 L950.2 406 L948.2 412 L948.2 418 L950.2 424 L954 430 L959.6 436 L966.9 442 L975.7 448 L985.9 454 L997.2 460 L1009.5 466 L1022.3 472 L1035.6 478 L1048.9 484 L1062 490 L1074.7 496 L1086.6 502 L1097.6 508 L1107.4 514 L1115.7 520 L1122.5 526 L1127.5 532 L1130.7 538 L1132 544 L1131.3 550 L1128.8 556 L1124.3 562 L1118.2 568 L1110.3 574 L1101 580 L1090.4 586 L1078.8 592 L1066.3 598 L1053.3 604 L1040 610 L1026.7 616 L1013.7 622 L1001.2 628 L989.6 634 L979 640 L969.7 646 L961.8 652 L955.7 658 L951.2 664 L948.7 670 L948 676 L949.3 682 L952.5 688 L957.5 694 L964.3 700 L972.6 706 L982.4 712 L993.4 718 L1005.3 724 L1018 730 L1031.1 736" transform="translate(5 6)" fill="none" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent);stroke-width:2"/>
+  <path d="M1082.8 -20 L1094.1 -14 L1104.3 -8 L1113.1 -2 L1120.4 4 L1126 10 L1129.8 16 L1131.8 22 L1131.8 28 L1129.8 34 L1126 40 L1120.4 46 L1113.1 52 L1104.3 58 L1094.1 64 L1082.8 70 L1070.5 76 L1057.7 82 L1044.4 88 L1031.1 94 L1018 100 L1005.3 106 L993.4 112 L982.4 118 L972.6 124 L964.3 130 L957.5 136 L952.5 142 L949.3 148 L948 154 L948.7 160 L951.2 166 L955.7 172 L961.8 178 L969.7 184 L979 190 L989.6 196 L1001.2 202 L1013.7 208 L1026.7 214 L1040 220 L1053.3 226 L1066.3 232 L1078.8 238 L1090.4 244 L1101 250 L1110.3 256 L1118.2 262 L1124.3 268 L1128.8 274 L1131.3 280 L1132 286 L1130.7 292 L1127.5 298 L1122.5 304 L1115.7 310 L1107.4 316 L1097.6 322 L1086.6 328 L1074.7 334 L1062 340 L1048.9 346 L1035.6 352 L1022.3 358 L1009.5 364 L997.2 370 L985.9 376 L975.7 382 L966.9 388 L959.6 394 L954 400 L950.2 406 L948.2 412 L948.2 418 L950.2 424 L954 430 L959.6 436 L966.9 442 L975.7 448 L985.9 454 L997.2 460 L1009.5 466 L1022.3 472 L1035.6 478 L1048.9 484 L1062 490 L1074.7 496 L1086.6 502 L1097.6 508 L1107.4 514 L1115.7 520 L1122.5 526 L1127.5 532 L1130.7 538 L1132 544 L1131.3 550 L1128.8 556 L1124.3 562 L1118.2 568 L1110.3 574 L1101 580 L1090.4 586 L1078.8 592 L1066.3 598 L1053.3 604 L1040 610 L1026.7 616 L1013.7 622 L1001.2 628 L989.6 634 L979 640 L969.7 646 L961.8 652 L955.7 658 L951.2 664 L948.7 670 L948 676 L949.3 682 L952.5 688 L957.5 694 L964.3 700 L972.6 706 L982.4 712 L993.4 718 L1005.3 724 L1018 730 L1031.1 736" fill="none" style="stroke:var(--teal,#0d9488);stroke-width:4" stroke-linecap="round"/>
+  <path d="M997.2 -20 L985.9 -14 L975.7 -8 L966.9 -2 L959.6 4 L954 10 L950.2 16 L948.2 22 L948.2 28 L950.2 34 L954 40 L959.6 46 L966.9 52 L975.7 58 L985.9 64 L997.2 70 L1009.5 76 L1022.3 82 L1035.6 88 L1048.9 94 L1062 100 L1074.7 106 L1086.6 112 L1097.6 118 L1107.4 124 L1115.7 130 L1122.5 136 L1127.5 142 L1130.7 148 L1132 154 L1131.3 160 L1128.8 166 L1124.3 172 L1118.2 178 L1110.3 184 L1101 190 L1090.4 196 L1078.8 202 L1066.3 208 L1053.3 214 L1040 220 L1026.7 226 L1013.7 232 L1001.2 238 L989.6 244 L979 250 L969.7 256 L961.8 262 L955.7 268 L951.2 274 L948.7 280 L948 286 L949.3 292 L952.5 298 L957.5 304 L964.3 310 L972.6 316 L982.4 322 L993.4 328 L1005.3 334 L1018 340 L1031.1 346 L1044.4 352 L1057.7 358 L1070.5 364 L1082.8 370 L1094.1 376 L1104.3 382 L1113.1 388 L1120.4 394 L1126 400 L1129.8 406 L1131.8 412 L1131.8 418 L1129.8 424 L1126 430 L1120.4 436 L1113.1 442 L1104.3 448 L1094.1 454 L1082.8 460 L1070.5 466 L1057.7 472 L1044.4 478 L1031.1 484 L1018 490 L1005.3 496 L993.4 502 L982.4 508 L972.6 514 L964.3 520 L957.5 526 L952.5 532 L949.3 538 L948 544 L948.7 550 L951.2 556 L955.7 562 L961.8 568 L969.7 574 L979 580 L989.6 586 L1001.2 592 L1013.7 598 L1026.7 604 L1040 610 L1053.3 616 L1066.3 622 L1078.8 628 L1090.4 634 L1101 640 L1110.3 646 L1118.2 652 L1124.3 658 L1128.8 664 L1131.3 670 L1132 676 L1130.7 682 L1127.5 688 L1122.5 694 L1115.7 700 L1107.4 706 L1097.6 712 L1086.6 718 L1074.7 724 L1062 730 L1048.9 736" fill="none" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:4" stroke-linecap="round"/>
+  <!-- crossing nodes + dot accents -->
+  <circle cx="1040" cy="90" r="9" style="fill:var(--surface,#ffffff);stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <circle cx="1040" cy="220" r="9" style="fill:var(--surface,#ffffff);stroke:var(--coral,#ef4444);stroke-width:3"/>
+  <circle cx="1040" cy="350" r="9" style="fill:var(--surface,#ffffff);stroke:var(--green,#10b981);stroke-width:3"/>
+  <circle cx="1040" cy="480" r="9" style="fill:var(--surface,#ffffff);stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <circle cx="1040" cy="610" r="9" style="fill:var(--surface,#ffffff);stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <circle cx="790" cy="96" r="5" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, transparent)"/>
+  <circle cx="760" cy="132" r="3" style="fill:color-mix(in srgb, var(--teal,#0d9488) 70%, transparent)"/>
+  <circle cx="812" cy="600" r="4" style="fill:color-mix(in srgb, var(--coral,#ef4444) 70%, transparent)"/>
+  <circle cx="770" cy="640" r="3" style="fill:color-mix(in srgb, var(--teal,#0d9488) 70%, transparent)"/>
+  <circle cx="1160" cy="46" r="4" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, transparent)"/>
+</svg>

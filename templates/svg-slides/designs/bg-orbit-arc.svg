@@ -1,0 +1,27 @@
+<!--
+html-template-pack · svg-slides · bg-orbit-arc
+  Background design (1280x720, decor only, zero slots):
+  plain field with two large orbit arcs (solid teal with an offset copy,
+  dashed outer) and a tinted core sweeping across the top-left corner,
+  satellite dots riding the arcs and a dashed diagonal guide line. Kin of
+  the deck chrome closing-orbit.
+  Keeps y ≥ 676 clear, so the deck builder adds the native footer fields.
+  Content zone: bottom-right (x 540-1220, y 260-640) is clear.
+  Tokens: teal amber coral text-muted border-bright surface.
+  Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with two large orbit arcs and a dashed guide line sweeping across the top-left corner, satellite dots riding the arcs, the bottom right clear" data-decor-only="true" data-native-footer="true" style="width:100%;height:auto">
+  <title>Orbit arc background design</title>
+  <rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/>
+  <!-- orbit arcs sweeping across the top-left corner -->
+  <circle cx="-140" cy="-180" r="330" style="fill:color-mix(in srgb, var(--teal,#0d9488) 7%, transparent)"/>
+  <circle cx="-140" cy="-180" r="560" transform="translate(5 6)" fill="none" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke-width:2"/>
+  <circle cx="-140" cy="-180" r="560" fill="none" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 55%, transparent);stroke-width:3"/>
+  <circle cx="-140" cy="-180" r="720" fill="none" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-dasharray="3 10" stroke-linecap="round"/>
+  <line x1="0" y1="560" x2="760" y2="0" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 28%, transparent);stroke-width:2" stroke-dasharray="8 10" stroke-linecap="round"/>
+  <circle cx="156.8" cy="294.9" r="12" style="fill:var(--surface,#ffffff);stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <circle cx="354.5" cy="82.9" r="8" style="fill:var(--teal,#0d9488)"/>
+  <circle cx="175.6" cy="467.1" r="9" style="fill:var(--coral,#ef4444)"/>
+  <circle cx="427.4" cy="263.3" r="7" style="fill:var(--teal,#0d9488)"/>
+  <circle cx="97.4" cy="49.2" r="10" style="fill:var(--surface,#ffffff);stroke:var(--teal,#0d9488);stroke-width:3"/>
+</svg>

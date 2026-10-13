@@ -1,10 +1,13 @@
-# svg-slides: hand-drawn slide designs + slot-marker composer (v0.21.0)
+# svg-slides: hand-drawn slide designs + slot-marker composer (v0.21.0; backgrounds v0.22.0)
 
 Whole **slide designs** drawn as SVG in the svg-library look (rounded cards, misregistered-print
 offset copies, token-driven colour), with **slots** marked for text and for svg-library graphics.
 `bin/compose-slide.js` fills the slots and bakes ONE renderer-safe SVG slide; the same run writes a
 sidecar that `bin/make-pptx-deck.py` turns into an editable PPTX slide (the design as a full-bleed
 picture, the text as **native text boxes**).
+
+A second category, **background designs** (`bg-*`, v0.22.0), are slot-free full-bleed stages for
+graphic-only or native-text slides (see *Background designs*).
 
 Use this when a deck needs real slide **design**, not just layout chrome. The house PPTX layouts
 (`templates/deck/`) stay the right choice for plain bullets, tables and KPI slides, and both kinds mix
@@ -82,7 +85,7 @@ leave room for that.
 | Gate | Fires when |
 |---|---|
 | `DESIGN-UNKNOWN` | the design name is not in `designs/` (the message lists the known ones) |
-| `DESIGN-INVALID` | slot markup is broken: duplicate slot, box outside the canvas, missing budget, unknown kind; or the file breaks the svg-library hard rules |
+| `DESIGN-INVALID` | slot markup is broken: duplicate slot, box outside the canvas, missing budget, unknown kind; a slot design with no slots or a decor-only background with any; or the file breaks the svg-library hard rules |
 | `PAYLOAD-MALFORMED` | the payload is not a JSON object, a text slot is not a string / string array, a graphic slot is not a string |
 | `SLOT-UNKNOWN` | a payload key matches no slot |
 | `SLOT-MISSING` | a required slot has no payload |
@@ -202,6 +205,49 @@ archetypes. Composition takes cues from ppt-design.com's master-layout set (cove
 quote, content, thank-you) and from the v0.19.0 deck chrome. The helix, molecule ring and orbit
 motifs are re-drawn slot-ready from `templates/deck/chrome/`. No external assets are used.
 
+## Background designs (v0.22.0)
+
+Eight **decor-only stages**: full-bleed backgrounds with **zero slots**. They carry no text; the
+content (svg-library graphics, native text, a composed figure) goes in the documented **content
+zone**, and the motif hugs one edge, corner or band so it never fights a headline there (the
+asymmetric "anchor, then step back" principle of SlidesCorner's science backgrounds). One background
+can carry a whole deck: title, section and data slides.
+
+| # | Design | Motif | Content zone (clear) | Native footer |
+|---|---|---|---|---|
+| 1 | `bg-helix-field` | large DNA double helix climbing the right edge, code-stream dash columns, dot accents | left 55%: x 60–700, y 60–660 | no |
+| 2 | `bg-mosaic-triangles` | teal / amber / coral / deep-blue triangle mosaic stepping into the bottom-right corner, top-left accent rule | upper left: x 80–1000, y 120–420 (x 80–560 down to y 640) | no |
+| 3 | `bg-flow-dashes` | six faint dashed topographic contours (one amber) across the lower third | upper zone: x 60–1220, y 60–460 | no |
+| 4 | `bg-concentric-vortex` | dashed concentric rings from the top-right corner, three satellite dots | centre-left: x 60–760, y 80–660 | yes |
+| 5 | `bg-dot-wash` | teal wash of layered translucent ellipses, dot grid fading toward the bottom left, glowing accent cluster | left 55%: x 60–680, y 80–640 | yes |
+| 6 | `bg-molecule-scatter` | faint hex-ring molecules and atom clusters along the top and right edges | centre + left: x 60–1000, y 180–640 | yes |
+| 7 | `bg-orbit-arc` | two orbit arcs + dashed guide line across the top-left corner, satellite dots | bottom right: x 540–1220, y 260–640 | yes |
+| 8 | `bg-slat-panel` | teal-tinted left panel (28%) with vertical slats and dash columns, thin border rule | right ~65%: x 420–1220, y 60–660 | no |
+
+**Contract.** The root carries `data-decor-only="true"` and an explicit `data-native-footer`
+(`"true"` designs keep y ≥ 676 clear). The design opens with a full-bleed painted
+`<rect x="0" y="0" width="1280" height="720">`, so a dark bake is dark edge to edge and a light bake
+light. The header comment names the **content zone** and the tokens. All svg-library hard rules
+apply; washes are layered `color-mix(…, transparent)` shapes, never gradients or filters. A
+decor-only design with any slot is `DESIGN-INVALID`.
+
+**Compose.** The payload is empty, inline or from a file:
+
+```
+node bin/compose-slide.js bg-helix-field --payload '{}' --theme dark --out slides/
+#  → slides/bg-helix-field.svg / .bg.svg (identical: there is no text to lift out)
+#    slides/bg-helix-field.slides.json  ("text": [], "graphics": [], "decorOnly": true)
+```
+
+Any payload key is `SLOT-UNKNOWN`. Both files are still written, so the deck path stays uniform.
+
+**Deck.** `{"design": "bg-helix-field", "payload": {}}` becomes a background-only slide: one
+full-bleed picture (marked decorative), **zero** text boxes, and footer fields per the design's flag.
+Composition references (inspiration only, no assets): SlidesCorner's "Professional Science PPT
+Background" (asymmetric dark field, helix on one edge), Craftwork's flow-pattern pack (dashed
+contours, dash vortex, dot fields, slats) and ppt-design.com's geometric cover themes (triangle
+mosaics).
+
 ## Adding a new design
 
 0. **Research first.** Look at 2–4 real slide examples of the archetype before drawing. Fetchable
@@ -219,3 +265,7 @@ motifs are re-drawn slot-ready from `templates/deck/chrome/`. No external assets
 4. Run `node bin/build-slides-gallery.js` and `python3 test/smoke-test-slides.py`. Open
    `gallery.html` and check light and dark.
 5. If it is generally useful, mention it in SKILL.md's slide-designs section.
+
+A new **background**: same steps, but the root says `data-decor-only="true"` plus an explicit
+`data-native-footer`, there are no slots, `samples.json` gets `{}`, the header comment has a
+`Content zone:` line, and the row goes in the *Background designs* table.

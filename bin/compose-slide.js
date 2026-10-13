@@ -8,7 +8,8 @@
  *                               [--theme light|dark] [--out DIR] [--name NAME]
  *
  *   design    a name from templates/svg-slides/designs/ (e.g. title-hero) or a path
- *   payload   JSON object keyed by slot name:
+ *   payload   JSON object keyed by slot name (a file, or inline JSON such as '{}';
+ *             decor-only backgrounds, data-decor-only="true", have no slots and take {}):
  *               text slot    -> "one line" or ["line 1", "line 2"] (no auto-wrap:
  *                               you break the lines, the composer checks the budget)
  *               graphic slot -> an svg-library name ("flow-pipeline") or a path to
@@ -98,8 +99,11 @@ function parseDesign(src, label = 'design') {
     slots.push(s);
     re.lastIndex = s.end;
   }
-  if (!slots.length) gate('DESIGN-INVALID', `${label}: no data-slot groups`);
-  return { src, slots, nativeFooter: !/<svg[^>]*data-native-footer="false"/.test(src) };
+  // background (decor-only) designs carry no slots at all; every other design needs one
+  const decorOnly = /<svg[^>]*data-decor-only="true"/.test(src);
+  if (decorOnly && slots.length) gate('DESIGN-INVALID', `${label}: decor-only design has slot "${slots[0].name}" (backgrounds take no slots)`);
+  if (!decorOnly && !slots.length) gate('DESIGN-INVALID', `${label}: no data-slot groups`);
+  return { src, slots, decorOnly, nativeFooter: !/<svg[^>]*data-native-footer="false"/.test(src) };
 }
 
 function loadDesign(ref) {
@@ -155,7 +159,7 @@ function renderGraphic(s, ref) {
 function compose(design, payload) {
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) gate('PAYLOAD-MALFORMED', 'payload must be a JSON object keyed by slot name');
   const names = design.slots.map((s) => s.name);
-  for (const k of Object.keys(payload)) if (!names.includes(k)) gate('SLOT-UNKNOWN', `payload key "${k}" (design slots: ${names.join(', ')})`);
+  for (const k of Object.keys(payload)) if (!names.includes(k)) gate('SLOT-UNKNOWN', `payload key "${k}" (design slots: ${names.join(', ') || 'none, decor-only background'})`);
   const text = [], graphics = [];
   let svg = '', bg = '', at = 0;
   for (const s of design.slots) {
@@ -177,7 +181,7 @@ function compose(design, payload) {
     bg += head + bgInner + '</g>';
     at = s.end;
   }
-  const clean = (x) => (x + design.src.slice(at)).replace(/\s+data-(slot[\w-]*|native-footer)="[^"]*"/g, '');
+  const clean = (x) => (x + design.src.slice(at)).replace(/\s+data-(slot[\w-]*|native-footer|decor-only)="[^"]*"/g, '');
   return { svg: clean(svg), bg: clean(bg), text, graphics, nativeFooter: design.nativeFooter };
 }
 
@@ -198,7 +202,7 @@ function composeToFiles(ref, payload, theme = 'light', out = 'slides', name) {
   fs.writeFileSync(files.svg, bake(c.svg, theme));
   fs.writeFileSync(files.bg, bake(c.bg, theme));
   const sidecar = {
-    design: path.basename(ref, '.svg'), theme, width: W, height: H, nativeFooter: c.nativeFooter,
+    design: path.basename(ref, '.svg'), theme, width: W, height: H, nativeFooter: c.nativeFooter, decorOnly: design.decorOnly,
     svg: path.basename(files.svg), background: path.basename(files.bg),
     text: c.text.map((t) => ({
       slot: t.slot, x: t.box[0], y: t.box[1], w: t.box[2], h: t.box[3], lines: t.lines,
@@ -223,13 +227,14 @@ if (require.main === module) {
     else refs.push(args[i]);
   }
   if (refs.length !== 1 || !payloadFile) {
-    console.error('usage: node bin/compose-slide.js <design|path.svg> --payload payload.json [--theme light|dark] [--out DIR] [--name NAME]');
+    console.error('usage: node bin/compose-slide.js <design|path.svg> --payload payload.json|JSON [--theme light|dark] [--out DIR] [--name NAME]');
     console.error(`designs: ${listDesigns().join(', ')}`);
     process.exit(2);
   }
   try {
     let payload;
-    try { payload = JSON.parse(fs.readFileSync(payloadFile, 'utf8')); } catch (e) { gate('PAYLOAD-MALFORMED', `${payloadFile}: ${e.message}`); }
+    // --payload takes a file, or inline JSON ('{}' for a decor-only background)
+    try { payload = JSON.parse(payloadFile.trim().startsWith('{') ? payloadFile : fs.readFileSync(payloadFile, 'utf8')); } catch (e) { gate('PAYLOAD-MALFORMED', `${payloadFile}: ${e.message}`); }
     const f = composeToFiles(refs[0], payload, theme, out, name);
     console.log([f.svg, f.bg, f.json].join('\n'));
   } catch (e) {

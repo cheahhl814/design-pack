@@ -1,7 +1,7 @@
 ---
 name: html-template-pack
 description: 'Four self-contained HTML templates — report (5-tab sticky sidebar, offset-anchored annotations, JSON export), slide deck (prev/next nav, inline annotations, JSON export), bento one-pager (2026 bento-grid snapshot briefing, full v2 annotation engine), and htmx dashboard (topbar, KPI row, sparkline, table, demo-mode mock backend). Pick report for ≥3 long sections, slide for ≤12 beats, bento for a one-page briefing, dashboard for live data. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", "one-pager", "briefing", "recap page", "SVG diagram", "infographic", "ecosystem" (HTML or standalone .svg), or MD/DOCX/PDF → HTML conversion. Ships a 94-template hand-drawn SVG diagram library + a zero-dep CSS graphics pack. Report/slide/bento ship the v2 annotation system; dashboard omits it (live data is not a stable anchor). All four are dark-first with glass chrome and density + font-size toggles.'
-version: 0.21.1
+version: 0.22.0
 updated: "2026-10-13"
 triggers:
   - "HTML report"
@@ -355,12 +355,15 @@ Never put slide titles in free textboxes, and never bake text (titles, bullets, 
 
 **Routing:** decks that need real slide **design**, not just layout chrome → `templates/svg-slides` + `bin/compose-slide.js` → the `make-pptx-deck.py` `design` kind. Full spec: `templates/svg-slides/README.md`. Six designs ship: `title-hero`, `section-break`, `big-statement`, `content-two-col`, `full-diagram`, `closing`. Preview them in `templates/svg-slides/gallery.html`.
 
+**Background routing (v0.22.0):** stage backgrounds for **graphic-only or native-text slides** → a `bg-*` background design (`data-decor-only`, zero slots, composed with `{}`). Eight ship: `bg-helix-field`, `bg-mosaic-triangles`, `bg-flow-dashes`, `bg-concentric-vortex`, `bg-dot-wash`, `bg-molecule-scatter`, `bg-orbit-arc`, `bg-slat-panel`. Each documents a clear **content zone**; put svg-library graphics or native text there, never across the motif. In a deck, `{"design": "bg-helix-field", "payload": {}}` is a picture-only slide (no text boxes; footer fields per the design's flag). Gallery section "Background designs".
+
 1. Pick a design and read its slot table (name · kind · box · size · **budget** = lines × chars per line).
 2. Write the payload. Text slots take a string or an array of lines. **You break the lines**, since SVG cannot wrap. Graphic slots take an svg-library name or an id-free `.svg` path.
 3. SVG out: `node <skill>/bin/compose-slide.js <design> --payload p.json [--theme light|dark] --out <dir>`. This writes `<name>.svg` (finished, baked, 1280×720), `<name>.bg.svg` (no text) and `<name>.slides.json` (native-text contract).
 4. PPTX out: put `{"design": "<name>", "payload": {...}}` slides in the deck spec. They become a full-bleed picture of the text-free background plus one native text box per text slot (theme fonts, baked colour, exact geometry). Footer fields are added unless the design paints its own bottom edge.
 5. When a gate fires (`TEXT-OVERFLOW`, `SLOT-UNKNOWN`, `SLOT-MISSING`, …), **shorten or re-break the text**. Never edit a design's budget to make a payload fit.
-6. A new archetype? Follow *Adding a new design* in the svg-slides README: research 2–4 examples first, draw the design slot-marked, add a sample payload and a slot table, then rebuild the gallery and run the tests.
+6. A background slide: `node <skill>/bin/compose-slide.js bg-<name> --payload '{}' --theme dark --out <dir>`. Any payload key is `SLOT-UNKNOWN`.
+7. A new archetype? Follow *Adding a new design* in the svg-slides README: research 2–4 examples first, draw the design slot-marked, add a sample payload and a slot table, then rebuild the gallery and run the tests.
 
 ## Pipeline (Decide → Copy → Adapt → Render → Wire annotation / backend)
 
@@ -444,6 +447,7 @@ Positioning differs: report/slide float the button `position: fixed` top-right; 
   - **Chrome:** decor SVGs (`templates/deck/chrome/`) are drawn onto the master/layouts and flagged decorative.
   - **`--base`:** corporate templates are supported, with layout fallback by type.
   - **QA:** structural checks in `test/smoke-test-pptx-deck.py` (wired into `run-all.js`), a proxy preview in `bin/pptx-preview.py` (HTML + headless Chrome), and a documented manual real-renderer gate per theme release (no Office or LibreOffice in CI).
+- v0.22.0 svg-slides background designs (2026-10-14) — a second design category: eight full-bleed, slot-free `bg-*` stages (`bg-helix-field`, `bg-mosaic-triangles`, `bg-flow-dashes`, `bg-concentric-vortex`, `bg-dot-wash`, `bg-molecule-scatter`, `bg-orbit-arc`, `bg-slat-panel`), each with a documented content zone and an explicit `data-native-footer`. `compose-slide.js` accepts `data-decor-only="true"` designs with zero slots (any slot → DESIGN-INVALID, any payload key → SLOT-UNKNOWN), takes inline `--payload '{}'`, and adds `decorOnly` to the sidecar. The gallery splits into "Slide designs" / "Background designs". `smoke-test-slides.py` adds decor QA (zero slots, full-bleed paint light/dark, content zone), mutants, the empty-payload path and picture-only deck slides.
 - v0.21.1 svg-slides polish (2026-10-13) — eyeball-review fixes: `content-two-col` cards now fill the slide height (body 250 px, callout at 452, figure frame 384 px, caption at 580); `full-diagram` graphic panel narrowed to 900 px so an 800 x 450 component fills it (no letterbox) with the takeaway moved to a right rail card (6 x 24 ch); `section-break` number panel brightened for the dark theme, chapter number now mixes toward --text.
 - v0.21.0 SVG slide-design library + slot-marker composer (2026-10-14).
   - **Designs:** `templates/svg-slides/` holds six hand-drawn 1280×720 slide designs in the svg-library look: `title-hero`, `section-break`, `big-statement`, `content-two-col`, `full-diagram`, `closing`. Slots are `data-slot` groups (never ids) that carry a box, a type and a text budget, and each design previews as a complete slide.

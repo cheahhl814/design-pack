@@ -1,0 +1,34 @@
+<!--
+html-template-pack · svg-slides · bg-concentric-vortex
+  Background design (1280x720, decor only, zero slots):
+  plain field with nine dashed concentric rings radiating from the top-right
+  corner (teal, fading outward, one amber ring) and three accent satellite
+  dots riding the rings. After Craftwork's dash vortex.
+  Keeps y ≥ 676 clear, so the deck builder adds the native footer fields.
+  Content zone: centre-left and bottom (x 60-760, y 80-660; x 60-1220 below y 600) is clear.
+  Tokens: teal amber coral surface.
+  Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with dashed concentric rings radiating from the top-right corner and three accent satellite dots on the rings, the left and lower area clear" data-decor-only="true" data-native-footer="true" style="width:100%;height:auto">
+  <title>Concentric vortex background design</title>
+  <rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/>
+  <!-- dashed concentric rings radiating from the top-right corner -->
+  <g fill="none" stroke-linecap="round">
+    <circle cx="1280" cy="0" r="70" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 60%, transparent);stroke-width:2" stroke-dasharray="3 9"/>
+    <circle cx="1280" cy="0" r="132" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 55%, transparent);stroke-width:2" stroke-dasharray="12 10"/>
+    <circle cx="1280" cy="0" r="194" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 50%, transparent);stroke-width:2" stroke-dasharray="2 8"/>
+    <circle cx="1280" cy="0" r="256" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 51%, transparent);stroke-width:2" stroke-dasharray="18 12"/>
+    <circle cx="1280" cy="0" r="318" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 40%, transparent);stroke-width:2" stroke-dasharray="6 10"/>
+    <circle cx="1280" cy="0" r="380" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 35%, transparent);stroke-width:2" stroke-dasharray="3 9"/>
+    <circle cx="1280" cy="0" r="442" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent);stroke-width:2" stroke-dasharray="12 10"/>
+    <circle cx="1280" cy="0" r="504" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 25%, transparent);stroke-width:2" stroke-dasharray="2 8"/>
+    <circle cx="1280" cy="0" r="566" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke-width:2" stroke-dasharray="18 12"/>
+  </g>
+  <circle cx="1280" cy="0" r="70" style="fill:color-mix(in srgb, var(--teal,#0d9488) 12%, transparent)"/>
+  <circle cx="1048" cy="108.2" r="16" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, transparent)"/>
+  <circle cx="1048" cy="108.2" r="9" style="fill:var(--teal,#0d9488)"/>
+  <circle cx="1025.7" cy="282.4" r="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, transparent)"/>
+  <circle cx="1025.7" cy="282.4" r="7" style="fill:var(--amber,#f59e0b)"/>
+  <circle cx="795.5" cy="138.9" r="13" style="fill:color-mix(in srgb, var(--coral,#ef4444) 16%, transparent)"/>
+  <circle cx="795.5" cy="138.9" r="6" style="fill:var(--coral,#ef4444)"/>
+</svg>

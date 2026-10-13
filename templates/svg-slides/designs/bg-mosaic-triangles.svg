@@ -1,0 +1,74 @@
+<!--
+html-template-pack · svg-slides · bg-mosaic-triangles
+  Background design (1280x720, decor only, zero slots):
+  clean field with a geometric triangle mosaic (alternating up/down
+  triangles, teal/amber/coral/deep-blue tints) stepping down into the
+  bottom-right corner over four staggered rows, a dotted rule above it and a
+  short teal + amber accent rule at the top left. After ppt-design.com's
+  geometric cover themes.
+  Paints its own bottom edge, so the deck builder adds no native footer fields.
+  Content zone: upper-left (x 80-1000, y 120-420, and x 80-560 down to y 640) is clear.
+  Tokens: teal amber coral deep-blue text border-bright surface.
+  Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with a mosaic of teal, amber and coral tinted triangles stepping into the bottom-right corner and a short accent rule at the top left" data-decor-only="true" data-native-footer="false" style="width:100%;height:auto">
+  <title>Triangle mosaic background design</title>
+  <rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/>
+  <!-- triangle mosaic band stepping into the bottom-right corner -->
+  <g stroke-linejoin="round">
+    <polygon points="1080,510 1120,440 1160,510" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 34%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1120,440 1200,440 1160,510" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 30%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1160,510 1200,440 1240,510" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 44%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1200,440 1280,440 1240,510" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 24%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1240,510 1280,440 1320,510" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 24%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1280,440 1360,440 1320,510" style="fill:color-mix(in srgb, var(--teal,#0d9488) 54%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="880,510 960,510 920,580" style="fill:color-mix(in srgb, var(--teal,#0d9488) 44%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="920,580 960,510 1000,580" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 14%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="960,510 1040,510 1000,580" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1000,580 1040,510 1080,580" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 44%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1040,510 1120,510 1080,580" style="fill:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1080,580 1120,510 1160,580" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 44%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1120,510 1200,510 1160,580" style="fill:color-mix(in srgb, var(--coral,#ef4444) 44%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1160,580 1200,510 1240,580" style="fill:color-mix(in srgb, var(--teal,#0d9488) 44%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1200,510 1280,510 1240,580" style="fill:color-mix(in srgb, var(--teal,#0d9488) 54%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1240,580 1280,510 1320,580" style="fill:color-mix(in srgb, var(--teal,#0d9488) 36%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1280,510 1360,510 1320,580" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 54%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="760,650 800,580 840,650" style="fill:color-mix(in srgb, var(--teal,#0d9488) 44%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="800,580 880,580 840,650" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="840,650 880,580 920,650" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="880,580 960,580 920,650" style="fill:color-mix(in srgb, var(--teal,#0d9488) 20%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="920,650 960,580 1000,650" style="fill:color-mix(in srgb, var(--teal,#0d9488) 34%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="960,580 1040,580 1000,650" style="fill:color-mix(in srgb, var(--teal,#0d9488) 34%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1000,650 1040,580 1080,650" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 26%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1040,580 1120,580 1080,650" style="fill:color-mix(in srgb, var(--coral,#ef4444) 26%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1080,650 1120,580 1160,650" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1120,580 1200,580 1160,650" style="fill:color-mix(in srgb, var(--teal,#0d9488) 24%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1160,650 1200,580 1240,650" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1200,580 1280,580 1240,650" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 44%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1240,650 1280,580 1320,650" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 44%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1280,580 1360,580 1320,650" style="fill:color-mix(in srgb, var(--teal,#0d9488) 44%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="560,650 640,650 600,720" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="600,720 640,650 680,720" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 26%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="640,650 720,650 680,720" style="fill:color-mix(in srgb, var(--teal,#0d9488) 20%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="680,720 720,650 760,720" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 44%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="720,650 800,650 760,720" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 20%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="760,720 800,650 840,720" style="fill:color-mix(in srgb, var(--teal,#0d9488) 44%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="800,650 880,650 840,720" style="fill:color-mix(in srgb, var(--coral,#ef4444) 34%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="840,720 880,650 920,720" style="fill:color-mix(in srgb, var(--teal,#0d9488) 20%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="880,650 960,650 920,720" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="920,720 960,650 1000,720" style="fill:color-mix(in srgb, var(--coral,#ef4444) 44%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="960,650 1040,650 1000,720" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 34%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1000,720 1040,650 1080,720" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 34%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1040,650 1120,650 1080,720" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 26%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1080,720 1120,650 1160,720" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 20%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1120,650 1200,650 1160,720" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 54%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1160,720 1200,650 1240,720" style="fill:color-mix(in srgb, var(--teal,#0d9488) 44%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1200,650 1280,650 1240,720" style="fill:color-mix(in srgb, var(--teal,#0d9488) 24%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1240,720 1280,650 1320,720" style="fill:color-mix(in srgb, var(--teal,#0d9488) 54%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+    <polygon points="1280,650 1360,650 1320,720" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 44%, transparent);stroke:var(--surface,#ffffff);stroke-width:2"/>
+  </g>
+  <!-- thin accent rule + corner tick, top left -->
+  <line x1="80" y1="96" x2="176" y2="96" style="stroke:var(--teal,#0d9488);stroke-width:6" stroke-linecap="round"/>
+  <line x1="192" y1="96" x2="212" y2="96" style="stroke:var(--amber,#f59e0b);stroke-width:6" stroke-linecap="round"/>
+  <line x1="600" y1="428" x2="1280" y2="428" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-dasharray="2 10" stroke-linecap="round"/>
+</svg>
