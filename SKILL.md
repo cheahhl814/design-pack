@@ -1,7 +1,7 @@
 ---
 name: html-template-pack
-description: 'Four self-contained HTML templates — report (5-tab sticky sidebar, offset-anchored annotations, JSON export), slide deck (prev/next nav, inline annotations, JSON export), bento one-pager (2026 bento-grid snapshot briefing, full v2 annotation engine), and htmx dashboard (topbar, KPI row, sparkline, table, demo-mode mock backend). Pick report for ≥3 long sections, slide for ≤12 beats, bento for a one-page briefing, dashboard for live data. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", "one-pager", "briefing", "recap page", "SVG diagram", "infographic", "ecosystem" (HTML or standalone .svg), or MD/DOCX/PDF → HTML conversion. Ships a 93-template hand-drawn SVG diagram library + a zero-dep CSS graphics pack. Report/slide/bento ship the v2 annotation system; dashboard omits it (live data is not a stable anchor). All four are dark-first with glass chrome and density + font-size toggles.'
-version: 0.19.0
+description: 'Four self-contained HTML templates — report (5-tab sticky sidebar, offset-anchored annotations, JSON export), slide deck (prev/next nav, inline annotations, JSON export), bento one-pager (2026 bento-grid snapshot briefing, full v2 annotation engine), and htmx dashboard (topbar, KPI row, sparkline, table, demo-mode mock backend). Pick report for ≥3 long sections, slide for ≤12 beats, bento for a one-page briefing, dashboard for live data. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", "one-pager", "briefing", "recap page", "SVG diagram", "infographic", "ecosystem" (HTML or standalone .svg), or MD/DOCX/PDF → HTML conversion. Ships a 94-template hand-drawn SVG diagram library + a zero-dep CSS graphics pack. Report/slide/bento ship the v2 annotation system; dashboard omits it (live data is not a stable anchor). All four are dark-first with glass chrome and density + font-size toggles.'
+version: 0.20.0
 updated: "2026-10-13"
 triggers:
   - "HTML report"
@@ -98,9 +98,9 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 │   ├── graphics/
 │   │   └── chartz-embed.md                     ← v0.10.0 how to embed chartz-rendered data charts (iframe pattern, single-file exception)
 │   │   └── svg-library/
-│   │       ├── README.md                       ← v0.16.0 SVG diagram library: conventions + catalog (93 components)
+│   │       ├── README.md                       ← v0.16.0 SVG diagram library: conventions + catalog (94 components)
 │   │       ├── gallery.html                    ← generated preview page (node bin/build-svg-gallery.js)
-│   │       └── svg/                            ← canonical .svg component files (93 infographic templates)
+│   │       └── svg/                            ← canonical .svg component files (94 infographic templates)
 │   ├── report/
 │   │   ├── highlight-annotate.js               ← v2 offset-anchored annotations (602 lines)
 │   │   ├── annotate.css                        ← annotation styles (216 lines)
@@ -215,7 +215,7 @@ In **v0.8.0**, all four templates gain a shared **zero-dependency graphics pack*
 
 ## SVG diagram library (`features/graphics/svg-library/` + `bin/build-svg-gallery.js` + `bin/svg-export.js`)
 
-Grown over three releases: **10 in v0.11.0** → 20 in v0.12.0 → **40 in v0.13.0** → 41 (metro-map, after the nf-core pipeline metro maps) → 51 (10 layouts from Figma/Venngage/Canva/Pinterest infographic galleries) → 53 (two illustrative maps: dotted world from Natural Earth, Europe tile grid; precise maps → chartz GeoMap) → 61 (8 climate & environment visuals; numbers are placeholders except the IPCC/Paris thermometer) → **71 in v0.14.0** (10 lab & life-science visuals: DNA, central dogma, membrane, Punnett, mutations, gel, 96-well plate) → **77 in v0.15.0** (6 cladograms: trait ladder, labelled parts, character matrix, nested sets, circular fan, one tree three ways) → **93 in v0.16.0** (16 science & tech visuals: 7 ecosystems, 4 earth & physical science, 3 lab & biotech, 2 technology): a sibling to the CSS graphics pack — **hand-drawn inline SVG infographic templates** for explanatory/summary visuals — concept diagrams the CSS pack doesn't cover, with the hand-drawn quality users responded well to (the DNA-helix deck-motif precedent).
+Grown over three releases: **10 in v0.11.0** → 20 in v0.12.0 → **40 in v0.13.0** → 41 (metro-map, after the nf-core pipeline metro maps) → 51 (10 layouts from Figma/Venngage/Canva/Pinterest infographic galleries) → 53 (two illustrative maps: dotted world from Natural Earth, Europe tile grid; precise maps → chartz GeoMap) → 61 (8 climate & environment visuals; numbers are placeholders except the IPCC/Paris thermometer) → **71 in v0.14.0** (10 lab & life-science visuals: DNA, central dogma, membrane, Punnett, mutations, gel, 96-well plate) → **77 in v0.15.0** (6 cladograms: trait ladder, labelled parts, character matrix, nested sets, circular fan, one tree three ways) → **93 in v0.16.0** (16 science & tech visuals: 7 ecosystems, 4 earth & physical science, 3 lab & biotech, 2 technology) → 94 (protocol-loop-steps: 8-station bench protocol with a reuse loop): a sibling to the CSS graphics pack — **hand-drawn inline SVG infographic templates** for explanatory/summary visuals — concept diagrams the CSS pack doesn't cover, with the hand-drawn quality users responded well to (the DNA-helix deck-motif precedent).
 
 | # | Component (`svg/*.svg`) | Shows | When to use |
 |---|---|---|---|
@@ -312,6 +312,7 @@ Grown over three releases: **10 in v0.11.0** → 20 in v0.12.0 → **40 in v0.13
 | 91 | `pcr-thermal-cycle` | thermal profile + 2ⁿ inset | pcr and qpcr methods, teaching amplification |
 | 92 | `transformer-block` | encoder–decoder schematic | explaining llm / transformer architecture at a schematic level |
 | 93 | `api-request-lifecycle` | client → gateway → services → DB | explaining backend request flow, api docs, onboarding |
+| 94 | `protocol-loop-steps` | snaking 8-station bench protocol + reuse loop | lab/bench protocols with sequential reuse cycles, any 8-step workflow that repeats |
 
 **Routing within the graphics systems**: real/interactive data → `chartz`; real-data static charts → CSS graphics pack A-block; Mermaid flow/sequence/ER → Mermaid CDN; **concept/infographic diagrams → this SVG library**; decorative background motifs → hand-draw per the svg-library conventions (token-driven, `aria-hidden`, zero text nodes). If the svg-library has no component for the requested kind, research online first (see *Standalone SVG* step 1) and add a new component rather than substituting a mismatched one.
 
@@ -419,6 +420,7 @@ Positioning differs: report/slide float the button `position: fixed` top-right; 
   - **Chrome:** decor SVGs (`templates/deck/chrome/`) are drawn onto the master/layouts and flagged decorative.
   - **`--base`:** corporate templates are supported, with layout fallback by type.
   - **QA:** structural checks in `test/smoke-test-pptx-deck.py` (wired into `run-all.js`), a proxy preview in `bin/pptx-preview.py` (HTML + headless Chrome), and a documented manual real-renderer gate per theme release (no Office or LibreOffice in CI).
+- v0.20.0 SVG library to 94 components (2026-10-13) — one follow-on component to the v0.16.0 science set: `protocol-loop-steps` (eight-station bench protocol on two snaking rows, dashed reuse loop from the last station back to prime + load; deletion of the loop makes a one-way flow). Convention + gallery + full-suite verified.
 - v0.17.0 research-first routing (2026-10-12) — rubric step 0 and the standalone-SVG path now wire in online search whenever no svg-library component matches the requested graphic type: search → curate 2–4 reference URLs → hand-draw a new component per the svg-library README ("Adding a new component" step 0) → catalog row + gallery rebuild + tests, so every unmatched graphic request grows the library. Known-fetchable vs 403/empty source sites documented in both places.
 - v0.16.0 SVG library to 93 components (2026-10-12) — 16 science & technology visuals: ecosystems (`food-web`, `trophic-pyramid`, `water-cycle`, `nitrogen-cycle`, `symbiosis-types`, `ecological-succession`, `ocean-zones`), earth & physical science (`plate-boundaries`, `reaction-coordinate`, `states-of-matter`, `em-spectrum`), lab & biotech (`crispr-editing`, `immune-response`, `pcr-thermal-cycle`), technology (`transformer-block`, `api-request-lifecycle`); science checked against NOAA, NPS, USGS, Addgene, Bio-Rad and the other sources in the svg-library README sections.
 - v0.15.0 SVG library to 77 components (2026-10-11) — 6 cladograms inspired by Venngage/Creately/Pinterest/Microbe Notes cladogram examples: `cladogram-ladder`, `cladogram-anatomy`, `cladogram-matrix`, `nested-clades`, `circular-cladogram`, `cladogram-styles`; topologies checked (see the svg-library README "Phylogeny & cladograms" section).

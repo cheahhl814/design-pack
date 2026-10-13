@@ -1,0 +1,103 @@
+<!--
+html-template-pack · svg-library · protocol-loop-steps
+  Eight-station bench protocol as a snaking horizontal flow: 4 stations left to
+  right on the top row, then 4 right to left on the bottom row, with a dashed
+  reuse loop from the final station back to the prime and load station.
+  Tokens: teal deep-blue amber green coral text text-muted surface font-head font-sans.
+  Edit: hero + eyebrow, step labels and captions, loop caption. Boxes sit at
+  x = 30 + i*198 (150 wide), rows y = 110 and y = 300 (112 tall). Deleting the
+  dashed loop path, its arrowhead and the loop caption makes a one-way flow.
+  No ids, defs, markers, filters or scripts: safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Eight-station bench protocol: quantify, end-prep, bead cleanup, ligation, bead cleanup, confirm, prime and load, sequence, with a dashed reuse loop from the last station back to prime and load" style="width:100%;height:auto">
+  <title>Protocol loop steps</title>
+  <text x="30" y="42" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;letter-spacing:1.2;fill:var(--text-muted,#64748b)">PROTOCOL · PER SAMPLE</text>
+  <text x="30" y="74" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">After pooling, library prep to flow cell</text>
+  <!-- top row steps -->
+  <g>
+    <rect x="30" y="110" width="150" height="112" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="30" y="110" width="150" height="112" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <circle cx="105" cy="110" r="15" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:3"/>
+    <text x="105" y="115" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">1</text>
+    <text x="105" y="166" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Quantify</text>
+    <text x="105" y="188" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">measure the input pool</text>
+    <text x="105" y="206" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">record fmol for the batch</text>
+    <rect x="228" y="110" width="150" height="112" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+    <rect x="228" y="110" width="150" height="112" rx="14" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 16%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+    <circle cx="303" cy="110" r="15" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:3"/>
+    <text x="303" y="115" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">2</text>
+    <text x="303" y="166" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">End-prep</text>
+    <text x="303" y="188" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">repair + dA-tail, 35 min</text>
+    <text x="303" y="206" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">stop option: chill overnight</text>
+    <rect x="426" y="110" width="150" height="112" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+    <rect x="426" y="110" width="150" height="112" rx="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <circle cx="501" cy="110" r="15" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:3"/>
+    <text x="501" y="115" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">3</text>
+    <text x="501" y="166" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Bead cleanup</text>
+    <text x="501" y="188" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">paramagnetic beads</text>
+    <text x="501" y="206" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">two ethanol washes</text>
+    <rect x="624" y="110" width="150" height="112" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+    <rect x="624" y="110" width="150" height="112" rx="14" style="fill:color-mix(in srgb, var(--green,#10b981) 16%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+    <circle cx="699" cy="110" r="15" style="fill:var(--green,#10b981);stroke:var(--surface,#ffffff);stroke-width:3"/>
+    <text x="699" y="115" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">4</text>
+    <text x="699" y="166" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Ligation</text>
+    <text x="699" y="188" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">adapters + ligase, 30 min</text>
+    <text x="699" y="206" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">gentle mix, no vortex</text>
+  </g>
+  <!-- bottom row steps (right to left) -->
+  <g>
+    <rect x="624" y="300" width="150" height="112" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+    <rect x="624" y="300" width="150" height="112" rx="14" style="fill:color-mix(in srgb, var(--coral,#ef4444) 16%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+    <circle cx="699" cy="300" r="15" style="fill:var(--coral,#ef4444);stroke:var(--surface,#ffffff);stroke-width:3"/>
+    <text x="699" y="305" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">5</text>
+    <text x="699" y="356" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Bead cleanup</text>
+    <text x="699" y="378" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">buffer keeps all lengths</text>
+    <text x="699" y="396" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">elute to a fresh tube</text>
+    <rect x="426" y="300" width="150" height="112" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="426" y="300" width="150" height="112" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <circle cx="501" cy="300" r="15" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:3"/>
+    <text x="501" y="305" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">6</text>
+    <text x="501" y="356" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Confirm</text>
+    <text x="501" y="378" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">quantify final library</text>
+    <text x="501" y="396" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">target 100 fmol or more</text>
+    <rect x="228" y="300" width="150" height="112" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+    <rect x="228" y="300" width="150" height="112" rx="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <circle cx="303" cy="300" r="15" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:3"/>
+    <text x="303" y="305" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">7</text>
+    <text x="303" y="356" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Prime + load</text>
+    <text x="303" y="378" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">prime cell, check pores</text>
+    <text x="303" y="396" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">then add the library</text>
+    <rect x="30" y="300" width="150" height="112" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+    <rect x="30" y="300" width="150" height="112" rx="14" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 16%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+    <circle cx="105" cy="300" r="15" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:3"/>
+    <text x="105" y="305" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">8</text>
+    <text x="105" y="356" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Sequence</text>
+    <text x="105" y="378" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">start the run, shield on</text>
+    <text x="105" y="396" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">watch pores and output</text>
+  </g>
+  <!-- forward connectors, top row -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-linecap="round">
+    <line x1="188" y1="166" x2="210" y2="166"/>
+    <line x1="386" y1="166" x2="408" y2="166"/>
+    <line x1="584" y1="166" x2="606" y2="166"/>
+  </g>
+  <polygon points="224,166 211,172.5 211,159.5" style="fill:var(--text-muted,#64748b)"/>
+  <polygon points="422,166 409,172.5 409,159.5" style="fill:var(--text-muted,#64748b)"/>
+  <polygon points="620,166 607,172.5 607,159.5" style="fill:var(--text-muted,#64748b)"/>
+  <!-- row transition 4 down to 5 -->
+  <line x1="699" y1="226" x2="699" y2="286" style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-linecap="round"/>
+  <polygon points="699,298 692.5,285 705.5,285" style="fill:var(--text-muted,#64748b)"/>
+  <!-- forward connectors, bottom row (right to left) -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-linecap="round">
+    <line x1="624" y1="356" x2="594" y2="356"/>
+    <line x1="426" y1="356" x2="396" y2="356"/>
+    <line x1="228" y1="356" x2="198" y2="356"/>
+  </g>
+  <polygon points="580,356 593,362.5 593,349.5" style="fill:var(--text-muted,#64748b)"/>
+  <polygon points="382,356 395,362.5 395,349.5" style="fill:var(--text-muted,#64748b)"/>
+  <polygon points="184,356 197,362.5 197,349.5" style="fill:var(--text-muted,#64748b)"/>
+  <!-- reuse loop: sequence back to prime and load -->
+  <path d="M 105 412 V 438 H 303 V 428" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-dasharray="7 6" stroke-linecap="round"/>
+  <polygon points="303,412 296.5,426 309.5,426" style="fill:var(--text-muted,#64748b)"/>
+  <text x="500" y="444" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">wash kit rinse, reload next pool (3 to 6 reuse cycles)</text>
+</svg>

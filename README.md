@@ -70,7 +70,7 @@ All four templates are deployed as a working demo on GitHub Pages. Open any of t
 | 🎞️ **[Slide demo](https://cheahhl814.github.io/html-template-pack/slide/)** | "Helios 2 — Real-Time Inference for the Edge" (7 slides incl. graphics-pack demos) |
 | 🍱 **[Bento demo](https://cheahhl814.github.io/html-template-pack/bento/)** | "Project Phoenix — One-page Recap" (bento grid, full annotation engine) |
 | 🧩 **[Components demo](https://cheahhl814.github.io/html-template-pack/components/)** | The graphics pack in one page — donut, gauge, bars, heatmap, flow, compare, pull-quote, motion legend |
-| 🖍️ **[SVG library demo](https://cheahhl814.github.io/html-template-pack/svg-library/)** | All 93 SVG infographic templates, token-driven, with source blocks — ◐ toggle previews both palettes |
+| 🖍️ **[SVG library demo](https://cheahhl814.github.io/html-template-pack/svg-library/)** | All 94 SVG infographic templates, token-driven, with source blocks — ◐ toggle previews both palettes |
 | 📊 **[Dashboard demo](https://cheahhl814.github.io/html-template-pack/dashboard/)** | "Northwind Logistics — Operations Dashboard" (mock data, live polling) |
 
 Each demo is a curated showcase with realistic content (not a blank template). Try the **◐ theme toggle**, **▤ density toggle**, **S/M/L font size toggle** in the top-right of every demo. In the report, slide, and bento demos, select any text to leave tracked-changes-style annotations, then export them as JSON from the 💬 Notes panel.

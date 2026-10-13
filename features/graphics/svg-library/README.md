@@ -1,6 +1,6 @@
 # svg-library — hand-drawn SVG diagram templates (html-template-pack v0.16.0)
 
-Ninety-three agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
+Ninety-four agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
 explanatory and summary visuals — the complement to the pure-CSS graphics pack
 (`features/graphics/graphics.css`). Where the CSS pack covers charts built from real
 data (donut, gauge, heatmap, bars), the SVG library covers **concept diagrams**:
@@ -124,6 +124,7 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
 | 91 | `pcr-thermal-cycle.svg` | Thermocycler temperature profile (denature ~95 °C, anneal ~55–65 °C, extend ~72 °C) with a copies-double-each-cycle inset | PCR and qPCR methods, teaching amplification |
 | 92 | `transformer-block.svg` | Transformer encoder and decoder stacks: embeddings plus positional encoding, attention, feed-forward, residual Add & Norm, N× marker, linear + softmax head | Explaining LLM / transformer architecture at a schematic level |
 | 93 | `api-request-lifecycle.svg` | Sequence diagram of a web API call: client, DNS, gateway auth and rate limit, two services, database, numbered request/response arrows ending in 200 OK | Explaining backend request flow, API docs, onboarding |
+| 94 | `protocol-loop-steps.svg` | Eight-station bench protocol on two snaking rows (1–4 left to right, 5–8 right to left), dashed reuse loop from the last station back to prime + load, eyebrow + hero header | Lab/bench protocols with sequential reuse cycles; any 8-step workflow with a repeat-back loop |
 
 **When to use which graphics system:**
 
@@ -335,7 +336,7 @@ catalog components: they are slide chrome, not diagrams.
    SVG is the point of the library; treat the shipped files as style reference
    (rounded rx=12 cards — 8 for bars, 4–6 for slabs, 14 for large panels; 2px primary
    strokes, 1.5px shadows/leaders, 2.5px connectors, 3px spines; dashed 1.5px leaders
-   start at a 3.5px dot). **Type scale (shared by all 93):** hero 20/700 (one central
+   start at a 3.5px dot). **Type scale (shared by all 94):** hero 20/700 (one central
    subject or headline) · label 16/600 · annotation 13/400 muted · caption 12/400 muted ·
    eyebrow 11/700 caps with `letter-spacing="1.2"` · badge number 13/700.
    **Arrowheads:** 13×13 on connectors, 11×11 on small cue arrows, 16×16 on thick spines

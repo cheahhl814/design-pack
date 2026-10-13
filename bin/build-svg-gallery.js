@@ -115,6 +115,7 @@ const META = {
   'pcr-thermal-cycle': { desc: 'Thermocycler temperature profile (denature ~95 °C, anneal ~55–65 °C, extend ~72 °C) with a copies-double-each-cycle inset', use: 'PCR and qPCR methods, teaching amplification' },
   'transformer-block': { desc: 'Transformer encoder and decoder stacks: embeddings plus positional encoding, attention, feed-forward, residual Add & Norm, N× marker, linear + softmax head', use: 'Explaining LLM / transformer architecture at a schematic level' },
   'api-request-lifecycle': { desc: 'Sequence diagram of a web API call: client, DNS, gateway auth and rate limit, two services, database, numbered request/response arrows ending in 200 OK', use: 'Explaining backend request flow, API docs, onboarding' },
+  'protocol-loop-steps': { desc: 'Eight-station bench protocol on two snaking rows (1 to 4 left to right, 5 to 8 right to left), dashed reuse loop from the last station back to prime and load, eyebrow + hero header', use: 'Lab/bench protocols with sequential reuse cycles; any 8-step workflow with a repeat-back loop' },
   'orbit-satellites': { desc: 'Core with three dashed orbits of labelled satellites and a distance legend', use: 'Stakeholder proximity, engagement tiers, spheres of influence' },
 };
 
