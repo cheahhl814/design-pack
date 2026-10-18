@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · layer-stack
+design-pack · svg-library · layer-stack
   4-layer architecture/stack diagram with a "closer to the user" direction cue
   and right-side owner captions. A CSS .layer-stack also exists in graphics.css —
   use this SVG for a diagram-style rendering with connectors and captions.

@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · transformer-block
+design-pack · svg-library · transformer-block
   Transformer schematic after Vaswani et al. 2017 (Attention Is All You
   Need): input embedding plus positional encoding feeds an encoder block
   (multi-head self-attention, feed-forward, each wrapped by a dashed

@@ -85,14 +85,14 @@ const page = `<!--
   GENERATED FILE — do not hand-edit.
   Source of truth: sets/<set>/designs/*.svg + samples.json in this directory; regenerate with:
       node bin/build-slides-gallery.js
-  (html-template-pack v0.24.0 svg-slides theme sets)
+  (design-pack v0.24.0 svg-slides theme sets)
 -->
 <!doctype html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>svg-slides · html-template-pack</title>
+<title>svg-slides · design-pack</title>
 <style>
   :root {
     --bg: #f8fafc; --surface: #ffffff; --surface2: #f1f5f9;

@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · climate-zones-globe
+design-pack · svg-library · climate-zones-globe
   Flattened globe split into latitude climate bands (polar, temperate, dry,
   tropical, mirrored), after the Met Office climate-zones graphic, with a
   keyed description list on the right. Bands are pre-computed polygons.

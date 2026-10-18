@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · nested-clades
+design-pack · svg-library · nested-clades
 Nested sets beside the equivalent slanted cladogram: each coloured box
   is a clade defined by one shared derived trait, and a same-coloured
   tick on the tree marks where that trait arises.

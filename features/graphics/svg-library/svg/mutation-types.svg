@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · mutation-types
+design-pack · svg-library · mutation-types
   Point mutations on one 12-base coding sequence: original, substitution
   (missense), insertion and deletion (frameshifts). Bases are colour-coded
   tiles grouped in codons with the amino acids beneath; the changed base is

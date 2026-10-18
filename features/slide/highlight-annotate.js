@@ -1,5 +1,5 @@
 /* ============================================================
-   html-template-pack · highlight-annotate.js
+   design-pack · highlight-annotate.js
    Self-contained, offset-anchored highlight-comment annotation
    system + theme toggle. Migrated from the proven template.html
    pattern (gap-report family). No build step, no dependencies.
@@ -37,7 +37,7 @@
   // ---- Resolve storage namespace and theme key from <body> ----
   var body = document.body;
   if (!body) {
-    console.warn('[html-template-pack/annotate] No <body> found — annotation system disabled.');
+    console.warn('[design-pack/annotate] No <body> found — annotation system disabled.');
     return;
   }
   var reportId =
@@ -58,7 +58,7 @@
     document.querySelector('main') ||
     document.body;
   if (!root) {
-    console.warn('[html-template-pack/annotate] No annotation root found — annotation system disabled.');
+    console.warn('[design-pack/annotate] No annotation root found — annotation system disabled.');
     return;
   }
 
@@ -90,7 +90,7 @@
 
   var hasAnnotationUi = !!(els.toggle && els.drawer && els.list && els.toolbar && els.editor);
   if (!hasAnnotationUi) {
-    console.info('[html-template-pack/annotate] Annotation UI not wired in — skipping. (Theme toggle still runs.)');
+    console.info('[design-pack/annotate] Annotation UI not wired in — skipping. (Theme toggle still runs.)');
   }
 
   // ---- Theme toggle (runs unconditionally if button present) ----

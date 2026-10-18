@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-r"""codecogs_render.py — LaTeX equation rendering for html-template-pack templates
+r"""codecogs_render.py — LaTeX equation rendering for design-pack templates
 via the CodeCogs equation editor service (keyless, free for non-commercial use).
 
 Why: the four templates are single-file HTML with **no external CDN
@@ -37,7 +37,7 @@ import urllib.parse
 import urllib.request
 
 CODECOGS = "https://latex.codecogs.com/svg.image"
-USER_AGENT = "html-template-pack/0.9 (equation inlining)"
+USER_AGENT = "design-pack/0.9 (equation inlining)"
 TIMEOUT = 15
 MAX_EQS = 60  # sanity cap per document
 

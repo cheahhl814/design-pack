@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · em-spectrum
+design-pack · svg-library · em-spectrum
   Electromagnetic spectrum on a log wavelength axis (1 pm to 1 km,
   48 px per decade, x = 40 + 48 x (log10 lambda + 12)): gamma, X-ray,
   UV, visible, infrared, microwave, radio, with the visible slice

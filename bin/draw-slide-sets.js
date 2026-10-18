@@ -509,7 +509,7 @@ ${body}
 </svg>
 `;
     const head = `<!--
-html-template-pack · svg-slides · ${name} · ${d.name}
+design-pack · svg-slides · ${name} · ${d.name}
 ${wrap(d.desc)}
 ${decor ? `  Content zone: ${d.zone}.` : wrap(`Slots: ${slotSummary(slots)}.`)}
 ${wrap(`Tokens: ${tokensOf(svgBody)}.`)}

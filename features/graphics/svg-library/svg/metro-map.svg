@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · metro-map
+design-pack · svg-library · metro-map
   Transit-map pipeline (after the nf-core metro maps): three numbered section
   panels, a bundled trunk of parallel coloured routes, a two-tool detour that
   carries the whole bundle, a three-way route split that re-merges, a dotted

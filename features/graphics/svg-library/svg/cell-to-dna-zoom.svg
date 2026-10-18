@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · cell-to-dna-zoom
+design-pack · svg-library · cell-to-dna-zoom
   Zoom sequence through four lenses: cell, nucleus, chromosome, DNA double
   helix, each lens linked to the region it magnifies by dashed zoom lines.
   Tokens: teal deep-blue amber coral green navy text text-muted surface border font-head font-sans.

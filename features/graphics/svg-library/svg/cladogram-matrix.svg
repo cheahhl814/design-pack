@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · cladogram-matrix
+design-pack · svg-library · cladogram-matrix
 Character matrix to cladogram: a taxon x trait table (filled dot =
   trait present) beside the rectangular cladogram it implies, with the
   same numbered trait badges marking where each trait first appears.

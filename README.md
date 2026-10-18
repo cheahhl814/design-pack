@@ -1,12 +1,13 @@
-# html-template-pack
+# design-pack
 
+> **Renamed from `html-template-pack` (2026-10-18, v0.25.0).** GitHub redirects git traffic and repo links from the old URL, but the old Pages address (`cheahhl814.github.io/html-template-pack/`) does NOT redirect — use `https://cheahhl814.github.io/design-pack/`.
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Live demo](https://img.shields.io/badge/demo-GitHub%20Pages-2ea44f)](https://cheahhl814.github.io/html-template-pack/)
+[![Live demo](https://img.shields.io/badge/demo-GitHub%20Pages-2ea44f)](https://cheahhl814.github.io/design-pack/)
 [![Type](https://img.shields.io/badge/type-agent%20skill-blueviolet)](#-installation)
 
 Four self-contained HTML templates — **report** (sticky sidebar, 5 icon+label tabs, v2 offset-anchored annotations, theme toggle), **slide deck** (prev/next nav, inline v2 annotations, theme toggle), **bento brief** (2026 bento-grid one-page snapshot briefing, dark-first glass, full v2 annotation engine), and **htmx dashboard** (topbar, KPI row, sparkline chart, activity feed, sortable table, demo-mode mock backend). All four ship the **v0.12.0 zero-dependency graphics pack** (donut, radial gauge, horizontal bars, heatmap, data-bar cells, pure-CSS flowchart, milestone strip, conversion funnel, venn, SWOT grid, org tree, cycle loop, comparison table, pull-quote, scroll-driven motion) and are single-file, review-ready HTML with no external CDN dependencies beyond Google Fonts (report/slide/bento) and pinned htmx with SRI (dashboard). All four are **dark-first** with refined glass chrome, fluid display typography, and hover-glow micro-interactions (v0.7.0 aesthetic pass).
 
-**Repository**: https://github.com/cheahhl814/html-template-pack
+**Repository**: https://github.com/cheahhl814/design-pack
 
 ## 🖍️ SVG diagram library (v0.16.0)
 
@@ -75,13 +76,13 @@ All four templates are deployed as a working demo on GitHub Pages. Open any of t
 
 | | |
 |---|---|
-| 🌐 **Launcher** | https://cheahhl814.github.io/html-template-pack/ |
-| 📄 **[Report demo](https://cheahhl814.github.io/html-template-pack/report/)** | "Q3 Operations Review — Northwind Logistics" (5 tabs, custom content) |
-| 🎞️ **[Slide demo](https://cheahhl814.github.io/html-template-pack/slide/)** | "Helios 2 — Real-Time Inference for the Edge" (7 slides incl. graphics-pack demos) |
-| 🍱 **[Bento demo](https://cheahhl814.github.io/html-template-pack/bento/)** | "Project Phoenix — One-page Recap" (bento grid, full annotation engine) |
-| 🧩 **[Components demo](https://cheahhl814.github.io/html-template-pack/components/)** | The graphics pack in one page — donut, gauge, bars, heatmap, flow, compare, pull-quote, motion legend |
-| 🖍️ **[SVG library demo](https://cheahhl814.github.io/html-template-pack/svg-library/)** | All 94 SVG infographic templates, token-driven, with source blocks — ◐ toggle previews both palettes |
-| 📊 **[Dashboard demo](https://cheahhl814.github.io/html-template-pack/dashboard/)** | "Northwind Logistics — Operations Dashboard" (mock data, live polling) |
+| 🌐 **Launcher** | https://cheahhl814.github.io/design-pack/ |
+| 📄 **[Report demo](https://cheahhl814.github.io/design-pack/report/)** | "Q3 Operations Review — Northwind Logistics" (5 tabs, custom content) |
+| 🎞️ **[Slide demo](https://cheahhl814.github.io/design-pack/slide/)** | "Helios 2 — Real-Time Inference for the Edge" (7 slides incl. graphics-pack demos) |
+| 🍱 **[Bento demo](https://cheahhl814.github.io/design-pack/bento/)** | "Project Phoenix — One-page Recap" (bento grid, full annotation engine) |
+| 🧩 **[Components demo](https://cheahhl814.github.io/design-pack/components/)** | The graphics pack in one page — donut, gauge, bars, heatmap, flow, compare, pull-quote, motion legend |
+| 🖍️ **[SVG library demo](https://cheahhl814.github.io/design-pack/svg-library/)** | All 94 SVG infographic templates, token-driven, with source blocks — ◐ toggle previews both palettes |
+| 📊 **[Dashboard demo](https://cheahhl814.github.io/design-pack/dashboard/)** | "Northwind Logistics — Operations Dashboard" (mock data, live polling) |
 
 Each demo is a curated showcase with realistic content (not a blank template). Try the **◐ theme toggle**, **▤ density toggle**, **S/M/L font size toggle** in the top-right of every demo. In the report, slide, and bento demos, select any text to leave tracked-changes-style annotations, then export them as JSON from the 💬 Notes panel.
 
@@ -94,7 +95,7 @@ This is an **agent skill**, not a user-facing library. The skill is loaded by th
 **To install, give your AI agent this prompt:**
 
 ```
-Import the following skill: https://github.com/cheahhl814/html-template-pack
+Import the following skill: https://github.com/cheahhl814/design-pack
 ```
 
 **Optional, for the SVG tooling only:** `node` for `bin/svg-export.js` / `bin/compose-slide.js`, plus Chrome/Chromium for `svg-export.js --png`. The HTML templates need none of these.
@@ -109,9 +110,9 @@ Different agent harnesses use different mechanisms to force-load a skill. Use wh
 
 | Harness | Force-load command | Notes |
 |---------|-------------------|-------|
-| **Pi** | `/skill:html-template-pack` | Slash command; works even when auto-detection misses |
-| **Claude Code** | `/html-template-pack <request>` | Slash command (Claude Code uses `/name` for skills and plugins) |
-| **OpenCode** | Mention `"Use the html-template-pack skill"` in your prompt | OpenCode reads skill metadata from `SKILL.md` at startup |
+| **Pi** | `/skill:design-pack` | Slash command; works even when auto-detection misses |
+| **Claude Code** | `/design-pack <request>` | Slash command (Claude Code uses `/name` for skills and plugins) |
+| **OpenCode** | Mention `"Use the design-pack skill"` in your prompt | OpenCode reads skill metadata from `SKILL.md` at startup |
 | **Codex** | Mention the skill by name in your prompt | Codex reads skill metadata from `SKILL.md` at startup |
 
 In all cases, the harness needs to discover the skill first — typically by cloning the repo into the harness's skills directory (`~/.pi/agent/skills/`, `~/.claude/skills/`, etc.) or by registering it via the harness's skill configuration.
@@ -119,7 +120,7 @@ In all cases, the harness needs to discover the skill first — typically by clo
 If auto-detection works, you can just use natural language prompts — the harness routes them automatically. Slash commands / explicit mentions are useful when:
 
 - The request is ambiguous and you want full control over the workflow
-- The harness picked the wrong skill (e.g. chose `lumen-guide` instead of `html-template-pack`)
+- The harness picked the wrong skill (e.g. chose `lumen-guide` instead of `design-pack`)
 - You want to chain skills explicitly (e.g. invoke this one after `notebooklm-jacob` to wrap its output)
 
 ### Natural language prompts that trigger the skill
@@ -165,7 +166,7 @@ Wire up an htmx dashboard against /api/stats, /api/activity, etc.
 A complete review cycle uses three skills together:
 
 1. **Generate**: "Build an HTML report from `path/to/draft.md`."
-   - Agent auto-invokes `html-template-pack` → produces `report.html`
+   - Agent auto-invokes `design-pack` → produces `report.html`
 2. **Review**: Open the HTML in a browser, leave annotations (select text, click 💬 / ✂ / ➕ / ✎ in the floating toolbar, or use the Notes panel for editing). When done, click **💾 Export** in the Notes panel to download `annotations-<id>.json`.
 3. **Revise**: "Apply the annotations from `annotations-report-template.json` to `report.html`."
    - Agent reads the JSON, applies each annotation, and produces a revised `report.html`
@@ -325,7 +326,7 @@ All four templates ship with a shared **zero-dependency graphics pack** — elev
 | ⤓ | **Scroll-driven reveal** | `.reveal` |
 | ⌖ | **Gauge sweep** | `.gauge.animated` |
 
-**Live reference**: see every component at **[…/components/](https://cheahhl814.github.io/html-template-pack/components/)** — the same file also inlines a *motion legend* (browser-state matrix + 4-keyframe progress strip + before/after reveal pair + 5-step gauge sweep) so pack D is obvious from a single screenshot.
+**Live reference**: see every component at **[…/components/](https://cheahhl814.github.io/design-pack/components/)** — the same file also inlines a *motion legend* (browser-state matrix + 4-keyframe progress strip + before/after reveal pair + 5-step gauge sweep) so pack D is obvious from a single screenshot.
 
 **Accessibility baked in**: every visual chart is built from a real `<table>` (heatmap, data bars) or paired with a visually-hidden `<table>` fallback (donut); `role="img"` + `aria-label` on conic charts; numbers stay visible in heatmap cells; motion is `@supports (animation-timeline: …)` + `prefers-reduced-motion` guarded — browsers without support just see the final state, no JS fallback needed.
 

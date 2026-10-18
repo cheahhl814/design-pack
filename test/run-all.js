@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Master test runner for html-template-pack.
+// Master test runner for design-pack.
 // Verifies every template and the graphics/SVG tooling.
 
 const { execSync } = require('child_process');
@@ -19,7 +19,7 @@ const suites = [
   { name: 'SVG slide designs (5 theme sets, slot contract, compose-slide gates, budget fit)', cmd: 'python3 test/smoke-test-slides.py' }
 ];
 
-console.log('html-template-pack · test suite\n' + '─'.repeat(60));
+console.log('design-pack · test suite\n' + '─'.repeat(60));
 let allOk = true;
 for (const suite of suites) {
   console.log(`\n  ${suite.name}\n`);

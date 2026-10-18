@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """QA for the svg-slides theme sets + bin/compose-slide.js
-(html-template-pack v0.21.0; backgrounds v0.22.0; theme sets v0.24.0).
+(design-pack v0.21.0; backgrounds v0.22.0; theme sets v0.24.0).
 
 0. Sets: every set under templates/svg-slides/sets/ ships each samples.json
    design with lab's slot names, kinds, required flags and line counts (so one

@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · decision-tree
+design-pack · svg-library · decision-tree
   Decision tree: a root question splits yes/no into two follow-up questions,
   each ending in two outcome cards. Rounded elbow connectors + YES/NO pills.
   Tokens: accent deep-blue green amber teal coral text text-muted surface

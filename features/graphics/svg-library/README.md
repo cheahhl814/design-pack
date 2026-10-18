@@ -1,4 +1,4 @@
-# svg-library — hand-drawn SVG diagram templates (html-template-pack v0.16.0)
+# svg-library — hand-drawn SVG diagram templates (design-pack v0.16.0)
 
 Ninety-four agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
 explanatory and summary visuals — the complement to the pure-CSS graphics pack

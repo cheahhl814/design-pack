@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · org-chart
+design-pack · svg-library · org-chart
   Three-level org chart: one lead, three heads, two reports each, joined by
   elbow connectors; heads tinted per team, reports carry a team stripe.
   Tokens: accent teal amber coral text text-muted surface border font-head font-sans.

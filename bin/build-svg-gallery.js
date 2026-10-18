@@ -175,14 +175,14 @@ const page = `<!--
   GENERATED FILE — do not hand-edit.
   Source of truth: svg/*.svg in this directory; regenerate with:
       node bin/build-svg-gallery.js
-  (html-template-pack v0.12.0 SVG diagram library)
+  (design-pack v0.12.0 SVG diagram library)
 -->
 <!doctype html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>svg-library · html-template-pack</title>
+<title>svg-library · design-pack</title>
 <style>
   :root {
     --bg: #f8fafc; --surface: #ffffff; --surface2: #f1f5f9; --surface3: #e2e8f0;
@@ -228,7 +228,7 @@ const page = `<!--
 <body>
   <header>
     <h1>svg-library</h1>
-    <p>Hand-drawn SVG diagram templates for the html-template-pack templates. Every component is token-driven (adapts to each template's palette + light/dark) and id-free (safe to paste multiple). Copy-paste the inline SVG, then edit the labels. Toggle the theme to preview both palettes.</p>
+    <p>Hand-drawn SVG diagram templates for the design-pack templates. Every component is token-driven (adapts to each template's palette + light/dark) and id-free (safe to paste multiple). Copy-paste the inline SVG, then edit the labels. Toggle the theme to preview both palettes.</p>
     <button class="toggle" onclick="var h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark')">◐</button>
   </header>
   <nav>${cards.map(c => `<a href="#c-${c.name}">${c.name}</a>`).join('')}</nav>

@@ -1,5 +1,5 @@
 /* ============================================================
-   html-template-pack · theme-toggle.js (dashboard variant)
+   design-pack · theme-toggle.js (dashboard variant)
    Identical engine to features/report/theme-toggle.js — copied
    here so the dashboard template stays self-contained per
    template family. Keep the two in sync manually.

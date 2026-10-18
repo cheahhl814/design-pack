@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · protocol-loop-steps
+design-pack · svg-library · protocol-loop-steps
   Eight-station bench protocol as a snaking horizontal flow: 4 stations left to
   right on the top row, then 4 right to left on the bottom row, with a dashed
   reuse loop from the final station back to the prime and load station.

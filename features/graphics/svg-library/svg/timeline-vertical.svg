@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · timeline-vertical
+design-pack · svg-library · timeline-vertical
   Vertical zigzag timeline: a central spine with five dated events whose cards
   alternate left/right; the date sits on the opposite side of each node.
   Tokens: teal deep-blue amber coral green border-bright text text-muted surface

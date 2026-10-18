@@ -1,4 +1,4 @@
-# Embedding chartz charts in html-template-pack templates
+# Embedding chartz charts in design-pack templates
 
 **v0.10.0.** When a report, slide, bento, or dashboard page needs a *real data chart* — interactive tooltips, box plots, sankey, treemap, network graphs, series beyond what the zero-dependency graphics pack expresses — render it with the [chartz](https://github.com/cheahhl814/chartz) skill and embed the output here. The graphics pack stays pure CSS/HTML; chartz supplies the JS engines (Chart.js, Plotly.js, ECharts, Cytoscape.js, each CDN-pinned) without polluting the pack's templates.
 

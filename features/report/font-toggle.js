@@ -1,5 +1,5 @@
 /* ============================================================
-   html-template-pack · font-toggle.js
+   design-pack · font-toggle.js
    Cycles the report through 3 font sizes (S / M / L).
    Persists to localStorage. Scales the root font-size so
    every rem-based text element cascades proportionally.

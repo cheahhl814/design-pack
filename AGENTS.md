@@ -1,4 +1,4 @@
-# Agent wiring for html-template-pack
+# Agent wiring for design-pack
 
 > **Note for the agent:** This file is for **human readers** (e.g. a developer
 > importing the skill into another harness). It is NOT auto-loaded by pi.
@@ -51,7 +51,7 @@ If the request is ambiguous, ask with `ask_user_question` offering the template 
    - Slide: title, `DECK_CONFIG`, slide content.
    - Dashboard: title, sidebar nav, table columns / KPI meaning; leave demo mode in place until a real backend exists, then delete the `« BEGIN/END DEMO MODE »` block and `data-demo-mode` attribute.
 4. **Verify** the file works by opening it in a browser OR running a headless test (`google-chrome --headless --dump-dom` to check the DOM). For the dashboard template, also confirm the KPI row/chart/feed/table populate (demo mode should make this visible without a backend).
-5. **Document** the choice in the user's session log (one line: "Built `<filename>` from html-template-pack `<report|slide|dashboard>` template").
+5. **Document** the choice in the user's session log (one line: "Built `<filename>` from design-pack `<report|slide|dashboard>` template").
 6. **Update** this skill's `wiki` with what you learned if you encountered any new patterns (via `wiki_observe` or `wiki_retro`).
 
 ## Cross-skill composition

@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · api-request-lifecycle
+design-pack · svg-library · api-request-lifecycle
   Sequence diagram of one web API call across six lifelines: client,
   DNS, API gateway, two services and a database. Numbered solid arrows
   are requests, dashed arrows responses; the gateway self-loop is token

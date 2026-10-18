@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · flow-pipeline
+design-pack · svg-library · flow-pipeline
   Horizontal 4-step process with numbered badges, forward arrows and a dashed
   feedback loop from the last step back to the first.
   Tokens: teal deep-blue amber green text text-muted surface font-head font-sans.

@@ -552,7 +552,7 @@ body.annot-insert-armed main.content { cursor: text; }
   
 /* ═══ Inlined features/graphics/graphics.css (zero-dependency charts/diagrams/tables/motion) ═══ */
 /* ═══════════════════════════════════════════════════════════════════════
-   html-template-pack · graphics.css
+   design-pack · graphics.css
    Shared zero-dependency graphics pack for the report, slide, bento
    templates. Pure CSS/HTML — no JS, no canvas, no SVG libraries.
 
@@ -1417,7 +1417,7 @@ body.annot-insert-armed main.content { cursor: text; }
       </div>
     </section>
 
-    <p class="b-foot">Bento brief · built from html-template-pack · annotations persist locally and export as JSON</p>
+    <p class="b-foot">Bento brief · built from design-pack · annotations persist locally and export as JSON</p>
   </main>
 
 <!-- ═══ Annotation UI markup (v2 wiring snippet) ═══ -->
@@ -1496,7 +1496,7 @@ body.annot-insert-armed main.content { cursor: text; }
    to the right slide before scrollIntoView fires. */
 
 /* ============================================================
-   html-template-pack · highlight-annotate.js
+   design-pack · highlight-annotate.js
    Self-contained, offset-anchored highlight-comment annotation
    system + theme toggle. Migrated from the proven template.html
    pattern (gap-report family). No build step, no dependencies.
@@ -1534,7 +1534,7 @@ body.annot-insert-armed main.content { cursor: text; }
   // ---- Resolve storage namespace and theme key from <body> ----
   var body = document.body;
   if (!body) {
-    console.warn('[html-template-pack/annotate] No <body> found — annotation system disabled.');
+    console.warn('[design-pack/annotate] No <body> found — annotation system disabled.');
     return;
   }
   var reportId =
@@ -1555,7 +1555,7 @@ body.annot-insert-armed main.content { cursor: text; }
     document.querySelector('main') ||
     document.body;
   if (!root) {
-    console.warn('[html-template-pack/annotate] No annotation root found — annotation system disabled.');
+    console.warn('[design-pack/annotate] No annotation root found — annotation system disabled.');
     return;
   }
 
@@ -1591,7 +1591,7 @@ body.annot-insert-armed main.content { cursor: text; }
 
   var hasAnnotationUi = !!(els.toggle && els.drawer && els.list && els.toolbar && els.editor);
   if (!hasAnnotationUi) {
-    console.info('[html-template-pack/annotate] Annotation UI not wired in — skipping. (Theme toggle still runs.)');
+    console.info('[design-pack/annotate] Annotation UI not wired in — skipping. (Theme toggle still runs.)');
   }
 
   // ---- Theme toggle (runs unconditionally if button present) ----

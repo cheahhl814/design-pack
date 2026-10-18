@@ -1,5 +1,5 @@
 /* ============================================================
-   html-template-pack · theme-toggle.js
+   design-pack · theme-toggle.js
    Self-contained light/dark theme toggle. Persists to
    localStorage, honours system preference on first visit,
    and respects an explicit data-default-theme on <body>.

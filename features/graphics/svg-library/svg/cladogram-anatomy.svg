@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · cladogram-anatomy
+design-pack · svg-library · cladogram-anatomy
 Labelled anatomy of a rectangular cladogram: root, nodes, branches,
   a clade bracket (A + B, sister taxa) and the outgroup D, with branch
   colours keyed to unique vs shared history.

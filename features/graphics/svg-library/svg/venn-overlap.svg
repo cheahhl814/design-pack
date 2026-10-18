@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · venn-overlap
+design-pack · svg-library · venn-overlap
   Two-way overlap with a shared zone and set titles. Fills are alpha tints
   (color-mix with transparent), never mix-blend-mode — multiply turns black on
   dark surfaces. For a 3-circle venn use the CSS .venn.triple in graphics.css.

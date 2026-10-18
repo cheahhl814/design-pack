@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · europe-tile-grid
+design-pack · svg-library · europe-tile-grid
   Tile-grid map of Europe: one equal square per country (ISO alpha-2), placed
   roughly where it sits, filled by category, plus legend and takeaway.
   Equal tiles keep small states visible and draw no borders; layout follows

@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · puzzle-pieces
+design-pack · svg-library · puzzle-pieces
   2x2 interlocking jigsaw = parts that only work together; the bottom-right
   piece is lifted (translate + rotate on its group) to point at the missing /
   final element. Remove that transform for a completed puzzle.

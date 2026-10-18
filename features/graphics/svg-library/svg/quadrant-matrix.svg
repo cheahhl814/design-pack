@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · quadrant-matrix
+design-pack · svg-library · quadrant-matrix
   2x2 prioritisation matrix: four tinted cells with an accent bar, arrowed axes
   with low/high ends.
   Tokens: green teal coral amber text text-muted surface font-head font-sans.

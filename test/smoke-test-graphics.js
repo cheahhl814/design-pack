@@ -78,7 +78,7 @@ const cssChecks = [
 
 let totalPassed = 0, totalFailed = 0;
 
-console.log('html-template-pack · graphics pack smoke test\n' + '─'.repeat(60));
+console.log('design-pack · graphics pack smoke test\n' + '─'.repeat(60));
 
 function runOne(t) {
   return new Promise((resolve) => {

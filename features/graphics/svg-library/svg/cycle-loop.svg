@@ -1,5 +1,5 @@
 <!--
-html-template-pack · svg-library · cycle-loop
+design-pack · svg-library · cycle-loop
   4-node loop; nodes sit on one circle (r=150) and the arrows ride the same
   circle clockwise. Label inside each node, a two-line caption outside.
   Tokens: teal green coral amber text text-muted surface font-head font-sans.

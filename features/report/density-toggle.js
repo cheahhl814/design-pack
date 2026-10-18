@@ -1,5 +1,5 @@
 /* ============================================================
-   html-template-pack · density-toggle.js
+   design-pack · density-toggle.js
    Cycles the report between 'comfortable' and 'compact' spacing.
    Persists to localStorage. Composes with the theme toggle
    and font-size toggle — independent state.
