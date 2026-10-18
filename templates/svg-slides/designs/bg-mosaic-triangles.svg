@@ -6,12 +6,12 @@ html-template-pack · svg-slides · bg-mosaic-triangles
   bottom-right corner over four staggered rows, a dotted rule above it and a
   short teal + amber accent rule at the top left. After ppt-design.com's
   geometric cover themes.
-  Paints its own bottom edge, so the deck builder adds no native footer fields.
+  Paints its own bottom edge (no footer line).
   Content zone: upper-left (x 80-1000, y 120-420, and x 80-560 down to y 640) is clear.
   Tokens: teal amber coral deep-blue text border-bright surface.
   Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with a mosaic of teal, amber and coral tinted triangles stepping into the bottom-right corner and a short accent rule at the top left" data-decor-only="true" data-native-footer="false" style="width:100%;height:auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with a mosaic of teal, amber and coral tinted triangles stepping into the bottom-right corner and a short accent rule at the top left" data-decor-only="true" style="width:100%;height:auto">
   <title>Triangle mosaic background design</title>
   <rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/>
   <!-- triangle mosaic band stepping into the bottom-right corner -->

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""QA for the svg-slides design library + bin/compose-slide.js + the deck builder's
-"design" slide kind (html-template-pack v0.21.0; background designs v0.22.0).
+"""QA for the svg-slides design library + bin/compose-slide.js
+(html-template-pack v0.21.0; background designs v0.22.0).
 
 1. Designs: well-formed XML, svg-library hard rules (no ids/defs/..., role +
    aria-label + <title>), slot markers valid (kind, box inside 1280x720, text
@@ -8,14 +8,10 @@
    documented layout rule, and every design renders in headless Chrome.
    Background designs (data-decor-only="true") must have zero slots, a
    full-bleed painted rect and a documented content zone; they compose with {}
-   to a text-free slide and become a picture-only deck slide.
+   to a text-free slide.
 2. Composer: happy path per design × light/dark (no var()/color-mix()/data-slot
-   left, component inlined, text only in the full slide, sidecar complete), and
+   left, component inlined, payload lines at the layout-rule position), and
    every gate rejects what it should (TEXT-OVERFLOW, SLOT-UNKNOWN, ...).
-3. Deck: a spec with all designs builds on house-light/-dark and a 4:3 base:
-   full-bleed svgBlip picture, one native text box per text slot holding the
-   payload lines, footer fields only where the design asks; bad specs fail.
-The deck part skips itself when the optional Python deps are missing.
 """
 import json, os, re, shutil, subprocess, sys, tempfile
 import xml.etree.ElementTree as ET
@@ -25,7 +21,6 @@ DESIGNS = os.path.join(ROOT, "templates", "svg-slides", "designs")
 README = open(os.path.join(ROOT, "templates", "svg-slides", "README.md"), encoding="utf-8").read()
 SAMPLES = json.load(open(os.path.join(ROOT, "templates", "svg-slides", "samples.json"), encoding="utf-8"))
 COMPOSER = os.path.join(ROOT, "bin", "compose-slide.js")
-BUILDER = os.path.join(ROOT, "bin", "make-pptx-deck.py")
 SVG = "{http://www.w3.org/2000/svg}"
 FIRST, LEAD = 1.15, 1.25  # documented baseline rule
 
@@ -76,8 +71,6 @@ def design_errors(src):
             errs.append("decor-only design must open with a full-bleed painted 1280x720 rect")
         if not re.search(r"<!--[\s\S]*?Content zone: \S[\s\S]*?-->\s*<svg", src):
             errs.append("decor-only design must document its content zone in the header comment")
-        if root.get("data-native-footer") not in ("true", "false"):
-            errs.append("decor-only design must set data-native-footer to true or false")
     elif not names:
         errs.append("no slots")
     for g in slots_of(root):
@@ -112,7 +105,6 @@ def compose(design, payload, tmp, theme="light", name=None):
 names = sorted(f[:-4] for f in os.listdir(DESIGNS) if f.endswith(".svg"))
 ROOTS = {d: ET.parse(os.path.join(DESIGNS, f"{d}.svg")).getroot() for d in names}
 BGS = [d for d in names if ROOTS[d].get("data-decor-only") == "true"]
-NO_FOOTER = {d for d in names if ROOTS[d].get("data-native-footer") == "false"}
 check(len(names) - len(BGS) >= 6 and len(BGS) >= 8, f"expected ≥6 slide + ≥8 background designs, found {len(names) - len(BGS)} + {len(BGS)}")
 check(all(SAMPLES.get(d) == {} for d in BGS), "background samples are empty payloads")
 check(sorted(SAMPLES) == names, "samples.json has exactly one payload per design")
@@ -177,33 +169,30 @@ with tempfile.TemporaryDirectory(prefix="compose-") as tmp:
             if r.returncode:
                 continue
             full = open(os.path.join(tmp, f"{d}.svg"), encoding="utf-8").read()
-            bg = open(os.path.join(tmp, f"{d}.bg.svg"), encoding="utf-8").read()
-            side = json.load(open(os.path.join(tmp, f"{d}.slides.json"), encoding="utf-8"))
-            for label, svg in (("svg", full), ("bg", bg)):
-                check(not re.search(r"var\(|color-mix\(|data-slot|data-native-footer|<!--", svg), f"{d} [{theme}] {label}: leftover marker/token")
-                check(re.search(r'<svg[^>]*width="1280" height="720"', svg) is not None, f"{d} [{theme}] {label}: fixed size")
-                ET.fromstring(svg.split("?>", 1)[1])  # well-formed
-            text_slots = {k for k in SAMPLES[d] if k != "figure"}
-            check({t["slot"] for t in side["text"]} == text_slots, f"{d} [{theme}]: sidecar text slots")
-            for t in side["text"]:
-                check(re.fullmatch(r"#[0-9a-f]{6}", t["colorHex"]) is not None and t["sizePt"] == t["size"] * 0.75, f"{d}/{t['slot']}: sidecar colour/size")
-                tx = {"start": t["x"], "middle": t["x"] + t["w"] / 2, "end": t["x"] + t["w"]}[t["anchor"]]
-                for i, line in enumerate(t["lines"]):
+            check(not re.search(r"var\(|color-mix\(|data-slot|data-decor-only|<!--", full), f"{d} [{theme}]: leftover marker/token")
+            check(re.search(r'<svg[^>]*width="1280" height="720"', full) is not None, f"{d} [{theme}]: fixed size")
+            ET.fromstring(full.split("?>", 1)[1])  # well-formed
+            for g in slots_of(ROOTS[d]):
+                n = g.get("data-slot")
+                if g.get("data-slot-kind") != "text" or n not in SAMPLES[d]:
+                    continue
+                x, y, w, h = (float(v) for v in g.get("data-slot-box").split())
+                size = float(g.get("data-slot-size"))
+                tx = {"start": x, "middle": x + w / 2, "end": x + w}[g.get("data-slot-anchor", "start")]
+                lines = SAMPLES[d][n] if isinstance(SAMPLES[d][n], list) else [SAMPLES[d][n]]
+                for i, line in enumerate(lines):
                     esc = line.replace("&", "&amp;")
-                    check(f">{esc}</text>" in full, f"{d}/{t['slot']}: line missing from composed slide")
                     m = re.search(rf'<text x="([\d.]+)" y="([\d.]+)"[^>]*>{re.escape(esc)}</text>', full)
                     check(m is not None and abs(float(m.group(1)) - tx) < 0.06
-                          and abs(float(m.group(2)) - (t["y"] + t["size"] * (FIRST + i * LEAD))) < 0.06,
-                          f"{d}/{t['slot']}: composed line {i + 1} not at the layout-rule position")
-                    check(f">{esc}</text>" not in bg, f"{d}/{t['slot']}: line leaked into the background")
+                          and abs(float(m.group(2)) - (y + size * (FIRST + i * LEAD))) < 0.06,
+                          f"{d}/{n}: composed line {i + 1} missing or not at the layout-rule position")
             fig = SAMPLES[d].get("figure")
             if fig:
-                check(f'data-component="{fig}"' in full and f'data-component="{fig}"' in bg, f"{d}: component {fig} not inlined")
+                check(f'data-component="{fig}"' in full, f"{d}: component {fig} not inlined")
                 if fig in TITLE_OF:
                     check(f"<title>{TITLE_OF[fig]}</title>" in full, f"{d}: component subtree missing")
-            check(side["nativeFooter"] == (d not in NO_FOOTER), f"{d}: nativeFooter flag")
-            if d in BGS:  # zero slots: background == slide, painted edge to edge in the theme's surface
-                check(full == bg and side["text"] == [] and side["graphics"] == [] and side["decorOnly"], f"{d} [{theme}]: decor slide not text-free / bg differs")
+            if d in BGS:  # zero slots: text-free, painted edge to edge in the theme's surface
+                check("<text" not in full, f"{d} [{theme}]: decor slide has text")
                 m = re.search(r'<rect x="0" y="0" width="1280" height="720" style="fill:#([0-9a-f]{6})', full)
                 lum = m and sum(int(m.group(1)[i:i + 2], 16) for i in (0, 2, 4)) / 765
                 check(m is not None and (lum < 0.2 if theme == "dark" else lum > 0.85), f"{d} [{theme}]: full-bleed paint is not {theme}")
@@ -233,104 +222,11 @@ with tempfile.TemporaryDirectory(prefix="compose-") as tmp:
     check(r.returncode == 1 and r.stderr.startswith("DESIGN-INVALID") and "decor-only" in r.stderr, f"decor design with a slot not rejected: {r.stderr.strip()}")
     # inline JSON payload, the documented background call
     r = run(["node", COMPOSER, "bg-helix-field", "--payload", "{}", "--theme", "dark", "--out", tmp, "--name", "inline"])
-    check(r.returncode == 0 and os.path.exists(os.path.join(tmp, "inline.bg.svg")), f"inline --payload '{{}}': {r.stderr.strip()}")
+    check(r.returncode == 0 and os.path.exists(os.path.join(tmp, "inline.svg")), f"inline --payload '{{}}': {r.stderr.strip()}")
     # optional slots may be left out; the composed slide then has no placeholder text
     r = compose("closing", {"title": "Thanks", "contact": "x@example.org"}, tmp, name="bare")
     check(r.returncode == 0 and "Slides and data" not in open(os.path.join(tmp, "bare.svg")).read(), "optional slot left out")
 
-# ── 3. deck builder: "design" slides ────────────────────────────────────
-try:
-    from lxml import etree
-    from pptx import Presentation
-    from pptx.enum.shapes import MSO_SHAPE_TYPE
-    from pptx.oxml.ns import qn
-    import cairosvg  # noqa: F401
-except ImportError as e:
-    print(f"  SKIP deck part: optional deck-builder deps missing ({e.name})")
-else:
-    SVG_NS = "http://schemas.microsoft.com/office/drawing/2016/SVG/main"
-    DECOR_NS = "http://schemas.microsoft.com/office/drawing/2017/decorative"
-    SPEC = {"title": "Design deck", "footer": "Design footer",
-            "slides": [{"design": d, "payload": SAMPLES[d], "notes": f"notes {d}"} for d in names] +
-                      [{"layout": "bullets", "title": "House slide after designs", "bullets": ["a"]}]}
-
-    def check_deck(path, label, house):
-        prs = Presentation(path)
-        sw, sh = prs.slide_width, prs.slide_height
-        for n, (slide, s) in enumerate(zip(prs.slides, SPEC["slides"]), 1):
-            if "design" not in s:
-                continue
-            d = s["design"]
-            tag = f"{label} slide {n} ({d})"
-            pics = [p for p in slide.shapes if p.shape_type == MSO_SHAPE_TYPE.PICTURE]
-            check(len(pics) == 1, f"{tag}: expected 1 picture, got {len(pics)}")
-            if pics:
-                p = pics[0]
-                if house:
-                    check((p.left, p.top, p.width, p.height) == (0, 0, sw, sh), f"{tag}: picture does not cover the slide")
-                else:
-                    check(abs(p.width / p.height - 16 / 9) < 0.01 and p.width <= sw and p.height <= sh
-                          and abs(p.left * 2 + p.width - sw) <= 2 and abs(p.top * 2 + p.height - sh) <= 2, f"{tag}: picture not contain-centred")
-                sb = list(p._element.iter(f"{{{SVG_NS}}}svgBlip"))
-                check(len(sb) == 1 and slide.part.related_part(sb[0].get(qn("r:embed"))).content_type == "image/svg+xml", f"{tag}: svgBlip")
-                bg = slide.part.related_part(sb[0].get(qn("r:embed"))).blob.decode() if sb else ""
-                decor = list(p._element.iter(f"{{{DECOR_NS}}}decorative"))
-                check(bool(decor) != ("figure" in s["payload"]), f"{tag}: decorative flag / alt text")
-                if "figure" in s["payload"]:
-                    check(bool(p._element.find(".//" + qn("p:cNvPr")).get("descr")), f"{tag}: figure alt text")
-            boxes = [b for b in slide.shapes if b.shape_type == MSO_SHAPE_TYPE.TEXT_BOX]
-            expect = {k: v for k, v in s["payload"].items() if k != "figure"}
-            check(sorted(b.name for b in boxes) == sorted(f"Slot {k}" for k in expect), f"{tag}: native text boxes {[b.name for b in boxes]}")
-            xml = etree.tostring(slide._element, encoding="unicode")
-            for k, v in expect.items():
-                box = next((b for b in boxes if b.name == f"Slot {k}"), None)
-                want = [v] if isinstance(v, str) else v
-                check(box is not None and [pp.text for pp in box.text_frame.paragraphs] == want, f"{tag}/{k}: text box lines")
-                for line in want:
-                    check(line.replace("&", "&amp;") in xml, f"{tag}/{k}: line not in slide XML")
-                    check(line.replace("&", "&amp;") not in bg, f"{tag}/{k}: line painted into the picture too")
-                if box is not None:
-                    r = box.text_frame.paragraphs[0].runs[0]._r
-                    latin = r.find(qn("a:rPr") + "/" + qn("a:latin"))
-                    check(latin is not None and latin.get("typeface") in ("+mj-lt", "+mn-lt"), f"{tag}/{k}: theme font")
-            fld = [e.get("type") for e in slide._element.iter(qn("a:fld"))]
-            check(("slidenum" in fld) == (d not in NO_FOOTER), f"{tag}: footer fields vs data-native-footer")
-            if d in BGS:
-                check(not boxes and not [x for x in slide.shapes if not x.is_placeholder and x.has_text_frame and x.text_frame.text.strip()], f"{tag}: decor slide has text")
-            check(slide.has_notes_slide and slide.notes_slide.notes_text_frame.text == f"notes {d}", f"{tag}: notes")
-            check(not list(slide.placeholders) or all(ph.placeholder_format.type in (13, 15, 16) for ph in slide.placeholders), f"{tag}: stray placeholders")
-        return prs
-
-    def build(spec, out, *extra):
-        p = os.path.join(os.path.dirname(out), "spec.json")
-        with open(p, "w", encoding="utf-8") as f:
-            json.dump(spec, f)
-        return run([sys.executable, BUILDER, p, "-o", out] + list(extra))
-
-    with tempfile.TemporaryDirectory(prefix="slidesdeck-") as tmp:
-        for theme in ("light", "dark"):
-            out = os.path.join(tmp, f"{theme}.pptx")
-            r = build(SPEC, out, "--theme", theme)
-            check(r.returncode == 0, f"deck {theme}: {r.stderr.strip()}")
-            if r.returncode == 0:
-                check_deck(out, theme, house=True)
-        import pptx
-        corp = os.path.join(os.path.dirname(pptx.__file__), "templates", "default.pptx")
-        out = os.path.join(tmp, "corp.pptx")
-        r = build(SPEC, out, "--base", corp)
-        check(r.returncode == 0, f"deck --base: {r.stderr.strip()}")
-        if r.returncode == 0:
-            check_deck(out, "corp", house=False)
-
-        # three deliberate breakages: each must stop the build with the named gate
-        hero = SAMPLES["title-hero"]
-        for slide, why in (({"design": "title-hero", "payload": {**hero, "hero-title": ["x" * 60]}}, "TEXT-OVERFLOW"),
-                           ({"design": "title-hero", "payload": {**hero, "footnote": "x"}}, "SLOT-UNKNOWN"),
-                           ({"design": "poster-hero", "payload": {}}, "DESIGN-UNKNOWN"),
-                           ({"design": "title-hero", "layout": "title", "payload": hero}, "either layout or design")):
-            r = build({"slides": [slide]}, os.path.join(tmp, "bad.pptx"))
-            check(r.returncode != 0 and why in r.stderr, f"deck accepted a broken design slide ({why}): {r.stderr.strip()}")
-
-print(f"  svg-slides: {len(names) - len(BGS)} slide + {len(BGS)} background designs · composer × 2 themes · deck (light, dark, --base 4:3)")
+print(f"  svg-slides: {len(names) - len(BGS)} slide + {len(BGS)} background designs · composer × 2 themes")
 print(f"  TOTAL: {passed} passed · {failed} failed")
 sys.exit(1 if failed else 0)

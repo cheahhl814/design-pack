@@ -2,14 +2,13 @@
 html-template-pack · svg-slides · title-hero
   Cover slide (1280x720): eyebrow, two-line hero title, subtitle, meta row
   (author · org · date) and a DNA-helix strip along the bottom edge with a
-  dot field in the top-right corner. Paints its own footer zone, so the deck
-  builder adds no native footer fields (data-native-footer="false").
+  dot field in the top-right corner. Paints its own footer zone.
   Slots: eyebrow (text) · hero-title (text, 2 × 38 ch) · subtitle (text, 2 × 72 ch)
          · meta (text, optional).
   Tokens: teal amber coral deep-blue text text-muted border-bright surface font-head font-sans.
   Compose with bin/compose-slide.js; slot rules in templates/svg-slides/README.md.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Cover slide with an eyebrow line, a two-line title, a subtitle, a meta row and a DNA helix strip along the bottom" data-native-footer="false" style="width:100%;height:auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Cover slide with an eyebrow line, a two-line title, a subtitle, a meta row and a DNA helix strip along the bottom" style="width:100%;height:auto">
   <title>Title hero slide design</title>
   <rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/>
   <!-- dot field, top right -->

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Master test runner for html-template-pack.
-// Verifies every template, the graphics/SVG tooling and the pptx deck builder.
+// Verifies every template and the graphics/SVG tooling.
 
 const { execSync } = require('child_process');
 const path = require('path');
@@ -15,10 +15,8 @@ const suites = [
   { name: 'Dashboard template (htmx panels, demo-mode mock backend, theme toggle)', script: 'test/smoke-test-dashboard.js' },
   { name: 'Graphics pack (v0.8.0 shared component library in report + slide + bento)', script: 'test/smoke-test-graphics.js' },
   { name: 'SVG export (standalone, renderer-safe .svg from the svg-library)', script: 'test/smoke-test-svg-export.js' },
-  // Python suite (optional deps; skips itself if python-pptx/cairosvg/lxml/Pillow are missing)
-  { name: 'PPTX deck builder (house bases, native SVG embed, structural QA)', cmd: 'python3 test/smoke-test-pptx-deck.py' },
-  // v0.21.0 svg-slides: design QA + composer gates (node + stdlib) and design slides in pptx (skips without the deps)
-  { name: 'SVG slide designs (slot markers, compose-slide gates, design slides in pptx)', cmd: 'python3 test/smoke-test-slides.py' }
+  // v0.21.0 svg-slides: design QA + composer gates (node + python stdlib)
+  { name: 'SVG slide designs (slot markers, compose-slide gates)', cmd: 'python3 test/smoke-test-slides.py' }
 ];
 
 console.log('html-template-pack · test suite\n' + '─'.repeat(60));

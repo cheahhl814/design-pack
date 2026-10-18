@@ -4,12 +4,12 @@ html-template-pack · svg-slides · bg-flow-dashes
   plain field with six layered, wavy dashed contour lines (teal family + one
   amber) drifting across the lower third over a faint teal wash, very low
   contrast, with three dot accents. After Craftwork's flow-pattern pack.
-  Paints its own bottom edge, so the deck builder adds no native footer fields.
+  Paints its own bottom edge (no footer line).
   Content zone: the whole upper zone (x 60-1220, y 60-460) is clear.
   Tokens: teal amber coral surface.
   Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with six faint dashed topographic contour lines drifting across the lower third, five teal and one amber, the upper area clear" data-decor-only="true" data-native-footer="false" style="width:100%;height:auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with six faint dashed topographic contour lines drifting across the lower third, five teal and one amber, the upper area clear" data-decor-only="true" style="width:100%;height:auto">
   <title>Flow dashes background design</title>
   <rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/>
   <!-- faint wash under the contour band -->

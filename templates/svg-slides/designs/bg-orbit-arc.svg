@@ -4,13 +4,13 @@ html-template-pack · svg-slides · bg-orbit-arc
   plain field with two large orbit arcs (solid teal with an offset copy,
   dashed outer) and a tinted core sweeping across the top-left corner,
   satellite dots riding the arcs and a dashed diagonal guide line. Kin of
-  the deck chrome closing-orbit.
-  Keeps y ≥ 676 clear, so the deck builder adds the native footer fields.
+  the former deck chrome closing-orbit.
+  Keeps y ≥ 676 clear for a footer line.
   Content zone: bottom-right (x 540-1220, y 260-640) is clear.
   Tokens: teal amber coral text-muted border-bright surface.
   Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with two large orbit arcs and a dashed guide line sweeping across the top-left corner, satellite dots riding the arcs, the bottom right clear" data-decor-only="true" data-native-footer="true" style="width:100%;height:auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with two large orbit arcs and a dashed guide line sweeping across the top-left corner, satellite dots riding the arcs, the bottom right clear" data-decor-only="true" style="width:100%;height:auto">
   <title>Orbit arc background design</title>
   <rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/>
   <!-- orbit arcs sweeping across the top-left corner -->

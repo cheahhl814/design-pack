@@ -139,8 +139,13 @@ const balanced = (tag) => (src.match(new RegExp(`<${tag}[\\s>]`, 'g')) || []).le
   return errs;
 }
 
-const files = fs.readdirSync(SVG_DIR).filter(f => f.endsWith('.svg')).sort();
+// Card order and numbers follow the README catalog (| 1 | `flow-pipeline.svg` | ...)
+const catalog = [...fs.readFileSync(path.join(SVG_DIR, '..', 'README.md'), 'utf8')
+  .matchAll(/^\| *(\d+) *\| *`([\w-]+\.svg)`/gm)].map(m => m[2]);
+const files = fs.readdirSync(SVG_DIR).filter(f => f.endsWith('.svg'));
 if (files.length === 0) throw new Error('no svg files found');
+for (const f of files) if (!catalog.includes(f)) throw new Error(`${f} has no row in the README catalog`);
+files.sort((x, y) => catalog.indexOf(x) - catalog.indexOf(y));
 
 const cards = [];
 for (const f of files) {

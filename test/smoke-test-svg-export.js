@@ -28,6 +28,19 @@ for (const f of files) {
     if (theme === 'dark') check(/<\/title>\s*<rect [^>]*fill:#131820/.test(out), `${f} [dark]: background rect`);
   }
 }
+// --png: CLI renders the baked file at 2x (skipped without Chrome)
+const { execFileSync } = require('child_process');
+const os = require('os');
+const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'svgpng-'));
+try {
+  execFileSync('node', [path.join(__dirname, '..', 'bin', 'svg-export.js'), 'mind-map', '--png', '--out', tmp], { stdio: 'pipe' });
+  const png = fs.readFileSync(path.join(tmp, 'mind-map.png'));
+  check(png.readUInt32BE(16) === 1600 && png.readUInt32BE(20) === 900, '--png: 1600x900 PNG');
+} catch (e) {
+  if (/needs google-chrome/.test(String(e.stderr))) console.log('  SKIP --png: no Chrome');
+  else check(false, `--png: ${e.stderr || e.message}`);
+}
+fs.rmSync(tmp, { recursive: true, force: true });
 console.log(`  svg-export: ${files.length} components × 2 themes`);
 console.log(`  TOTAL: ${pass} passed · ${fail} failed`);
 process.exit(fail ? 1 : 0);

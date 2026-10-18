@@ -3,7 +3,7 @@ html-template-pack · svg-slides · big-statement
   Takeaway / quote slide (1280x720): a centred statement of up to three lines on
   a soft tinted card, an opening quote glyph astride the card's corner, corner
   brackets as a minimal frame, and a centred attribution under a short rule.
-  The bottom 44 px stay clear for the deck builder's native footer fields.
+  The bottom 44 px stay clear for a footer line.
   Slots: eyebrow (text, optional) · statement (text, 3 × 46 ch) · attribution (text, optional).
   Tokens: teal amber coral text text-muted border-bright surface font-head font-sans.
   Compose with bin/compose-slide.js; slot rules in templates/svg-slides/README.md.

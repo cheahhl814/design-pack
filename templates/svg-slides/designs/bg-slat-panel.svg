@@ -5,12 +5,12 @@ html-template-pack · svg-slides · bg-slat-panel
   vertical slat pattern (teal tints, two amber slats), edged by a thin
   border-bright rule with a short teal tick. After Craftwork's slat
   patterns.
-  Paints its own bottom edge, so the deck builder adds no native footer fields.
+  Paints its own bottom edge (no footer line).
   Content zone: right ~65% (x 420-1220, y 60-660) is clear.
   Tokens: teal amber border-bright surface.
   Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background split by a tinted side panel on the left filled with vertical teal and amber slats and edged by a thin rule, the right two thirds clear" data-decor-only="true" data-native-footer="false" style="width:100%;height:auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background split by a tinted side panel on the left filled with vertical teal and amber slats and edged by a thin rule, the right two thirds clear" data-decor-only="true" style="width:100%;height:auto">
   <title>Slat panel background design</title>
   <rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/>
   <!-- tinted side panel (28% width) -->

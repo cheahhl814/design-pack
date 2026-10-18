@@ -6,12 +6,12 @@ html-template-pack · svg-slides · bg-helix-field
   code-stream dash columns and a few dot accents. After the SlidesCorner
   science background: the motif anchors the right edge and the rest stays
   even.
-  Paints its own bottom edge, so the deck builder adds no native footer fields.
+  Paints its own bottom edge (no footer line).
   Content zone: left 55% (x 60-700, y 60-660) is clear for a headline, body text or graphics.
   Tokens: teal amber coral green deep-blue text text-muted surface.
   Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with a large DNA double helix climbing the right edge between faint code-stream dash columns, the left side left even and clear" data-decor-only="true" data-native-footer="false" style="width:100%;height:auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with a large DNA double helix climbing the right edge between faint code-stream dash columns, the left side left even and clear" data-decor-only="true" style="width:100%;height:auto">
   <title>Helix field background design</title>
   <rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/>
   <!-- soft tint behind the right third -->

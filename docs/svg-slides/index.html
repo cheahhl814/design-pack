@@ -67,7 +67,7 @@
     <figure class="card" id="d-title-hero">
       <figcaption>
         <span class="idx">01</span>
-        <span class="info"><strong>title-hero</strong><em>Cover slide (1280x720): eyebrow, two-line hero title, subtitle, meta row (author · org · date) and a DNA-helix strip along the bottom edge with a dot field in the top-right corner. Paints its own footer zone, so the deck builder adds no native footer fields (data-native-footer="false").</em><span class="use">slots: <code>eyebrow</code> <code>hero-title</code> <code>subtitle</code> <code>meta</code>?</span></span>
+        <span class="info"><strong>title-hero</strong><em>Cover slide (1280x720): eyebrow, two-line hero title, subtitle, meta row (author · org · date) and a DNA-helix strip along the bottom edge with a dot field in the top-right corner. Paints its own footer zone.</em><span class="use">slots: <code>eyebrow</code> <code>hero-title</code> <code>subtitle</code> <code>meta</code>?</span></span>
       </figcaption>
       <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Cover slide with an eyebrow line, a two-line title, a subtitle, a meta row and a DNA helix strip along the bottom" style="width:100%;height:auto">
   <title>Title hero slide design</title>
@@ -136,14 +136,13 @@
 html-template-pack · svg-slides · title-hero
   Cover slide (1280x720): eyebrow, two-line hero title, subtitle, meta row
   (author · org · date) and a DNA-helix strip along the bottom edge with a
-  dot field in the top-right corner. Paints its own footer zone, so the deck
-  builder adds no native footer fields (data-native-footer="false").
+  dot field in the top-right corner. Paints its own footer zone.
   Slots: eyebrow (text) · hero-title (text, 2 × 38 ch) · subtitle (text, 2 × 72 ch)
          · meta (text, optional).
   Tokens: teal amber coral deep-blue text text-muted border-bright surface font-head font-sans.
   Compose with bin/compose-slide.js; slot rules in templates/svg-slides/README.md.
 --&gt;
-&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Cover slide with an eyebrow line, a two-line title, a subtitle, a meta row and a DNA helix strip along the bottom" data-native-footer="false" style="width:100%;height:auto"&gt;
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Cover slide with an eyebrow line, a two-line title, a subtitle, a meta row and a DNA helix strip along the bottom" style="width:100%;height:auto"&gt;
   &lt;title&gt;Title hero slide design&lt;/title&gt;
   &lt;rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/&gt;
   &lt;!-- dot field, top right --&gt;
@@ -225,7 +224,7 @@ html-template-pack · svg-slides · title-hero
     <figure class="card" id="d-section-break">
       <figcaption>
         <span class="idx">02</span>
-        <span class="info"><strong>section-break</strong><em>Chapter divider (1280x720): a tinted panel on the left carries an oversized, tinted chapter number; the right column holds an eyebrow, the section title and a one-line orientation. A small molecule ring sits in the top-right corner and a dotted rule closes the column. No native footer fields.</em><span class="use">slots: <code>number</code> <code>eyebrow</code>? <code>section-title</code> <code>orientation</code></span></span>
+        <span class="info"><strong>section-break</strong><em>Chapter divider (1280x720): a tinted panel on the left carries an oversized, tinted chapter number; the right column holds an eyebrow, the section title and a one-line orientation. A small molecule ring sits in the top-right corner and a dotted rule closes the column.</em><span class="use">slots: <code>number</code> <code>eyebrow</code>? <code>section-title</code> <code>orientation</code></span></span>
       </figcaption>
       <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Section divider slide with a large chapter number on a tinted panel, a section title and an orientation line" style="width:100%;height:auto">
   <title>Section break slide design</title>
@@ -273,13 +272,13 @@ html-template-pack · svg-slides · section-break
   Chapter divider (1280x720): a tinted panel on the left carries an oversized,
   tinted chapter number; the right column holds an eyebrow, the section title
   and a one-line orientation. A small molecule ring sits in the top-right
-  corner and a dotted rule closes the column. No native footer fields.
+  corner and a dotted rule closes the column.
   Slots: number (text, 2 ch) · eyebrow (text, optional) · section-title (text, 2 × 24 ch)
          · orientation (text, 1 × 52 ch).
   Tokens: teal amber coral green deep-blue text text-muted border-bright surface font-head font-sans.
   Compose with bin/compose-slide.js; slot rules in templates/svg-slides/README.md.
 --&gt;
-&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Section divider slide with a large chapter number on a tinted panel, a section title and an orientation line" data-native-footer="false" style="width:100%;height:auto"&gt;
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Section divider slide with a large chapter number on a tinted panel, a section title and an orientation line" style="width:100%;height:auto"&gt;
   &lt;title&gt;Section break slide design&lt;/title&gt;
   &lt;rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/&gt;
   &lt;!-- number panel --&gt;
@@ -336,7 +335,7 @@ html-template-pack · svg-slides · section-break
     <figure class="card" id="d-big-statement">
       <figcaption>
         <span class="idx">03</span>
-        <span class="info"><strong>big-statement</strong><em>Takeaway / quote slide (1280x720): a centred statement of up to three lines on a soft tinted card, an opening quote glyph astride the card's corner, corner brackets as a minimal frame, and a centred attribution under a short rule. The bottom 44 px stay clear for the deck builder's native footer fields.</em><span class="use">slots: <code>eyebrow</code>? <code>statement</code> <code>attribution</code>?</span></span>
+        <span class="info"><strong>big-statement</strong><em>Takeaway / quote slide (1280x720): a centred statement of up to three lines on a soft tinted card, an opening quote glyph astride the card's corner, corner brackets as a minimal frame, and a centred attribution under a short rule. The bottom 44 px stay clear for a footer line.</em><span class="use">slots: <code>eyebrow</code>? <code>statement</code> <code>attribution</code>?</span></span>
       </figcaption>
       <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Statement slide with a centred three-line takeaway on a tinted card, a quote glyph, corner brackets and an attribution line" style="width:100%;height:auto">
   <title>Big statement slide design</title>
@@ -375,7 +374,7 @@ html-template-pack · svg-slides · big-statement
   Takeaway / quote slide (1280x720): a centred statement of up to three lines on
   a soft tinted card, an opening quote glyph astride the card's corner, corner
   brackets as a minimal frame, and a centred attribution under a short rule.
-  The bottom 44 px stay clear for the deck builder's native footer fields.
+  The bottom 44 px stay clear for a footer line.
   Slots: eyebrow (text, optional) · statement (text, 3 × 46 ch) · attribution (text, optional).
   Tokens: teal amber coral text text-muted border-bright surface font-head font-sans.
   Compose with bin/compose-slide.js; slot rules in templates/svg-slides/README.md.
@@ -429,7 +428,7 @@ html-template-pack · svg-slides · big-statement
     <figure class="card" id="d-content-two-col">
       <figcaption>
         <span class="idx">04</span>
-        <span class="info"><strong>content-two-col</strong><em>Content slide (1280x720): eyebrow + heading across the top, a body-text card (up to six lines) and an amber key-point callout on the left, a framed graphic slot on the right for one svg-library component, and a caption under it. Cards fill the slide height; the bottom 44 px stay clear for the native footer fields.</em><span class="use">slots: <code>eyebrow</code>? <code>heading</code> <code>body</code> <code>callout</code>? <code>figure</code> <code>caption</code>?</span></span>
+        <span class="info"><strong>content-two-col</strong><em>Content slide (1280x720): eyebrow + heading across the top, a body-text card (up to six lines) and an amber key-point callout on the left, a framed graphic slot on the right for one svg-library component, and a caption under it. Cards fill the slide height; the bottom 44 px stay clear for a footer line.</em><span class="use">slots: <code>eyebrow</code>? <code>heading</code> <code>body</code> <code>callout</code>? <code>figure</code> <code>caption</code>?</span></span>
       </figcaption>
       <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Two-column content slide with a heading, a body-text card and key-point callout on the left and a framed diagram area with caption on the right" style="width:100%;height:auto">
   <title>Two-column content slide design</title>
@@ -514,7 +513,7 @@ html-template-pack · svg-slides · content-two-col
   Content slide (1280x720): eyebrow + heading across the top, a body-text card
   (up to six lines) and an amber key-point callout on the left, a framed
   graphic slot on the right for one svg-library component, and a caption under
-  it. Cards fill the slide height; the bottom 44 px stay clear for the native footer fields.
+  it. Cards fill the slide height; the bottom 44 px stay clear for a footer line.
   Slots: eyebrow (text, optional) · heading (text, 1 × 48 ch) · body (text, 6 × 46 ch)
          · callout (text, optional) · figure (graphic) · caption (text, optional).
   Tokens: teal amber deep-blue text text-muted border border-bright surface font-head font-sans.
@@ -587,7 +586,7 @@ html-template-pack · svg-slides · content-two-col
     <figure class="card" id="d-full-diagram">
       <figcaption>
         <span class="idx">05</span>
-        <span class="info"><strong>full-diagram</strong><em>Diagram slide (1280x720): eyebrow + heading at the top, one large graphic panel (880 × 508 slot; an 800 × 450 library component scales to about 880 × 495 and fills it) with a takeaway rail card on the right. The bottom 44 px stay clear for the native footer fields.</em><span class="use">slots: <code>eyebrow</code>? <code>heading</code> <code>figure</code> <code>takeaway</code>?</span></span>
+        <span class="info"><strong>full-diagram</strong><em>Diagram slide (1280x720): eyebrow + heading at the top, one large graphic panel (880 × 508 slot; an 800 × 450 library component scales to about 880 × 495 and fills it) with a takeaway rail card on the right. The bottom 44 px stay clear for a footer line.</em><span class="use">slots: <code>eyebrow</code>? <code>heading</code> <code>figure</code> <code>takeaway</code>?</span></span>
       </figcaption>
       <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Diagram slide with a heading, a large diagram panel and a takeaway card on the right" style="width:100%;height:auto">
   <title>Diagram slide design</title>
@@ -699,7 +698,7 @@ html-template-pack · svg-slides · full-diagram
   Diagram slide (1280x720): eyebrow + heading at the top, one large graphic
   panel (880 × 508 slot; an 800 × 450 library component scales to about
   880 × 495 and fills it) with a takeaway rail card on the right. The bottom
-  44 px stay clear for the native footer fields.
+  44 px stay clear for a footer line.
   Slots: eyebrow (text, optional) · heading (text, 1 × 60 ch) · figure (graphic)
          · takeaway (text, optional).
   Tokens: teal amber text text-muted border-bright surface font-head font-sans.
@@ -753,7 +752,7 @@ html-template-pack · svg-slides · full-diagram
     <figure class="card" id="d-closing">
       <figcaption>
         <span class="idx">06</span>
-        <span class="info"><strong>closing</strong><em>Closing slide (1280x720): soft teal field, accent rule, a two-line thanks / summary title, up to three contact lines and an optional meta line on the left 55%; orbit rings around a node network on the right (re-drawn slot-ready from the deck chrome's closing-orbit). No native footer fields.</em><span class="use">slots: <code>title</code> <code>contact</code> <code>meta</code>?</span></span>
+        <span class="info"><strong>closing</strong><em>Closing slide (1280x720): soft teal field, accent rule, a two-line thanks / summary title, up to three contact lines and an optional meta line on the left 55%; orbit rings around a node network on the right (re-drawn slot-ready from the former deck chrome's closing-orbit).</em><span class="use">slots: <code>title</code> <code>contact</code> <code>meta</code>?</span></span>
       </figcaption>
       <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Closing slide with a thank-you title, contact lines and orbit rings around a small node network" style="width:100%;height:auto">
   <title>Closing slide design</title>
@@ -799,12 +798,12 @@ html-template-pack · svg-slides · closing
   Closing slide (1280x720): soft teal field, accent rule, a two-line thanks /
   summary title, up to three contact lines and an optional meta line on the
   left 55%; orbit rings around a node network on the right (re-drawn slot-ready
-  from the deck chrome's closing-orbit). No native footer fields.
+  from the former deck chrome's closing-orbit).
   Slots: title (text, 2 × 20 ch) · contact (text, 3 × 50 ch) · meta (text, optional).
   Tokens: teal amber coral green deep-blue text text-muted border-bright surface font-head font-sans.
   Compose with bin/compose-slide.js; slot rules in templates/svg-slides/README.md.
 --&gt;
-&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Closing slide with a thank-you title, contact lines and orbit rings around a small node network" data-native-footer="false" style="width:100%;height:auto"&gt;
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Closing slide with a thank-you title, contact lines and orbit rings around a small node network" style="width:100%;height:auto"&gt;
   &lt;title&gt;Closing slide design&lt;/title&gt;
   &lt;rect x="0" y="0" width="1280" height="720" style="fill:color-mix(in srgb, var(--teal,#0d9488) 6%, var(--surface,#ffffff))"/&gt;
   &lt;line x1="80" y1="226" x2="196" y2="226" style="stroke:var(--teal,#0d9488);stroke-width:8" stroke-linecap="round"/&gt;
@@ -858,13 +857,13 @@ html-template-pack · svg-slides · closing
     </figure>
   </main>
   <h2 id="backgrounds">Background designs</h2>
-  <p>Decor-only stages (<code>data-decor-only="true"</code>, zero slots), each composed with <code>{}</code>. Content goes in the documented content zone: native text in a deck, or svg-library graphics.</p>
+  <p>Decor-only stages (<code>data-decor-only="true"</code>, zero slots), each composed with <code>{}</code>. Content goes in the documented content zone: text or svg-library graphics.</p>
   <nav><a href="#d-bg-helix-field">bg-helix-field</a><a href="#d-bg-mosaic-triangles">bg-mosaic-triangles</a><a href="#d-bg-flow-dashes">bg-flow-dashes</a><a href="#d-bg-concentric-vortex">bg-concentric-vortex</a><a href="#d-bg-dot-wash">bg-dot-wash</a><a href="#d-bg-molecule-scatter">bg-molecule-scatter</a><a href="#d-bg-orbit-arc">bg-orbit-arc</a><a href="#d-bg-slat-panel">bg-slat-panel</a></nav>
   <main class="catalog">
     <figure class="card" id="d-bg-helix-field">
       <figcaption>
         <span class="idx">01</span>
-        <span class="info"><strong>bg-helix-field</strong><em>Background design (1280x720, decor only, zero slots): deep surface field with a large DNA double helix (two sine strands + tinted base-pair rungs) climbing the right edge, flanked by faint code-stream dash columns and a few dot accents. After the SlidesCorner science background: the motif anchors the right edge and the rest stays even. Paints its own bottom edge, so the deck builder adds no native footer fields.</em><span class="use">content zone: left 55% (x 60-700, y 60-660) is clear for a headline, body text or graphics.</span></span>
+        <span class="info"><strong>bg-helix-field</strong><em>Background design (1280x720, decor only, zero slots): deep surface field with a large DNA double helix (two sine strands + tinted base-pair rungs) climbing the right edge, flanked by faint code-stream dash columns and a few dot accents. After the SlidesCorner science background: the motif anchors the right edge and the rest stays even. Paints its own bottom edge (no footer line).</em><span class="use">content zone: left 55% (x 60-700, y 60-660) is clear for a headline, body text or graphics.</span></span>
       </figcaption>
       <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with a large DNA double helix climbing the right edge between faint code-stream dash columns, the left side left even and clear" style="width:100%;height:auto">
   <title>Helix field background design</title>
@@ -1030,12 +1029,12 @@ html-template-pack · svg-slides · bg-helix-field
   code-stream dash columns and a few dot accents. After the SlidesCorner
   science background: the motif anchors the right edge and the rest stays
   even.
-  Paints its own bottom edge, so the deck builder adds no native footer fields.
+  Paints its own bottom edge (no footer line).
   Content zone: left 55% (x 60-700, y 60-660) is clear for a headline, body text or graphics.
   Tokens: teal amber coral green deep-blue text text-muted surface.
   Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
 --&gt;
-&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with a large DNA double helix climbing the right edge between faint code-stream dash columns, the left side left even and clear" data-decor-only="true" data-native-footer="false" style="width:100%;height:auto"&gt;
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with a large DNA double helix climbing the right edge between faint code-stream dash columns, the left side left even and clear" data-decor-only="true" style="width:100%;height:auto"&gt;
   &lt;title&gt;Helix field background design&lt;/title&gt;
   &lt;rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/&gt;
   &lt;!-- soft tint behind the right third --&gt;
@@ -1201,7 +1200,7 @@ html-template-pack · svg-slides · bg-helix-field
     <figure class="card" id="d-bg-mosaic-triangles">
       <figcaption>
         <span class="idx">02</span>
-        <span class="info"><strong>bg-mosaic-triangles</strong><em>Background design (1280x720, decor only, zero slots): clean field with a geometric triangle mosaic (alternating up/down triangles, teal/amber/coral/deep-blue tints) stepping down into the bottom-right corner over four staggered rows, a dotted rule above it and a short teal + amber accent rule at the top left. After ppt-design.com's geometric cover themes. Paints its own bottom edge, so the deck builder adds no native footer fields.</em><span class="use">content zone: upper-left (x 80-1000, y 120-420, and x 80-560 down to y 640) is clear.</span></span>
+        <span class="info"><strong>bg-mosaic-triangles</strong><em>Background design (1280x720, decor only, zero slots): clean field with a geometric triangle mosaic (alternating up/down triangles, teal/amber/coral/deep-blue tints) stepping down into the bottom-right corner over four staggered rows, a dotted rule above it and a short teal + amber accent rule at the top left. After ppt-design.com's geometric cover themes. Paints its own bottom edge (no footer line).</em><span class="use">content zone: upper-left (x 80-1000, y 120-420, and x 80-560 down to y 640) is clear.</span></span>
       </figcaption>
       <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with a mosaic of teal, amber and coral tinted triangles stepping into the bottom-right corner and a short accent rule at the top left" style="width:100%;height:auto">
   <title>Triangle mosaic background design</title>
@@ -1270,12 +1269,12 @@ html-template-pack · svg-slides · bg-mosaic-triangles
   bottom-right corner over four staggered rows, a dotted rule above it and a
   short teal + amber accent rule at the top left. After ppt-design.com's
   geometric cover themes.
-  Paints its own bottom edge, so the deck builder adds no native footer fields.
+  Paints its own bottom edge (no footer line).
   Content zone: upper-left (x 80-1000, y 120-420, and x 80-560 down to y 640) is clear.
   Tokens: teal amber coral deep-blue text border-bright surface.
   Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
 --&gt;
-&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with a mosaic of teal, amber and coral tinted triangles stepping into the bottom-right corner and a short accent rule at the top left" data-decor-only="true" data-native-footer="false" style="width:100%;height:auto"&gt;
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with a mosaic of teal, amber and coral tinted triangles stepping into the bottom-right corner and a short accent rule at the top left" data-decor-only="true" style="width:100%;height:auto"&gt;
   &lt;title&gt;Triangle mosaic background design&lt;/title&gt;
   &lt;rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/&gt;
   &lt;!-- triangle mosaic band stepping into the bottom-right corner --&gt;
@@ -1341,7 +1340,7 @@ html-template-pack · svg-slides · bg-mosaic-triangles
     <figure class="card" id="d-bg-flow-dashes">
       <figcaption>
         <span class="idx">03</span>
-        <span class="info"><strong>bg-flow-dashes</strong><em>Background design (1280x720, decor only, zero slots): plain field with six layered, wavy dashed contour lines (teal family + one amber) drifting across the lower third over a faint teal wash, very low contrast, with three dot accents. After Craftwork's flow-pattern pack. Paints its own bottom edge, so the deck builder adds no native footer fields.</em><span class="use">content zone: the whole upper zone (x 60-1220, y 60-460) is clear.</span></span>
+        <span class="info"><strong>bg-flow-dashes</strong><em>Background design (1280x720, decor only, zero slots): plain field with six layered, wavy dashed contour lines (teal family + one amber) drifting across the lower third over a faint teal wash, very low contrast, with three dot accents. After Craftwork's flow-pattern pack. Paints its own bottom edge (no footer line).</em><span class="use">content zone: the whole upper zone (x 60-1220, y 60-460) is clear.</span></span>
       </figcaption>
       <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with six faint dashed topographic contour lines drifting across the lower third, five teal and one amber, the upper area clear" style="width:100%;height:auto">
   <title>Flow dashes background design</title>
@@ -1365,12 +1364,12 @@ html-template-pack · svg-slides · bg-flow-dashes
   plain field with six layered, wavy dashed contour lines (teal family + one
   amber) drifting across the lower third over a faint teal wash, very low
   contrast, with three dot accents. After Craftwork's flow-pattern pack.
-  Paints its own bottom edge, so the deck builder adds no native footer fields.
+  Paints its own bottom edge (no footer line).
   Content zone: the whole upper zone (x 60-1220, y 60-460) is clear.
   Tokens: teal amber coral surface.
   Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
 --&gt;
-&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with six faint dashed topographic contour lines drifting across the lower third, five teal and one amber, the upper area clear" data-decor-only="true" data-native-footer="false" style="width:100%;height:auto"&gt;
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with six faint dashed topographic contour lines drifting across the lower third, five teal and one amber, the upper area clear" data-decor-only="true" style="width:100%;height:auto"&gt;
   &lt;title&gt;Flow dashes background design&lt;/title&gt;
   &lt;rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/&gt;
   &lt;!-- faint wash under the contour band --&gt;
@@ -1393,7 +1392,7 @@ html-template-pack · svg-slides · bg-flow-dashes
     <figure class="card" id="d-bg-concentric-vortex">
       <figcaption>
         <span class="idx">04</span>
-        <span class="info"><strong>bg-concentric-vortex</strong><em>Background design (1280x720, decor only, zero slots): plain field with nine dashed concentric rings radiating from the top-right corner (teal, fading outward, one amber ring) and three accent satellite dots riding the rings. After Craftwork's dash vortex. Keeps y ≥ 676 clear, so the deck builder adds the native footer fields.</em><span class="use">content zone: centre-left and bottom (x 60-760, y 80-660; x 60-1220 below y 600) is clear.</span></span>
+        <span class="info"><strong>bg-concentric-vortex</strong><em>Background design (1280x720, decor only, zero slots): plain field with nine dashed concentric rings radiating from the top-right corner (teal, fading outward, one amber ring) and three accent satellite dots riding the rings. After Craftwork's dash vortex. Keeps y ≥ 676 clear for a footer line.</em><span class="use">content zone: centre-left and bottom (x 60-760, y 80-660; x 60-1220 below y 600) is clear.</span></span>
       </figcaption>
       <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with dashed concentric rings radiating from the top-right corner and three accent satellite dots on the rings, the left and lower area clear" style="width:100%;height:auto">
   <title>Concentric vortex background design</title>
@@ -1423,12 +1422,12 @@ html-template-pack · svg-slides · bg-concentric-vortex
   plain field with nine dashed concentric rings radiating from the top-right
   corner (teal, fading outward, one amber ring) and three accent satellite
   dots riding the rings. After Craftwork's dash vortex.
-  Keeps y ≥ 676 clear, so the deck builder adds the native footer fields.
+  Keeps y ≥ 676 clear for a footer line.
   Content zone: centre-left and bottom (x 60-760, y 80-660; x 60-1220 below y 600) is clear.
   Tokens: teal amber coral surface.
   Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
 --&gt;
-&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with dashed concentric rings radiating from the top-right corner and three accent satellite dots on the rings, the left and lower area clear" data-decor-only="true" data-native-footer="true" style="width:100%;height:auto"&gt;
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with dashed concentric rings radiating from the top-right corner and three accent satellite dots on the rings, the left and lower area clear" data-decor-only="true" style="width:100%;height:auto"&gt;
   &lt;title&gt;Concentric vortex background design&lt;/title&gt;
   &lt;rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/&gt;
   &lt;!-- dashed concentric rings radiating from the top-right corner --&gt;
@@ -1456,7 +1455,7 @@ html-template-pack · svg-slides · bg-concentric-vortex
     <figure class="card" id="d-bg-dot-wash">
       <figcaption>
         <span class="idx">05</span>
-        <span class="info"><strong>bg-dot-wash</strong><em>Background design (1280x720, decor only, zero slots): soft teal colour wash built from layered translucent ellipses in the top-right corner (no gradient defs, no filters), a dot grid whose dots shrink and fade toward the bottom-left, and one glowing teal accent cluster with amber and coral satellites. Keeps y ≥ 676 clear, so the deck builder adds the native footer fields.</em><span class="use">content zone: left 55% (x 60-680, y 80-640) plus the bottom band below y 560 is clear.</span></span>
+        <span class="info"><strong>bg-dot-wash</strong><em>Background design (1280x720, decor only, zero slots): soft teal colour wash built from layered translucent ellipses in the top-right corner (no gradient defs, no filters), a dot grid whose dots shrink and fade toward the bottom-left, and one glowing teal accent cluster with amber and coral satellites. Keeps y ≥ 676 clear for a footer line.</em><span class="use">content zone: left 55% (x 60-680, y 80-640) plus the bottom band below y 560 is clear.</span></span>
       </figcaption>
       <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with a soft teal colour wash in the top-right corner, a dot grid fading toward the bottom left and one glowing teal accent cluster" style="width:100%;height:auto">
   <title>Dot wash background design</title>
@@ -1859,12 +1858,12 @@ html-template-pack · svg-slides · bg-dot-wash
   top-right corner (no gradient defs, no filters), a dot grid whose dots
   shrink and fade toward the bottom-left, and one glowing teal accent
   cluster with amber and coral satellites.
-  Keeps y ≥ 676 clear, so the deck builder adds the native footer fields.
+  Keeps y ≥ 676 clear for a footer line.
   Content zone: left 55% (x 60-680, y 80-640) plus the bottom band below y 560 is clear.
   Tokens: teal amber coral deep-blue text surface.
   Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
 --&gt;
-&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with a soft teal colour wash in the top-right corner, a dot grid fading toward the bottom left and one glowing teal accent cluster" data-decor-only="true" data-native-footer="true" style="width:100%;height:auto"&gt;
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with a soft teal colour wash in the top-right corner, a dot grid fading toward the bottom left and one glowing teal accent cluster" data-decor-only="true" style="width:100%;height:auto"&gt;
   &lt;title&gt;Dot wash background design&lt;/title&gt;
   &lt;rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/&gt;
   &lt;!-- colour wash from layered translucent blobs (no gradients/filters) --&gt;
@@ -2266,7 +2265,7 @@ html-template-pack · svg-slides · bg-dot-wash
     <figure class="card" id="d-bg-molecule-scatter">
       <figcaption>
         <span class="idx">06</span>
-        <span class="info"><strong>bg-molecule-scatter</strong><em>Background design (1280x720, decor only, zero slots): plain field with faint stylised molecules (hexagonal rings with bonded atoms, circle-and-bond clusters) scattered along the top and right edges at low-opacity tints. A re-drawn, slot-free kin of the deck chrome molecule-corner. Keeps y ≥ 676 clear, so the deck builder adds the native footer fields.</em><span class="use">content zone: centre and left (x 60-1000, y 180-640; x 60-560 from y 60) is clear.</span></span>
+        <span class="info"><strong>bg-molecule-scatter</strong><em>Background design (1280x720, decor only, zero slots): plain field with faint stylised molecules (hexagonal rings with bonded atoms, circle-and-bond clusters) scattered along the top and right edges at low-opacity tints. A re-drawn, slot-free kin of the former deck chrome molecule-corner. Keeps y ≥ 676 clear for a footer line.</em><span class="use">content zone: centre and left (x 60-1000, y 180-640; x 60-560 from y 60) is clear.</span></span>
       </figcaption>
       <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with faint stylised molecules, hexagonal rings with bonded atoms and small atom clusters, scattered along the top and right edges, the centre and left clear" style="width:100%;height:auto">
   <title>Molecule scatter background design</title>
@@ -2330,14 +2329,14 @@ html-template-pack · svg-slides · bg-molecule-scatter
   Background design (1280x720, decor only, zero slots):
   plain field with faint stylised molecules (hexagonal rings with bonded
   atoms, circle-and-bond clusters) scattered along the top and right edges
-  at low-opacity tints. A re-drawn, slot-free kin of the deck chrome
+  at low-opacity tints. A re-drawn, slot-free kin of the former deck chrome
   molecule-corner.
-  Keeps y ≥ 676 clear, so the deck builder adds the native footer fields.
+  Keeps y ≥ 676 clear for a footer line.
   Content zone: centre and left (x 60-1000, y 180-640; x 60-560 from y 60) is clear.
   Tokens: teal amber coral text-muted surface.
   Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
 --&gt;
-&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with faint stylised molecules, hexagonal rings with bonded atoms and small atom clusters, scattered along the top and right edges, the centre and left clear" data-decor-only="true" data-native-footer="true" style="width:100%;height:auto"&gt;
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with faint stylised molecules, hexagonal rings with bonded atoms and small atom clusters, scattered along the top and right edges, the centre and left clear" data-decor-only="true" style="width:100%;height:auto"&gt;
   &lt;title&gt;Molecule scatter background design&lt;/title&gt;
   &lt;rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/&gt;
   &lt;!-- faint stylised molecules along the top and right edges --&gt;
@@ -2400,7 +2399,7 @@ html-template-pack · svg-slides · bg-molecule-scatter
     <figure class="card" id="d-bg-orbit-arc">
       <figcaption>
         <span class="idx">07</span>
-        <span class="info"><strong>bg-orbit-arc</strong><em>Background design (1280x720, decor only, zero slots): plain field with two large orbit arcs (solid teal with an offset copy, dashed outer) and a tinted core sweeping across the top-left corner, satellite dots riding the arcs and a dashed diagonal guide line. Kin of the deck chrome closing-orbit. Keeps y ≥ 676 clear, so the deck builder adds the native footer fields.</em><span class="use">content zone: bottom-right (x 540-1220, y 260-640) is clear.</span></span>
+        <span class="info"><strong>bg-orbit-arc</strong><em>Background design (1280x720, decor only, zero slots): plain field with two large orbit arcs (solid teal with an offset copy, dashed outer) and a tinted core sweeping across the top-left corner, satellite dots riding the arcs and a dashed diagonal guide line. Kin of the former deck chrome closing-orbit. Keeps y ≥ 676 clear for a footer line.</em><span class="use">content zone: bottom-right (x 540-1220, y 260-640) is clear.</span></span>
       </figcaption>
       <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with two large orbit arcs and a dashed guide line sweeping across the top-left corner, satellite dots riding the arcs, the bottom right clear" style="width:100%;height:auto">
   <title>Orbit arc background design</title>
@@ -2422,13 +2421,13 @@ html-template-pack · svg-slides · bg-orbit-arc
   plain field with two large orbit arcs (solid teal with an offset copy,
   dashed outer) and a tinted core sweeping across the top-left corner,
   satellite dots riding the arcs and a dashed diagonal guide line. Kin of
-  the deck chrome closing-orbit.
-  Keeps y ≥ 676 clear, so the deck builder adds the native footer fields.
+  the former deck chrome closing-orbit.
+  Keeps y ≥ 676 clear for a footer line.
   Content zone: bottom-right (x 540-1220, y 260-640) is clear.
   Tokens: teal amber coral text-muted border-bright surface.
   Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
 --&gt;
-&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with two large orbit arcs and a dashed guide line sweeping across the top-left corner, satellite dots riding the arcs, the bottom right clear" data-decor-only="true" data-native-footer="true" style="width:100%;height:auto"&gt;
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with two large orbit arcs and a dashed guide line sweeping across the top-left corner, satellite dots riding the arcs, the bottom right clear" data-decor-only="true" style="width:100%;height:auto"&gt;
   &lt;title&gt;Orbit arc background design&lt;/title&gt;
   &lt;rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/&gt;
   &lt;!-- orbit arcs sweeping across the top-left corner --&gt;
@@ -2448,7 +2447,7 @@ html-template-pack · svg-slides · bg-orbit-arc
     <figure class="card" id="d-bg-slat-panel">
       <figcaption>
         <span class="idx">08</span>
-        <span class="info"><strong>bg-slat-panel</strong><em>Background design (1280x720, decor only, zero slots): asymmetric split: a solid teal-tinted panel down the left 28% holding a vertical slat pattern (teal tints, two amber slats), edged by a thin border-bright rule with a short teal tick. After Craftwork's slat patterns. Paints its own bottom edge, so the deck builder adds no native footer fields.</em><span class="use">content zone: right ~65% (x 420-1220, y 60-660) is clear.</span></span>
+        <span class="info"><strong>bg-slat-panel</strong><em>Background design (1280x720, decor only, zero slots): asymmetric split: a solid teal-tinted panel down the left 28% holding a vertical slat pattern (teal tints, two amber slats), edged by a thin border-bright rule with a short teal tick. After Craftwork's slat patterns. Paints its own bottom edge (no footer line).</em><span class="use">content zone: right ~65% (x 420-1220, y 60-660) is clear.</span></span>
       </figcaption>
       <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background split by a tinted side panel on the left filled with vertical teal and amber slats and edged by a thin rule, the right two thirds clear" style="width:100%;height:auto">
   <title>Slat panel background design</title>
@@ -2497,12 +2496,12 @@ html-template-pack · svg-slides · bg-slat-panel
   vertical slat pattern (teal tints, two amber slats), edged by a thin
   border-bright rule with a short teal tick. After Craftwork's slat
   patterns.
-  Paints its own bottom edge, so the deck builder adds no native footer fields.
+  Paints its own bottom edge (no footer line).
   Content zone: right ~65% (x 420-1220, y 60-660) is clear.
   Tokens: teal amber border-bright surface.
   Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
 --&gt;
-&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background split by a tinted side panel on the left filled with vertical teal and amber slats and edged by a thin rule, the right two thirds clear" data-decor-only="true" data-native-footer="false" style="width:100%;height:auto"&gt;
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background split by a tinted side panel on the left filled with vertical teal and amber slats and edged by a thin rule, the right two thirds clear" data-decor-only="true" style="width:100%;height:auto"&gt;
   &lt;title&gt;Slat panel background design&lt;/title&gt;
   &lt;rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/&gt;
   &lt;!-- tinted side panel (28% width) --&gt;

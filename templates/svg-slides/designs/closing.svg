@@ -3,12 +3,12 @@ html-template-pack · svg-slides · closing
   Closing slide (1280x720): soft teal field, accent rule, a two-line thanks /
   summary title, up to three contact lines and an optional meta line on the
   left 55%; orbit rings around a node network on the right (re-drawn slot-ready
-  from the deck chrome's closing-orbit). No native footer fields.
+  from the former deck chrome's closing-orbit).
   Slots: title (text, 2 × 20 ch) · contact (text, 3 × 50 ch) · meta (text, optional).
   Tokens: teal amber coral green deep-blue text text-muted border-bright surface font-head font-sans.
   Compose with bin/compose-slide.js; slot rules in templates/svg-slides/README.md.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Closing slide with a thank-you title, contact lines and orbit rings around a small node network" data-native-footer="false" style="width:100%;height:auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Closing slide with a thank-you title, contact lines and orbit rings around a small node network" style="width:100%;height:auto">
   <title>Closing slide design</title>
   <rect x="0" y="0" width="1280" height="720" style="fill:color-mix(in srgb, var(--teal,#0d9488) 6%, var(--surface,#ffffff))"/>
   <line x1="80" y1="226" x2="196" y2="226" style="stroke:var(--teal,#0d9488);stroke-width:8" stroke-linecap="round"/>

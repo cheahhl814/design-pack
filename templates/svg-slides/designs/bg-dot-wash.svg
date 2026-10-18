@@ -5,12 +5,12 @@ html-template-pack · svg-slides · bg-dot-wash
   top-right corner (no gradient defs, no filters), a dot grid whose dots
   shrink and fade toward the bottom-left, and one glowing teal accent
   cluster with amber and coral satellites.
-  Keeps y ≥ 676 clear, so the deck builder adds the native footer fields.
+  Keeps y ≥ 676 clear for a footer line.
   Content zone: left 55% (x 60-680, y 80-640) plus the bottom band below y 560 is clear.
   Tokens: teal amber coral deep-blue text surface.
   Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with a soft teal colour wash in the top-right corner, a dot grid fading toward the bottom left and one glowing teal accent cluster" data-decor-only="true" data-native-footer="true" style="width:100%;height:auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with a soft teal colour wash in the top-right corner, a dot grid fading toward the bottom left and one glowing teal accent cluster" data-decor-only="true" style="width:100%;height:auto">
   <title>Dot wash background design</title>
   <rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/>
   <!-- colour wash from layered translucent blobs (no gradients/filters) -->

@@ -95,7 +95,4 @@ function exportSvg(src, themeName) {
   return `<?xml version="1.0" encoding="UTF-8"?>\n${svg}\n`;
 }
 
-// One colour expression (may hold var()) -> '#rrggbb' (alpha dropped; for native pptx text)
-const colourHex = (expr, themeName = 'light') => rgb2hex(colour(resolveVars(expr, THEMES[themeName])).rgb);
-
-module.exports = { THEMES, colour, colourHex, resolveVars, flattenStyle, exportSvg };
+module.exports = { THEMES, colour, resolveVars, flattenStyle, exportSvg };

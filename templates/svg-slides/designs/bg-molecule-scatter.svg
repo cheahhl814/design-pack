@@ -3,14 +3,14 @@ html-template-pack · svg-slides · bg-molecule-scatter
   Background design (1280x720, decor only, zero slots):
   plain field with faint stylised molecules (hexagonal rings with bonded
   atoms, circle-and-bond clusters) scattered along the top and right edges
-  at low-opacity tints. A re-drawn, slot-free kin of the deck chrome
+  at low-opacity tints. A re-drawn, slot-free kin of the former deck chrome
   molecule-corner.
-  Keeps y ≥ 676 clear, so the deck builder adds the native footer fields.
+  Keeps y ≥ 676 clear for a footer line.
   Content zone: centre and left (x 60-1000, y 180-640; x 60-560 from y 60) is clear.
   Tokens: teal amber coral text-muted surface.
   Compose with bin/compose-slide.js and an empty payload ({}); rules in templates/svg-slides/README.md.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with faint stylised molecules, hexagonal rings with bonded atoms and small atom clusters, scattered along the top and right edges, the centre and left clear" data-decor-only="true" data-native-footer="true" style="width:100%;height:auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Background with faint stylised molecules, hexagonal rings with bonded atoms and small atom clusters, scattered along the top and right edges, the centre and left clear" data-decor-only="true" style="width:100%;height:auto">
   <title>Molecule scatter background design</title>
   <rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/>
   <!-- faint stylised molecules along the top and right edges -->

@@ -3,7 +3,7 @@ html-template-pack · svg-slides · content-two-col
   Content slide (1280x720): eyebrow + heading across the top, a body-text card
   (up to six lines) and an amber key-point callout on the left, a framed
   graphic slot on the right for one svg-library component, and a caption under
-  it. Cards fill the slide height; the bottom 44 px stay clear for the native footer fields.
+  it. Cards fill the slide height; the bottom 44 px stay clear for a footer line.
   Slots: eyebrow (text, optional) · heading (text, 1 × 48 ch) · body (text, 6 × 46 ch)
          · callout (text, optional) · figure (graphic) · caption (text, optional).
   Tokens: teal amber deep-blue text text-muted border border-bright surface font-head font-sans.

@@ -313,13 +313,8 @@ node bin/svg-export.js mind-map org-chart --out figures/         # library names
 The export bakes the slide palette (light or dark) into plain hex + `fill-opacity` /
 `stroke-opacity`, drops the authoring comment, and sets `width="800" height="450"`. Dark exports also
 get a background rect, since light text on a transparent canvas disappears on white pages. The script
-fails if any `var()` or `color-mix()` would survive. Want PNG? Render the **exported** file.
-
-Building a whole **PowerPoint deck** from components? Use `bin/make-pptx-deck.py` instead of exporting
-and pasting by hand. It runs this export per figure, embeds each one as native SVG with a PNG
-fallback, and lays it out on the house layouts. See [`templates/deck/README.md`](../../../templates/deck/README.md).
-The deck's decor SVGs (`templates/deck/chrome/`) follow these conventions but are deliberately **not**
-catalog components: they are slide chrome, not diagrams.
+fails if any `var()` or `color-mix()` would survive. Want PNG? Add `--png`: headless Chrome renders
+the **exported** file at 2x (`figures/my-map.png`, 1600 × 900).
 
 Want a whole **designed slide** around a component (cover, section break, figure slide with heading and
 takeaway)? Use the slide designs in [`templates/svg-slides/`](../../../templates/svg-slides/README.md).

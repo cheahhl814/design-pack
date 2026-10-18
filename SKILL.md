@@ -1,8 +1,8 @@
 ---
 name: html-template-pack
 description: 'Four self-contained HTML templates — report (5-tab sticky sidebar, offset-anchored annotations, JSON export), slide deck (prev/next nav, inline annotations, JSON export), bento one-pager (2026 bento-grid snapshot briefing, full v2 annotation engine), and htmx dashboard (topbar, KPI row, sparkline, table, demo-mode mock backend). Pick report for ≥3 long sections, slide for ≤12 beats, bento for a one-page briefing, dashboard for live data. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", "one-pager", "briefing", "recap page", "SVG diagram", "infographic", "ecosystem" (HTML or standalone .svg), or MD/DOCX/PDF → HTML conversion. Ships a 94-template hand-drawn SVG diagram library + a zero-dep CSS graphics pack. Report/slide/bento ship the v2 annotation system; dashboard omits it (live data is not a stable anchor). All four are dark-first with glass chrome and density + font-size toggles.'
-version: 0.22.0
-updated: "2026-10-13"
+version: 0.23.0
+updated: "2026-10-18"
 triggers:
   - "HTML report"
   - "annotated report"
@@ -14,7 +14,6 @@ triggers:
   - "SVG diagram or infographic"
   - "convert MD/DOCX/PDF to HTML"
   - "review-ready HTML"
-  - "PowerPoint .pptx deck with SVG figures"
   - "designed slides from SVG slide designs"
 license: MIT
 ---
@@ -37,7 +36,7 @@ Four production-grade HTML templates, each self-contained (no external CDN depen
 - "Give me a one-page briefing/recap of this sprint"
 - "Summarize this into a one-pager the panel can comment on"
 - "Draw me a mind map / org chart / process diagram as an SVG for my slides" → **standalone SVG**, no page (see *Standalone SVG* below)
-- "Make me a PowerPoint / .pptx deck with these diagrams" → **PPTX deck builder** (see *PPTX deck* below)
+- "Make me a PowerPoint / .pptx deck with these diagrams" → **no .pptx builder** (removed in v0.23.0): compose SVG slides (see *Slide designs*) or export the figures (see *Standalone SVG*, `--png` for raster) for the user to place
 - "The slides need to look designed, not like a template" / "a cover slide with a real design" → **svg-slides designs + composer** (see *Slide designs* below)
 
 **Do not invoke** for:
@@ -57,8 +56,7 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 | Live/polling data — KPIs, status tables, ops metrics, admin views        | **dashboard template** (`templates/dashboard/dashboard-template.html`)            | htmx-driven shell (topbar, stat row, sparkline chart, activity feed, sortable/filterable table) wired to `/api/*` endpoints. Not for review/annotation — for monitoring live state. |
 | One-page snapshot briefing — sprint recap, weekly readout, one-page proposal, everything at a glance + reviewer comments | **bento template** (`templates/bento/bento-template.html`)                        | 2026 bento-grid one-pager: modular glass cards (KPIs, pure-CSS chart, progress, timeline, quote, CTA) on a dark-first surface. Full v2 annotation engine. Static snapshot — numbers live in the file, not a server. |
 | Only one or a few diagrams/infographics, no page (for PPT, Word, Figma, a poster or a paper) | **svg-library component(s) → `bin/svg-export.js`** | Standalone `.svg` with the palette baked in, so it renders outside a browser. See *Standalone SVG (no HTML page)*. |
-| A real PowerPoint file (`.pptx`) — slides people will edit/present in Office, with library figures | **PPTX deck builder** (`bin/make-pptx-deck.py` + `templates/deck/house-{light,dark}.pptx`) | Native vector SVG figures + PNG fallback, native editable text in real placeholders, house layouts or `--base` corporate template. See *PPTX deck (native PowerPoint)*. |
-| Decks that need real slide **design** (cover, chapter break, big statement, figure slides), not just layout chrome | **svg-slides** (`templates/svg-slides/designs/` + `bin/compose-slide.js`) → one SVG per slide, or the `design` slide kind of `bin/make-pptx-deck.py` | Hand-drawn full-slide designs with slot markers. Text is budgeted and gated, svg-library graphics are inlined, colours are baked. In PPTX the design is the picture and the text stays native. See *Slide designs*. |
+| Decks that need real slide **design** (cover, chapter break, big statement, figure slides), not just layout chrome | **svg-slides** (`templates/svg-slides/designs/` + `bin/compose-slide.js`) → one SVG per slide | Hand-drawn full-slide designs with slot markers. Text is budgeted and gated, svg-library graphics are inlined, colours are baked. See *Slide designs*. |
 | Mixed: both a long-form report AND a summary deck                        | **report template as the canonical**, link to the deck as a downloadable artifact | Don't ship two HTMLs. The report template is the review surface; if the user also wants a separate deck, build that as a second file in the same project directory.                 |
 
 ### Decision rubric (use this in your first response)
@@ -72,8 +70,7 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 6. **If user says "dashboard", "admin panel", "ops view", "htmx dashboard", or wants filtering/sorting/polling against live data**, → **dashboard template**.
 7. **If the content is a one-page snapshot summary** — sprint recap, weekly readout, one-page proposal, status snapshot — where the reader should see everything at a glance and leave inline review notes → **bento template**. (If it grows past one page or needs long prose sections, it graduates to the report template; if the numbers need to refresh from a server, it's a dashboard.)
 8. **If user says "one-pager", "briefing", "snapshot", "recap page", or "everything on one page"** → bento template.
-9. **If the user explicitly wants a `.pptx` / PowerPoint file** (not an HTML deck) → **PPTX deck builder** (see *PPTX deck*). "Deck" or "slides" alone still means the HTML slide template.
-   - **Decks that need real slide DESIGN** (not just layout chrome): use `templates/svg-slides` + `compose-slide.js`, then the `design` kind in `make-pptx-deck.py`. For standalone SVG slides, the composer alone is enough. House layouts and design slides mix in one spec.
+9. **Decks that need real slide DESIGN** (not just layout chrome) → `templates/svg-slides` + `compose-slide.js`, one composed SVG per slide. There is no `.pptx` builder (removed in v0.23.0); "deck" or "slides" alone still means the HTML slide template.
 10. **When in doubt, ask the user** with `ask_user_question` offering the template options.
 
 ## Files in this skill
@@ -96,10 +93,6 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 │   │   ├── designs/*.svg                       ← 6 canonical hand-drawn 1280×720 designs (slot-marked)
 │   │   ├── samples.json                        ← one sample payload per design (gallery + tests)
 │   │   └── gallery.html                        ← generated preview (node bin/build-slides-gallery.js)
-│   ├── deck/                                   ← v0.18.0 PPTX deck builder assets (see templates/deck/README.md)
-│   │   ├── house-light.pptx / house-dark.pptx   ← house bases: 11 layouts (v0.19.0), 16:9, token-mapped theme, native footer fields, decor on master/layouts
-│   │   ├── author-base.py                      ← one-time OOXML author script for the bases
-│   │   └── chrome/                             ← deck decor SVGs (title art, section frame, footer strip + v0.19.0 science set: molecule corner, helix strip, KPI medallion, closing orbit, accent band; not catalog components)
 │   └── graphics/
 │       ├── graphics.css                        ← v0.8.0 shared graphics pack (donut, gauge, bars, heatmap, flow, mstrip, compare, pull-quote, motion; inlined into each template)
 │       └── snippets.html                       ← copy-paste reference for every component
@@ -124,18 +117,15 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 │       ├── theme-toggle.js                     ← same toggle engine (no fixed positioning; lives in the topbar)
 │       └── theme-toggle.css                    ← same toggle styles, unpositioned
 ├── bin/
-│   ├── svg-export.js                           ← bake a library SVG to a renderer-safe standalone .svg
+│   ├── svg-export.js                           ← bake a library SVG to a renderer-safe standalone .svg (`--png`: 2x PNG via headless Chrome)
 │   ├── svg-bake.js                             ← v0.21.0 shared token → hex bake logic (svg-export + compose-slide)
-│   ├── compose-slide.js                        ← v0.21.0 design + payload → composed SVG slide + native-text sidecar
-│   ├── build-slides-gallery.js                 ← v0.21.0 regenerates templates/svg-slides/gallery.html
-│   ├── make-pptx-deck.py                       ← v0.18.0 spec → .pptx with native SVG figures
-│   └── pptx-preview.py                         ← v0.18.0 proxy preview (pptx → HTML → Chrome PNGs)
+│   ├── compose-slide.js                        ← v0.21.0 design + payload → one composed, baked SVG slide
+│   └── build-slides-gallery.js                 ← v0.21.0 regenerates templates/svg-slides/gallery.html
 └── test/
     ├── smoke-test-report.js
     ├── smoke-test-slide.js
     ├── smoke-test-dashboard.js
-    ├── smoke-test-pptx-deck.py                 ← v0.18.0 structural QA for the deck builder (run by run-all.js)
-    ├── smoke-test-slides.py                    ← v0.21.0 design QA + composer gates + design slides in pptx (run by run-all.js)
+    ├── smoke-test-slides.py                    ← v0.21.0 design QA + composer gates (run by run-all.js)
     └── run-all.js
 ```
 
@@ -338,32 +328,20 @@ When the user wants **only a diagram or a few graphics**, for a PowerPoint/Keyno
 1. Pick the component(s) by intent from the catalog above. **If no component matches the requested graphic type, wire in online search before giving up:** search for reference examples of that graphic type (2–4 varied queries, e.g. the type name + "diagram", "infographic", "science template"), curate the best 2–4 source URLs (fetch them to see the actual layouts), then hand-draw a **new svg-library component** from those references following *Adding a new component* in `features/graphics/svg-library/README.md` (its step 0 is this research pass). Add the catalog row, add the component to the delivery, and rebuild (`node bin/build-svg-gallery.js`) + re-run tests (`node test/run-all.js`) so the library grows every time the user asks for a graphic kind it lacks. Known-fetchable source sites: BioRender template gallery, Wikimedia Commons diagrams, USGS/NOAA/NPS, edu.rsc.org, Kuraplan, LivePhysics infographics, Mind the Graph. Sites that 403 (bot walls) or return empty: Magnific, Shutterstock, Dreamstime, Adobe Stock, Britannica, Dribbble — don't burn fetches on them.
 2. Copy `features/graphics/svg-library/svg/<name>.svg` into the user's working directory and edit the `<text>` labels, `aria-label` and `<title>` there (same rules as pasting into a page).
 3. Export: `node <skill>/bin/svg-export.js <edited>.svg [--theme light|dark] --out <dir>`. Library files rely on `var()` + `color-mix()`, which **only browsers resolve**; PowerPoint, Word, Inkscape, Illustrator, Figma import and cairo/rsvg converters render them black or blank. The export bakes one palette into plain hex + `fill-opacity`/`stroke-opacity`, strips the authoring comment, and sets `width="800" height="450"`. `--theme dark` also paints a background, because light text on a transparent canvas disappears on white pages.
-4. Hand over the exported file(s). Need PNG? Render the exported file (e.g. `google-chrome --headless --screenshot`), never the raw library file.
-
-### PPTX deck (native PowerPoint)
-
-When the deliverable is a **`.pptx` file**, not an HTML page, build it with the deck builder. It needs the optional Python deps `python-pptx lxml cairosvg pillow`, plus `node`. Full spec, layouts and pitfalls: `templates/deck/README.md`.
-
-1. Write a JSON (or YAML) spec. There are 11 layouts: `title`, `section`, `figure` (one figure + caption), `two-figures`, `bullets`, `agenda` (1–6 `items`), `quote` (`quote` + `attribution`), `table` (`header` + `rows`, ≤8×12), `kpi` (`value`, `label`, `delta`, ≤3 `stats`), `image-text` (`figure` + `bullets`/`text`, `side` left|right) and `closing` (`contact` lines). Each slide can carry `notes` and `credits`, and each figure an optional `alt`. Deck-level `footer`, `date` (fixed or `"auto"`) and `slide_numbers` (default on) fill native footer fields on inner slides. Deck-level `credits` go to the last slide's notes. A figure is an svg-library component name or a path to an edited `.svg`.
-2. `python3 <skill>/bin/make-pptx-deck.py spec.json -o deck.pptx [--theme light|dark] [--base corp.pptx]`. Figures are baked through `svg-export.js`, embedded as native SVG (`svgBlip`) with a 2400/1800 px PNG fallback, contain-fitted into the picture rectangle, and given alt text. Titles, bullets, captions and notes stay native text in real placeholders, and unused placeholders are removed. `--base` builds on a corporate template (layouts are matched by name, then by layout type).
-3. Preview without Office: `python3 <skill>/bin/pptx-preview.py deck.pptx --out <dir>` renders every slide as HTML and screenshots it with headless Chrome. It is a proxy, so look at composition, overlaps and red overflow outlines, not exact typography.
-4. Tell the user honestly that no Office renderer was run. Checking in PowerPoint Online / Google Slides / LibreOffice is a **manual, once-per-theme-release gate**. Don't claim a deck is "verified in PowerPoint".
-
-Never put slide titles in free textboxes, and never bake text (titles, bullets, captions, notes, tables) into a background image. Decor belongs on the master/layouts (`templates/deck/chrome/`), not on individual slides. (Design slides below are the one deliberate exception to "no free textboxes": the design *is* the slide, and every text slot is still a native, editable text box.)
+4. Hand over the exported file(s). Need PNG? Add `--png` (2x raster of the exported file via headless Chrome); never screenshot the raw library file.
 
 ### Slide designs (svg-slides + composer)
 
-**Routing:** decks that need real slide **design**, not just layout chrome → `templates/svg-slides` + `bin/compose-slide.js` → the `make-pptx-deck.py` `design` kind. Full spec: `templates/svg-slides/README.md`. Six designs ship: `title-hero`, `section-break`, `big-statement`, `content-two-col`, `full-diagram`, `closing`. Preview them in `templates/svg-slides/gallery.html`.
+**Routing:** decks that need real slide **design**, not just layout chrome → `templates/svg-slides` + `bin/compose-slide.js`, one SVG per slide. Full spec: `templates/svg-slides/README.md`. Six designs ship: `title-hero`, `section-break`, `big-statement`, `content-two-col`, `full-diagram`, `closing`. Preview them in `templates/svg-slides/gallery.html`.
 
-**Background routing (v0.22.0):** stage backgrounds for **graphic-only or native-text slides** → a `bg-*` background design (`data-decor-only`, zero slots, composed with `{}`). Eight ship: `bg-helix-field`, `bg-mosaic-triangles`, `bg-flow-dashes`, `bg-concentric-vortex`, `bg-dot-wash`, `bg-molecule-scatter`, `bg-orbit-arc`, `bg-slat-panel`. Each documents a clear **content zone**; put svg-library graphics or native text there, never across the motif. In a deck, `{"design": "bg-helix-field", "payload": {}}` is a picture-only slide (no text boxes; footer fields per the design's flag). Gallery section "Background designs".
+**Background routing (v0.22.0):** stage backgrounds for **graphic-only or text slides** → a `bg-*` background design (`data-decor-only`, zero slots, composed with `{}`). Eight ship: `bg-helix-field`, `bg-mosaic-triangles`, `bg-flow-dashes`, `bg-concentric-vortex`, `bg-dot-wash`, `bg-molecule-scatter`, `bg-orbit-arc`, `bg-slat-panel`. Each documents a clear **content zone**; put svg-library graphics or native text there, never across the motif. Gallery section "Background designs".
 
 1. Pick a design and read its slot table (name · kind · box · size · **budget** = lines × chars per line).
 2. Write the payload. Text slots take a string or an array of lines. **You break the lines**, since SVG cannot wrap. Graphic slots take an svg-library name or an id-free `.svg` path.
-3. SVG out: `node <skill>/bin/compose-slide.js <design> --payload p.json [--theme light|dark] --out <dir>`. This writes `<name>.svg` (finished, baked, 1280×720), `<name>.bg.svg` (no text) and `<name>.slides.json` (native-text contract).
-4. PPTX out: put `{"design": "<name>", "payload": {...}}` slides in the deck spec. They become a full-bleed picture of the text-free background plus one native text box per text slot (theme fonts, baked colour, exact geometry). Footer fields are added unless the design paints its own bottom edge.
-5. When a gate fires (`TEXT-OVERFLOW`, `SLOT-UNKNOWN`, `SLOT-MISSING`, …), **shorten or re-break the text**. Never edit a design's budget to make a payload fit.
-6. A background slide: `node <skill>/bin/compose-slide.js bg-<name> --payload '{}' --theme dark --out <dir>`. Any payload key is `SLOT-UNKNOWN`.
-7. A new archetype? Follow *Adding a new design* in the svg-slides README: research 2–4 examples first, draw the design slot-marked, add a sample payload and a slot table, then rebuild the gallery and run the tests.
+3. SVG out: `node <skill>/bin/compose-slide.js <design> --payload p.json [--theme light|dark] --out <dir>`. This writes `<name>.svg` (finished, baked, 1280×720).
+4. When a gate fires (`TEXT-OVERFLOW`, `SLOT-UNKNOWN`, `SLOT-MISSING`, …), **shorten or re-break the text**. Never edit a design's budget to make a payload fit.
+5. A background slide: `node <skill>/bin/compose-slide.js bg-<name> --payload '{}' --theme dark --out <dir>`. Any payload key is `SLOT-UNKNOWN`.
+6. A new archetype? Follow *Adding a new design* in the svg-slides README: research 2–4 examples first, draw the design slot-marked, add a sample payload and a slot table, then rebuild the gallery and run the tests.
 
 ## Pipeline (Decide → Copy → Adapt → Render → Wire annotation / backend)
 
@@ -425,6 +403,7 @@ Positioning differs: report/slide float the button `position: fixed` top-right; 
 - `dashboard-template.html` (added 2026-07-11) — htmx dashboard shell, new template family for live/polling data views
 - `bento-template.html` (added 2026-09-08, v0.7.0) — bento-grid one-pager. The full v2 annotation engine is inlined from the slide template with its token-mapping `:root` block stripped (the bento defines generic token names directly); density/font-size IIFEs reused with `bento-density`/`bento-font-size` storage keys. Bar chart is pure CSS, no Mermaid/htmx. Aesthetic sourced from the 2026 UI-trends research pass (bento grids as the default snapshot pattern, dark-first design, restrained glass, hover-glow micro-interactions).
 - v0.13.0 SVG library to 40 components (2026-10-07) — second delegation round (claude code via herdr, svglib-v13-claude; 18 inspiration page fetches incl. subpages of infodiagram/free-powerpoint-templates-design/presentationgo; **magnific.com 403'd WebFetch and curl — its pages were never seen**). 20 new templates: timeline-vertical, swimlane-gantt, honeycomb-cluster, dual-hub, petal-cycle, decision-tree, snake-path, onion-layers, pillars-foundation, versus-columns, lightbulb-layers, matrix-nine-box, s-curve-adoption, growth-tree, spiral-growth, domino-chain, network-mesh, merge-paths, five-w-agenda, orbit-satellites. Professional polish pass on all 20 originals now standardised into one type scale (hero 20/700 · label 16/600 · annotation 13 · caption 12 · eyebrow 11/700 ls-1.2 · badge 13/700), normalised arrowheads (13×13 connectors, 16×16 spines), quadrant got the offset shadow, puzzle label overlap + radar glyph fixed. Validator hardened: rejects `<mask>/<pattern>/<clipPath>` and `fill="var(...)"`/`stroke="var(...)` presentation attributes; **XML-comment `--` check added** (staircase-steps had illegal `--accent` inside a comment that xml.etree rejected but the old validator missed). New techniques documented: pre-computed polygon sampling instead of clipPath (bulb slices), knockout label halos via `paint-order:stroke` for labels-on-lines. Verified: 40/40 build + independent convention recheck (my ET.parse loop) + both-theme screenshots + 60/60 tests; agent-side rotation-aware getBBox check (final: 0 clipped, 0 overlaps; earlier runs caught 4 real overlaps, fixed).
+- v0.23.0 PPTX builder removed (2026-10-18) — the user found the composed SVG slide decks sufficient. Deleted `bin/make-pptx-deck.py`, `bin/pptx-preview.py`, `templates/deck/` (house bases, author script, chrome) and `test/smoke-test-pptx-deck.py`. `compose-slide.js` now writes only `<name>.svg` (no `.bg.svg` / `.slides.json` sidecar); designs drop `data-native-footer`. Papercuts: `svg-export.js --png` (2x PNG via headless Chrome); the svg-library gallery now orders and numbers cards by the README catalog (build fails on a component without a catalog row). The v0.18–v0.22 entries below describe the removed builder as history.
 - v0.19.0 PPTX deck design library (2026-10-13) — the house bases grow from 5 to 11 layouts.
   - **New layouts:**
     - Agenda: native `buAutoNum` numbering.

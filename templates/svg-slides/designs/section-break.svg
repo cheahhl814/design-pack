@@ -3,13 +3,13 @@ html-template-pack · svg-slides · section-break
   Chapter divider (1280x720): a tinted panel on the left carries an oversized,
   tinted chapter number; the right column holds an eyebrow, the section title
   and a one-line orientation. A small molecule ring sits in the top-right
-  corner and a dotted rule closes the column. No native footer fields.
+  corner and a dotted rule closes the column.
   Slots: number (text, 2 ch) · eyebrow (text, optional) · section-title (text, 2 × 24 ch)
          · orientation (text, 1 × 52 ch).
   Tokens: teal amber coral green deep-blue text text-muted border-bright surface font-head font-sans.
   Compose with bin/compose-slide.js; slot rules in templates/svg-slides/README.md.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Section divider slide with a large chapter number on a tinted panel, a section title and an orientation line" data-native-footer="false" style="width:100%;height:auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Section divider slide with a large chapter number on a tinted panel, a section title and an orientation line" style="width:100%;height:auto">
   <title>Section break slide design</title>
   <rect x="0" y="0" width="1280" height="720" style="fill:var(--surface,#ffffff)"/>
   <!-- number panel -->

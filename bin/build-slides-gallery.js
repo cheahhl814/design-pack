@@ -116,7 +116,7 @@ const page = `<!--
 ${SECTIONS.map(([title, key, names]) => `  <h2 id="${key}">${title}</h2>
   <p>${key === 'designs'
     ? 'Slot-marked slides: each is composed with its sample payload from samples.json.'
-    : 'Decor-only stages (<code>data-decor-only="true"</code>, zero slots), each composed with <code>{}</code>. Content goes in the documented content zone: native text in a deck, or svg-library graphics.'}</p>
+    : 'Decor-only stages (<code>data-decor-only="true"</code>, zero slots), each composed with <code>{}</code>. Content goes in the documented content zone: text or svg-library graphics.'}</p>
   <nav>${names.map((n) => `<a href="#d-${n}">${n}</a>`).join('')}</nav>
   <main class="catalog">
 ${names.map(card).join('\n')}

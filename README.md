@@ -23,54 +23,27 @@ Ninety-four **hand-drawn inline SVG infographic templates** for concept/summary 
 
 Every file: `role="img"` + `aria-label` + `<title>`, id-free markup (safe to paste several into one page), token-driven colors wired via `style` attributes (`var(--token, #fallback)` + `color-mix()` — adapts to every template palette and both themes with zero edits), constant 800×450 `viewBox`. Conventions and the add-a-component workflow: [`features/graphics/svg-library/README.md`](./features/graphics/svg-library/README.md). Regenerate the gallery with `node bin/build-svg-gallery.js`. **Need just the graphic, no page?** `node bin/svg-export.js <name|file.svg> [--theme dark] --out <dir>` writes a standalone `.svg` with the palette baked in, which renders in PowerPoint, Word, Figma and Inkscape.
 
-## 📽️ PPTX deck builder (v0.19.0)
-
-Need a real **PowerPoint file** instead of an HTML deck? `bin/make-pptx-deck.py` turns a small JSON/YAML spec into a `.pptx`.
-- **Figures:** svg-library figures are embedded as **native vector SVG** (PowerPoint 2016+/365 on Windows, Mac and Online), with a high-res PNG fallback for Google Slides, Keynote and older Office.
-- **Text:** everything else stays **native and editable**: titles in real title placeholders, bullets, captions, native tables, speaker notes (plus `credits`). Figures get alt text.
-- **Footer:** inner slides get live slide-number fields plus optional footer text and a date (fixed or live).
-
-```
-python3 bin/make-pptx-deck.py spec.json -o deck.pptx [--theme light|dark] [--base corp.pptx]
-python3 bin/pptx-preview.py deck.pptx --out preview/      # proxy preview via headless Chrome, no Office needed
-```
-
-**House base.** Two committed base files, [`templates/deck/house-light.pptx` / `house-dark.pptx`](./templates/deck/), set the design:
-- 16:9 slides with eleven layouts: **Title**, **Section**, **Figure** (+ caption), **Two Figures**, **Bullets**, plus (v0.19.0) **Agenda** (auto-numbered), **Quote**, **Table** (navy header strip, zebra rows), **KPI** (hero number on a petri-dish medallion, delta chip coloured by sign, up to 3 supporting stats), **Image + Text** (figure left or right) and **Closing**.
-- A theme whose accent colours map onto the library tokens (teal, deep-blue, amber, coral, green, navy).
-- Hand-drawn decor ([`templates/deck/chrome/`](./templates/deck/chrome/)), including the v0.19.0 science set (molecule corner, agenda DNA-helix strip, KPI medallion, closing orbit art, accent band), drawn once onto the slide master and layouts, never baked into individual slides.
-
-**Corporate templates.** Pass `--base corp.pptx` to use your own template; the builder matches its layouts by name, then by layout type.
-
-**Previews and QA.** Previews are a proxy, not PowerPoint's renderer. The real-renderer check (PowerPoint Online / Google Slides / LibreOffice) is a manual once-per-theme-release gate. Spec format, layouts, QA layers and known pitfalls: [`templates/deck/README.md`](./templates/deck/README.md).
-
 ## 🎞️ SVG slide designs + composer (v0.21.0)
 
 Whole **slide designs** drawn as SVG in the svg-library style, for decks that need real design and not just layout chrome. The six designs live in [`templates/svg-slides/designs/`](./templates/svg-slides/), with a generated, token-driven [`gallery.html`](./templates/svg-slides/gallery.html):
 
 `title-hero` · `section-break` · `big-statement` · `content-two-col` · `full-diagram` · `closing`
 
-Each design is a complete 1280×720 slide whose text and graphic areas are marked as **slots** (`data-slot` groups with a box, a type and a per-line character budget). `bin/compose-slide.js` fills them from a JSON payload and writes three files:
-- one renderer-safe composed `.svg`, colours baked to hex for light or dark, with svg-library components inlined into graphic slots;
-- a text-free background variant;
-- a sidecar describing each text slot.
+Each design is a complete 1280×720 slide whose text and graphic areas are marked as **slots** (`data-slot` groups with a box, a type and a per-line character budget). `bin/compose-slide.js` fills them from a JSON payload and writes one renderer-safe composed `.svg`, colours baked to hex for light or dark, with svg-library components inlined into graphic slots.
 
 ```
 node bin/compose-slide.js content-two-col --payload payload.json --theme light --out slides/
 ```
 
-In a PowerPoint deck, a `{"design": "title-hero", "payload": {...}}` slide in the `make-pptx-deck.py` spec becomes the background as a full-bleed native-SVG picture, with every text slot on top as a **native, editable text box**. Design slides and house layouts mix freely.
-
 **Gates.** Text is never auto-wrapped: you break the lines, and the composer fails with `TEXT-OVERFLOW`, `SLOT-UNKNOWN`, `SLOT-MISSING` (and friends) instead of shipping a broken slide.
 
-**Background designs (v0.22.0).** Eight slot-free, full-bleed stages (`bg-helix-field` · `bg-mosaic-triangles` · `bg-flow-dashes` · `bg-concentric-vortex` · `bg-dot-wash` · `bg-molecule-scatter` · `bg-orbit-arc` · `bg-slat-panel`) for graphic-only or native-text slides: compose with an empty payload (`--payload '{}'`), and the motif keeps a documented content zone clear. In a deck they become a picture-only slide.
+**Background designs (v0.22.0).** Eight slot-free, full-bleed stages (`bg-helix-field` · `bg-mosaic-triangles` · `bg-flow-dashes` · `bg-concentric-vortex` · `bg-dot-wash` · `bg-molecule-scatter` · `bg-orbit-arc` · `bg-slat-panel`) for graphic-only or text slides: compose with an empty payload (`--payload '{}'`), and the motif keeps a documented content zone clear.
 
 Slot spec, layout rule, per-design slot tables and the add-a-design workflow: [`templates/svg-slides/README.md`](./templates/svg-slides/README.md).
 
 ## Contents
 
 - [SVG diagram library (v0.16.0)](#️-svg-diagram-library-v0160)
-- [PPTX deck builder (v0.19.0)](#️-pptx-deck-builder-v0190)
 - [SVG slide designs + composer (v0.21.0)](#️-svg-slide-designs--composer-v0210)
 - [Live demo](#-live-demo)
 - [Installation](#-installation)
@@ -111,7 +84,7 @@ This is an **agent skill**, not a user-facing library. The skill is loaded by th
 Import the following skill: https://github.com/cheahhl814/html-template-pack
 ```
 
-**Optional, for the pptx deck builder only:** `pip install python-pptx lxml cairosvg pillow` (plus `node` for `bin/svg-export.js`, and Chrome/Chromium for `bin/pptx-preview.py` screenshots). The HTML templates need none of these; the deck test suite skips itself when they are missing.
+**Optional, for the SVG tooling only:** `node` for `bin/svg-export.js` / `bin/compose-slide.js`, plus Chrome/Chromium for `svg-export.js --png`. The HTML templates need none of these.
 
 Once installed, the skill is **auto-invoked**: when you ask the agent for an HTML report, slide deck, or dashboard, the agent routes the request here automatically. No manual `cp` needed — the agent copies the appropriate template, fills in the content, and hands you a ready-to-review `.html` file.
 

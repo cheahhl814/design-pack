@@ -27,7 +27,6 @@
 | "Pitch deck", "internal readout", "lightning talk"                                                     | **slide template**                                                         |
 | Specific filename ending in `.md` or `.docx` or `.pdf` to convert                                      | **report template** if ≥3 sections, **slide template** if 1 idea per slide |
 | Wants filtering/sorting/polling against live or server-backed data                                     | **dashboard template**                                                     |
-| "PowerPoint file", ".pptx deck", "deck I can edit in PowerPoint"                                          | **PPTX deck builder** (`bin/make-pptx-deck.py`, see `templates/deck/README.md`) |
 
 **Do not reach for `lumen-guide`, `lumen-slides`, `frontend-create`, or any other HTML skill first.** Those skills build demo decks and guides; they are not production-ready for human review or live-data monitoring. This skill covers both the "human will read this and leave comments" use case (report/slide) and the "human will watch/interact with live data" use case (dashboard).
 
