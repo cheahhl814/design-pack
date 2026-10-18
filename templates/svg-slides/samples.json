@@ -69,13 +69,5 @@
       "a.researcher@example.org"
     ],
     "meta": "Slides, run log and chip CAD: example.org/lab-on-chip"
-  },
-  "bg-helix-field": {},
-  "bg-mosaic-triangles": {},
-  "bg-flow-dashes": {},
-  "bg-concentric-vortex": {},
-  "bg-dot-wash": {},
-  "bg-molecule-scatter": {},
-  "bg-orbit-arc": {},
-  "bg-slat-panel": {}
+  }
 }

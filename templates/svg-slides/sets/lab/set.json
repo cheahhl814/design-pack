@@ -1,0 +1,4 @@
+{
+  "label": "Lab",
+  "description": "The original hand-drawn science set: rounded cards with misregistered-print offset copies, teal and amber on white or slate, DNA helix, molecule and orbit motifs. Palette and fonts are the slide-template defaults (bin/svg-bake.js THEMES), so this file sets none."
+}

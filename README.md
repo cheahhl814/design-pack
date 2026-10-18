@@ -23,9 +23,9 @@ Ninety-four **hand-drawn inline SVG infographic templates** for concept/summary 
 
 Every file: `role="img"` + `aria-label` + `<title>`, id-free markup (safe to paste several into one page), token-driven colors wired via `style` attributes (`var(--token, #fallback)` + `color-mix()` — adapts to every template palette and both themes with zero edits), constant 800×450 `viewBox`. Conventions and the add-a-component workflow: [`features/graphics/svg-library/README.md`](./features/graphics/svg-library/README.md). Regenerate the gallery with `node bin/build-svg-gallery.js`. **Need just the graphic, no page?** `node bin/svg-export.js <name|file.svg> [--theme dark] --out <dir>` writes a standalone `.svg` with the palette baked in, which renders in PowerPoint, Word, Figma and Inkscape.
 
-## 🎞️ SVG slide designs + composer (v0.21.0)
+## 🎞️ SVG slide designs + composer (v0.21.0; theme sets v0.24.0)
 
-Whole **slide designs** drawn as SVG in the svg-library style, for decks that need real design and not just layout chrome. The six designs live in [`templates/svg-slides/designs/`](./templates/svg-slides/), with a generated, token-driven [`gallery.html`](./templates/svg-slides/gallery.html):
+Whole **slide designs** drawn as SVG in the svg-library style, for decks that need real design and not just layout chrome. The six designs live in [`templates/svg-slides/sets/`](./templates/svg-slides/), in five theme sets, with a generated, token-driven [`gallery.html`](./templates/svg-slides/gallery.html):
 
 `title-hero` · `section-break` · `big-statement` · `content-two-col` · `full-diagram` · `closing`
 
@@ -39,12 +39,25 @@ node bin/compose-slide.js content-two-col --payload payload.json --theme light -
 
 **Background designs (v0.22.0).** Eight slot-free, full-bleed stages (`bg-helix-field` · `bg-mosaic-triangles` · `bg-flow-dashes` · `bg-concentric-vortex` · `bg-dot-wash` · `bg-molecule-scatter` · `bg-orbit-arc` · `bg-slat-panel`) for graphic-only or text slides: compose with an empty payload (`--payload '{}'`), and the motif keeps a documented content zone clear.
 
+**Theme sets (v0.24.0).** Every design comes in five sets that share one slot contract, so one payload re-themes a deck with `--set`:
+- `lab` (default): hand-drawn science.
+- `swiss`: International Typographic Style, with red colour blocks.
+- `boardroom`: generic consulting, navy plus one accent, serif titles.
+- `editorial`: cream-paper magazine, serif, terracotta.
+- `bold`: saturated geometric polygons with heavy display type.
+
+The four new sets were researched from professional theme examples (composition and palette cues only) and are drawn by `bin/draw-slide-sets.js`. A test fills every slot to its budget and measures it in Chrome.
+
+```
+node bin/compose-slide.js title-hero --set editorial --payload payload.json --theme dark --out slides/
+```
+
 Slot spec, layout rule, per-design slot tables and the add-a-design workflow: [`templates/svg-slides/README.md`](./templates/svg-slides/README.md).
 
 ## Contents
 
 - [SVG diagram library (v0.16.0)](#️-svg-diagram-library-v0160)
-- [SVG slide designs + composer (v0.21.0)](#️-svg-slide-designs--composer-v0210)
+- [SVG slide designs + composer (v0.21.0; theme sets v0.24.0)](#️-svg-slide-designs--composer-v0210-theme-sets-v0240)
 - [Live demo](#-live-demo)
 - [Installation](#-installation)
 - [Usage examples](#-usage-examples)

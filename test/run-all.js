@@ -16,7 +16,7 @@ const suites = [
   { name: 'Graphics pack (v0.8.0 shared component library in report + slide + bento)', script: 'test/smoke-test-graphics.js' },
   { name: 'SVG export (standalone, renderer-safe .svg from the svg-library)', script: 'test/smoke-test-svg-export.js' },
   // v0.21.0 svg-slides: design QA + composer gates (node + python stdlib)
-  { name: 'SVG slide designs (slot markers, compose-slide gates)', cmd: 'python3 test/smoke-test-slides.py' }
+  { name: 'SVG slide designs (5 theme sets, slot contract, compose-slide gates, budget fit)', cmd: 'python3 test/smoke-test-slides.py' }
 ];
 
 console.log('html-template-pack · test suite\n' + '─'.repeat(60));

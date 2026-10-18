@@ -1,4 +1,4 @@
-# svg-slides: hand-drawn slide designs + slot-marker composer (v0.21.0; backgrounds v0.22.0)
+# svg-slides: slide designs in theme sets + slot-marker composer (v0.21.0; backgrounds v0.22.0; theme sets v0.24.0)
 
 Whole **slide designs** drawn as SVG in the svg-library look (rounded cards, misregistered-print
 offset copies, token-driven colour), with **slots** marked for text and for svg-library graphics.
@@ -10,16 +10,46 @@ graphic-only or text slides (see *Background designs*).
 Use this when a deck needs real slide **design**, not just layout chrome. For plain bullet decks the
 HTML slide template (`templates/slide/`) stays the right choice.
 
+**Theme sets (v0.24.0).** The designs come in five sets that share one slot contract. Pick one with
+`--set`. A payload written for one set re-themes the whole deck in another, as long as its lines
+fit that set's budgets (the composer gates them).
+
+| Set | Look | Slot tables |
+|---|---|---|
+| `lab` (default) | hand-drawn science: rounded offset cards, teal + amber, helix / molecule / orbit motifs | this README |
+| `swiss` | International Typographic Style: 12-column grid, one grotesque, red colour-block title / statement / closing slides, black rules | [`sets/swiss/README.md`](sets/swiss/README.md) |
+| `boardroom` | generic consulting: navy + one bright accent, serif titles over sans body, thin title rule, agenda tracker, 60:40 chart + insight | [`sets/boardroom/README.md`](sets/boardroom/README.md) |
+| `editorial` | magazine: cream paper, brown serif headlines, terracotta accent, hairline and double rules, pull-quote, old-style numerals | [`sets/editorial/README.md`](sets/editorial/README.md) |
+| `bold` | bold geometric: saturated violet / amber / coral / blue fields, flat polygons, Arial Black display type | [`sets/bold/README.md`](sets/bold/README.md) |
+
+Every set ships the six slide designs below under the same names, with lab's slot names, kinds,
+required flags and line counts (the tests enforce it), plus its own backgrounds (lab 8, the others 2).
+Character budgets follow each set's fonts, and a test fills every slot to its budget and measures it in
+Chrome. Each set's `set.json` holds its light and dark palette and its font pair. The composer bakes
+those over the slide-template defaults, so inlined svg-library components take the set's colours too.
+Token names are palette slots, not hues: `--teal` is a set's primary (red in swiss, navy in
+boardroom). The generated sets add `--block` / `--on-block` (colour-block fill and the text on it).
+
+**Generated, not hand-drawn.** Lab is hand-drawn. The swiss, boardroom, editorial and bold designs,
+their `set.json` and their READMEs are written by `bin/draw-slide-sets.js`, which places every preview
+line by the layout rule and fails a sample that is over budget. Edit the script and re-run it; never
+hand-edit those `.svg` files, because the tests diff them against a fresh run.
+
 ```
 templates/svg-slides/
-├── README.md       ← you are here (conventions, catalog, workflow)
-├── gallery.html    ← GENERATED preview: every design composed with its sample (theme toggle)
-├── samples.json    ← one sample payload per design (gallery + tests use it)
-└── designs/*.svg   ← CANONICAL design files (hand-drawn, slot-marked)
-bin/compose-slide.js        ← the composer
+├── README.md       ← you are here (conventions, lab catalog, workflow)
+├── gallery.html    ← GENERATED preview: every set, every design composed with its sample (theme toggle)
+├── samples.json    ← one sample payload per slide design, shared by every set (gallery + tests)
+└── sets/<set>/
+    ├── set.json    ← label, description, palette (light/dark) and fonts (lab: defaults, none set)
+    ├── README.md   ← generated sets: palette, catalog and slot tables (lab's are below)
+    └── designs/*.svg ← CANONICAL design files (slot-marked; backgrounds are bg-*)
+bin/compose-slide.js        ← the composer (--set picks the set)
+bin/draw-slide-sets.js      ← draws the swiss / boardroom / editorial / bold sets
 bin/svg-bake.js             ← token → hex bake logic, shared with bin/svg-export.js
 bin/build-slides-gallery.js ← regenerates gallery.html
-test/smoke-test-slides.py   ← design QA + composer gates (in test/run-all.js)
+test/smoke-test-slides.py   ← set contract + design QA + composer gates + budget fit (in test/run-all.js)
+test/slides-fit.js          ← the budget-fill page the fit check measures in Chrome
 ```
 
 ## Workflow
@@ -35,6 +65,9 @@ EOF
 # 2. compose: one SVG slide
 node bin/compose-slide.js content-two-col --payload payload.json --theme light --out slides/
 #  → slides/content-two-col.svg   finished slide, colours baked to hex, 1280×720
+
+# 3. the same payload in another set (--name keeps both)
+node bin/compose-slide.js content-two-col --set editorial --payload payload.json --out slides/ --name editorial-two-col
 ```
 
 **Payload.** Keys are slot names. A **text** slot takes a string (one line) or an array of strings
@@ -50,7 +83,7 @@ line and **fails** when a line is over its slot's character budget or there are 
 
 | Gate | Fires when |
 |---|---|
-| `DESIGN-UNKNOWN` | the design name is not in `designs/` (the message lists the known ones) |
+| `DESIGN-UNKNOWN` | the set is unknown, or the design name is not in `sets/<set>/designs/` (the message lists the known ones) |
 | `DESIGN-INVALID` | slot markup is broken: duplicate slot, box outside the canvas, missing budget, unknown kind; a slot design with no slots or a decor-only background with any; or the file breaks the svg-library hard rules |
 | `PAYLOAD-MALFORMED` | the payload is not a JSON object, a text slot is not a string / string array, a graphic slot is not a string |
 | `SLOT-UNKNOWN` | a payload key matches no slot |
@@ -215,15 +248,30 @@ mosaics).
    categories, with item counts), Slidev theme galleries (sli.dev/resources/theme-gallery). These
    return 403 or bot walls, so skip them: slidesdocs, 24slides, Magnific, Adobe Stock. Use them as
    composition reference only, never copy their assets.
-1. Draw `designs/<kebab-name>.svg` by the conventions above, with preview text in every text slot
-   (placed by the layout rule) and a hint frame in every graphic slot. Paint the background.
+1. Draw `sets/lab/designs/<kebab-name>.svg` by the conventions above, with preview text in every
+   text slot (placed by the layout rule) and a hint frame in every graphic slot. Paint the background.
 2. Add a sample payload to `samples.json` (every required slot; a real svg-library component for
    graphic slots).
 3. Add a catalog row and a slot table above. The tests check every slot is in the table with its
    `maxchars`.
-4. Run `node bin/build-slides-gallery.js` and `python3 test/smoke-test-slides.py`. Open
+4. A new slide design belongs to **every** set: add it to each set in `bin/draw-slide-sets.js` with the
+   same slot names, kinds, required flags and line counts, then run `node bin/draw-slide-sets.js`.
+5. Run `node bin/build-slides-gallery.js` and `python3 test/smoke-test-slides.py`. Open
    `gallery.html` and check light and dark.
-5. If it is generally useful, mention it in SKILL.md's slide-designs section.
+6. If it is generally useful, mention it in SKILL.md's slide-designs section.
 
-A new **background**: same steps, but the root says `data-decor-only="true"`, there are no slots, `samples.json` gets `{}`, the header comment has a
-`Content zone:` line, and the row goes in the *Background designs* table.
+A new **background**: same steps, but the root says `data-decor-only="true"`, there are no slots,
+there is no `samples.json` entry (backgrounds compose with `{}`), the header comment has a
+`Content zone:` line, the row goes in the *Background designs* table, and only its own set needs it.
+
+## Adding a theme set
+
+1. Research 2–4 professional theme examples of the look first (theme galleries, template marketplaces,
+   design guides), as composition and palette cues only. Never copy assets or impersonate a brand.
+2. Add an entry to `SETS` in `bin/draw-slide-sets.js`: label, description, references, fonts, a light
+   and a dark palette (every token the designs use, plus the library tokens so inlined components
+   match), and all six slide designs with lab's slot contract, plus at least two `bg-*` backgrounds.
+3. Size budgets from the box width and the font's average glyph advance, at or above the sample
+   lines. Run `node bin/draw-slide-sets.js <set>` (it fails on an over-budget sample), then
+   `node bin/build-slides-gallery.js` and `python3 test/smoke-test-slides.py` (the fit check fails any
+   line that leaves its box). Check light and dark in `gallery.html`.

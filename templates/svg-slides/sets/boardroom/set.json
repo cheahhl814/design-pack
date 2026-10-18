@@ -1,0 +1,37 @@
+{
+  "label": "Boardroom",
+  "description": "Generic consulting style: navy plus one bright accent per slide, serif titles over sans body, one-sentence titles under a thin rule, a six-square agenda tracker, chart-left / insight-right 60:40 content, \"so what\" box. Not any firm's template or brand.",
+  "generatedBy": "bin/draw-slide-sets.js",
+  "fonts": {
+    "font-head": "Georgia, Cambria, Times New Roman, serif",
+    "font-sans": "Arial, Helvetica, sans-serif"
+  },
+  "light": {
+    "surface": "#ffffff",
+    "text": "#0b1f33",
+    "text-muted": "#5b6b7c",
+    "border": "#e2e7ee",
+    "border-bright": "#c3ccd7",
+    "accent": "#2f6bff",
+    "teal": "#12355b",
+    "deep-blue": "#3f6fa8",
+    "amber": "#c9a227",
+    "coral": "#d1495b",
+    "green": "#2e8b6e",
+    "navy": "#0b1f33",
+    "block": "#12355b",
+    "on-block": "#ffffff"
+  },
+  "dark": {
+    "surface": "#0b1622",
+    "text": "#eef3f8",
+    "text-muted": "#95a5b8",
+    "border": "#1b2a3b",
+    "border-bright": "#2c3f55",
+    "accent": "#6b93ff",
+    "teal": "#5b8fd1",
+    "deep-blue": "#7fa3d1",
+    "block": "#163454",
+    "on-block": "#eef3f8"
+  }
+}

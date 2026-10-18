@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
-"""QA for the svg-slides design library + bin/compose-slide.js
-(html-template-pack v0.21.0; background designs v0.22.0).
+"""QA for the svg-slides theme sets + bin/compose-slide.js
+(html-template-pack v0.21.0; backgrounds v0.22.0; theme sets v0.24.0).
+
+0. Sets: every set under templates/svg-slides/sets/ ships each samples.json
+   design with lab's slot names, kinds, required flags and line counts (so one
+   payload re-themes), plus backgrounds (lab ≥ 8, others ≥ 2); the generated
+   sets are exactly what bin/draw-slide-sets.js writes.
 
 1. Designs: well-formed XML, svg-library hard rules (no ids/defs/..., role +
    aria-label + <title>), slot markers valid (kind, box inside 1280x720, text
@@ -12,13 +17,16 @@
 2. Composer: happy path per design × light/dark (no var()/color-mix()/data-slot
    left, component inlined, payload lines at the layout-rule position), and
    every gate rejects what it should (TEXT-OVERFLOW, SLOT-UNKNOWN, ...).
+   Runs for every set × design × theme with the shared samples.
+3. Fit (with Chrome): every text slot filled to its budget, baked in its set's
+   fonts, renders inside its slot box.
 """
 import json, os, re, shutil, subprocess, sys, tempfile
 import xml.etree.ElementTree as ET
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DESIGNS = os.path.join(ROOT, "templates", "svg-slides", "designs")
-README = open(os.path.join(ROOT, "templates", "svg-slides", "README.md"), encoding="utf-8").read()
+SETS_DIR = os.path.join(ROOT, "templates", "svg-slides", "sets")
+DESIGNS = os.path.join(SETS_DIR, "lab", "designs")  # lab: the hand-drawn set the mutants start from
 SAMPLES = json.load(open(os.path.join(ROOT, "templates", "svg-slides", "samples.json"), encoding="utf-8"))
 COMPOSER = os.path.join(ROOT, "bin", "compose-slide.js")
 SVG = "{http://www.w3.org/2000/svg}"
@@ -95,52 +103,89 @@ def run(cmd):
     return subprocess.run(cmd, capture_output=True, text=True)
 
 
-def compose(design, payload, tmp, theme="light", name=None):
+def compose(design, payload, tmp, theme="light", name=None, set_="lab"):
     pay = os.path.join(tmp, "payload.json")
     with open(pay, "w", encoding="utf-8") as f:
         json.dump(payload, f)
-    return run(["node", COMPOSER, design, "--payload", pay, "--theme", theme, "--out", tmp] + (["--name", name] if name else []))
+    return run(["node", COMPOSER, design, "--payload", pay, "--theme", theme, "--out", tmp, "--set", set_] + (["--name", name] if name else []))
 
 
-names = sorted(f[:-4] for f in os.listdir(DESIGNS) if f.endswith(".svg"))
-ROOTS = {d: ET.parse(os.path.join(DESIGNS, f"{d}.svg")).getroot() for d in names}
-BGS = [d for d in names if ROOTS[d].get("data-decor-only") == "true"]
-check(len(names) - len(BGS) >= 6 and len(BGS) >= 8, f"expected ≥6 slide + ≥8 background designs, found {len(names) - len(BGS)} + {len(BGS)}")
-check(all(SAMPLES.get(d) == {} for d in BGS), "background samples are empty payloads")
-check(sorted(SAMPLES) == names, "samples.json has exactly one payload per design")
+def readme(set_):
+    p = os.path.join(ROOT, "templates", "svg-slides", "README.md") if set_ == "lab" else os.path.join(SETS_DIR, set_, "README.md")
+    return open(p, encoding="utf-8").read()
+
+
+SETS = sorted(d for d in os.listdir(SETS_DIR) if os.path.exists(os.path.join(SETS_DIR, d, "set.json")))
+NAMES = {s: sorted(f[:-4] for f in os.listdir(os.path.join(SETS_DIR, s, "designs")) if f.endswith(".svg")) for s in SETS}
+ROOTS = {(s, d): ET.parse(os.path.join(SETS_DIR, s, "designs", f"{d}.svg")).getroot() for s in SETS for d in NAMES[s]}
+BGS = {s: [d for d in NAMES[s] if ROOTS[s, d].get("data-decor-only") == "true"] for s in SETS}
 chrome = shutil.which("google-chrome") or shutil.which("chromium")
+
+# ── 0. sets: shared slot contract + generator reproducibility ───────────
+check("lab" in SETS and len(SETS) >= 5, f"expected lab + 4 generated sets, found {SETS}")
+contract = lambda s, d: sorted((g.get("data-slot"), g.get("data-slot-kind"), g.get("data-slot-optional") == "true", g.get("data-slot-maxlines") or "")
+                                for g in slots_of(ROOTS[s, d]))
+for s in SETS:
+    slides = [d for d in NAMES[s] if d not in BGS[s]]
+    check(sorted(slides) == sorted(SAMPLES), f"{s}: slide designs {slides} ≠ samples.json designs")
+    check(len(BGS[s]) >= (8 if s == "lab" else 2), f"{s}: only {len(BGS[s])} background designs")
+    conf = json.load(open(os.path.join(SETS_DIR, s, "set.json"), encoding="utf-8"))
+    check(bool(conf.get("label")) and bool(conf.get("description")), f"{s}: set.json needs label + description")
+    if s != "lab":
+        check(set(conf.get("dark", {})) <= set(conf.get("light", {})) and {"font-head", "font-sans"} <= set(conf.get("fonts", {})),
+              f"{s}: set.json palette incomplete (fonts, and every dark token also in light)")
+    for d in slides:
+        if (s, d) in ROOTS and ("lab", d) in ROOTS:
+            check(contract(s, d) == contract("lab", d), f"{s}/{d}: slot contract differs from lab {contract('lab', d)}")
+files = lambda base: {os.path.relpath(os.path.join(dp, f), base) for s in SETS if s != "lab" for dp, _, fs in os.walk(os.path.join(base, s)) for f in fs}
+with tempfile.TemporaryDirectory(prefix="drawsets-") as gen:
+    r = run(["node", os.path.join(ROOT, "bin", "draw-slide-sets.js"), "--out", gen])
+    same = r.returncode == 0 and files(gen) == files(SETS_DIR) and all(
+        open(os.path.join(gen, p), "rb").read() == open(os.path.join(SETS_DIR, p), "rb").read() for p in files(gen))
+    check(same, f"generated sets differ from bin/draw-slide-sets.js output; edit the script and re-run it, never the .svg {r.stderr.strip()}")
 
 # ── 1. designs ──────────────────────────────────────────────────────────
 with tempfile.TemporaryDirectory(prefix="svgslides-") as tmp:
-    for d in names:
-        src = open(os.path.join(DESIGNS, f"{d}.svg"), encoding="utf-8").read()
-        errs = design_errors(src)
-        check(not errs, f"{d}: {errs}")
-        root = ET.fromstring(src)
-        check(f"`{d}`" in README, f"{d}: no catalog entry in templates/svg-slides/README.md")
-        for g in slots_of(root):
-            n = g.get("data-slot")
-            row = re.search(rf"^\| `{re.escape(n)}` \|.*$", README.split(f"### `{d}`")[-1].split("###")[0], re.M)
-            check(row is not None, f"{d}/{n}: slot missing from the README slot table")
-            if g.get("data-slot-kind") != "text":
-                continue
-            if row:
-                check(g.get("data-slot-maxchars") in row.group(0), f"{d}/{n}: README budget ≠ data-slot-maxchars")
-            # preview lines follow the documented layout rule
-            x, y, w, h = (float(v) for v in g.get("data-slot-box").split())
-            size, anchor = float(g.get("data-slot-size")), g.get("data-slot-anchor", "start")
-            tx = {"start": x, "middle": x + w / 2, "end": x + w}[anchor]
-            texts = g.findall(SVG + "text")
-            check(0 < len(texts) <= int(g.get("data-slot-maxlines")), f"{d}/{n}: preview line count")
-            for i, t in enumerate(texts):
-                check(abs(float(t.get("x")) - tx) < 0.06 and abs(float(t.get("y")) - (y + size * FIRST + i * size * LEAD)) < 0.06,
-                      f"{d}/{n}: preview line {i + 1} not at the layout-rule position")
-                check(len(t.text or "") <= int(g.get("data-slot-maxchars")), f"{d}/{n}: preview line over budget")
-        if chrome:  # the raw design renders on its own (token fallbacks)
-            png = os.path.join(tmp, f"{d}.png")
-            run([chrome, "--headless=new", "--disable-gpu", "--no-sandbox", "--hide-scrollbars",
-                 "--window-size=1280,720", f"--screenshot={png}", "file://" + os.path.join(DESIGNS, f"{d}.svg")])
-            check(os.path.exists(png) and os.path.getsize(png) > 10000, f"{d}: headless Chrome render empty")
+    blank = 0
+    if chrome:  # a render must carry more than a blank canvas (minimal sets are only a few hundred bytes over)
+        ref = os.path.join(tmp, "blank.svg")
+        open(ref, "w").write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720"><rect width="1280" height="720" fill="#fff"/></svg>')
+        run([chrome, "--headless=new", "--disable-gpu", "--no-sandbox", "--hide-scrollbars", "--window-size=1280,720",
+             f"--screenshot={ref}.png", "file://" + ref])
+        blank = os.path.getsize(ref + ".png") if os.path.exists(ref + ".png") else 4000
+    for s in SETS:
+        README = readme(s)
+        for d in NAMES[s]:
+            path_ = os.path.join(SETS_DIR, s, "designs", f"{d}.svg")
+            src = open(path_, encoding="utf-8").read()
+            errs = design_errors(src)
+            d_ = f"{s}/{d}"
+            check(not errs, f"{d_}: {errs}")
+            root = ET.fromstring(src)
+            check(f"`{d}`" in README, f"{d_}: no catalog entry in the set README")
+            for g in slots_of(root):
+                n = g.get("data-slot")
+                row = re.search(rf"^\| `{re.escape(n)}` \|.*$", README.split(f"### `{d}`")[-1].split("###")[0], re.M)
+                check(row is not None, f"{d_}/{n}: slot missing from the README slot table")
+                if g.get("data-slot-kind") != "text":
+                    continue
+                if row:
+                    check(g.get("data-slot-maxchars") in row.group(0), f"{d_}/{n}: README budget ≠ data-slot-maxchars")
+                # preview lines follow the documented layout rule
+                x, y, w, h = (float(v) for v in g.get("data-slot-box").split())
+                size, anchor = float(g.get("data-slot-size")), g.get("data-slot-anchor", "start")
+                tx = {"start": x, "middle": x + w / 2, "end": x + w}[anchor]
+                texts = g.findall(SVG + "text")
+                check(0 < len(texts) <= int(g.get("data-slot-maxlines")), f"{d_}/{n}: preview line count")
+                for i, t in enumerate(texts):
+                    check(abs(float(t.get("x")) - tx) < 0.06 and abs(float(t.get("y")) - (y + size * FIRST + i * size * LEAD)) < 0.06,
+                          f"{d_}/{n}: preview line {i + 1} not at the layout-rule position")
+                    check(len(t.text or "") <= int(g.get("data-slot-maxchars")), f"{d_}/{n}: preview line over budget")
+            if chrome:  # the raw design renders on its own (token fallbacks)
+                png = os.path.join(tmp, f"{s}-{d}.png")
+                run([chrome, "--headless=new", "--disable-gpu", "--no-sandbox", "--hide-scrollbars",
+                     "--window-size=1280,720", f"--screenshot={png}", "file://" + path_])
+                check(os.path.exists(png) and os.path.getsize(png) > blank + 200, f"{d_}: headless Chrome render empty")
 
     # mutants: the static QA must reject each
     base = open(os.path.join(DESIGNS, "content-two-col.svg"), encoding="utf-8").read()
@@ -162,40 +207,41 @@ with tempfile.TemporaryDirectory(prefix="svgslides-") as tmp:
 # ── 2. composer ─────────────────────────────────────────────────────────
 TITLE_OF = {"flow-pipeline": "Four-step process pipeline"}
 with tempfile.TemporaryDirectory(prefix="compose-") as tmp:
-    for d in names:
+    for s, d in ROOTS:
+        pay = SAMPLES.get(d, {})
         for theme in ("light", "dark"):
-            r = compose(d, SAMPLES[d], tmp, theme)
-            check(r.returncode == 0, f"{d} [{theme}]: {r.stderr.strip()}")
+            r = compose(d, pay, tmp, theme, name=f"{s}-{d}", set_=s)
+            check(r.returncode == 0, f"{s}/{d} [{theme}]: {r.stderr.strip()}")
             if r.returncode:
                 continue
-            full = open(os.path.join(tmp, f"{d}.svg"), encoding="utf-8").read()
-            check(not re.search(r"var\(|color-mix\(|data-slot|data-decor-only|<!--", full), f"{d} [{theme}]: leftover marker/token")
-            check(re.search(r'<svg[^>]*width="1280" height="720"', full) is not None, f"{d} [{theme}]: fixed size")
+            full = open(os.path.join(tmp, f"{s}-{d}.svg"), encoding="utf-8").read()
+            check(not re.search(r"var\(|color-mix\(|data-slot|data-decor-only|<!--", full), f"{s}/{d} [{theme}]: leftover marker/token")
+            check(re.search(r'<svg[^>]*width="1280" height="720"', full) is not None, f"{s}/{d} [{theme}]: fixed size")
             ET.fromstring(full.split("?>", 1)[1])  # well-formed
-            for g in slots_of(ROOTS[d]):
+            for g in slots_of(ROOTS[s, d]):
                 n = g.get("data-slot")
-                if g.get("data-slot-kind") != "text" or n not in SAMPLES[d]:
+                if g.get("data-slot-kind") != "text" or n not in pay:
                     continue
                 x, y, w, h = (float(v) for v in g.get("data-slot-box").split())
                 size = float(g.get("data-slot-size"))
                 tx = {"start": x, "middle": x + w / 2, "end": x + w}[g.get("data-slot-anchor", "start")]
-                lines = SAMPLES[d][n] if isinstance(SAMPLES[d][n], list) else [SAMPLES[d][n]]
+                lines = pay[n] if isinstance(pay[n], list) else [pay[n]]
                 for i, line in enumerate(lines):
                     esc = line.replace("&", "&amp;")
                     m = re.search(rf'<text x="([\d.]+)" y="([\d.]+)"[^>]*>{re.escape(esc)}</text>', full)
                     check(m is not None and abs(float(m.group(1)) - tx) < 0.06
                           and abs(float(m.group(2)) - (y + size * (FIRST + i * LEAD))) < 0.06,
-                          f"{d}/{n}: composed line {i + 1} missing or not at the layout-rule position")
-            fig = SAMPLES[d].get("figure")
+                          f"{s}/{d}/{n}: composed line {i + 1} missing or not at the layout-rule position")
+            fig = pay.get("figure")
             if fig:
-                check(f'data-component="{fig}"' in full, f"{d}: component {fig} not inlined")
+                check(f'data-component="{fig}"' in full, f"{s}/{d}: component {fig} not inlined")
                 if fig in TITLE_OF:
-                    check(f"<title>{TITLE_OF[fig]}</title>" in full, f"{d}: component subtree missing")
-            if d in BGS:  # zero slots: text-free, painted edge to edge in the theme's surface
-                check("<text" not in full, f"{d} [{theme}]: decor slide has text")
+                    check(f"<title>{TITLE_OF[fig]}</title>" in full, f"{s}/{d}: component subtree missing")
+            if d in BGS[s]:  # zero slots: text-free, painted edge to edge in the theme's surface
+                check("<text" not in full, f"{s}/{d} [{theme}]: decor slide has text")
                 m = re.search(r'<rect x="0" y="0" width="1280" height="720" style="fill:#([0-9a-f]{6})', full)
                 lum = m and sum(int(m.group(1)[i:i + 2], 16) for i in (0, 2, 4)) / 765
-                check(m is not None and (lum < 0.2 if theme == "dark" else lum > 0.85), f"{d} [{theme}]: full-bleed paint is not {theme}")
+                check(m is not None and (lum < 0.2 if theme == "dark" else lum > 0.85), f"{s}/{d} [{theme}]: full-bleed paint is not {theme}")
 
     # the gates bite
     two = SAMPLES["content-two-col"]
@@ -209,6 +255,11 @@ with tempfile.TemporaryDirectory(prefix="compose-") as tmp:
             ("no-such-design", {}, "DESIGN-UNKNOWN"),
             ("bg-helix-field", {"heading": "x"}, "SLOT-UNKNOWN")):
         r = compose(design, payload, tmp)
+        check(r.returncode == 1 and r.stderr.startswith(gate), f"gate {gate} did not fire ({design}): {r.stderr.strip()}")
+    # a set has its own budgets: an over-long line fails there too; an unknown set is DESIGN-UNKNOWN
+    for set_, design, payload, gate in (("bold", "title-hero", {**SAMPLES["title-hero"], "hero-title": ["x" * 30]}, "TEXT-OVERFLOW"),
+                                        ("no-such-set", "title-hero", SAMPLES["title-hero"], "DESIGN-UNKNOWN")):
+        r = compose(design, payload, tmp, set_=set_)
         check(r.returncode == 1 and r.stderr.startswith(gate), f"gate {gate} did not fire ({design}): {r.stderr.strip()}")
     mutant = os.path.join(tmp, "mutant.svg")
     with open(mutant, "w") as f:
@@ -227,6 +278,18 @@ with tempfile.TemporaryDirectory(prefix="compose-") as tmp:
     r = compose("closing", {"title": "Thanks", "contact": "x@example.org"}, tmp, name="bare")
     check(r.returncode == 0 and "Slides and data" not in open(os.path.join(tmp, "bare.svg")).read(), "optional slot left out")
 
-print(f"  svg-slides: {len(names) - len(BGS)} slide + {len(BGS)} background designs · composer × 2 themes")
+# ── 3. fit: budget-filled text stays inside its slot box, in each set's fonts ──
+if chrome:
+    with tempfile.TemporaryDirectory(prefix="slidesfit-") as tmp:
+        page = os.path.join(tmp, "fit.html")
+        r = run(["node", os.path.join(ROOT, "test", "slides-fit.js"), page])
+        check(r.returncode == 0, f"slides-fit.js: {r.stderr.strip()}")
+        dom = run([chrome, "--headless=new", "--disable-gpu", "--no-sandbox", "--virtual-time-budget=5000", "--dump-dom", "file://" + page]).stdout
+        m = re.search(r"FIT (\d+) lines\n([\s\S]*?)</pre>", dom)
+        check(m is not None and int(m.group(1)) > 150, "fit page did not report")
+        for bad in (m.group(2).strip().splitlines() if m else []):
+            check(False, f"text over its slot box: {bad}")
+
+print(f"  svg-slides: {len(SETS)} sets · {sum(len(NAMES[s]) - len(BGS[s]) for s in SETS)} slide + {sum(len(BGS[s]) for s in SETS)} background designs · composer × 2 themes · budget fit")
 print(f"  TOTAL: {passed} passed · {failed} failed")
 sys.exit(1 if failed else 0)

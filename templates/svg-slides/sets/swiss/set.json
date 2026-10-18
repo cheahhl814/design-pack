@@ -1,0 +1,41 @@
+{
+  "label": "Swiss",
+  "description": "International Typographic Style: a strict 12-column grid, one grotesque (Helvetica / Arial) in two weights, flush-left ragged-right type, white content slides framed by bold red colour-block title, statement and closing slides, black rules, no ornament.",
+  "generatedBy": "bin/draw-slide-sets.js",
+  "fonts": {
+    "font-head": "Helvetica Neue, Helvetica, Arial, sans-serif",
+    "font-sans": "Helvetica Neue, Helvetica, Arial, sans-serif"
+  },
+  "light": {
+    "surface": "#ffffff",
+    "text": "#111111",
+    "text-muted": "#5e5e5e",
+    "border": "#e6e6e6",
+    "border-bright": "#c4c4c4",
+    "accent": "#e30613",
+    "teal": "#e30613",
+    "deep-blue": "#1f4fa3",
+    "amber": "#f5a800",
+    "coral": "#ff6a3d",
+    "green": "#0a8f5a",
+    "navy": "#111111",
+    "block": "#e30613",
+    "on-block": "#ffffff",
+    "ink": "#111111",
+    "on-ink": "#ffffff"
+  },
+  "dark": {
+    "surface": "#101010",
+    "text": "#f4f4f4",
+    "text-muted": "#a3a3a3",
+    "border": "#262626",
+    "border-bright": "#3d3d3d",
+    "accent": "#ff3b30",
+    "teal": "#ff3b30",
+    "deep-blue": "#6f9be8",
+    "block": "#d7261e",
+    "on-block": "#ffffff",
+    "ink": "#1f1f1f",
+    "on-ink": "#f4f4f4"
+  }
+}

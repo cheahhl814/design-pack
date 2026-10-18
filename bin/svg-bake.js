@@ -82,8 +82,7 @@ function flattenStyle(style, theme) {
   return out.join(';');
 }
 
-function exportSvg(src, themeName) {
-  const theme = THEMES[themeName];
+function exportSvg(src, themeName, theme = THEMES[themeName]) {
   let svg = src.replace(/<!--[\s\S]*?-->\s*/g, '').trim();
   svg = svg.replace(/style="([^"]*)"/g, (_, st) => `style="${flattenStyle(st, theme)}"`);
   const [, , w, h] = svg.match(/viewBox="([\d.\s-]+)"/)[1].trim().split(/\s+/).map(Number);

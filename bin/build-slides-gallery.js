@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 /**
  * build-slides-gallery.js: regenerates templates/svg-slides/gallery.html from
- * templates/svg-slides/designs/*.svg + samples.json.
+ * templates/svg-slides/sets/<set>/designs/*.svg + samples.json.
  *
- * Two sections: "Slide designs" (slot-marked) and "Background designs"
- * (data-decor-only, zero slots, composed with {}). Each card shows the design
+ * One section per theme set (its palette scoped to its cards), each split into
+ * slide designs (slot-marked) and backgrounds (data-decor-only, zero slots,
+ * composed with {}). Each card shows the design
  * composed with its sample payload, still
  * token-driven so the ◐ toggle previews both palettes, plus collapsible
  * blocks with the design source and the sample payload. Run after editing or
@@ -13,49 +14,78 @@
  *     node bin/build-slides-gallery.js
  *
  * Validation (fails the build): every design parses with bin/compose-slide.js
- * (svg-library hard rules + slot markup) and composes with its sample.
+ * (svg-library hard rules + slot markup) and composes with its sample; every
+ * set has a sample-backed design for each samples.json entry.
  */
 const fs = require('fs');
 const path = require('path');
-const { DESIGN_DIR, listDesigns, loadDesign, compose } = require('./compose-slide.js');
+const { SETS_DIR, listSets, listDesigns, loadDesign, compose } = require('./compose-slide.js');
 
-const DIR = path.dirname(DESIGN_DIR);
+const DIR = path.dirname(SETS_DIR);
 const OUT = path.join(DIR, 'gallery.html');
 const SAMPLES = JSON.parse(fs.readFileSync(path.join(DIR, 'samples.json'), 'utf8'));
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-// catalog order = samples.json order; designs without a sample fail below
-const NAMES = [...new Set([...Object.keys(SAMPLES), ...listDesigns()])];
-const card = (name, i) => {
-  if (!SAMPLES[name]) throw new Error(`${name}: no sample payload in samples.json`);
-  const design = loadDesign(name);
+const conf = (set) => JSON.parse(fs.readFileSync(path.join(SETS_DIR, set, 'set.json'), 'utf8'));
+const vars = (o) => Object.entries(o).map(([k, v]) => `--${k}: ${v};`).join(' ');
+// catalog order = samples.json order, then the backgrounds
+const namesOf = (set) => {
+  const all = listDesigns(set);
+  for (const n of Object.keys(SAMPLES)) if (!all.includes(n)) throw new Error(`${set}: no ${n} design (every set ships all samples.json designs)`);
+  return [...Object.keys(SAMPLES), ...all.filter((n) => !SAMPLES[n])];
+};
+const card = (set) => (name, i) => {
+  const design = loadDesign(name, set);
+  if (!SAMPLES[name] && !design.decorOnly) throw new Error(`${set}/${name}: no sample payload in samples.json`);
   const head = design.src.match(/<!--([\s\S]*?)-->/);
   // header comment: line 1 is the title, the description runs until "Slots:" (backgrounds: "Content zone:")
   const desc = head ? head[1].split(/\n\s*(?:Slots|Content zone):/)[0].split('\n').slice(2).map((l) => l.trim()).join(' ') : '';
   const zone = head && head[1].match(/Content zone:\s*(.+)/);
-  const slide = compose(design, SAMPLES[name]).svg.replace(/<!--[\s\S]*?-->\s*/g, '').trim();
+  const slide = compose(design, SAMPLES[name] || {}).svg.replace(/<!--[\s\S]*?-->\s*/g, '').trim();
   const use = design.decorOnly ? `content zone: ${esc(zone ? zone[1].trim() : '')}`
     : `slots: ${design.slots.map((s) => `<code>${s.name}</code>${s.optional ? '?' : ''}`).join(' ')}`;
-  return `    <figure class="card" id="d-${name}">
+  return `    <figure class="card" id="d-${set}-${name}">
       <figcaption>
         <span class="idx">${String(i + 1).padStart(2, '0')}</span>
         <span class="info"><strong>${name}</strong><em>${esc(desc)}</em><span class="use">${use}</span></span>
       </figcaption>
-      <div class="stage">${slide}</div>
+      <div class="stage set-${set}">${slide}</div>
       <details><summary>design source (.svg${design.decorOnly ? ', decor only' : ', slot-marked'})</summary><pre class="src">${esc(design.src.trim())}</pre></details>
-      <details><summary>sample payload (.json)</summary><pre class="src">${esc(JSON.stringify(SAMPLES[name], null, 2))}</pre></details>
+      <details><summary>sample payload (.json)</summary><pre class="src">${esc(JSON.stringify(SAMPLES[name] || {}, null, 2))}</pre></details>
     </figure>`;
 };
-const isBg = (n) => loadDesign(n).decorOnly;
-const SECTIONS = [['Slide designs', 'designs', NAMES.filter((n) => !isBg(n))],
-  ['Background designs', 'backgrounds', NAMES.filter(isBg)]];
-const cards = SECTIONS.flatMap(([, , names]) => names);
+const SETS = listSets().sort((a, b) => (a === 'lab' ? -1 : b === 'lab' ? 1 : a.localeCompare(b)));
+let cards = 0;
+// each set's palette, scoped to its stages (lab sets none and inherits the page palette)
+const setCss = SETS.map((set) => {
+  const c = conf(set);
+  return c.light ? `  .set-${set} { ${vars({ ...c.fonts, ...c.light })} }\n  html[data-theme="dark"] .set-${set} { ${vars(c.dark)} }` : '';
+}).filter(Boolean).join('\n');
+const section = (set) => {
+  const c = conf(set);
+  const names = namesOf(set);
+  const isBg = (n) => loadDesign(n, set).decorOnly;
+  const slides = names.filter((n) => !isBg(n)), bgs = names.filter(isBg);
+  cards += names.length;
+  const readme = set === 'lab' ? 'README.md' : `sets/${set}/README.md`;
+  return `  <h2 id="set-${set}">${esc(c.label)} <small>--set ${set}</small></h2>
+  <p>${esc(c.description)} Slot tables: <a href="${readme}"><code>${readme}</code></a>.</p>
+  <nav>${names.map((n) => `<a href="#d-${set}-${n}">${n}</a>`).join('')}</nav>
+  <h3>Slide designs</h3>
+  <main class="catalog">
+${slides.map(card(set)).join('\n')}
+  </main>
+  <h3>Backgrounds</h3>
+  <main class="catalog">
+${bgs.map(card(set)).join('\n')}
+  </main>`;
+};
 
 const page = `<!--
   GENERATED FILE — do not hand-edit.
-  Source of truth: designs/*.svg + samples.json in this directory; regenerate with:
+  Source of truth: sets/<set>/designs/*.svg + samples.json in this directory; regenerate with:
       node bin/build-slides-gallery.js
-  (html-template-pack v0.22.0 svg-slides design library)
+  (html-template-pack v0.24.0 svg-slides theme sets)
 -->
 <!doctype html>
 <html lang="en" data-theme="dark">
@@ -105,25 +135,23 @@ const page = `<!--
   nav a:hover { border-color: var(--accent); }
   h2 { font-family: var(--font-head); font-size: 22px; margin: 36px 0 6px; }
   h2 + p { color: var(--text-muted); font-size: 14px; max-width: 80ch; margin-bottom: 16px; }
+  h2 small { font-family: var(--font-mono); font-size: 13px; color: var(--text-dim); font-weight: 400; margin-left: 8px; }
+  h3 { font-family: var(--font-head); font-size: 16px; color: var(--text-muted); margin: 22px 0 12px; }
+  .sets { position: sticky; top: 0; z-index: 2; background: var(--bg); padding: 10px 0; }
+${setCss}
 </style>
 </head>
 <body>
   <header>
     <h1>svg-slides</h1>
-    <p>Hand-drawn slide designs with slot markers. Each card is the design composed with its sample payload by <code>bin/compose-slide.js</code>. Real output bakes colours to hex for one theme; here the slide stays token-driven so you can preview both palettes. Graphic slots hold svg-library components.</p>
+    <p>Slide designs with slot markers, in ${SETS.length} theme sets. Every set ships the same six slide designs with the same slot names, so one payload re-themes with <code>--set</code>. Each card is the design composed with its sample payload by <code>bin/compose-slide.js</code>. Real output bakes colours to hex for one theme; here the slide stays token-driven so you can preview both palettes. Graphic slots hold svg-library components.</p>
     <button class="toggle" onclick="var h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark')">◐</button>
   </header>
-${SECTIONS.map(([title, key, names]) => `  <h2 id="${key}">${title}</h2>
-  <p>${key === 'designs'
-    ? 'Slot-marked slides: each is composed with its sample payload from samples.json.'
-    : 'Decor-only stages (<code>data-decor-only="true"</code>, zero slots), each composed with <code>{}</code>. Content goes in the documented content zone: text or svg-library graphics.'}</p>
-  <nav>${names.map((n) => `<a href="#d-${n}">${n}</a>`).join('')}</nav>
-  <main class="catalog">
-${names.map(card).join('\n')}
-  </main>`).join('\n')}
+  <nav class="sets">${SETS.map((set) => `<a href="#set-${set}">${esc(conf(set).label)}</a>`).join('')}</nav>
+${SETS.map(section).join('\n')}
 </body>
 </html>
 `;
 
 fs.writeFileSync(OUT, page);
-console.log(`${path.relative(process.cwd(), OUT)}: ${cards.length} designs`);
+console.log(`${path.relative(process.cwd(), OUT)}: ${cards} designs in ${SETS.length} sets`);

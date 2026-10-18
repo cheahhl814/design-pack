@@ -1,7 +1,7 @@
 ---
 name: html-template-pack
 description: 'Four self-contained HTML templates — report (5-tab sticky sidebar, offset-anchored annotations, JSON export), slide deck (prev/next nav, inline annotations, JSON export), bento one-pager (2026 bento-grid snapshot briefing, full v2 annotation engine), and htmx dashboard (topbar, KPI row, sparkline, table, demo-mode mock backend). Pick report for ≥3 long sections, slide for ≤12 beats, bento for a one-page briefing, dashboard for live data. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", "one-pager", "briefing", "recap page", "SVG diagram", "infographic", "ecosystem" (HTML or standalone .svg), or MD/DOCX/PDF → HTML conversion. Ships a 94-template hand-drawn SVG diagram library + a zero-dep CSS graphics pack. Report/slide/bento ship the v2 annotation system; dashboard omits it (live data is not a stable anchor). All four are dark-first with glass chrome and density + font-size toggles.'
-version: 0.23.0
+version: 0.24.0
 updated: "2026-10-18"
 triggers:
   - "HTML report"
@@ -15,6 +15,7 @@ triggers:
   - "convert MD/DOCX/PDF to HTML"
   - "review-ready HTML"
   - "designed slides from SVG slide designs"
+  - "slide theme sets (swiss, boardroom, editorial, bold)"
 license: MIT
 ---
 
@@ -56,7 +57,7 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 | Live/polling data — KPIs, status tables, ops metrics, admin views        | **dashboard template** (`templates/dashboard/dashboard-template.html`)            | htmx-driven shell (topbar, stat row, sparkline chart, activity feed, sortable/filterable table) wired to `/api/*` endpoints. Not for review/annotation — for monitoring live state. |
 | One-page snapshot briefing — sprint recap, weekly readout, one-page proposal, everything at a glance + reviewer comments | **bento template** (`templates/bento/bento-template.html`)                        | 2026 bento-grid one-pager: modular glass cards (KPIs, pure-CSS chart, progress, timeline, quote, CTA) on a dark-first surface. Full v2 annotation engine. Static snapshot — numbers live in the file, not a server. |
 | Only one or a few diagrams/infographics, no page (for PPT, Word, Figma, a poster or a paper) | **svg-library component(s) → `bin/svg-export.js`** | Standalone `.svg` with the palette baked in, so it renders outside a browser. See *Standalone SVG (no HTML page)*. |
-| Decks that need real slide **design** (cover, chapter break, big statement, figure slides), not just layout chrome | **svg-slides** (`templates/svg-slides/designs/` + `bin/compose-slide.js`) → one SVG per slide | Hand-drawn full-slide designs with slot markers. Text is budgeted and gated, svg-library graphics are inlined, colours are baked. See *Slide designs*. |
+| Decks that need real slide **design** (cover, chapter break, big statement, figure slides), not just layout chrome | **svg-slides** (`templates/svg-slides/sets/<set>/designs/` + `bin/compose-slide.js --set`) → one SVG per slide | Hand-drawn full-slide designs with slot markers. Text is budgeted and gated, svg-library graphics are inlined, colours are baked. See *Slide designs*. |
 | Mixed: both a long-form report AND a summary deck                        | **report template as the canonical**, link to the deck as a downloadable artifact | Don't ship two HTMLs. The report template is the review surface; if the user also wants a separate deck, build that as a second file in the same project directory.                 |
 
 ### Decision rubric (use this in your first response)
@@ -88,10 +89,13 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 │   │   └── bento-template.html                 ← bento one-pager (2026 bento grid, dark-first glass, v2 annotation engine inline)
 │   ├── dashboard/
 │   │   └── dashboard-template.html              ← finalized dashboard template (htmx + demo-mode mock backend)
-│   ├── svg-slides/                             ← v0.21.0 slide-design library (see templates/svg-slides/README.md)
-│   │   ├── README.md                           ← slot-marker spec, layout rule, gates, per-design slot tables
-│   │   ├── designs/*.svg                       ← 6 canonical hand-drawn 1280×720 designs (slot-marked)
-│   │   ├── samples.json                        ← one sample payload per design (gallery + tests)
+│   ├── svg-slides/                             ← v0.21.0 slide-design library, v0.24.0 theme sets (see templates/svg-slides/README.md)
+│   │   ├── README.md                           ← slot-marker spec, layout rule, gates, set list, lab slot tables
+│   │   ├── sets/<set>/                          ← lab (hand-drawn, default) · swiss · boardroom · editorial · bold (generated)
+│   │   │   ├── set.json                        ← label, description, light/dark palette, font pair
+│   │   │   ├── README.md                       ← generated sets: palette, catalog, slot tables
+│   │   │   └── designs/*.svg                   ← 6 slide designs (shared slot contract) + bg-* backgrounds
+│   │   ├── samples.json                        ← one sample payload per slide design, shared by every set
 │   │   └── gallery.html                        ← generated preview (node bin/build-slides-gallery.js)
 │   └── graphics/
 │       ├── graphics.css                        ← v0.8.0 shared graphics pack (donut, gauge, bars, heatmap, flow, mstrip, compare, pull-quote, motion; inlined into each template)
@@ -120,7 +124,8 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 │   ├── svg-export.js                           ← bake a library SVG to a renderer-safe standalone .svg (`--png`: 2x PNG via headless Chrome)
 │   ├── svg-bake.js                             ← v0.21.0 shared token → hex bake logic (svg-export + compose-slide)
 │   ├── compose-slide.js                        ← v0.21.0 design + payload → one composed, baked SVG slide
-│   └── build-slides-gallery.js                 ← v0.21.0 regenerates templates/svg-slides/gallery.html
+│   ├── build-slides-gallery.js                 ← v0.21.0 regenerates templates/svg-slides/gallery.html (one section per set)
+│   └── draw-slide-sets.js                      ← v0.24.0 draws the generated theme sets (edit here, never the .svg)
 └── test/
     ├── smoke-test-report.js
     ├── smoke-test-slide.js
@@ -334,11 +339,13 @@ When the user wants **only a diagram or a few graphics**, for a PowerPoint/Keyno
 
 **Routing:** decks that need real slide **design**, not just layout chrome → `templates/svg-slides` + `bin/compose-slide.js`, one SVG per slide. Full spec: `templates/svg-slides/README.md`. Six designs ship: `title-hero`, `section-break`, `big-statement`, `content-two-col`, `full-diagram`, `closing`. Preview them in `templates/svg-slides/gallery.html`.
 
-**Background routing (v0.22.0):** stage backgrounds for **graphic-only or text slides** → a `bg-*` background design (`data-decor-only`, zero slots, composed with `{}`). Eight ship: `bg-helix-field`, `bg-mosaic-triangles`, `bg-flow-dashes`, `bg-concentric-vortex`, `bg-dot-wash`, `bg-molecule-scatter`, `bg-orbit-arc`, `bg-slat-panel`. Each documents a clear **content zone**; put svg-library graphics or native text there, never across the motif. Gallery section "Background designs".
+**Theme sets (v0.24.0):** the six designs come in five sets with one shared slot contract. Pick the set by the look the user asks for: `lab` (default, hand-drawn science), `swiss` (grid, grotesque, red colour blocks), `boardroom` (consulting: navy + one accent, serif titles, tracker), `editorial` (cream paper, serif, terracotta, hairlines), `bold` (saturated polygons, heavy display type). Pass `--set <name>` to every compose call of a deck. A payload re-themes across sets if its lines fit that set's budgets (generated sets list them in `sets/<set>/README.md`). If no set matches the requested look, research professional examples first, then add a set per *Adding a theme set* in the svg-slides README.
+
+**Background routing (v0.22.0):** stage backgrounds for **graphic-only or text slides** → a `bg-*` background design (`data-decor-only`, zero slots, composed with `{}`). Eight ship: `bg-helix-field`, `bg-mosaic-triangles`, `bg-flow-dashes`, `bg-concentric-vortex`, `bg-dot-wash`, `bg-molecule-scatter`, `bg-orbit-arc`, `bg-slat-panel`. Each documents a clear **content zone**; put svg-library graphics or native text there, never across the motif. Generated sets ship two each (`swiss`: `bg-grid`, `bg-block`; `boardroom`: `bg-rule`, `bg-panel`; `editorial`: `bg-paper`, `bg-sun`; `bold`: `bg-corners`, `bg-stripe`). Each set's gallery section has a "Backgrounds" part.
 
 1. Pick a design and read its slot table (name · kind · box · size · **budget** = lines × chars per line).
 2. Write the payload. Text slots take a string or an array of lines. **You break the lines**, since SVG cannot wrap. Graphic slots take an svg-library name or an id-free `.svg` path.
-3. SVG out: `node <skill>/bin/compose-slide.js <design> --payload p.json [--theme light|dark] --out <dir>`. This writes `<name>.svg` (finished, baked, 1280×720).
+3. SVG out: `node <skill>/bin/compose-slide.js <design> --payload p.json [--set lab|swiss|boardroom|editorial|bold] [--theme light|dark] --out <dir> [--name <slide-name>]`. This writes `<name>.svg` (finished, baked, 1280×720).
 4. When a gate fires (`TEXT-OVERFLOW`, `SLOT-UNKNOWN`, `SLOT-MISSING`, …), **shorten or re-break the text**. Never edit a design's budget to make a payload fit.
 5. A background slide: `node <skill>/bin/compose-slide.js bg-<name> --payload '{}' --theme dark --out <dir>`. Any payload key is `SLOT-UNKNOWN`.
 6. A new archetype? Follow *Adding a new design* in the svg-slides README: research 2–4 examples first, draw the design slot-marked, add a sample payload and a slot table, then rebuild the gallery and run the tests.
@@ -403,6 +410,7 @@ Positioning differs: report/slide float the button `position: fixed` top-right; 
 - `dashboard-template.html` (added 2026-07-11) — htmx dashboard shell, new template family for live/polling data views
 - `bento-template.html` (added 2026-09-08, v0.7.0) — bento-grid one-pager. The full v2 annotation engine is inlined from the slide template with its token-mapping `:root` block stripped (the bento defines generic token names directly); density/font-size IIFEs reused with `bento-density`/`bento-font-size` storage keys. Bar chart is pure CSS, no Mermaid/htmx. Aesthetic sourced from the 2026 UI-trends research pass (bento grids as the default snapshot pattern, dark-first design, restrained glass, hover-glow micro-interactions).
 - v0.13.0 SVG library to 40 components (2026-10-07) — second delegation round (claude code via herdr, svglib-v13-claude; 18 inspiration page fetches incl. subpages of infodiagram/free-powerpoint-templates-design/presentationgo; **magnific.com 403'd WebFetch and curl — its pages were never seen**). 20 new templates: timeline-vertical, swimlane-gantt, honeycomb-cluster, dual-hub, petal-cycle, decision-tree, snake-path, onion-layers, pillars-foundation, versus-columns, lightbulb-layers, matrix-nine-box, s-curve-adoption, growth-tree, spiral-growth, domino-chain, network-mesh, merge-paths, five-w-agenda, orbit-satellites. Professional polish pass on all 20 originals now standardised into one type scale (hero 20/700 · label 16/600 · annotation 13 · caption 12 · eyebrow 11/700 ls-1.2 · badge 13/700), normalised arrowheads (13×13 connectors, 16×16 spines), quadrant got the offset shadow, puzzle label overlap + radar glyph fixed. Validator hardened: rejects `<mask>/<pattern>/<clipPath>` and `fill="var(...)"`/`stroke="var(...)` presentation attributes; **XML-comment `--` check added** (staircase-steps had illegal `--accent` inside a comment that xml.etree rejected but the old validator missed). New techniques documented: pre-computed polygon sampling instead of clipPath (bulb slices), knockout label halos via `paint-order:stroke` for labels-on-lines. Verified: 40/40 build + independent convention recheck (my ET.parse loop) + both-theme screenshots + 60/60 tests; agent-side rotation-aware getBBox check (final: 0 clipped, 0 overlaps; earlier runs caught 4 real overlaps, fixed).
+- v0.24.0 svg-slides theme sets (2026-10-18) — four new slide theme sets beside the hand-drawn `lab` set (moved to `sets/lab/`): `swiss` (International Typographic Style, after KeynotePro "Geneva"), `boardroom` (generic consulting: deckary.com design-guide rules, unofficial consulting-style prompt themes), `editorial` (Gamma "warm editorial", tosea.ai editorial decks, Lovable "Stone Paper") and `bold` (Slidev "bricks", Keynote "Bold" themes); composition and palette cues only, no assets. Each has the six slide designs with lab's slot contract plus two backgrounds, a `set.json` palette (light/dark + font pair) baked over the defaults, and a generated README. `compose-slide.js --set`; `bin/draw-slide-sets.js` draws the four sets (`--out` for a diff run). Tests: set contract, generator reproducibility, every set × design × theme composing the shared samples, and a Chrome fit check that fills every slot to its budget (mutants caught: widened budget, renamed slot, hand edit). Gallery: one section per set with scoped palettes.
 - v0.23.0 PPTX builder removed (2026-10-18) — the user found the composed SVG slide decks sufficient. Deleted `bin/make-pptx-deck.py`, `bin/pptx-preview.py`, `templates/deck/` (house bases, author script, chrome) and `test/smoke-test-pptx-deck.py`. `compose-slide.js` now writes only `<name>.svg` (no `.bg.svg` / `.slides.json` sidecar); designs drop `data-native-footer`. Papercuts: `svg-export.js --png` (2x PNG via headless Chrome); the svg-library gallery now orders and numbers cards by the README catalog (build fails on a component without a catalog row). The v0.18–v0.22 entries below describe the removed builder as history.
 - v0.19.0 PPTX deck design library (2026-10-13) — the house bases grow from 5 to 11 layouts.
   - **New layouts:**

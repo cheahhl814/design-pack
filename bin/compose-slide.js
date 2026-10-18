@@ -4,9 +4,12 @@
  * into ONE composed, renderer-safe SVG slide (1280x720).
  *
  *     node bin/compose-slide.js <design|path.svg> --payload payload.json
- *                               [--theme light|dark] [--out DIR] [--name NAME]
+ *                               [--set SET] [--theme light|dark] [--out DIR] [--name NAME]
  *
- *   design    a name from templates/svg-slides/designs/ (e.g. title-hero) or a path
+ *   design    a name from templates/svg-slides/sets/<set>/designs/ (e.g. title-hero) or a path
+ *   --set     theme set (default lab): its designs, palette and fonts, from
+ *             templates/svg-slides/sets/<set>/set.json. Every set ships the same six
+ *             slide designs with the same slot names, so one payload re-themes.
  *   payload   JSON object keyed by slot name (a file, or inline JSON such as '{}';
  *             decor-only backgrounds, data-decor-only="true", have no slots and take {}):
  *               text slot    -> "one line" or ["line 1", "line 2"] (no auto-wrap:
@@ -32,7 +35,9 @@ const path = require('path');
 const { THEMES, exportSvg } = require('./svg-bake.js');
 
 const ROOT = path.resolve(__dirname, '..');
-const DESIGN_DIR = path.join(ROOT, 'templates', 'svg-slides', 'designs');
+const SETS_DIR = path.join(ROOT, 'templates', 'svg-slides', 'sets');
+const designDir = (set = 'lab') => path.join(SETS_DIR, set, 'designs');
+const listSets = () => fs.readdirSync(SETS_DIR).filter((d) => fs.existsSync(path.join(SETS_DIR, d, 'set.json'))).sort();
 const LIB_DIR = path.join(ROOT, 'features', 'graphics', 'svg-library', 'svg');
 const W = 1280, H = 720;
 const FIRST = 1.15, LEAD = 1.25;
@@ -103,13 +108,14 @@ function parseDesign(src, label = 'design') {
   return { src, slots, decorOnly };
 }
 
-function loadDesign(ref) {
-  const file = ref.endsWith('.svg') ? ref : path.join(DESIGN_DIR, `${ref}.svg`);
-  if (!fs.existsSync(file)) gate('DESIGN-UNKNOWN', `${ref} (known: ${listDesigns().join(', ')})`);
+function loadDesign(ref, set = 'lab') {
+  if (!listSets().includes(set)) gate('DESIGN-UNKNOWN', `set ${set} (known: ${listSets().join(', ')})`);
+  const file = ref.endsWith('.svg') ? ref : path.join(designDir(set), `${ref}.svg`);
+  if (!fs.existsSync(file)) gate('DESIGN-UNKNOWN', `${ref} (known in ${set}: ${listDesigns(set).join(', ')})`);
   return parseDesign(fs.readFileSync(file, 'utf8'), path.basename(file, '.svg'));
 }
 
-const listDesigns = () => fs.readdirSync(DESIGN_DIR).filter((f) => f.endsWith('.svg')).map((f) => f.slice(0, -4)).sort();
+const listDesigns = (set = 'lab') => fs.readdirSync(designDir(set)).filter((f) => f.endsWith('.svg')).map((f) => f.slice(0, -4)).sort();
 
 function textLines(s, v) {
   const lines = typeof v === 'string' ? [v] : v;
@@ -180,49 +186,56 @@ function compose(design, payload) {
   return { svg, text, graphics };
 }
 
-function bake(svg, theme) {
-  const out = exportSvg(svg, theme);
+// One theme of a set: the slide-template palette, overridden by the set's own tokens and fonts
+function palette(set = 'lab', theme = 'light') {
+  const conf = JSON.parse(fs.readFileSync(path.join(SETS_DIR, set, 'set.json'), 'utf8'));
+  return { ...THEMES[theme], ...conf.fonts, ...(conf[theme] || {}) };
+}
+
+function bake(svg, theme, set = 'lab') {
+  const out = exportSvg(svg, theme, palette(set, theme));
   if (/var\(|color-mix\(|data-slot/.test(out)) gate('BAKE-LEFTOVER', 'var()/color-mix()/data-slot left in the composed slide');
   return out;
 }
 
 /** Write <name>.svg; returns its path */
-function composeToFiles(ref, payload, theme = 'light', out = 'slides', name) {
+function composeToFiles(ref, payload, theme = 'light', out = 'slides', name, set = 'lab') {
   if (!THEMES[theme]) gate('PAYLOAD-MALFORMED', `theme must be light or dark, not ${theme}`);
-  const design = loadDesign(ref);
+  const design = loadDesign(ref, set);
   const c = compose(design, payload);
   name = name || path.basename(ref, '.svg');
   fs.mkdirSync(out, { recursive: true });
   const file = path.join(out, `${name}.svg`);
-  fs.writeFileSync(file, bake(c.svg, theme));
+  fs.writeFileSync(file, bake(c.svg, theme, set));
   return file;
 }
 
 if (require.main === module) {
   const args = process.argv.slice(2);
-  let theme = 'light', out = 'slides', payloadFile, name;
+  let theme = 'light', out = 'slides', payloadFile, name, set = 'lab';
   const refs = [];
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--theme') theme = args[++i];
     else if (args[i] === '--out') out = args[++i];
     else if (args[i] === '--payload') payloadFile = args[++i];
     else if (args[i] === '--name') name = args[++i];
+    else if (args[i] === '--set') set = args[++i];
     else refs.push(args[i]);
   }
   if (refs.length !== 1 || !payloadFile) {
-    console.error('usage: node bin/compose-slide.js <design|path.svg> --payload payload.json|JSON [--theme light|dark] [--out DIR] [--name NAME]');
-    console.error(`designs: ${listDesigns().join(', ')}`);
+    console.error('usage: node bin/compose-slide.js <design|path.svg> --payload payload.json|JSON [--set SET] [--theme light|dark] [--out DIR] [--name NAME]');
+    console.error(`sets: ${listSets().join(', ')}; lab designs: ${listDesigns().join(', ')}`);
     process.exit(2);
   }
   try {
     let payload;
     // --payload takes a file, or inline JSON ('{}' for a decor-only background)
     try { payload = JSON.parse(payloadFile.trim().startsWith('{') ? payloadFile : fs.readFileSync(payloadFile, 'utf8')); } catch (e) { gate('PAYLOAD-MALFORMED', `${payloadFile}: ${e.message}`); }
-    console.log(composeToFiles(refs[0], payload, theme, out, name));
+    console.log(composeToFiles(refs[0], payload, theme, out, name, set));
   } catch (e) {
     console.error(e instanceof GateError ? e.message : `compose-slide: ${e.message}`);
     process.exit(1);
   }
 }
 
-module.exports = { DESIGN_DIR, FIRST, LEAD, GateError, lint, parseDesign, loadDesign, listDesigns, compose, bake, composeToFiles };
+module.exports = { SETS_DIR, designDir, listSets, palette, FIRST, LEAD, GateError, lint, parseDesign, loadDesign, listDesigns, compose, bake, composeToFiles };

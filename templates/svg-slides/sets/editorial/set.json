@@ -1,0 +1,37 @@
+{
+  "label": "Editorial",
+  "description": "Magazine look: cream paper, deep-brown serif headlines over a clean sans body, one terracotta accent, cool blue for figures, hairline and double rules, an asymmetric grid with a pull-quote and an oversized chapter numeral.",
+  "generatedBy": "bin/draw-slide-sets.js",
+  "fonts": {
+    "font-head": "Georgia, Iowan Old Style, Palatino Linotype, serif",
+    "font-sans": "Helvetica Neue, Helvetica, Arial, sans-serif"
+  },
+  "light": {
+    "surface": "#f6f1e7",
+    "text": "#2b2118",
+    "text-muted": "#75644f",
+    "border": "#e5dbc8",
+    "border-bright": "#cdbb9c",
+    "accent": "#b5532c",
+    "teal": "#b5532c",
+    "deep-blue": "#3d6a8a",
+    "amber": "#c99a3b",
+    "coral": "#9e3b2f",
+    "green": "#61784a",
+    "navy": "#2b2118",
+    "block": "#2b2118",
+    "on-block": "#f6f1e7"
+  },
+  "dark": {
+    "surface": "#1d1813",
+    "text": "#f2ebdf",
+    "text-muted": "#b3a48e",
+    "border": "#2f271e",
+    "border-bright": "#463a2d",
+    "accent": "#d9774c",
+    "teal": "#d9774c",
+    "deep-blue": "#86a9c4",
+    "block": "#322820",
+    "on-block": "#f2ebdf"
+  }
+}

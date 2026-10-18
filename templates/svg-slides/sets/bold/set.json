@@ -1,0 +1,36 @@
+{
+  "label": "Bold geometric",
+  "description": "Saturated colour fields and flat polygon blocks (violet, amber, coral, blue, green) with heavy display type (Arial Black) over a clean grotesque body; high contrast, no gradients, shapes kept clear of every text slot.",
+  "generatedBy": "bin/draw-slide-sets.js",
+  "fonts": {
+    "font-head": "Arial Black, Arial, Helvetica, sans-serif",
+    "font-sans": "Helvetica Neue, Helvetica, Arial, sans-serif"
+  },
+  "light": {
+    "surface": "#ffffff",
+    "text": "#15122b",
+    "text-muted": "#5f5b78",
+    "border": "#ebe8f5",
+    "border-bright": "#cdc8e0",
+    "accent": "#5b2eff",
+    "teal": "#5b2eff",
+    "deep-blue": "#1f6bff",
+    "amber": "#ffc21a",
+    "coral": "#ff4f64",
+    "green": "#00c48c",
+    "navy": "#15122b",
+    "block": "#5b2eff",
+    "on-block": "#ffffff"
+  },
+  "dark": {
+    "surface": "#110f1f",
+    "text": "#f6f4ff",
+    "text-muted": "#a9a4c7",
+    "border": "#241f3d",
+    "border-bright": "#37305a",
+    "accent": "#8a6bff",
+    "teal": "#7b5cff",
+    "block": "#4a24e0",
+    "on-block": "#ffffff"
+  }
+}
