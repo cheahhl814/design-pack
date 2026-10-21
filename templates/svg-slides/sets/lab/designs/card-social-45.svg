@@ -1,0 +1,55 @@
+<!--
+design-pack · svg-slides · card-social-45
+  Pull-quote card (1080x1350, 4:5, data-canvas): eyebrow, an oversized quote of up to five lines under an opening
+  quote glyph, attribution under a short rule, and two supporting stat chips. Same safe zones as info-social-45:
+  the top 120 px and the bottom 180 px stay free of critical content.
+  Slots: eyebrow (optional) · quote · attribution (optional) · stat-1-value · stat-1-label · stat-2-value · stat-2-label.
+  Tokens: teal amber coral deep-blue text text-muted border border-bright surface font-head font-sans.
+  Compose with bin/compose-slide.js; slot rules in templates/svg-slides/README.md.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" data-canvas="0 0 1080 1350" role="img" aria-label="Four-by-five quote card with an eyebrow, a large pull-quote with an opening quote glyph, an attribution and two supporting stat chips" style="width:100%;height:auto">
+  <title>Social 4:5 pull-quote card design</title>
+  <rect x="0" y="0" width="1080" height="1350" style="fill:var(--surface,#ffffff)"/>
+  <path d="M72 96 V56 H112" fill="none" style="stroke:var(--teal,#0d9488);stroke-width:3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1008 96 V56 H968" fill="none" style="stroke:var(--amber,#f59e0b);stroke-width:3" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="72" y1="1270" x2="1008" y2="1270" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-dasharray="3 9" stroke-linecap="round"/>
+  <circle cx="72" cy="1306" r="6" style="fill:color-mix(in srgb, var(--teal,#0d9488) 70%, transparent)"/>
+  <circle cx="94" cy="1306" r="6" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, transparent)"/>
+  <circle cx="116" cy="1306" r="6" style="fill:color-mix(in srgb, var(--coral,#ef4444) 70%, transparent)"/>
+  <rect x="0" y="120" width="24" height="1050" style="fill:color-mix(in srgb, var(--teal,#0d9488) 60%, transparent)"/>
+  <g data-slot="eyebrow" data-slot-kind="text" data-slot-box="96 140 888 22" data-slot-font="head" data-slot-weight="700" data-slot-size="18" data-slot-tracking="1.5" data-slot-maxlines="1" data-slot-maxchars="60" data-slot-anchor="start" data-slot-fill="color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))" data-slot-optional="true">
+    <text x="96" y="160.7" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));letter-spacing:1.5px">FROM THE RUN LOG · SEPTEMBER 2026</text>
+  </g>
+  <g style="fill:color-mix(in srgb, var(--amber,#f59e0b) 85%, transparent)"><circle cx="128" cy="262" r="34"/><path d="M158 276 Q164 336 100 360 Q132 322 120 292 Z"/><circle cx="238" cy="262" r="34"/><path d="M268 276 Q274 336 210 360 Q242 322 230 292 Z"/></g>
+  <g data-slot="quote" data-slot-kind="text" data-slot-box="96 400 888 380" data-slot-font="head" data-slot-weight="600" data-slot-size="60" data-slot-maxlines="5" data-slot-maxchars="26" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="96" y="469" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:60px;font-weight:600;fill:var(--text,#0f172a)">Most failed runs</text>
+    <text x="96" y="544" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:60px;font-weight:600;fill:var(--text,#0f172a)">were not chemistry.</text>
+    <text x="96" y="619" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:60px;font-weight:600;fill:var(--text,#0f172a)">They were bubbles</text>
+    <text x="96" y="694" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:60px;font-weight:600;fill:var(--text,#0f172a)">in the inlet, and a</text>
+    <text x="96" y="769" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:60px;font-weight:600;fill:var(--text,#0f172a)">2 mm fillet fixed them.</text>
+  </g>
+  <line x1="96" y1="820" x2="176" y2="820" style="stroke:var(--teal,#0d9488);stroke-width:5" stroke-linecap="round"/>
+  <line x1="188" y1="820" x2="200" y2="820" style="stroke:var(--amber,#f59e0b);stroke-width:5" stroke-linecap="round"/>
+  <g data-slot="attribution" data-slot-kind="text" data-slot-box="96 842 888 66" data-slot-font="sans" data-slot-weight="500" data-slot-size="26" data-slot-maxlines="2" data-slot-maxchars="67" data-slot-anchor="start" data-slot-fill="var(--text-muted,#64748b)" data-slot-optional="true">
+    <text x="96" y="871.9" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:26px;font-weight:500;fill:var(--text-muted,#64748b)">A. Researcher</text>
+    <text x="96" y="904.4" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:26px;font-weight:500;fill:var(--text-muted,#64748b)">Microfluidics Group, run log review of 212 chips</text>
+  </g>
+  <rect x="96" y="960" width="436" height="170" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 35%, transparent);stroke-width:1.5" transform="translate(4 5)"/>
+  <rect x="96" y="960" width="436" height="170" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 8%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke-width:2"/>
+  <g data-slot="stat-1-value" data-slot-kind="text" data-slot-box="124 980 380 84" data-slot-font="head" data-slot-weight="800" data-slot-size="64" data-slot-maxlines="1" data-slot-maxchars="9" data-slot-anchor="start" data-slot-fill="color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">
+    <text x="124" y="1053.6" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:64px;font-weight:800;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">94%</text>
+  </g>
+  <g data-slot="stat-1-label" data-slot-kind="text" data-slot-box="124 1068 380 56" data-slot-font="sans" data-slot-weight="500" data-slot-size="22" data-slot-maxlines="2" data-slot-maxchars="33" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="124" y="1093.3" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:22px;font-weight:500;fill:var(--text,#0f172a)">sensitivity versus</text>
+    <text x="124" y="1120.8" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:22px;font-weight:500;fill:var(--text,#0f172a)">lab qPCR, n = 212</text>
+  </g>
+  <rect x="548" y="960" width="436" height="170" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 35%, transparent);stroke-width:1.5" transform="translate(4 5)"/>
+  <rect x="548" y="960" width="436" height="170" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 8%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--amber,#f59e0b) 55%, var(--surface,#ffffff));stroke-width:2"/>
+  <g data-slot="stat-2-value" data-slot-kind="text" data-slot-box="576 980 380 84" data-slot-font="head" data-slot-weight="800" data-slot-size="64" data-slot-maxlines="1" data-slot-maxchars="9" data-slot-anchor="start" data-slot-fill="color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">
+    <text x="576" y="1053.6" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:64px;font-weight:800;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">38 min</text>
+  </g>
+  <g data-slot="stat-2-label" data-slot-kind="text" data-slot-box="576 1068 380 56" data-slot-font="sans" data-slot-weight="500" data-slot-size="22" data-slot-maxlines="2" data-slot-maxchars="33" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="576" y="1093.3" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:22px;font-weight:500;fill:var(--text,#0f172a)">median time from</text>
+    <text x="576" y="1120.8" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:22px;font-weight:500;fill:var(--text,#0f172a)">sample to answer</text>
+  </g>
+</svg>

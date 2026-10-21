@@ -69,5 +69,260 @@
       "a.researcher@example.org"
     ],
     "meta": "Slides, run log and chip CAD: example.org/lab-on-chip"
+  },
+  "info-tall-web": {
+    "eyebrow": "FIELD BRIEF · MICROFLUIDICS · 2026",
+    "hero-title": [
+      "Lab-on-chip diagnostics",
+      "from drop to answer"
+    ],
+    "lede": "What the field team needs to know about the chip before January",
+    "s1-heading": "The chip in three numbers",
+    "s1-text": [
+      "Each chip runs sample prep, amplification and readout on a card",
+      "the size of a credit card. The numbers below come from 212 bench",
+      "runs and 14 field days, and they set the bar for the January trial."
+    ],
+    "stat-1-value": "94%",
+    "stat-1-label": [
+      "Sensitivity versus",
+      "lab qPCR"
+    ],
+    "stat-2-value": "38 min",
+    "stat-2-label": [
+      "Sample to answer,",
+      "door to door"
+    ],
+    "stat-3-value": "$2.10",
+    "stat-3-label": [
+      "Consumables per",
+      "test at 10k volume"
+    ],
+    "s2-heading": "Five steps from sample to result",
+    "s2-text": [
+      "The operator touches the chip twice: load the sample, then read the",
+      "result. Everything between is passive: the chip moves fluid by",
+      "capillary action and heats itself."
+    ],
+    "step-1": "Collect 20 µL of capillary blood with the integrated lancet",
+    "step-2": "Close the lid: the buffer pouch bursts and lyses the sample",
+    "step-3": "The chip meters the lysate into the amplification chamber",
+    "step-4": "Isothermal heater runs 30 minutes at a steady 65 °C",
+    "step-5": "Read the lateral-flow strip, or scan it with the phone app",
+    "s3-heading": "Why the channel is shaped this way",
+    "s3-text": [
+      "Nine in ten failed runs",
+      "were bubbles trapped at",
+      "the inlet, not chemistry.",
+      "A 2 mm fillet at the",
+      "channel corner lets the",
+      "meniscus advance evenly",
+      "and the bubbles escape."
+    ],
+    "s3-figure": "flow-pipeline",
+    "s3-caption": [
+      "Flow through the filleted channel,",
+      "inlet to chamber (schematic)."
+    ],
+    "s4-heading": "What the January trial will measure",
+    "s4-text": [
+      "Three clinics, six weeks, and one number decides whether the chip",
+      "moves on to the regulatory study: how many of the screened patients",
+      "end up with an evaluable result on the first attempt."
+    ],
+    "s4-figure": "funnel-stages",
+    "s4-caption": "Enrolment funnel from screened patients to evaluable results (target numbers).",
+    "sources": [
+      "Bench validation: 212 chips, July to September 2026, internal run log.",
+      "Field days: Kisumu and Kilifi pilot sites, two operators.",
+      "Cost model: consumables at 10k units per year, supplier quotes."
+    ]
+  },
+  "info-a4-print": {
+    "eyebrow": "POSTER · MICROFLUIDICS GROUP · 2026",
+    "title": [
+      "Lab-on-chip diagnostics:",
+      "what 212 bench runs showed"
+    ],
+    "lede": "Sensitivity, speed and cost of a card-sized assay, benchmarked against lab qPCR",
+    "col1-heading": "Method",
+    "intro": [
+      "Point-of-care tests",
+      "fail in the field for",
+      "dull reasons: bubbles,",
+      "dead batteries, and",
+      "steps the operator",
+      "cannot see. We built",
+      "a passive chip that",
+      "moves fluid by",
+      "capillary action and",
+      "heats itself, then ran",
+      "212 chips against lab",
+      "qPCR on matched",
+      "samples over three",
+      "months."
+    ],
+    "bullets": [
+      "• Passive fluidics,",
+      "  no pump",
+      "• Isothermal heater,",
+      "  65 °C for 30 min",
+      "• Lateral-flow readout",
+      "  or phone scan",
+      "• Card-sized, 12 g",
+      "• Two operator steps",
+      "• Paired with qPCR",
+      "  on every sample"
+    ],
+    "col2-heading": "Results",
+    "stat-1-value": "94%",
+    "stat-1-label": [
+      "Sensitivity versus",
+      "lab qPCR, n = 212"
+    ],
+    "chart-1": "radial-bars",
+    "stat-2-value": "38 min",
+    "stat-2-label": [
+      "Median time from",
+      "sample to answer"
+    ],
+    "chart-2": "thermometer-gauge",
+    "col3-heading": "Key findings",
+    "finding-1": [
+      "Bubbles, not",
+      "chemistry, caused",
+      "9 in 10 failed runs"
+    ],
+    "finding-2": [
+      "A 2 mm fillet at",
+      "the corner fixed",
+      "most of them"
+    ],
+    "finding-3": [
+      "Sensitivity held at",
+      "94% across three",
+      "reagent lots"
+    ],
+    "finding-4": [
+      "Median time to",
+      "answer was",
+      "38 minutes"
+    ],
+    "finding-5": [
+      "Consumables cost",
+      "$2.10 per test",
+      "at volume"
+    ],
+    "sources": [
+      "Bench validation: 212 chips against lab qPCR, July to September 2026.",
+      "Field days: two pilot sites, two operators, 14 days in total.",
+      "Cost model: consumables at 10,000 units per year, supplier quotes.",
+      "Reagent lots: three, manufactured at one site."
+    ],
+    "citation": "Researcher A. et al. (2026) Lab-on-chip diagnostics: bench validation. Microfluidics Group."
+  },
+  "info-social-45": {
+    "eyebrow": "FIELD NOTES · LAB-ON-CHIP · 2026",
+    "title": [
+      "Four lessons from",
+      "212 bench runs"
+    ],
+    "stat-value": "94%",
+    "stat-label": [
+      "sensitivity versus",
+      "lab qPCR on matched",
+      "samples, n = 212"
+    ],
+    "stat-note": "Held across three reagent lots and two operators.",
+    "list-heading": "What moved the number",
+    "item-1": [
+      "Bubbles at the inlet caused",
+      "9 in 10 failed runs"
+    ],
+    "item-2": [
+      "A 2 mm corner fillet let",
+      "the bubbles escape"
+    ],
+    "item-3": [
+      "A passive chip beat the",
+      "pump on reliability"
+    ],
+    "item-4": [
+      "Two operator steps made",
+      "the training one hour"
+    ],
+    "takeaway": [
+      "Fix the fluid path first: it decided more runs",
+      "than any change to the chemistry."
+    ]
+  },
+  "card-a6-print": {
+    "eyebrow": "LAB CARD · SAMPLE PREP",
+    "title": [
+      "Load a chip in",
+      "five easy steps"
+    ],
+    "list-heading": "YOU NEED",
+    "list": [
+      "Chip card",
+      "Lancet",
+      "Alcohol wipe",
+      "Timer",
+      "Gloves"
+    ],
+    "list-figure": "pictogram-grid",
+    "steps-heading": "STEPS",
+    "step-1": [
+      "Wipe the fingertip",
+      "and let it dry"
+    ],
+    "step-2": [
+      "Prick the side of the",
+      "finger with the lancet"
+    ],
+    "step-3": [
+      "Touch the drop to the",
+      "inlet on the chip"
+    ],
+    "step-4": [
+      "Close the lid until it",
+      "clicks, start the timer"
+    ],
+    "step-5": [
+      "Read the strip",
+      "after 30 minutes"
+    ],
+    "note": [
+      "No visible drop? Warm the hand for one minute",
+      "and repeat with a fresh chip."
+    ],
+    "citation": [
+      "Researcher A. et al. (2026) Lab-on-chip diagnostics:",
+      "bench validation. Microfluidics Group, field protocol v2."
+    ]
+  },
+  "card-social-45": {
+    "eyebrow": "FROM THE RUN LOG · SEPTEMBER 2026",
+    "quote": [
+      "Most failed runs",
+      "were not chemistry.",
+      "They were bubbles",
+      "in the inlet, and a",
+      "2 mm fillet fixed them."
+    ],
+    "attribution": [
+      "A. Researcher",
+      "Microfluidics Group, run log review of 212 chips"
+    ],
+    "stat-1-value": "94%",
+    "stat-1-label": [
+      "sensitivity versus",
+      "lab qPCR, n = 212"
+    ],
+    "stat-2-value": "38 min",
+    "stat-2-label": [
+      "median time from",
+      "sample to answer"
+    ]
   }
 }

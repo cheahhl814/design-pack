@@ -100,14 +100,14 @@ apply: inline SVG, **no `id` / `<defs>` / `<marker>` / `<filter>` / `<mask>` / `
 `color-mix(in srgb, …)`, `--navy` / `--deep-blue` and coloured text pulled toward `--text`, root
 `role="img"` + `aria-label` + `<title>`, the svg-bake.js THEMES light defaults. On top of that:
 
-1. **Canvas `viewBox="0 0 1280 720"`** (16:9, 1 px = 9525 EMU on the house bases). The design paints
+1. **Canvas `viewBox="0 0 1280 720"`** (default; `info-*` / `card-*` designs declare another with `data-canvas`, see below) (16:9, 1 px = 9525 EMU on the house bases). The design paints
    its own background (`fill:var(--surface,#ffffff)` or a tint of it), so a dark bake is dark edge to
    edge.
 2. **Slots are `<g data-slot="name">` groups, never ids.** Library components are inlined into designs,
    and one slide may hold several, so ids would collide. Slot markers sit on `<g>` only and are pure
    metadata: deleting every `data-slot-*` attribute must not change what the browser draws. The
    composer strips them from its output; the design files keep them.
-3. **Every slot declares its zone:** `data-slot-box="x y w h"` (positive, inside 1280×720) and
+3. **Every slot declares its zone:** `data-slot-box="x y w h"` (positive, inside the design's canvas) and
    `data-slot-kind` (`text` or `graphic`). Add `data-slot-optional="true"` if the slide still works
    without it.
 4. **Text slots declare their type and budget:**
@@ -201,6 +201,136 @@ Budgets are set from the box width at an average glyph advance of about 0.52 em 
 archetypes. Composition takes cues from ppt-design.com's master-layout set (cover, section, takeaway,
 quote, content, thank-you) and from the former v0.19.0 PPTX deck chrome (removed in v0.23.0), whose
 helix, molecule ring and orbit motifs were re-drawn slot-ready here. No external assets are used.
+
+## Infographics and info cards (v0.28.0)
+
+Two lab-only design families for single-page information graphics. They share the slot contract, the
+gates and the conventions above; the one difference is the **canvas**. A design declares it with
+`data-canvas="0 0 W H"` on its `<svg>` root (the `viewBox` must match); without the attribute the canvas is
+`0 0 1280 720`. Slot boxes are checked against the design's own canvas, and the composed file takes its
+`width` / `height` from it. They are not slide designs: the other four sets do not ship them, and the
+gallery lists them under *Infographics* (`info-*`) and *Info cards* (`card-*`).
+
+| # | Design | Canvas | What it is |
+|---|---|---|---|
+| 1 | `info-tall-web` | 800 × 2000 | long-scroll web infographic: header band, four section bands (stat row, numbered process, text + figure, full-width figure), sources footer |
+| 2 | `info-a4-print` | 794 × 1123 (A4, 96 dpi) | poster: header, three columns (text + bullets, stat + chart stack, five findings), sources and citation strip; 48 px print margins |
+| 3 | `info-social-45` | 1080 × 1350 (4:5) | feed card: title, hero stat, four-row listicle, takeaway; top 120 px / bottom 180 px safe zones |
+| 4 | `card-a6-print` | 397 × 560 (A6, 96 dpi) | recipe-style card: narrow list column + figure, numbered steps, note, citation strip, 8 px inner border |
+| 5 | `card-social-45` | 1080 × 1350 (4:5) | pull-quote card: big quote, attribution, two stat chips; same safe zones |
+
+The `print` designs are ink-friendly (hairline strokes, white fills, a hairline offset copy instead of a
+tinted one). Print path, one page per file at the design's own size:
+
+```
+node bin/compose-slide.js card-a6-print --payload payload.json --theme light --out slides/
+node bin/svg-export.js slides/card-a6-print.svg --theme light --out print/ --png --pdf
+```
+
+Budgets follow the same rule as the slide designs (a test fills every slot to its budget and measures it
+in Chrome). `info-a4-print`'s `bullets` slot has no bullet glyph of its own: start each bullet line with
+`• ` and indent continuation lines with two spaces. Compositional cues (anatomy, safe zones, modular cards;
+no assets): visme.co infographic layouts, chartbeauty.com's Instagram infographic guide, the tooka
+social-card patterns, toea.com's recipe-card anatomy.
+
+### `info-tall-web`
+| Slot | Kind | Box (x y w h) | Type | Budget | Required |
+|---|---|---|---|---|---|
+| `eyebrow` | text | 56 56 520 20 | head 14/700 tracked, start | 1 × 45 ch | optional |
+| `hero-title` | text | 56 86 688 110 | head 44/700, start | 2 × 24 ch | yes |
+| `lede` | text | 56 208 688 24 | sans 18/400 muted, start | 1 × 75 ch | yes |
+| `s1-heading` | text | 56 320 600 34 | head 26/700, start | 1 × 36 ch | yes |
+| `s1-text` | text | 56 364 688 66 | sans 17/400, start | 3 × 79 ch | yes |
+| `stat-1-value` | text | 70 458 190 48 | head 40/800, start | 1 × 7 ch | yes |
+| `stat-1-label` | text | 70 510 190 34 | sans 13/400 muted, start | 2 × 28 ch | yes |
+| `stat-2-value` | text | 305 458 190 48 | head 40/800, start | 1 × 7 ch | yes |
+| `stat-2-label` | text | 305 510 190 34 | sans 13/400 muted, start | 2 × 28 ch | yes |
+| `stat-3-value` | text | 540 458 190 48 | head 40/800, start | 1 × 7 ch | yes |
+| `stat-3-label` | text | 540 510 190 34 | sans 13/400 muted, start | 2 × 28 ch | yes |
+| `s2-heading` | text | 56 628 600 34 | head 26/700, start | 1 × 36 ch | yes |
+| `s2-text` | text | 56 672 688 66 | sans 17/400, start | 3 × 79 ch | yes |
+| `step-1` | text | 104 758 640 32 | sans 18/500, start | 1 × 70 ch | yes |
+| `step-2` | text | 104 802 640 32 | sans 18/500, start | 1 × 70 ch | yes |
+| `step-3` | text | 104 846 640 32 | sans 18/500, start | 1 × 70 ch | yes |
+| `step-4` | text | 104 890 640 32 | sans 18/500, start | 1 × 70 ch | yes |
+| `step-5` | text | 104 934 640 32 | sans 18/500, start | 1 × 70 ch | yes |
+| `s3-heading` | text | 56 1046 600 34 | head 26/700, start | 1 × 36 ch | yes |
+| `s3-text` | text | 56 1098 330 150 | sans 17/400, start | 7 × 37 ch | yes |
+| `s3-figure` | graphic | 404 1098 340 208 | svg-library component, contain-fit | — | yes |
+| `s3-caption` | text | 404 1322 340 34 | sans 13/400 muted, start | 2 × 51 ch | optional |
+| `s4-heading` | text | 56 1430 600 34 | head 26/700, start | 1 × 36 ch | yes |
+| `s4-text` | text | 56 1474 688 66 | sans 17/400, start | 3 × 79 ch | yes |
+| `s4-figure` | graphic | 64 1556 672 234 | svg-library component, contain-fit | — | yes |
+| `s4-caption` | text | 56 1806 688 20 | sans 13/400 muted, start | 1 × 104 ch | optional |
+| `sources` | text | 56 1906 688 52 | sans 13/400 muted, start | 3 × 104 ch | yes |
+
+### `info-a4-print`
+| Slot | Kind | Box (x y w h) | Type | Budget | Required |
+|---|---|---|---|---|---|
+| `eyebrow` | text | 48 44 500 20 | head 14/700 tracked, start | 1 × 43 ch | optional |
+| `title` | text | 48 68 698 86 | head 34/700, start | 2 × 32 ch | yes |
+| `lede` | text | 48 162 698 22 | sans 15/400 muted, start | 1 × 92 ch | yes |
+| `col1-heading` | text | 62 246 192 24 | head 16/700, start | 1 × 18 ch | yes |
+| `intro` | text | 62 288 192 246 | sans 14/400, start | 14 × 26 ch | yes |
+| `bullets` | text | 62 580 192 246 | sans 14/400, start | 14 × 26 ch | yes |
+| `col2-heading` | text | 301 246 192 24 | head 16/700, start | 1 × 18 ch | yes |
+| `stat-1-value` | text | 301 288 192 52 | head 44/800, start | 1 × 7 ch | yes |
+| `stat-1-label` | text | 301 342 192 34 | sans 13/400 muted, start | 2 × 28 ch | yes |
+| `chart-1` | graphic | 301 386 192 108 | svg-library component, contain-fit | — | yes |
+| `stat-2-value` | text | 301 568 192 52 | head 44/800, start | 1 × 7 ch | yes |
+| `stat-2-label` | text | 301 622 192 34 | sans 13/400 muted, start | 2 × 28 ch | yes |
+| `chart-2` | graphic | 301 666 192 108 | svg-library component, contain-fit | — | yes |
+| `col3-heading` | text | 540 246 192 24 | head 16/700, start | 1 × 18 ch | yes |
+| `finding-1` | text | 578 290 154 82 | sans 13/400, start | 5 × 22 ch | yes |
+| `finding-2` | text | 578 400 154 82 | sans 13/400, start | 5 × 22 ch | yes |
+| `finding-3` | text | 578 510 154 82 | sans 13/400, start | 5 × 22 ch | yes |
+| `finding-4` | text | 578 620 154 82 | sans 13/400, start | 5 × 22 ch | yes |
+| `finding-5` | text | 578 730 154 82 | sans 13/400, start | 5 × 22 ch | yes |
+| `sources` | text | 48 910 698 80 | sans 12/400 muted, start | 5 × 115 ch | yes |
+| `citation` | text | 132 1022 600 20 | sans 12/400, start | 1 × 99 ch | yes |
+
+### `info-social-45`
+| Slot | Kind | Box (x y w h) | Type | Budget | Required |
+|---|---|---|---|---|---|
+| `eyebrow` | text | 72 140 936 22 | head 18/700 tracked, start | 1 × 63 ch | optional |
+| `title` | text | 72 172 936 140 | head 56/700, start | 2 × 26 ch | yes |
+| `stat-value` | text | 104 372 430 140 | head 120/800, start | 1 × 5 ch | yes |
+| `stat-label` | text | 560 388 416 106 | sans 28/500, start | 3 × 28 ch | yes |
+| `stat-note` | text | 104 538 872 28 | sans 20/400 muted, start | 1 × 86 ch | optional |
+| `list-heading` | text | 72 628 936 30 | head 24/700, start | 1 × 62 ch | yes |
+| `item-1` | text | 168 686 816 60 | sans 24/500, start | 2 × 67 ch | yes |
+| `item-2` | text | 168 780 816 60 | sans 24/500, start | 2 × 67 ch | yes |
+| `item-3` | text | 168 874 816 60 | sans 24/500, start | 2 × 67 ch | yes |
+| `item-4` | text | 168 968 816 60 | sans 24/500, start | 2 × 67 ch | yes |
+| `takeaway` | text | 100 1094 880 66 | head 26/600, start | 2 × 61 ch | yes |
+
+### `card-a6-print`
+| Slot | Kind | Box (x y w h) | Type | Budget | Required |
+|---|---|---|---|---|---|
+| `eyebrow` | text | 28 26 341 16 | head 10/700 tracked, start | 1 × 40 ch | optional |
+| `title` | text | 28 46 341 62 | head 24/700, start | 2 × 22 ch | yes |
+| `list-heading` | text | 38 138 88 14 | head 10/700 tracked, start | 1 × 9 ch | yes |
+| `list` | text | 38 160 88 72 | sans 11/500, start | 5 × 15 ch | yes |
+| `list-figure` | graphic | 34 278 96 140 | svg-library component, contain-fit | — | optional |
+| `steps-heading` | text | 160 138 197 14 | head 10/700 tracked, start | 1 × 23 ch | yes |
+| `step-1` | text | 188 164 171 30 | sans 11/400, start | 2 × 30 ch | yes |
+| `step-2` | text | 188 216 171 30 | sans 11/400, start | 2 × 30 ch | yes |
+| `step-3` | text | 188 268 171 30 | sans 11/400, start | 2 × 30 ch | yes |
+| `step-4` | text | 188 320 171 30 | sans 11/400, start | 2 × 30 ch | yes |
+| `step-5` | text | 188 372 171 30 | sans 11/400, start | 2 × 30 ch | yes |
+| `note` | text | 54 448 304 30 | sans 11/500, start | 2 × 54 ch | optional |
+| `citation` | text | 36 510 325 24 | sans 9/400 muted, start | 2 × 71 ch | yes |
+
+### `card-social-45`
+| Slot | Kind | Box (x y w h) | Type | Budget | Required |
+|---|---|---|---|---|---|
+| `eyebrow` | text | 96 140 888 22 | head 18/700 tracked, start | 1 × 60 ch | optional |
+| `quote` | text | 96 400 888 380 | head 60/600, start | 5 × 26 ch | yes |
+| `attribution` | text | 96 842 888 66 | sans 26/500 muted, start | 2 × 67 ch | optional |
+| `stat-1-value` | text | 124 980 380 84 | head 64/800, start | 1 × 9 ch | yes |
+| `stat-1-label` | text | 124 1068 380 56 | sans 22/500, start | 2 × 33 ch | yes |
+| `stat-2-value` | text | 576 980 380 84 | head 64/800, start | 1 × 9 ch | yes |
+| `stat-2-label` | text | 576 1068 380 56 | sans 22/500, start | 2 × 33 ch | yes |
 
 ## Background designs (v0.22.0)
 

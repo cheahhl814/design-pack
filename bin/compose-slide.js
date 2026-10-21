@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * compose-slide.js: merge an svg-slides design + svg-library graphics + text
- * into ONE composed, renderer-safe SVG slide (1280x720).
+ * into ONE composed, renderer-safe SVG slide (1280x720 unless the design declares
+ * data-canvas="0 0 W H" on its <svg> root; info-* / card-* designs do).
  *
  *     node bin/compose-slide.js <design|path.svg> --payload payload.json
  *                               [--set SET] [--theme light|dark] [--out DIR] [--name NAME]
@@ -39,7 +40,8 @@ const SETS_DIR = path.join(ROOT, 'templates', 'svg-slides', 'sets');
 const designDir = (set = 'lab') => path.join(SETS_DIR, set, 'designs');
 const listSets = () => fs.readdirSync(SETS_DIR).filter((d) => fs.existsSync(path.join(SETS_DIR, d, 'set.json'))).sort();
 const LIB_DIR = path.join(ROOT, 'features', 'graphics', 'svg-library', 'svg');
-const W = 1280, H = 720;
+// default canvas; a design overrides it with data-canvas="0 0 W H" on its <svg> root
+const DEFAULT_CANVAS = '0 0 1280 720';
 const FIRST = 1.15, LEAD = 1.25;
 const FONTS = { head: 'var(--font-head,ui-sans-serif,system-ui)', sans: 'var(--font-sans,ui-sans-serif,system-ui)' };
 
@@ -56,7 +58,10 @@ function lint(src) {
   const errs = [];
   if (/\sid="/.test(src)) errs.push('has id= attributes');
   if (/<(defs|marker|filter|mask|pattern|clipPath|script)[\s>]/.test(src)) errs.push('has defs/marker/filter/mask/pattern/clipPath/script');
-  if (!/<svg[^>]*viewBox="0 0 1280 720"/.test(src)) errs.push('viewBox must be 0 0 1280 720');
+  const root = src.match(/<svg\b[^>]*>/);
+  const canvas = root && (attrs(root[0])['data-canvas'] || DEFAULT_CANVAS);
+  if (!/^0 0 [1-9]\d* [1-9]\d*$/.test(canvas || '')) errs.push(`data-canvas "${canvas}" must be "0 0 W H"`);
+  else if (attrs(root[0]).viewBox !== canvas) errs.push(`viewBox must be ${canvas}`);
   if (!/role="img"/.test(src) || !/aria-label="[^"]+"/.test(src) || !/<title>[^<]+<\/title>/.test(src)) errs.push('needs role="img", aria-label and <title>');
   return errs;
 }
@@ -65,6 +70,7 @@ function lint(src) {
 function parseDesign(src, label = 'design') {
   const errs = lint(src);
   if (errs.length) gate('DESIGN-INVALID', `${label}: ${errs.join('; ')}`);
+  const [W, H] = (attrs(src.match(/<svg\b[^>]*>/)[0])['data-canvas'] || DEFAULT_CANVAS).split(' ').slice(2).map(Number);
   const slots = [];
   const re = /<g\s[^>]*data-slot="[^"]*"[^>]*>/g;
   let m;
@@ -182,7 +188,7 @@ function compose(design, payload) {
     svg += design.src.slice(at, s.start) + s.open + inner + '</g>';
     at = s.end;
   }
-  svg = (svg + design.src.slice(at)).replace(/\s+data-(slot[\w-]*|decor-only)="[^"]*"/g, '');
+  svg = (svg + design.src.slice(at)).replace(/\s+data-(slot[\w-]*|decor-only|canvas)="[^"]*"/g, '');
   return { svg, text, graphics };
 }
 

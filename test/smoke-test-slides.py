@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """QA for the svg-slides theme sets + bin/compose-slide.js
-(design-pack v0.21.0; backgrounds v0.22.0; theme sets v0.24.0).
+(design-pack v0.21.0; backgrounds v0.22.0; theme sets v0.24.0; info-* / card-* canvases v0.28.0).
 
 0. Sets: every set under templates/svg-slides/sets/ ships each samples.json
    design with lab's slot names, kinds, required flags and line counts (so one
@@ -8,7 +8,7 @@
    sets are exactly what bin/draw-slide-sets.js writes.
 
 1. Designs: well-formed XML, svg-library hard rules (no ids/defs/..., role +
-   aria-label + <title>), slot markers valid (kind, box inside 1280x720, text
+   aria-label + <title>), slot markers valid (kind, box inside the design's canvas, 1280x720 unless data-canvas, text
    budgets declared and documented in the README), preview text placed by the
    documented layout rule, and every design renders in headless Chrome.
    Background designs (data-decor-only="true") must have zero slots, a
@@ -33,6 +33,12 @@ SVG = "{http://www.w3.org/2000/svg}"
 FIRST, LEAD = 1.15, 1.25  # documented baseline rule
 
 passed = failed = 0
+FAMILY = re.compile(r"^(info|card)-")  # lab-only designs with their own canvas (data-canvas)
+
+
+def canvas_of(root):
+    """(W, H) a design declares with data-canvas, default 1280x720"""
+    return tuple(int(v) for v in root.get("data-canvas", "0 0 1280 720").split()[2:])
 
 
 def check(ok, msg):
@@ -55,8 +61,9 @@ def design_errors(src):
         root = ET.fromstring(src)
     except ET.ParseError as e:
         return [f"not well-formed: {e}"]
-    if root.get("viewBox") != "0 0 1280 720":
-        errs.append("viewBox")
+    cw, ch_ = canvas_of(root) if re.fullmatch(r"0 0 [1-9]\d* [1-9]\d*", root.get("data-canvas", "0 0 1280 720")) else (0, 0)
+    if not cw or root.get("viewBox") != f"0 0 {cw} {ch_}":
+        errs.append("viewBox / data-canvas")
     if root.get("role") != "img" or not root.get("aria-label") or root.find(SVG + "title") is None:
         errs.append("role/aria-label/title")
     for el in root.iter():
@@ -88,8 +95,8 @@ def design_errors(src):
         except ValueError:
             errs.append(f"{n}: bad box")
             continue
-        if not (w > 0 and h > 0 and x >= 0 and y >= 0 and x + w <= 1280 and y + h <= 720):
-            errs.append(f"{n}: box outside 1280x720")
+        if not (w > 0 and h > 0 and x >= 0 and y >= 0 and x + w <= cw and y + h <= ch_):
+            errs.append(f"{n}: box outside {cw}x{ch_}")
         if kind == "text":
             for a in ("data-slot-size", "data-slot-maxlines", "data-slot-maxchars"):
                 if not g.get(a):
@@ -127,7 +134,9 @@ contract = lambda s, d: sorted((g.get("data-slot"), g.get("data-slot-kind"), g.g
                                 for g in slots_of(ROOTS[s, d]))
 for s in SETS:
     slides = [d for d in NAMES[s] if d not in BGS[s]]
-    check(sorted(slides) == sorted(SAMPLES), f"{s}: slide designs {slides} ≠ samples.json designs")
+    want = [n for n in SAMPLES if s == "lab" or not FAMILY.match(n)]
+    slides = [d for d in slides if s == "lab" or not FAMILY.match(d)]
+    check(sorted(slides) == sorted(want), f"{s}: slide designs {slides} ≠ samples.json designs")
     check(len(BGS[s]) >= (8 if s == "lab" else 2), f"{s}: only {len(BGS[s])} background designs")
     conf = json.load(open(os.path.join(SETS_DIR, s, "set.json"), encoding="utf-8"))
     check(bool(conf.get("label")) and bool(conf.get("description")), f"{s}: set.json needs label + description")
@@ -216,7 +225,9 @@ with tempfile.TemporaryDirectory(prefix="compose-") as tmp:
                 continue
             full = open(os.path.join(tmp, f"{s}-{d}.svg"), encoding="utf-8").read()
             check(not re.search(r"var\(|color-mix\(|data-slot|data-decor-only|<!--", full), f"{s}/{d} [{theme}]: leftover marker/token")
-            check(re.search(r'<svg[^>]*width="1280" height="720"', full) is not None, f"{s}/{d} [{theme}]: fixed size")
+            cw, ch_ = canvas_of(ROOTS[s, d])
+            check(re.search(rf'<svg[^>]*width="{cw}" height="{ch_}"', full) is not None, f"{s}/{d} [{theme}]: fixed size")
+            check("data-canvas" not in full, f"{s}/{d} [{theme}]: data-canvas marker left in the composed file")
             ET.fromstring(full.split("?>", 1)[1])  # well-formed
             for g in slots_of(ROOTS[s, d]):
                 n = g.get("data-slot")
@@ -243,6 +254,19 @@ with tempfile.TemporaryDirectory(prefix="compose-") as tmp:
                 lum = m and sum(int(m.group(1)[i:i + 2], 16) for i in (0, 2, 4)) / 765
                 check(m is not None and (lum < 0.2 if theme == "dark" else lum > 0.85), f"{s}/{d} [{theme}]: full-bleed paint is not {theme}")
 
+    # canvas mutants: a box sized for 1280x720 does not fit an A6 canvas; the viewBox must match data-canvas
+    a6 = open(os.path.join(DESIGNS, "card-a6-print.svg"), encoding="utf-8").read()
+    check(not design_errors(a6), "card-a6-print must pass before mutating")
+    for mutant, why in ((a6.replace('data-slot-box="28 46 341 62"', 'data-slot-box="28 46 400 62"'), "box outside the A6 canvas"),
+                        (a6.replace('viewBox="0 0 397 560"', 'viewBox="0 0 1280 720"'), "viewBox ≠ data-canvas"),
+                        (a6.replace('data-canvas="0 0 397 560"', 'data-canvas="0 0 abc 560"'), "malformed data-canvas")):
+        check(design_errors(mutant), f"design QA missed a mutant: {why}")
+    for name, text, gate in (("box-outside-canvas", a6.replace('data-slot-box="28 46 341 62"', 'data-slot-box="28 46 400 62"'), "DESIGN-INVALID"),
+                             ("viewbox-mismatch", a6.replace('viewBox="0 0 397 560"', 'viewBox="0 0 1280 720"'), "DESIGN-INVALID")):
+        mp = os.path.join(tmp, name + ".svg")
+        open(mp, "w", encoding="utf-8").write(text)
+        r = compose(mp, SAMPLES["card-a6-print"], tmp)
+        check(r.returncode == 1 and r.stderr.startswith(gate), f"composer gate {gate} did not fire ({name}): {r.stderr.strip()}")
     # the gates bite
     two = SAMPLES["content-two-col"]
     for design, payload, gate in (
@@ -253,8 +277,17 @@ with tempfile.TemporaryDirectory(prefix="compose-") as tmp:
             ("content-two-col", {**two, "figure": "no-such-component"}, "GRAPHIC-UNREADABLE"),
             ("content-two-col", {**two, "body": 42}, "PAYLOAD-MALFORMED"),
             ("no-such-design", {}, "DESIGN-UNKNOWN"),
-            ("bg-helix-field", {"heading": "x"}, "SLOT-UNKNOWN")):
+            ("bg-helix-field", {"heading": "x"}, "SLOT-UNKNOWN"),
+            # gate parity on a non-default canvas
+            ("card-a6-print", {**SAMPLES["card-a6-print"], "title": ["x" * 25]}, "TEXT-OVERFLOW"),
+            ("card-a6-print", {**SAMPLES["card-a6-print"], "sidebar": "x"}, "SLOT-UNKNOWN"),
+            ("card-a6-print", {k: v for k, v in SAMPLES["card-a6-print"].items() if k != "title"}, "SLOT-MISSING"),
+            ("info-social-45", {**SAMPLES["info-social-45"], "item-1": "x"}, None),
+            ("card-a6-print", {**SAMPLES["card-a6-print"], "list-figure": "no-such-component"}, "GRAPHIC-UNREADABLE")):
         r = compose(design, payload, tmp)
+        if gate is None:  # a valid payload on a new canvas composes
+            check(r.returncode == 0, f"{design} happy path: {r.stderr.strip()}")
+            continue
         check(r.returncode == 1 and r.stderr.startswith(gate), f"gate {gate} did not fire ({design}): {r.stderr.strip()}")
     # a set has its own budgets: an over-long line fails there too; an unknown set is DESIGN-UNKNOWN
     for set_, design, payload, gate in (("bold", "title-hero", {**SAMPLES["title-hero"], "hero-title": ["x" * 30]}, "TEXT-OVERFLOW"),

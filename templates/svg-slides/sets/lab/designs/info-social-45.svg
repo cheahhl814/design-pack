@@ -1,0 +1,83 @@
+<!--
+design-pack · svg-slides · info-social-45
+  Feed infographic card (1080x1350, 4:5, data-canvas): eyebrow and title, a hero stat block (big number, label,
+  note), a mini listicle of four numbered rows and a takeaways card. Safe zones: the top 120 px and the bottom 180 px
+  hold decoration only, so platform UI and crops never hide critical content (everything lives in y 120 to 1170).
+  Slots: eyebrow (optional) · title · stat-value · stat-label · stat-note (optional) · list-heading · item-1..4 · takeaway.
+  Tokens: teal amber coral deep-blue text text-muted border border-bright surface font-head font-sans.
+  Compose with bin/compose-slide.js; slot rules in templates/svg-slides/README.md.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" data-canvas="0 0 1080 1350" role="img" aria-label="Four-by-five social infographic card with an eyebrow and title, a hero statistic block, a four-row numbered listicle and a takeaway card, with free safe zones top and bottom" style="width:100%;height:auto">
+  <title>Social 4:5 infographic card design</title>
+  <rect x="0" y="0" width="1080" height="1350" style="fill:var(--surface,#ffffff)"/>
+  <path d="M72 96 V56 H112" fill="none" style="stroke:var(--teal,#0d9488);stroke-width:3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1008 96 V56 H968" fill="none" style="stroke:var(--amber,#f59e0b);stroke-width:3" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="72" y1="1270" x2="1008" y2="1270" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-dasharray="3 9" stroke-linecap="round"/>
+  <circle cx="72" cy="1306" r="6" style="fill:color-mix(in srgb, var(--teal,#0d9488) 70%, transparent)"/>
+  <circle cx="94" cy="1306" r="6" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, transparent)"/>
+  <circle cx="116" cy="1306" r="6" style="fill:color-mix(in srgb, var(--coral,#ef4444) 70%, transparent)"/>
+  <g data-slot="eyebrow" data-slot-kind="text" data-slot-box="72 140 936 22" data-slot-font="head" data-slot-weight="700" data-slot-size="18" data-slot-tracking="1.5" data-slot-maxlines="1" data-slot-maxchars="63" data-slot-anchor="start" data-slot-fill="color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))" data-slot-optional="true">
+    <text x="72" y="160.7" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));letter-spacing:1.5px">FIELD NOTES · LAB-ON-CHIP · 2026</text>
+  </g>
+  <g data-slot="title" data-slot-kind="text" data-slot-box="72 172 936 140" data-slot-font="head" data-slot-weight="700" data-slot-size="56" data-slot-maxlines="2" data-slot-maxchars="26" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="72" y="236.4" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:56px;font-weight:700;fill:var(--text,#0f172a)">Four lessons from</text>
+    <text x="72" y="306.4" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:56px;font-weight:700;fill:var(--text,#0f172a)">212 bench runs</text>
+  </g>
+  <line x1="72" y1="336" x2="152" y2="336" style="stroke:var(--teal,#0d9488);stroke-width:5" stroke-linecap="round"/>
+  <line x1="164" y1="336" x2="176" y2="336" style="stroke:var(--amber,#f59e0b);stroke-width:5" stroke-linecap="round"/>
+  <rect x="72" y="350" width="936" height="250" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 35%, transparent);stroke-width:1.5" transform="translate(4 5)"/>
+  <rect x="72" y="350" width="936" height="250" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 8%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--amber,#f59e0b) 55%, var(--surface,#ffffff));stroke-width:2"/>
+  <g data-slot="stat-value" data-slot-kind="text" data-slot-box="104 372 430 140" data-slot-font="head" data-slot-weight="800" data-slot-size="120" data-slot-maxlines="1" data-slot-maxchars="5" data-slot-anchor="start" data-slot-fill="color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">
+    <text x="104" y="510" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:120px;font-weight:800;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">94%</text>
+  </g>
+  <g data-slot="stat-label" data-slot-kind="text" data-slot-box="560 388 416 106" data-slot-font="sans" data-slot-weight="500" data-slot-size="28" data-slot-maxlines="3" data-slot-maxchars="28" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="560" y="420.2" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:28px;font-weight:500;fill:var(--text,#0f172a)">sensitivity versus</text>
+    <text x="560" y="455.2" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:28px;font-weight:500;fill:var(--text,#0f172a)">lab qPCR on matched</text>
+    <text x="560" y="490.2" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:28px;font-weight:500;fill:var(--text,#0f172a)">samples, n = 212</text>
+  </g>
+  <g data-slot="stat-note" data-slot-kind="text" data-slot-box="104 538 872 28" data-slot-font="sans" data-slot-weight="400" data-slot-size="20" data-slot-maxlines="1" data-slot-maxchars="86" data-slot-anchor="start" data-slot-fill="var(--text-muted,#64748b)" data-slot-optional="true">
+    <text x="104" y="561" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:20px;font-weight:400;fill:var(--text-muted,#64748b)">Held across three reagent lots and two operators.</text>
+  </g>
+  <g data-slot="list-heading" data-slot-kind="text" data-slot-box="72 628 936 30" data-slot-font="head" data-slot-weight="700" data-slot-size="24" data-slot-maxlines="1" data-slot-maxchars="62" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="72" y="655.6" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:24px;font-weight:700;fill:var(--text,#0f172a)">What moved the number</text>
+  </g>
+  <rect x="72" y="674" width="936" height="82" rx="12" style="fill:none;stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:1" transform="translate(4 5)"/>
+  <rect x="72" y="674" width="936" height="82" rx="12" style="fill:var(--surface,#ffffff);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5"/>
+  <circle cx="120" cy="715" r="24" style="fill:color-mix(in srgb, var(--teal,#0d9488) 18%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="120" y="723.6" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:24px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">1</text>
+  <g data-slot="item-1" data-slot-kind="text" data-slot-box="168 686 816 60" data-slot-font="sans" data-slot-weight="500" data-slot-size="24" data-slot-maxlines="2" data-slot-maxchars="67" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="168" y="713.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:24px;font-weight:500;fill:var(--text,#0f172a)">Bubbles at the inlet caused</text>
+    <text x="168" y="743.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:24px;font-weight:500;fill:var(--text,#0f172a)">9 in 10 failed runs</text>
+  </g>
+  <rect x="72" y="768" width="936" height="82" rx="12" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 32%, transparent);stroke-width:1" transform="translate(4 5)"/>
+  <rect x="72" y="768" width="936" height="82" rx="12" style="fill:var(--surface,#ffffff);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5"/>
+  <circle cx="120" cy="809" r="24" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 18%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="120" y="817.6" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:24px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">2</text>
+  <g data-slot="item-2" data-slot-kind="text" data-slot-box="168 780 816 60" data-slot-font="sans" data-slot-weight="500" data-slot-size="24" data-slot-maxlines="2" data-slot-maxchars="67" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="168" y="807.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:24px;font-weight:500;fill:var(--text,#0f172a)">A 2 mm corner fillet let</text>
+    <text x="168" y="837.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:24px;font-weight:500;fill:var(--text,#0f172a)">the bubbles escape</text>
+  </g>
+  <rect x="72" y="862" width="936" height="82" rx="12" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 32%, transparent);stroke-width:1" transform="translate(4 5)"/>
+  <rect x="72" y="862" width="936" height="82" rx="12" style="fill:var(--surface,#ffffff);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5"/>
+  <circle cx="120" cy="903" r="24" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 18%, var(--surface,#ffffff));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
+  <text x="120" y="911.6" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:24px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 70%, var(--text,#0f172a))">3</text>
+  <g data-slot="item-3" data-slot-kind="text" data-slot-box="168 874 816 60" data-slot-font="sans" data-slot-weight="500" data-slot-size="24" data-slot-maxlines="2" data-slot-maxchars="67" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="168" y="901.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:24px;font-weight:500;fill:var(--text,#0f172a)">A passive chip beat the</text>
+    <text x="168" y="931.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:24px;font-weight:500;fill:var(--text,#0f172a)">pump on reliability</text>
+  </g>
+  <rect x="72" y="956" width="936" height="82" rx="12" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 32%, transparent);stroke-width:1" transform="translate(4 5)"/>
+  <rect x="72" y="956" width="936" height="82" rx="12" style="fill:var(--surface,#ffffff);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5"/>
+  <circle cx="120" cy="997" r="24" style="fill:color-mix(in srgb, var(--coral,#ef4444) 18%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="120" y="1005.6" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:24px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">4</text>
+  <g data-slot="item-4" data-slot-kind="text" data-slot-box="168 968 816 60" data-slot-font="sans" data-slot-weight="500" data-slot-size="24" data-slot-maxlines="2" data-slot-maxchars="67" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="168" y="995.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:24px;font-weight:500;fill:var(--text,#0f172a)">Two operator steps made</text>
+    <text x="168" y="1025.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:24px;font-weight:500;fill:var(--text,#0f172a)">the training one hour</text>
+  </g>
+  <rect x="72" y="1056" width="936" height="114" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 35%, transparent);stroke-width:1.5" transform="translate(4 5)"/>
+  <rect x="72" y="1056" width="936" height="114" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 8%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke-width:2"/>
+  <text x="100" y="1086" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:12px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));letter-spacing:1.5px">TAKEAWAY</text>
+  <g data-slot="takeaway" data-slot-kind="text" data-slot-box="100 1094 880 66" data-slot-font="head" data-slot-weight="600" data-slot-size="26" data-slot-maxlines="2" data-slot-maxchars="61" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="100" y="1123.9" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:26px;font-weight:600;fill:var(--text,#0f172a)">Fix the fluid path first: it decided more runs</text>
+    <text x="100" y="1156.4" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:26px;font-weight:600;fill:var(--text,#0f172a)">than any change to the chemistry.</text>
+  </g>
+</svg>

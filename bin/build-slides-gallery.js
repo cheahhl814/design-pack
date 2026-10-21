@@ -4,7 +4,8 @@
  * templates/svg-slides/sets/<set>/designs/*.svg + samples.json.
  *
  * One section per theme set (its palette scoped to its cards), each split into
- * slide designs (slot-marked) and backgrounds (data-decor-only, zero slots,
+ * slide designs (slot-marked), backgrounds, and (lab) Infographics (info-*) and
+ * Info cards (card-*), whose cards use their own canvas aspect ratio; backgrounds (data-decor-only, zero slots,
  * composed with {}). Each card shows the design
  * composed with its sample payload, still
  * token-driven so the ◐ toggle previews both palettes, plus collapsible
@@ -28,11 +29,13 @@ const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, 
 
 const conf = (set) => JSON.parse(fs.readFileSync(path.join(SETS_DIR, set, 'set.json'), 'utf8'));
 const vars = (o) => Object.entries(o).map(([k, v]) => `--${k}: ${v};`).join(' ');
+// info-* / card-* (v0.28.0) are lab-only families with their own canvases; the six slide designs ship in every set
+const FAMILY = /^(info|card)-/;
 // catalog order = samples.json order, then the backgrounds
 const namesOf = (set) => {
   const all = listDesigns(set);
-  for (const n of Object.keys(SAMPLES)) if (!all.includes(n)) throw new Error(`${set}: no ${n} design (every set ships all samples.json designs)`);
-  return [...Object.keys(SAMPLES), ...all.filter((n) => !SAMPLES[n])];
+  for (const n of Object.keys(SAMPLES)) if (!all.includes(n) && !(FAMILY.test(n) && set !== 'lab')) throw new Error(`${set}: no ${n} design (every set ships all samples.json designs)`);
+  return [...Object.keys(SAMPLES).filter((n) => all.includes(n)), ...all.filter((n) => !SAMPLES[n])];
 };
 const card = (set) => (name, i) => {
   const design = loadDesign(name, set);
@@ -44,12 +47,13 @@ const card = (set) => (name, i) => {
   const slide = compose(design, SAMPLES[name] || {}).svg.replace(/<!--[\s\S]*?-->\s*/g, '').trim();
   const use = design.decorOnly ? `content zone: ${esc(zone ? zone[1].trim() : '')}`
     : `slots: ${design.slots.map((s) => `<code>${s.name}</code>${s.optional ? '?' : ''}`).join(' ')}`;
+  const canvas = (design.src.match(/<svg[^>]*data-canvas="0 0 (\d+) (\d+)"/) || [, 1280, 720]).slice(1).map(Number);
   return `    <figure class="card" id="d-${set}-${name}">
       <figcaption>
         <span class="idx">${String(i + 1).padStart(2, '0')}</span>
         <span class="info"><strong>${name}</strong><em>${esc(desc)}</em><span class="use">${use}</span></span>
       </figcaption>
-      <div class="stage set-${set}">${slide}</div>
+      <div class="stage set-${set}" style="aspect-ratio:${canvas[0]} / ${canvas[1]}${canvas[0] < canvas[1] ? `;max-width:${Math.round(canvas[0] * 0.5)}px` : ''}">${slide}</div>
       <details><summary>design source (.svg${design.decorOnly ? ', decor only' : ', slot-marked'})</summary><pre class="src">${esc(design.src.trim())}</pre></details>
       <details><summary>sample payload (.json)</summary><pre class="src">${esc(JSON.stringify(SAMPLES[name] || {}, null, 2))}</pre></details>
     </figure>`;
@@ -65,7 +69,13 @@ const section = (set) => {
   const c = conf(set);
   const names = namesOf(set);
   const isBg = (n) => loadDesign(n, set).decorOnly;
-  const slides = names.filter((n) => !isBg(n)), bgs = names.filter(isBg);
+  const slides = names.filter((n) => !isBg(n) && !FAMILY.test(n)), bgs = names.filter(isBg);
+  const infos = names.filter((n) => /^info-/.test(n)), cards_ = names.filter((n) => /^card-/.test(n));
+  const block = (title, list) => list.length ? `
+  <h3>${title}</h3>
+  <main class="catalog portrait">
+${list.map(card(set)).join('\n')}
+  </main>` : '';
   cards += names.length;
   const readme = set === 'lab' ? 'README.md' : `sets/${set}/README.md`;
   return `  <h2 id="set-${set}">${esc(c.label)} <small>--set ${set}</small></h2>
@@ -78,7 +88,7 @@ ${slides.map(card(set)).join('\n')}
   <h3>Backgrounds</h3>
   <main class="catalog">
 ${bgs.map(card(set)).join('\n')}
-  </main>`;
+  </main>${block('Infographics', infos)}${block('Info cards', cards_)}`;
 };
 
 const page = `<!--
@@ -118,6 +128,7 @@ const page = `<!--
   header p { color: var(--text-muted); max-width: 70ch; }
   .toggle { margin-left: auto; background: var(--surface2); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 6px 14px; cursor: pointer; font-size: 14px; }
   .catalog { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 620px), 1fr)); gap: 24px; }
+  .catalog.portrait { grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; scroll-margin-top: 20px; min-width: 0; }
   figcaption { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; }
   .idx { font-family: var(--font-mono); color: var(--accent); font-size: 13px; padding-top: 2px; }

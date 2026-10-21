@@ -1,0 +1,193 @@
+<!--
+design-pack · svg-slides · info-tall-web
+  Long-scroll infographic (800x2000, data-canvas): header band with eyebrow, hero title, lede and accent rule;
+  four section bands, each a heading and text lines plus its own graphic form: a row of three stat cards, a
+  numbered five-step process list, a text column beside a framed figure, and a full-width framed figure;
+  a footer band with the sources line. Z-path from header to footer, about 40% white space.
+  Slots: eyebrow (optional) · hero-title · lede · s1-heading · s1-text · stat-1..3-value/-label · s2-heading · s2-text · step-1..5
+         · s3-heading · s3-text · s3-figure · s3-caption (optional) · s4-heading · s4-text · s4-figure · s4-caption (optional) · sources.
+  Tokens: teal amber coral deep-blue text text-muted border border-bright surface font-head font-sans.
+  Compose with bin/compose-slide.js; slot rules in templates/svg-slides/README.md.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 2000" data-canvas="0 0 800 2000" role="img" aria-label="Tall web infographic with a header band, four section bands (a three-stat row, a five-step process list, a text column beside a figure, a full-width figure) and a sources footer" style="width:100%;height:auto">
+  <title>Tall web infographic design</title>
+  <rect x="0" y="0" width="800" height="2000" style="fill:var(--surface,#ffffff)"/>
+  <rect x="0" y="0" width="800" height="272" style="fill:color-mix(in srgb, var(--teal,#0d9488) 7%, var(--surface,#ffffff))"/>
+  <line x1="0" y1="272" x2="800" y2="272" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2"/>
+  <circle cx="620" cy="40" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="620" cy="62" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="620" cy="84" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="620" cy="106" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="642" cy="40" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="642" cy="62" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="642" cy="84" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="642" cy="106" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="664" cy="40" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="664" cy="62" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="664" cy="84" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="664" cy="106" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="686" cy="40" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="686" cy="62" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="686" cy="84" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="686" cy="106" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="708" cy="40" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="708" cy="62" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="708" cy="84" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="708" cy="106" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="730" cy="40" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="730" cy="62" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="730" cy="84" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="730" cy="106" r="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent)"/>
+  <circle cx="730" cy="128" r="5" style="fill:var(--amber,#f59e0b)"/>
+  <g data-slot="eyebrow" data-slot-kind="text" data-slot-box="56 56 520 20" data-slot-font="head" data-slot-weight="700" data-slot-size="14" data-slot-tracking="1.2" data-slot-maxlines="1" data-slot-maxchars="45" data-slot-anchor="start" data-slot-fill="color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))" data-slot-optional="true">
+    <text x="56" y="72.1" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));letter-spacing:1.2px">FIELD BRIEF · MICROFLUIDICS · 2026</text>
+  </g>
+  <g data-slot="hero-title" data-slot-kind="text" data-slot-box="56 86 688 110" data-slot-font="head" data-slot-weight="700" data-slot-size="44" data-slot-maxlines="2" data-slot-maxchars="24" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="56" y="136.6" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:44px;font-weight:700;fill:var(--text,#0f172a)">Lab-on-chip diagnostics</text>
+    <text x="56" y="191.6" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:44px;font-weight:700;fill:var(--text,#0f172a)">from drop to answer</text>
+  </g>
+  <g data-slot="lede" data-slot-kind="text" data-slot-box="56 208 688 24" data-slot-font="sans" data-slot-weight="400" data-slot-size="18" data-slot-maxlines="1" data-slot-maxchars="75" data-slot-anchor="start" data-slot-fill="var(--text-muted,#64748b)">
+    <text x="56" y="228.7" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:18px;font-weight:400;fill:var(--text-muted,#64748b)">What the field team needs to know about the chip before January</text>
+  </g>
+  <line x1="56" y1="252" x2="116" y2="252" style="stroke:var(--teal,#0d9488);stroke-width:5" stroke-linecap="round"/>
+  <line x1="128" y1="252" x2="140" y2="252" style="stroke:var(--amber,#f59e0b);stroke-width:5" stroke-linecap="round"/>
+  <rect x="40" y="296" width="720" height="284" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 35%, transparent);stroke-width:1.5" transform="translate(4 5)"/>
+  <rect x="40" y="296" width="720" height="284" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 4%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke-width:2"/>
+  <text x="744" y="360" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:64px;font-weight:800;fill:color-mix(in srgb, var(--teal,#0d9488) 16%, transparent)">01</text>
+  <g data-slot="s1-heading" data-slot-kind="text" data-slot-box="56 320 600 34" data-slot-font="head" data-slot-weight="700" data-slot-size="26" data-slot-maxlines="1" data-slot-maxchars="36" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="56" y="349.9" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:26px;font-weight:700;fill:var(--text,#0f172a)">The chip in three numbers</text>
+  </g>
+  <g data-slot="s1-text" data-slot-kind="text" data-slot-box="56 364 688 66" data-slot-font="sans" data-slot-weight="400" data-slot-size="17" data-slot-maxlines="3" data-slot-maxchars="79" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="56" y="383.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:17px;font-weight:400;fill:var(--text,#0f172a)">Each chip runs sample prep, amplification and readout on a card</text>
+    <text x="56" y="404.8" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:17px;font-weight:400;fill:var(--text,#0f172a)">the size of a credit card. The numbers below come from 212 bench</text>
+    <text x="56" y="426.1" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:17px;font-weight:400;fill:var(--text,#0f172a)">runs and 14 field days, and they set the bar for the January trial.</text>
+  </g>
+  <rect x="56" y="446" width="218" height="108" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 35%, transparent);stroke-width:1.5" transform="translate(4 5)"/>
+  <rect x="56" y="446" width="218" height="108" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 8%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke-width:2"/>
+  <g data-slot="stat-1-value" data-slot-kind="text" data-slot-box="70 458 190 48" data-slot-font="head" data-slot-weight="800" data-slot-size="40" data-slot-maxlines="1" data-slot-maxchars="7" data-slot-anchor="start" data-slot-fill="color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">
+    <text x="70" y="504" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:40px;font-weight:800;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">94%</text>
+  </g>
+  <g data-slot="stat-1-label" data-slot-kind="text" data-slot-box="70 510 190 34" data-slot-font="sans" data-slot-weight="400" data-slot-size="13" data-slot-maxlines="2" data-slot-maxchars="28" data-slot-anchor="start" data-slot-fill="var(--text-muted,#64748b)">
+    <text x="70" y="525" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Sensitivity versus</text>
+    <text x="70" y="541.2" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">lab qPCR</text>
+  </g>
+  <rect x="291" y="446" width="218" height="108" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 35%, transparent);stroke-width:1.5" transform="translate(4 5)"/>
+  <rect x="291" y="446" width="218" height="108" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 8%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--amber,#f59e0b) 55%, var(--surface,#ffffff));stroke-width:2"/>
+  <g data-slot="stat-2-value" data-slot-kind="text" data-slot-box="305 458 190 48" data-slot-font="head" data-slot-weight="800" data-slot-size="40" data-slot-maxlines="1" data-slot-maxchars="7" data-slot-anchor="start" data-slot-fill="color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">
+    <text x="305" y="504" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:40px;font-weight:800;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">38 min</text>
+  </g>
+  <g data-slot="stat-2-label" data-slot-kind="text" data-slot-box="305 510 190 34" data-slot-font="sans" data-slot-weight="400" data-slot-size="13" data-slot-maxlines="2" data-slot-maxchars="28" data-slot-anchor="start" data-slot-fill="var(--text-muted,#64748b)">
+    <text x="305" y="525" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Sample to answer,</text>
+    <text x="305" y="541.2" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">door to door</text>
+  </g>
+  <rect x="526" y="446" width="218" height="108" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 35%, transparent);stroke-width:1.5" transform="translate(4 5)"/>
+  <rect x="526" y="446" width="218" height="108" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 8%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--surface,#ffffff));stroke-width:2"/>
+  <g data-slot="stat-3-value" data-slot-kind="text" data-slot-box="540 458 190 48" data-slot-font="head" data-slot-weight="800" data-slot-size="40" data-slot-maxlines="1" data-slot-maxchars="7" data-slot-anchor="start" data-slot-fill="color-mix(in srgb, var(--deep-blue,#2c4a7c) 70%, var(--text,#0f172a))">
+    <text x="540" y="504" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:40px;font-weight:800;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 70%, var(--text,#0f172a))">$2.10</text>
+  </g>
+  <g data-slot="stat-3-label" data-slot-kind="text" data-slot-box="540 510 190 34" data-slot-font="sans" data-slot-weight="400" data-slot-size="13" data-slot-maxlines="2" data-slot-maxchars="28" data-slot-anchor="start" data-slot-fill="var(--text-muted,#64748b)">
+    <text x="540" y="525" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Consumables per</text>
+    <text x="540" y="541.2" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">test at 10k volume</text>
+  </g>
+  <rect x="40" y="604" width="720" height="394" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 35%, transparent);stroke-width:1.5" transform="translate(4 5)"/>
+  <rect x="40" y="604" width="720" height="394" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 4%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--amber,#f59e0b) 55%, var(--surface,#ffffff));stroke-width:2"/>
+  <text x="744" y="668" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:64px;font-weight:800;fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, transparent)">02</text>
+  <g data-slot="s2-heading" data-slot-kind="text" data-slot-box="56 628 600 34" data-slot-font="head" data-slot-weight="700" data-slot-size="26" data-slot-maxlines="1" data-slot-maxchars="36" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="56" y="657.9" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:26px;font-weight:700;fill:var(--text,#0f172a)">Five steps from sample to result</text>
+  </g>
+  <g data-slot="s2-text" data-slot-kind="text" data-slot-box="56 672 688 66" data-slot-font="sans" data-slot-weight="400" data-slot-size="17" data-slot-maxlines="3" data-slot-maxchars="79" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="56" y="691.5" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:17px;font-weight:400;fill:var(--text,#0f172a)">The operator touches the chip twice: load the sample, then read the</text>
+    <text x="56" y="712.8" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:17px;font-weight:400;fill:var(--text,#0f172a)">result. Everything between is passive: the chip moves fluid by</text>
+    <text x="56" y="734" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:17px;font-weight:400;fill:var(--text,#0f172a)">capillary action and heats itself.</text>
+  </g>
+  <line x1="76" y1="789" x2="76" y2="803" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-dasharray="3 4"/>
+  <circle cx="76" cy="774" r="15" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 18%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="76" y="779.4" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">1</text>
+  <g data-slot="step-1" data-slot-kind="text" data-slot-box="104 758 640 32" data-slot-font="sans" data-slot-weight="500" data-slot-size="18" data-slot-maxlines="1" data-slot-maxchars="70" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="104" y="778.7" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:18px;font-weight:500;fill:var(--text,#0f172a)">Collect 20 µL of capillary blood with the integrated lancet</text>
+  </g>
+  <line x1="76" y1="833" x2="76" y2="847" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-dasharray="3 4"/>
+  <circle cx="76" cy="818" r="15" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 18%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="76" y="823.4" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">2</text>
+  <g data-slot="step-2" data-slot-kind="text" data-slot-box="104 802 640 32" data-slot-font="sans" data-slot-weight="500" data-slot-size="18" data-slot-maxlines="1" data-slot-maxchars="70" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="104" y="822.7" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:18px;font-weight:500;fill:var(--text,#0f172a)">Close the lid: the buffer pouch bursts and lyses the sample</text>
+  </g>
+  <line x1="76" y1="877" x2="76" y2="891" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-dasharray="3 4"/>
+  <circle cx="76" cy="862" r="15" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 18%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="76" y="867.4" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">3</text>
+  <g data-slot="step-3" data-slot-kind="text" data-slot-box="104 846 640 32" data-slot-font="sans" data-slot-weight="500" data-slot-size="18" data-slot-maxlines="1" data-slot-maxchars="70" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="104" y="866.7" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:18px;font-weight:500;fill:var(--text,#0f172a)">The chip meters the lysate into the amplification chamber</text>
+  </g>
+  <line x1="76" y1="921" x2="76" y2="935" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-dasharray="3 4"/>
+  <circle cx="76" cy="906" r="15" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 18%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="76" y="911.4" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">4</text>
+  <g data-slot="step-4" data-slot-kind="text" data-slot-box="104 890 640 32" data-slot-font="sans" data-slot-weight="500" data-slot-size="18" data-slot-maxlines="1" data-slot-maxchars="70" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="104" y="910.7" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:18px;font-weight:500;fill:var(--text,#0f172a)">Isothermal heater runs 30 minutes at a steady 65 °C</text>
+  </g>
+  <circle cx="76" cy="950" r="15" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 18%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="76" y="955.4" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">5</text>
+  <g data-slot="step-5" data-slot-kind="text" data-slot-box="104 934 640 32" data-slot-font="sans" data-slot-weight="500" data-slot-size="18" data-slot-maxlines="1" data-slot-maxchars="70" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="104" y="954.7" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:18px;font-weight:500;fill:var(--text,#0f172a)">Read the lateral-flow strip, or scan it with the phone app</text>
+  </g>
+  <rect x="40" y="1022" width="720" height="360" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 35%, transparent);stroke-width:1.5" transform="translate(4 5)"/>
+  <rect x="40" y="1022" width="720" height="360" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 4%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--surface,#ffffff));stroke-width:2"/>
+  <text x="744" y="1086" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:64px;font-weight:800;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 16%, transparent)">03</text>
+  <g data-slot="s3-heading" data-slot-kind="text" data-slot-box="56 1046 600 34" data-slot-font="head" data-slot-weight="700" data-slot-size="26" data-slot-maxlines="1" data-slot-maxchars="36" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="56" y="1075.9" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:26px;font-weight:700;fill:var(--text,#0f172a)">Why the channel is shaped this way</text>
+  </g>
+  <g data-slot="s3-text" data-slot-kind="text" data-slot-box="56 1098 330 150" data-slot-font="sans" data-slot-weight="400" data-slot-size="17" data-slot-maxlines="7" data-slot-maxchars="37" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="56" y="1117.5" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:17px;font-weight:400;fill:var(--text,#0f172a)">Nine in ten failed runs</text>
+    <text x="56" y="1138.8" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:17px;font-weight:400;fill:var(--text,#0f172a)">were bubbles trapped at</text>
+    <text x="56" y="1160" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:17px;font-weight:400;fill:var(--text,#0f172a)">the inlet, not chemistry.</text>
+    <text x="56" y="1181.3" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:17px;font-weight:400;fill:var(--text,#0f172a)">A 2 mm fillet at the</text>
+    <text x="56" y="1202.5" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:17px;font-weight:400;fill:var(--text,#0f172a)">channel corner lets the</text>
+    <text x="56" y="1223.8" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:17px;font-weight:400;fill:var(--text,#0f172a)">meniscus advance evenly</text>
+    <text x="56" y="1245" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:17px;font-weight:400;fill:var(--text,#0f172a)">and the bubbles escape.</text>
+  </g>
+  <rect x="396" y="1090" width="356" height="224" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 35%, transparent);stroke-width:1.5" transform="translate(4 5)"/>
+  <rect x="396" y="1090" width="356" height="224" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 0%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--surface,#ffffff));stroke-width:2"/>
+  <g data-slot="s3-figure" data-slot-kind="graphic" data-slot-box="404 1098 340 208">
+    <rect x="404" y="1098" width="340" height="208" rx="10" style="fill:color-mix(in srgb, var(--teal,#0d9488) 4%, transparent);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-dasharray="6 6"/>
+    <rect x="503.8" y="1169.6" width="36" height="27" rx="6" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <rect x="556" y="1169.6" width="36" height="27" rx="6" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <rect x="608.2" y="1169.6" width="36" height="27" rx="6" style="fill:color-mix(in srgb, var(--coral,#ef4444) 16%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+    <text x="574" y="1230.8" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b);letter-spacing:1.2px">GRAPHIC SLOT</text>
+    <text x="574" y="1250.8" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">place an svg-library component here (800 × 450)</text>
+  </g>
+  <g data-slot="s3-caption" data-slot-kind="text" data-slot-box="404 1322 340 34" data-slot-font="sans" data-slot-weight="400" data-slot-size="13" data-slot-maxlines="2" data-slot-maxchars="51" data-slot-anchor="start" data-slot-fill="var(--text-muted,#64748b)" data-slot-optional="true">
+    <text x="404" y="1337" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Flow through the filleted channel,</text>
+    <text x="404" y="1353.2" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">inlet to chamber (schematic).</text>
+  </g>
+  <rect x="40" y="1406" width="720" height="440" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 35%, transparent);stroke-width:1.5" transform="translate(4 5)"/>
+  <rect x="40" y="1406" width="720" height="440" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 4%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--coral,#ef4444) 55%, var(--surface,#ffffff));stroke-width:2"/>
+  <text x="744" y="1470" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:64px;font-weight:800;fill:color-mix(in srgb, var(--coral,#ef4444) 16%, transparent)">04</text>
+  <g data-slot="s4-heading" data-slot-kind="text" data-slot-box="56 1430 600 34" data-slot-font="head" data-slot-weight="700" data-slot-size="26" data-slot-maxlines="1" data-slot-maxchars="36" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="56" y="1459.9" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:26px;font-weight:700;fill:var(--text,#0f172a)">What the January trial will measure</text>
+  </g>
+  <g data-slot="s4-text" data-slot-kind="text" data-slot-box="56 1474 688 66" data-slot-font="sans" data-slot-weight="400" data-slot-size="17" data-slot-maxlines="3" data-slot-maxchars="79" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="56" y="1493.5" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:17px;font-weight:400;fill:var(--text,#0f172a)">Three clinics, six weeks, and one number decides whether the chip</text>
+    <text x="56" y="1514.8" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:17px;font-weight:400;fill:var(--text,#0f172a)">moves on to the regulatory study: how many of the screened patients</text>
+    <text x="56" y="1536" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:17px;font-weight:400;fill:var(--text,#0f172a)">end up with an evaluable result on the first attempt.</text>
+  </g>
+  <rect x="56" y="1548" width="688" height="250" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 35%, transparent);stroke-width:1.5" transform="translate(4 5)"/>
+  <rect x="56" y="1548" width="688" height="250" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 0%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--coral,#ef4444) 55%, var(--surface,#ffffff));stroke-width:2"/>
+  <g data-slot="s4-figure" data-slot-kind="graphic" data-slot-box="64 1556 672 234">
+    <rect x="64" y="1556" width="672" height="234" rx="10" style="fill:color-mix(in srgb, var(--teal,#0d9488) 4%, transparent);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-dasharray="6 6"/>
+    <rect x="329.8" y="1640.6" width="36" height="27" rx="6" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <rect x="382" y="1640.6" width="36" height="27" rx="6" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <rect x="434.2" y="1640.6" width="36" height="27" rx="6" style="fill:color-mix(in srgb, var(--coral,#ef4444) 16%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+    <text x="400" y="1701.8" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b);letter-spacing:1.2px">GRAPHIC SLOT</text>
+    <text x="400" y="1721.8" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">place an svg-library component here (800 × 450)</text>
+  </g>
+  <g data-slot="s4-caption" data-slot-kind="text" data-slot-box="56 1806 688 20" data-slot-font="sans" data-slot-weight="400" data-slot-size="13" data-slot-maxlines="1" data-slot-maxchars="104" data-slot-anchor="start" data-slot-fill="var(--text-muted,#64748b)" data-slot-optional="true">
+    <text x="56" y="1821" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Enrolment funnel from screened patients to evaluable results (target numbers).</text>
+  </g>
+  <rect x="0" y="1866" width="800" height="134" style="fill:color-mix(in srgb, var(--teal,#0d9488) 7%, var(--surface,#ffffff))"/>
+  <line x1="0" y1="1866" x2="800" y2="1866" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2"/>
+  <text x="56" y="1896" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));letter-spacing:1.2px">SOURCES</text>
+  <g data-slot="sources" data-slot-kind="text" data-slot-box="56 1906 688 52" data-slot-font="sans" data-slot-weight="400" data-slot-size="13" data-slot-maxlines="3" data-slot-maxchars="104" data-slot-anchor="start" data-slot-fill="var(--text-muted,#64748b)">
+    <text x="56" y="1921" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Bench validation: 212 chips, July to September 2026, internal run log.</text>
+    <text x="56" y="1937.2" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Field days: Kisumu and Kilifi pilot sites, two operators.</text>
+    <text x="56" y="1953.5" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Cost model: consumables at 10k units per year, supplier quotes.</text>
+  </g>
+</svg>

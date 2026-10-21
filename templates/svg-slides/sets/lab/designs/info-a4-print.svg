@@ -1,0 +1,153 @@
+<!--
+design-pack · svg-slides · info-a4-print
+  A4 portrait poster (794x1123, data-canvas = 96 dpi): header with eyebrow, title and lede; a three-column body in
+  hairline ink-friendly cards (text and bullets | stat and chart stack | five numbered findings); footer with
+  sources and a citation strip. Print margins 48 px all round; light strokes, tinted fills only on badges.
+  Print path: bin/svg-export.js with the png and pdf flags gives one page at the design size (README).
+  Slots: eyebrow (optional) · title · lede · col1-heading · intro · bullets-heading · bullets · col2-heading · stat-1/2-value/-label
+         · chart-1 · chart-2 · col3-heading · finding-1..5 · sources · citation.
+  Tokens: teal amber coral deep-blue text text-muted border border-bright surface font-head font-sans.
+  Compose with bin/compose-slide.js; slot rules in templates/svg-slides/README.md.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 794 1123" data-canvas="0 0 794 1123" role="img" aria-label="A4 portrait poster with a header, three body columns (text and bullets, a stat and chart stack, a numbered key-findings list) and a footer with sources and a citation strip" style="width:100%;height:auto">
+  <title>A4 print infographic poster design</title>
+  <rect x="0" y="0" width="794" height="1123" style="fill:var(--surface,#ffffff)"/>
+  <g data-slot="eyebrow" data-slot-kind="text" data-slot-box="48 44 500 20" data-slot-font="head" data-slot-weight="700" data-slot-size="14" data-slot-tracking="1.2" data-slot-maxlines="1" data-slot-maxchars="43" data-slot-anchor="start" data-slot-fill="color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))" data-slot-optional="true">
+    <text x="48" y="60.1" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));letter-spacing:1.2px">POSTER · MICROFLUIDICS GROUP · 2026</text>
+  </g>
+  <g data-slot="title" data-slot-kind="text" data-slot-box="48 68 698 86" data-slot-font="head" data-slot-weight="700" data-slot-size="34" data-slot-maxlines="2" data-slot-maxchars="32" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="48" y="107.1" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:34px;font-weight:700;fill:var(--text,#0f172a)">Lab-on-chip diagnostics:</text>
+    <text x="48" y="149.6" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:34px;font-weight:700;fill:var(--text,#0f172a)">what 212 bench runs showed</text>
+  </g>
+  <g data-slot="lede" data-slot-kind="text" data-slot-box="48 162 698 22" data-slot-font="sans" data-slot-weight="400" data-slot-size="15" data-slot-maxlines="1" data-slot-maxchars="92" data-slot-anchor="start" data-slot-fill="var(--text-muted,#64748b)">
+    <text x="48" y="179.3" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:15px;font-weight:400;fill:var(--text-muted,#64748b)">Sensitivity, speed and cost of a card-sized assay, benchmarked against lab qPCR</text>
+  </g>
+  <line x1="48" y1="200" x2="108" y2="200" style="stroke:var(--teal,#0d9488);stroke-width:3" stroke-linecap="round"/>
+  <line x1="120" y1="200" x2="132" y2="200" style="stroke:var(--amber,#f59e0b);stroke-width:3" stroke-linecap="round"/>
+  <line x1="48" y1="214" x2="746" y2="214" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1"/>
+  <rect x="48" y="232" width="220" height="620" rx="12" style="fill:none;stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:1" transform="translate(4 5)"/>
+  <rect x="48" y="232" width="220" height="620" rx="12" style="fill:var(--surface,#ffffff);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5"/>
+  <rect x="287" y="232" width="220" height="620" rx="12" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 32%, transparent);stroke-width:1" transform="translate(4 5)"/>
+  <rect x="287" y="232" width="220" height="620" rx="12" style="fill:var(--surface,#ffffff);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5"/>
+  <rect x="526" y="232" width="220" height="620" rx="12" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 32%, transparent);stroke-width:1" transform="translate(4 5)"/>
+  <rect x="526" y="232" width="220" height="620" rx="12" style="fill:var(--surface,#ffffff);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5"/>
+  <g data-slot="col1-heading" data-slot-kind="text" data-slot-box="62 246 192 24" data-slot-font="head" data-slot-weight="700" data-slot-size="16" data-slot-maxlines="1" data-slot-maxchars="18" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="62" y="264.4" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Method</text>
+  </g>
+  <line x1="62" y1="276" x2="102" y2="276" style="stroke:var(--teal,#0d9488);stroke-width:3" stroke-linecap="round"/>
+  <g data-slot="intro" data-slot-kind="text" data-slot-box="62 288 192 246" data-slot-font="sans" data-slot-weight="400" data-slot-size="14" data-slot-maxlines="14" data-slot-maxchars="26" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="62" y="304.1" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">Point-of-care tests</text>
+    <text x="62" y="321.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">fail in the field for</text>
+    <text x="62" y="339.1" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">dull reasons: bubbles,</text>
+    <text x="62" y="356.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">dead batteries, and</text>
+    <text x="62" y="374.1" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">steps the operator</text>
+    <text x="62" y="391.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">cannot see. We built</text>
+    <text x="62" y="409.1" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">a passive chip that</text>
+    <text x="62" y="426.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">moves fluid by</text>
+    <text x="62" y="444.1" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">capillary action and</text>
+    <text x="62" y="461.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">heats itself, then ran</text>
+    <text x="62" y="479.1" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">212 chips against lab</text>
+    <text x="62" y="496.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">qPCR on matched</text>
+    <text x="62" y="514.1" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">samples over three</text>
+    <text x="62" y="531.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">months.</text>
+  </g>
+  <line x1="62" y1="548" x2="254" y2="548" style="stroke:var(--border,#e2e8f0);stroke-width:1"/>
+  <text x="62" y="568" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));letter-spacing:1.2px">KEY POINTS</text>
+  <g data-slot="bullets" data-slot-kind="text" data-slot-box="62 580 192 246" data-slot-font="sans" data-slot-weight="400" data-slot-size="14" data-slot-maxlines="14" data-slot-maxchars="26" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="62" y="596.1" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">• Passive fluidics,</text>
+    <text x="62" y="613.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">  no pump</text>
+    <text x="62" y="631.1" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">• Isothermal heater,</text>
+    <text x="62" y="648.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">  65 °C for 30 min</text>
+    <text x="62" y="666.1" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">• Lateral-flow readout</text>
+    <text x="62" y="683.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">  or phone scan</text>
+    <text x="62" y="701.1" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">• Card-sized, 12 g</text>
+    <text x="62" y="718.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">• Two operator steps</text>
+    <text x="62" y="736.1" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">• Paired with qPCR</text>
+    <text x="62" y="753.6" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:14px;font-weight:400;fill:var(--text,#0f172a)">  on every sample</text>
+  </g>
+  <g data-slot="col2-heading" data-slot-kind="text" data-slot-box="301 246 192 24" data-slot-font="head" data-slot-weight="700" data-slot-size="16" data-slot-maxlines="1" data-slot-maxchars="18" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="301" y="264.4" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Results</text>
+  </g>
+  <line x1="301" y1="276" x2="341" y2="276" style="stroke:var(--teal,#0d9488);stroke-width:3" stroke-linecap="round"/>
+  <g data-slot="stat-1-value" data-slot-kind="text" data-slot-box="301 288 192 52" data-slot-font="head" data-slot-weight="800" data-slot-size="44" data-slot-maxlines="1" data-slot-maxchars="7" data-slot-anchor="start" data-slot-fill="color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">
+    <text x="301" y="338.6" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:44px;font-weight:800;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">94%</text>
+  </g>
+  <g data-slot="stat-1-label" data-slot-kind="text" data-slot-box="301 342 192 34" data-slot-font="sans" data-slot-weight="400" data-slot-size="13" data-slot-maxlines="2" data-slot-maxchars="28" data-slot-anchor="start" data-slot-fill="var(--text-muted,#64748b)">
+    <text x="301" y="356.9" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Sensitivity versus</text>
+    <text x="301" y="373.2" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">lab qPCR, n = 212</text>
+  </g>
+  <g data-slot="chart-1" data-slot-kind="graphic" data-slot-box="301 386 192 108">
+    <rect x="301" y="386" width="192" height="108" rx="10" style="fill:color-mix(in srgb, var(--teal,#0d9488) 4%, transparent);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-dasharray="6 6"/>
+    <rect x="350.2" y="418.4" width="24" height="18" rx="6" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <rect x="385" y="418.4" width="24" height="18" rx="6" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <rect x="419.8" y="418.4" width="24" height="18" rx="6" style="fill:color-mix(in srgb, var(--coral,#ef4444) 16%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+    <text x="397" y="459.2" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b);letter-spacing:1.2px">GRAPHIC SLOT</text>
+  </g>
+  <g data-slot="stat-2-value" data-slot-kind="text" data-slot-box="301 568 192 52" data-slot-font="head" data-slot-weight="800" data-slot-size="44" data-slot-maxlines="1" data-slot-maxchars="7" data-slot-anchor="start" data-slot-fill="color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">
+    <text x="301" y="618.6" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:44px;font-weight:800;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">38 min</text>
+  </g>
+  <g data-slot="stat-2-label" data-slot-kind="text" data-slot-box="301 622 192 34" data-slot-font="sans" data-slot-weight="400" data-slot-size="13" data-slot-maxlines="2" data-slot-maxchars="28" data-slot-anchor="start" data-slot-fill="var(--text-muted,#64748b)">
+    <text x="301" y="637" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Median time from</text>
+    <text x="301" y="653.2" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">sample to answer</text>
+  </g>
+  <g data-slot="chart-2" data-slot-kind="graphic" data-slot-box="301 666 192 108">
+    <rect x="301" y="666" width="192" height="108" rx="10" style="fill:color-mix(in srgb, var(--teal,#0d9488) 4%, transparent);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-dasharray="6 6"/>
+    <rect x="350.2" y="698.4" width="24" height="18" rx="6" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <rect x="385" y="698.4" width="24" height="18" rx="6" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <rect x="419.8" y="698.4" width="24" height="18" rx="6" style="fill:color-mix(in srgb, var(--coral,#ef4444) 16%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+    <text x="397" y="739.2" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b);letter-spacing:1.2px">GRAPHIC SLOT</text>
+  </g>
+  <g data-slot="col3-heading" data-slot-kind="text" data-slot-box="540 246 192 24" data-slot-font="head" data-slot-weight="700" data-slot-size="16" data-slot-maxlines="1" data-slot-maxchars="18" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="540" y="264.4" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Key findings</text>
+  </g>
+  <line x1="540" y1="276" x2="580" y2="276" style="stroke:var(--teal,#0d9488);stroke-width:3" stroke-linecap="round"/>
+  <circle cx="554" cy="300" r="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 18%, var(--surface,#ffffff));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
+  <text x="554" y="304.7" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 70%, var(--text,#0f172a))">1</text>
+  <g data-slot="finding-1" data-slot-kind="text" data-slot-box="578 290 154 82" data-slot-font="sans" data-slot-weight="400" data-slot-size="13" data-slot-maxlines="5" data-slot-maxchars="22" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="578" y="304.9" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Bubbles, not</text>
+    <text x="578" y="321.2" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">chemistry, caused</text>
+    <text x="578" y="337.4" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">9 in 10 failed runs</text>
+  </g>
+  <circle cx="554" cy="410" r="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 18%, var(--surface,#ffffff));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
+  <text x="554" y="414.7" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 70%, var(--text,#0f172a))">2</text>
+  <g data-slot="finding-2" data-slot-kind="text" data-slot-box="578 400 154 82" data-slot-font="sans" data-slot-weight="400" data-slot-size="13" data-slot-maxlines="5" data-slot-maxchars="22" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="578" y="414.9" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">A 2 mm fillet at</text>
+    <text x="578" y="431.2" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">the corner fixed</text>
+    <text x="578" y="447.4" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">most of them</text>
+  </g>
+  <circle cx="554" cy="520" r="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 18%, var(--surface,#ffffff));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
+  <text x="554" y="524.7" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 70%, var(--text,#0f172a))">3</text>
+  <g data-slot="finding-3" data-slot-kind="text" data-slot-box="578 510 154 82" data-slot-font="sans" data-slot-weight="400" data-slot-size="13" data-slot-maxlines="5" data-slot-maxchars="22" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="578" y="525" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Sensitivity held at</text>
+    <text x="578" y="541.2" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">94% across three</text>
+    <text x="578" y="557.5" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">reagent lots</text>
+  </g>
+  <circle cx="554" cy="630" r="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 18%, var(--surface,#ffffff));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
+  <text x="554" y="634.7" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 70%, var(--text,#0f172a))">4</text>
+  <g data-slot="finding-4" data-slot-kind="text" data-slot-box="578 620 154 82" data-slot-font="sans" data-slot-weight="400" data-slot-size="13" data-slot-maxlines="5" data-slot-maxchars="22" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="578" y="635" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Median time to</text>
+    <text x="578" y="651.2" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">answer was</text>
+    <text x="578" y="667.5" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">38 minutes</text>
+  </g>
+  <circle cx="554" cy="740" r="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 18%, var(--surface,#ffffff));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
+  <text x="554" y="744.7" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 70%, var(--text,#0f172a))">5</text>
+  <g data-slot="finding-5" data-slot-kind="text" data-slot-box="578 730 154 82" data-slot-font="sans" data-slot-weight="400" data-slot-size="13" data-slot-maxlines="5" data-slot-maxchars="22" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="578" y="745" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Consumables cost</text>
+    <text x="578" y="761.2" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">$2.10 per test</text>
+    <text x="578" y="777.5" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">at volume</text>
+  </g>
+  <line x1="48" y1="876" x2="746" y2="876" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1"/>
+  <text x="48" y="900" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));letter-spacing:1.2px">SOURCES</text>
+  <g data-slot="sources" data-slot-kind="text" data-slot-box="48 910 698 80" data-slot-font="sans" data-slot-weight="400" data-slot-size="12" data-slot-maxlines="5" data-slot-maxchars="115" data-slot-anchor="start" data-slot-fill="var(--text-muted,#64748b)">
+    <text x="48" y="923.8" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Bench validation: 212 chips against lab qPCR, July to September 2026.</text>
+    <text x="48" y="938.8" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Field days: two pilot sites, two operators, 14 days in total.</text>
+    <text x="48" y="953.8" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Cost model: consumables at 10,000 units per year, supplier quotes.</text>
+    <text x="48" y="968.8" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Reagent lots: three, manufactured at one site.</text>
+  </g>
+  <rect x="48" y="1004" width="698" height="56" rx="10" style="fill:none;stroke:color-mix(in srgb, var(--teal,#0d9488) 32%, transparent);stroke-width:1" transform="translate(4 5)"/>
+  <rect x="48" y="1004" width="698" height="56" rx="10" style="fill:var(--surface,#ffffff);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5"/>
+  <text x="64" y="1036" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));letter-spacing:1.2px">CITE AS</text>
+  <g data-slot="citation" data-slot-kind="text" data-slot-box="132 1022 600 20" data-slot-font="sans" data-slot-weight="400" data-slot-size="12" data-slot-maxlines="1" data-slot-maxchars="99" data-slot-anchor="start" data-slot-fill="var(--text,#0f172a)">
+    <text x="132" y="1035.8" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Researcher A. et al. (2026) Lab-on-chip diagnostics: bench validation. Microfluidics Group.</text>
+  </g>
+</svg>
