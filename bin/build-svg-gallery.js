@@ -117,6 +117,11 @@ const META = {
   'api-request-lifecycle': { desc: 'Sequence diagram of a web API call: client, DNS, gateway auth and rate limit, two services, database, numbered request/response arrows ending in 200 OK', use: 'Explaining backend request flow, API docs, onboarding' },
   'protocol-loop-steps': { desc: 'Eight-station bench protocol on two snaking rows (1 to 4 left to right, 5 to 8 right to left), dashed reuse loop from the last station back to prime and load, eyebrow + hero header', use: 'Lab/bench protocols with sequential reuse cycles; any 8-step workflow with a repeat-back loop' },
   'orbit-satellites': { desc: 'Core with three dashed orbits of labelled satellites and a distance legend', use: 'Stakeholder proximity, engagement tiers, spheres of influence' },
+  'anim-flow-pipeline': { desc: 'ANIMATED. Three-stage pipeline whose connector dashes march and one data packet travels each wire (SMIL, indefinite process indicator)', use: 'Live-looking data/ETL flows, delivery pipelines, any process where direction of flow matters' },
+  'anim-stepper': { desc: 'ANIMATED. Five-step process spine: done steps checked, the active step pulses, a progress dot travels the spine once', use: 'Onboarding/checkout/wizard progress, multi-stage status updates' },
+  'anim-radial-gauge': { desc: 'ANIMATED. 270-degree radial progress arc that draws itself once, with ticks, a big percentage and two mini stat cards', use: 'Completion or utilisation KPIs, migration/build progress, goal attainment' },
+  'anim-loader-ring': { desc: 'ANIMATED. Spinner of two arcs rotating in opposite directions with a loading label (the one allowed indefinite loop; frame 0 is the rest state)', use: 'Loading/working states, pending-job placeholders, live-view mockups' },
+  'anim-sequence-lifelines': { desc: 'ANIMATED. Sequence diagram: three lifelines, five numbered messages drawn in order once, activation bars', use: 'Request/response walkthroughs, protocol handshakes, who-calls-whom explanations' },
 };
 
 function validate(name, src) {

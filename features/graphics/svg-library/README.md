@@ -125,6 +125,12 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
 | 92 | `transformer-block.svg` | Transformer encoder and decoder stacks: embeddings plus positional encoding, attention, feed-forward, residual Add & Norm, N× marker, linear + softmax head | Explaining LLM / transformer architecture at a schematic level |
 | 93 | `api-request-lifecycle.svg` | Sequence diagram of a web API call: client, DNS, gateway auth and rate limit, two services, database, numbered request/response arrows ending in 200 OK | Explaining backend request flow, API docs, onboarding |
 | 94 | `protocol-loop-steps.svg` | Eight-station bench protocol on two snaking rows (1–4 left to right, 5–8 right to left), dashed reuse loop from the last station back to prime + load, eyebrow + hero header | Lab/bench protocols with sequential reuse cycles; any 8-step workflow with a repeat-back loop |
+| | **Animated** | *SMIL, opt-in; see rule 8. Frame 0 is the settled diagram* | |
+| 95 | `anim-flow-pipeline.svg` | Three-stage pipeline with marching connector dashes and a data packet travelling each wire | Live-looking ETL/data flows, delivery pipelines, direction of flow |
+| 96 | `anim-stepper.svg` | Five-step spine: done steps checked, active step pulsing, progress dot travelling to it | Onboarding, checkout, wizard or stage progress |
+| 97 | `anim-radial-gauge.svg` | 270-degree radial arc that draws itself, ticks, big percentage, two mini stat cards | Completion/utilisation KPIs, migration or build progress |
+| 98 | `anim-loader-ring.svg` | Two counter-rotating arcs with a loading label (the one indefinite spinner) | Loading and working states, pending-job placeholders |
+| 99 | `anim-sequence-lifelines.svg` | Sequence diagram: 3 lifelines, 5 numbered messages drawn in order, activation bars | Request/response walkthroughs, handshakes, who-calls-whom |
 
 **When to use which graphics system:**
 
@@ -177,6 +183,24 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
 7. **Print-safe.** Pure vector, no JS, no animation — the templates' `@media print`
    rules pass them through untouched. If you add `class="reveal"` from the graphics
    pack, the static state must equal the final state.
+8. **Animated components (SMIL, opt-in).** The `anim-*` files animate with SMIL only:
+   `<animate>`, `<animateTransform>`, `<animateMotion>`. **Never** a `<style>` block or CSS
+   keyframes (a `<style>` inside inline SVG is page-global and collides across pasted
+   components) and no JS. Rule 2 applies doubly: no ids and no `<defs>`, so motion paths are
+   self-contained `path` attributes on `<animateMotion>`, never `<mpath>`.
+   - Animate only **geometry, motion and timing** (`stroke-dashoffset`, `transform`, `opacity`,
+     `points`, `r`, `height`). Colors stay static token-driven `style` attributes; never animate
+     fill or stroke colors.
+   - **Print/bake safety:** screenshots, PNG export and PDF bakes capture the first frame, so for
+     every component except `anim-loader-ring` the initial frame must equal the final/rest
+     state: put the final value in the underlying attribute and use `fill="freeze"`; a draw
+     that must start from empty gets a `begin` delay (hold the complete diagram, then replay).
+   - `repeatCount="indefinite"` only for process indicators (spinners, marching-dash flows,
+     a pulse ring); keep motion subtle.
+   - SMIL cannot honour `prefers-reduced-motion`. Escape hatch: delete the `<animate*>`
+     children to get the static twin (every element's base attributes are its rest state).
+   - Accessibility is unchanged: `role`/`aria-label`/`<title>` describe the settled diagram,
+     not the animation.
 
 ## Workflow: copy → edit → paste
 
@@ -335,7 +359,7 @@ takeaway)? Use the slide designs in [`templates/svg-slides/`](../../../templates
    SVG is the point of the library; treat the shipped files as style reference
    (rounded rx=12 cards — 8 for bars, 4–6 for slabs, 14 for large panels; 2px primary
    strokes, 1.5px shadows/leaders, 2.5px connectors, 3px spines; dashed 1.5px leaders
-   start at a 3.5px dot). **Type scale (shared by all 94):** hero 20/700 (one central
+   start at a 3.5px dot). **Type scale (shared by all 99):** hero 20/700 (one central
    subject or headline) · label 16/600 · annotation 13/400 muted · caption 12/400 muted ·
    eyebrow 11/700 caps with `letter-spacing="1.2"` · badge number 13/700.
    **Arrowheads:** 13×13 on connectors, 11×11 on small cue arrows, 16×16 on thick spines

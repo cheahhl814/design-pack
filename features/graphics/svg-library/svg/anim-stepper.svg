@@ -1,0 +1,55 @@
+<!--
+design-pack · svg-library · anim-stepper
+  Five-step process spine: done steps filled with a check, the active step pulses,
+  a progress dot travels the spine once (fill="freeze", rests beside the active step).
+  Tokens: teal amber text text-muted surface font-head font-sans.
+  Edit: step names + captions, hero line, progress card. Nodes at x = 100 + 150*i, r=20.
+  Move the active step by shifting the pulse ring cx/cy, the dot motion path and its
+  cx (rest x = active x - 28). The dot cloaks its restart with an opacity ramp.
+  ANIMATED (SMIL only, README rule 8): delete the <animate*> children for a static twin.
+  No ids, defs, path references or style blocks, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Five-step process stepper: account and profile complete, verify identity in progress, payment and done still to come" style="width:100%;height:auto">
+  <title>Animated five-step process stepper</title>
+  <text x="40" y="52" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">ONBOARDING</text>
+  <text x="40" y="80" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Step 3 of 5: verify identity</text>
+  <g stroke-linecap="round">
+    <line x1="120" y1="215" x2="380" y2="215" style="stroke:var(--teal,#0d9488);stroke-width:3"/>
+    <line x1="420" y1="215" x2="680" y2="215" stroke-dasharray="3 7" style="stroke:var(--text-muted,#64748b);stroke-width:3"/>
+  </g>
+  <circle cx="100" cy="215" r="20" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="100" cy="215" r="20" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <polyline points="92,215 98,221 108,209" fill="none" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="100" y="271" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Account</text>
+  <text x="100" y="293" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">create login</text>
+  <circle cx="250" cy="215" r="20" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="250" cy="215" r="20" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <polyline points="242,215 248,221 258,209" fill="none" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="250" y="271" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Profile</text>
+  <text x="250" y="293" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">add details</text>
+  <circle cx="400" cy="215" r="26" fill="none" opacity="0.35" style="stroke:var(--amber,#f59e0b);stroke-width:2.5">
+    <animate attributeName="r" values="26;38" dur="1.6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.35;0" dur="1.6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="400" cy="215" r="20" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="400" cy="215" r="20" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="400" y="220" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">3</text>
+  <text x="400" y="271" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Verify</text>
+  <text x="400" y="293" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">confirm identity</text>
+  <circle cx="550" cy="215" r="20" style="fill:var(--surface,#ffffff);stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <text x="550" y="220" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text-muted,#64748b)">4</text>
+  <text x="550" y="271" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text-muted,#64748b)">Payment</text>
+  <text x="550" y="293" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">add a method</text>
+  <circle cx="700" cy="215" r="20" style="fill:var(--surface,#ffffff);stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <text x="700" y="220" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text-muted,#64748b)">5</text>
+  <text x="700" y="271" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text-muted,#64748b)">Done</text>
+  <text x="700" y="293" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">start using</text>
+  <circle cx="372" cy="215" r="6.5" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:2">
+    <animateMotion path="M -244 0 H 0" dur="2.2s" begin="0.6s" fill="freeze"/>
+    <animate attributeName="opacity" values="0;1;1" keyTimes="0;0.08;1" dur="2.2s" begin="0.6s" fill="freeze"/>
+  </circle>
+  <rect x="40" y="340" width="720" height="56" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+    <rect x="40" y="340" width="720" height="56" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="64" y="374" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Progress 40%</text>
+  <text x="736" y="374" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">next: add a payment method</text>
+</svg>

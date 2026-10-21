@@ -1,0 +1,47 @@
+<!--
+design-pack · svg-library · anim-flow-pipeline
+  Three-stage pipeline: connector dashes march, one packet travels each wire.
+  Tokens: teal amber green text text-muted surface font-head font-sans.
+  Edit: stage names, captions, rates. Boxes at x = 40, 325, 610 (150 wide); the
+  packet path "M 0 0 H len" is relative to the circle's cx/cy (its wire start).
+  Add a 4th stage by narrowing the gaps. Static twin = packet sits at wire start.
+  ANIMATED (SMIL only, README rule 8): delete the <animate*> children for a static twin.
+  No ids, defs, path references or style blocks, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Three-stage data pipeline, Ingest to Transform to Publish, with animated dashes and a record travelling along each connector" style="width:100%;height:auto">
+  <title>Animated three-stage data pipeline</title>
+  <text x="40" y="52" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">DATA PIPELINE</text>
+  <text x="40" y="80" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Records flow left to right</text>
+  <g>
+    <rect x="40" y="160" width="150" height="110" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="40" y="160" width="150" height="110" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <text x="115" y="214" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Ingest</text>
+    <text x="115" y="238" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">collect raw records</text>
+    <text x="115" y="306" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">12k rec/s</text>
+    <rect x="325" y="160" width="150" height="110" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+    <rect x="325" y="160" width="150" height="110" rx="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <text x="400" y="214" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Transform</text>
+    <text x="400" y="238" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">clean and enrich</text>
+    <text x="400" y="306" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">11.8k rec/s</text>
+    <rect x="610" y="160" width="150" height="110" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+    <rect x="610" y="160" width="150" height="110" rx="14" style="fill:color-mix(in srgb, var(--green,#10b981) 16%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+    <text x="685" y="214" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Publish</text>
+    <text x="685" y="238" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">serve to consumers</text>
+    <text x="685" y="306" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">11.8k rec/s</text>
+  </g>
+  <line x1="198" y1="215" x2="304" y2="215" stroke-linecap="round" stroke-dasharray="7 5" style="stroke:var(--text-muted,#64748b);stroke-width:2.5">
+    <animate attributeName="stroke-dashoffset" from="0" to="-12" dur="0.7s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="317,215 304,221.5 304,208.5" style="fill:var(--text-muted,#64748b)"/>
+  <circle cx="198" cy="215" r="6" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:2">
+    <animateMotion path="M 0 0 H 106" dur="2s" begin="0s" repeatCount="indefinite"/>
+  </circle>
+  <line x1="483" y1="215" x2="589" y2="215" stroke-linecap="round" stroke-dasharray="7 5" style="stroke:var(--text-muted,#64748b);stroke-width:2.5">
+    <animate attributeName="stroke-dashoffset" from="0" to="-12" dur="0.7s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="602,215 589,221.5 589,208.5" style="fill:var(--text-muted,#64748b)"/>
+  <circle cx="483" cy="215" r="6" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:2">
+    <animateMotion path="M 0 0 H 106" dur="2s" begin="0.8s" repeatCount="indefinite"/>
+  </circle>
+  <text x="400" y="400" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">marching dashes show direction of flow; each dot is one record in flight</text>
+</svg>

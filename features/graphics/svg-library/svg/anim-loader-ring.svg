@@ -1,0 +1,34 @@
+<!--
+design-pack · svg-library · anim-loader-ring
+  Spinner: two offset arcs rotate in opposite directions (animateTransform, indefinite).
+  The ONE allowed indefinite process indicator in the set; frame 0 is the unrotated arcs.
+  Tokens: teal amber text text-muted surface font-head font-sans.
+  Edit: label + caption. Arc length is pathLength=100 with dasharray "30 70"; rings at
+  r=68 / r=44 around (400,205). Each rotating circle sits in a translate(4 5) group
+  for its print-offset copy, since animateTransform would replace a transform attr.
+  ANIMATED (SMIL only, README rule 8): delete the <animate*> children for a static twin.
+  No ids, defs, path references or style blocks, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Loading spinner made of two arcs rotating in opposite directions, with the label loading" style="width:100%;height:auto">
+  <title>Animated loading ring</title>
+  <rect x="250" y="50" width="300" height="350" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="250" y="50" width="300" height="350" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="400" y="92" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">WORKING</text>
+  <circle cx="400" cy="205" r="68" fill="none" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 18%, transparent);stroke-width:10"/>
+  <circle cx="400" cy="205" r="44" fill="none" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 18%, transparent);stroke-width:10"/>
+    <g transform="translate(4 5)"><circle cx="400" cy="205" r="68" pathLength="100" fill="none" stroke-linecap="round" stroke-dasharray="30 70" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 30%, transparent);stroke-width:10">
+      <animateTransform attributeName="transform" type="rotate" from="0 400 205" to="360 400 205" dur="1.2s" repeatCount="indefinite"/>
+    </circle></g>
+    <circle cx="400" cy="205" r="68" pathLength="100" fill="none" stroke-linecap="round" stroke-dasharray="30 70" style="stroke:var(--teal,#0d9488);stroke-width:10">
+      <animateTransform attributeName="transform" type="rotate" from="0 400 205" to="360 400 205" dur="1.2s" repeatCount="indefinite"/>
+    </circle>
+    <g transform="translate(4 5)"><circle cx="400" cy="205" r="44" pathLength="100" fill="none" stroke-linecap="round" stroke-dasharray="30 70" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 30%, transparent);stroke-width:10">
+      <animateTransform attributeName="transform" type="rotate" from="360 400 205" to="0 400 205" dur="1.8s" repeatCount="indefinite"/>
+    </circle></g>
+    <circle cx="400" cy="205" r="44" pathLength="100" fill="none" stroke-linecap="round" stroke-dasharray="30 70" style="stroke:var(--amber,#f59e0b);stroke-width:10">
+      <animateTransform attributeName="transform" type="rotate" from="360 400 205" to="0 400 205" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+  <circle cx="400" cy="205" r="6" style="fill:var(--text-muted,#64748b)"/>
+  <text x="400" y="330" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">loading…</text>
+  <text x="400" y="354" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">fetching 3 of 5 sources</text>
+</svg>
