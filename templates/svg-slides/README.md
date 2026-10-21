@@ -26,7 +26,7 @@ Every set ships the six slide designs below under the same names, with lab's slo
 required flags and line counts (the tests enforce it), plus its own backgrounds (lab 8, the others 2).
 Character budgets follow each set's fonts, and a test fills every slot to its budget and measures it in
 Chrome. Each set's `set.json` holds its light and dark palette and its font pair. The composer bakes
-those over the slide-template defaults, so inlined svg-library components take the set's colours too.
+those over the svg-bake.js THEMES defaults, so inlined svg-library components take the set's colours too.
 Token names are palette slots, not hues: `--teal` is a set's primary (red in swiss, navy in
 boardroom). The generated sets add `--block` / `--on-block` (colour-block fill and the text on it).
 
@@ -98,7 +98,7 @@ All [svg-library rules](../../features/graphics/svg-library/README.md#convention
 apply: inline SVG, **no `id` / `<defs>` / `<marker>` / `<filter>` / `<mask>` / `<pattern>` /
 `<clipPath>` / `<script>`**, colour as `var(--token,#fallback)` inside `style` only, tints with
 `color-mix(in srgb, …)`, `--navy` / `--deep-blue` and coloured text pulled toward `--text`, root
-`role="img"` + `aria-label` + `<title>`, light slide-template fallbacks. On top of that:
+`role="img"` + `aria-label` + `<title>`, the svg-bake.js THEMES light defaults. On top of that:
 
 1. **Canvas `viewBox="0 0 1280 720"`** (16:9, 1 px = 9525 EMU on the house bases). The design paints
    its own background (`fill:var(--surface,#ffffff)` or a tint of it), so a dark bake is dark edge to

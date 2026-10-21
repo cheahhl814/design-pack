@@ -3,12 +3,13 @@
   ╔══════════════════════════════════════════════════════════════════════╗
   ║  design-pack · GitHub Pages launcher                           ║
   ║                                                                        ║
-  ║  This launcher + the four subdirectory demos are DEMO COPIES.         ║
+  ║  This launcher + the three subdirectory template demos are DEMO COPIES. ║
   ║  The canonical templates live in templates/ at the repo root:         ║
   ║    templates/report/template.html        → docs/report/index.html     ║
-  ║    templates/slide/slide-template.html   → docs/slide/index.html      ║
   ║    templates/dashboard/dashboard-template.html → docs/dashboard/      ║
   ║    templates/bento/bento-template.html   → docs/bento/index.html      ║
+  ║  (Decks are not HTML since v0.26.0 — svg-slides compose → PNG/PDF;    ║
+  ║   docs/svg-slides/ is a copy of templates/svg-slides/gallery.html.)   ║
   ║                                                                        ║
   ║  DRIFT RISK: if templates/* change, re-copy into docs/<name>/index.  ║
   ║  (GitHub Pages /docs serving only reaches files inside docs/, so     ║
@@ -91,10 +92,10 @@
   <div class="wrap">
     <span class="eyebrow">v0.16.0 · Live demos</span>
     <h1>design-pack</h1>
-    <p class="lede">Four self-contained annotated HTML templates + a zero-dependency graphics pack + a 93-template hand-drawn SVG diagram library. Every template carries inline review annotations, a theme toggle, and density + font-size controls. Dark-first by default; light mode one click away.</p>
+    <p class="lede">Three self-contained annotated HTML templates + a zero-dependency graphics pack + a 94-template hand-drawn SVG diagram library + the SVG slide-deck toolchain (designed slides delivered as PNG + merged PDF; no HTML decks since v0.26.0). Every template carries inline review annotations, a theme toggle, and density + font-size controls. Dark-first by default; light mode one click away.</p>
 
     <div class="guide">
-      <b>What's new in v0.24.0</b>: <b>slide theme sets</b>. The SVG slide designs now come in five sets that share one slot contract: <b>lab</b> (hand-drawn science), <b>swiss</b> (grid and red colour blocks), <b>boardroom</b> (consulting navy, serif titles), <b>editorial</b> (cream paper, terracotta) and <b>bold</b> (geometric polygons). One payload re-themes a deck with <code>--set</code>; browse every set in the <b>Slide designs</b> demo below.<br><br><b>v0.21.0</b> — <b>SVG slide designs</b>: six hand-drawn full-slide designs (cover, section break, big statement, two-column content, full-width diagram, closing) with slot markers, plus <code>bin/compose-slide.js</code>. The composer fills a design from JSON, inlines svg-library graphics and bakes one renderer-safe SVG slide, gating over-long text instead of shipping a broken slide. Browse them in the <b>Slide designs</b> demo below. <b>v0.22.0</b> adds eight <b>background designs</b>: full-bleed, slot-free stages (DNA helix, triangle mosaic, dashed contours, ring vortex, dot wash, molecules, orbit arcs, slat panel) that keep a clear content zone for graphics or native text, in their own gallery section.<br><br>
+      <b>What's new in v0.26.0</b>: <b>HTML slide template removed — decks are SVG now</b>. Every deck ask composes designed SVG slides from the theme sets and delivers per-slide PNGs plus one merged, page-sized vector PDF (<code>svg-export.js --png --pdf --pdf-out deck.pdf</code>). The prev/next HTML deck and its annotations are gone; reviewable HTML stays in the report and bento templates.<br><br><b>v0.24.0</b>: <b>slide theme sets</b>. The SVG slide designs now come in five sets that share one slot contract: <b>lab</b> (hand-drawn science), <b>swiss</b> (grid and red colour blocks), <b>boardroom</b> (consulting navy, serif titles), <b>editorial</b> (cream paper, terracotta) and <b>bold</b> (geometric polygons). One payload re-themes a deck with <code>--set</code>; browse every set in the <b>Slide designs</b> demo below.<br><br><b>v0.21.0</b> — <b>SVG slide designs</b>: six hand-drawn full-slide designs (cover, section break, big statement, two-column content, full-width diagram, closing) with slot markers, plus <code>bin/compose-slide.js</code>. The composer fills a design from JSON, inlines svg-library graphics and bakes one renderer-safe SVG slide, gating over-long text instead of shipping a broken slide. Browse them in the <b>Slide designs</b> demo below. <b>v0.22.0</b> adds eight <b>background designs</b>: full-bleed, slot-free stages (DNA helix, triangle mosaic, dashed contours, ring vortex, dot wash, molecules, orbit arcs, slat panel) that keep a clear content zone for graphics or native text, in their own gallery section.<br><br>
       <b>v0.16.0</b> — the <b>SVG diagram library</b> grew to <b>94 components</b> with 16 science &amp; technology visuals: ecosystems (food web, energy pyramid, water and nitrogen cycles, symbiosis, succession, ocean zones), earth &amp; physical science (plate boundaries, reaction energy profile, states of matter, EM spectrum), lab &amp; biotech (CRISPR, immune response, PCR cycling) and technology (transformer block, API request lifecycle). v0.15.0 added six cladograms (trait ladder, labelled parts, character matrix, nested sets, circular fan, one tree three ways). v0.14.0 brought a pipeline metro map, mind map, org chart, 8-step ring and more; a dotted world map and a Europe tile grid; climate visuals (warming stripes, carbon cycle, sea-level rise, Paris thermometer); and lab &amp; life-science visuals (DNA helix, central dogma, cell membrane, Punnett square, gel, 96-well plate). New <code>bin/svg-export.js</code> turns any component into a standalone <code>.svg</code> that renders in PowerPoint, Word, Figma and Inkscape. v0.20.0 added <b>protocol-loop-steps</b>, a snaking 8-station bench protocol with a dashed reuse loop back to prime + load. Browse them in the <b>SVG library</b> demo below.
     </div>
 
@@ -104,12 +105,6 @@
         <h2>Report</h2>
         <p>Multi-tab review report for ≥3 long sections — sticky sidebar, offset-anchored annotations, JSON export, print/PDF.</p>
         <span class="tag">long-form · annotated</span>
-      </a>
-      <a class="card" style="--c: #14b8a6; --c-glow: rgba(20,184,166,0.35)" href="slide/">
-        <div class="icon">🎞️</div>
-        <h2>Slide deck</h2>
-        <p>Prev/next deck for ≤12 visual beats — fullscreen mode, one-slide-per-page print, inline annotations.</p>
-        <span class="tag">deck · annotated</span>
       </a>
       <a class="card" style="--c: #f59e0b; --c-glow: rgba(245,158,11,0.35)" href="bento/">
         <div class="icon">🍱</div>

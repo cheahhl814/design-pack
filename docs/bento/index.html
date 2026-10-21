@@ -4,7 +4,7 @@
   ║  BENTO BRIEF TEMPLATE (one-pager)                                     ║
   ║  A single-page project briefing / summary in the 2026 bento-grid      ║
   ║  style: modular cards of varying span on a dark-first glass surface.  ║
-  ║  Carries the same v2 annotation system as the report/slide templates  ║
+  ║  Carries the same v2 annotation system as the report template         ║
   ║  (select text → comment / ask / delete / replace / format; drawer     ║
   ║  with export/import JSON) plus the v0.6.1 chrome parity toggles:      ║
   ║  theme (◐/◑), density (▤/▥ comfortable↔compact), font size (S/M/L).   ║
@@ -14,7 +14,7 @@
   ║  weekly readouts, one-page proposals — where the reader should see    ║
   ║  everything at a glance and can still leave inline review notes.      ║
   ║  For ≥3 long sections use the report template; for live data the      ║
-  ║  dashboard; for ≤12 sequential beats the slide deck.                  ║
+  ║  dashboard; every deck is now svg-slides (PNG + PDF).                 ║
   ║                                                                        ║
   ║  HOW TO ADAPT                                                         ║
   ║  1. Set <title>, body data-annot-storage (unique per brief), and      ║
@@ -1488,12 +1488,12 @@ body.annot-insert-armed main.content { cursor: text; }
 
 <script>
 /* ── v2 annotation engine (offset-anchored, 4 types) ─────────────────────
-   Inlined from features/slide/highlight-annotate.js. The slide template's
-   `data-annot-storage="slide-template"` on <body> gives it a clean storage
-   namespace; `data-annot-theme-key="slide-template-theme-v1"` preserves the
-   existing theme preference key. A small slide-template adapter at the
-   bottom wires drawer jumps → deck-nav so clicking a drawer item switches
-   to the right slide before scrollIntoView fires. */
+   Inlined from features/report/highlight-annotate.js — the engine's
+   canonical home since v0.26.0 (originally extracted from the HTML slide
+   template, which was removed in v0.26.0 when decks moved to svg-slides
+   → PNG + PDF). Generic `data-annot-storage` / `data-annot-theme-key`
+   body attributes give it clean per-brief storage + theme namespaces
+   (this file ships the bento-template-specific values on <body>). */
 
 /* ============================================================
    design-pack · highlight-annotate.js

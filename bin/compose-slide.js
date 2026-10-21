@@ -186,7 +186,7 @@ function compose(design, payload) {
   return { svg, text, graphics };
 }
 
-// One theme of a set: the slide-template palette, overridden by the set's own tokens and fonts
+// One theme of a set: the svg-bake.js THEMES bake palette, overridden by the set's own tokens and fonts
 function palette(set = 'lab', theme = 'light') {
   const conf = JSON.parse(fs.readFileSync(path.join(SETS_DIR, set, 'set.json'), 'utf8'));
   return { ...THEMES[theme], ...conf.fonts, ...(conf[theme] || {}) };

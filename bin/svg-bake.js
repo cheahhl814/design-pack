@@ -4,7 +4,7 @@
  * Used by bin/svg-export.js (standalone .svg export) and bin/compose-slide.js
  * (slide designs). Resolves var(--token,#fallback) + nested color-mix(in srgb, ...)
  * inside inline style attributes into plain hex + fill/stroke-opacity, using one
- * theme of the slide-template palette (light = the files' own fallbacks).
+ * theme of the shared bake palette (light = the files' own fallbacks).
  */
 // Slide-template palette (the library's fallbacks are its light values)
 const HEAD = 'Outfit, Inter, Segoe UI, Helvetica, Arial, sans-serif';

@@ -6,7 +6,7 @@
   ║    1. Light / dark theme toggle  (persists, honours system default)   ║
   ║    2. Highlight-comment annotations (v2: comment/delete/insert/replace)║
   ║                                                                        ║
-  ║  Shared with the slide template:                                       ║
+  ║  Shared with the sibling templates:                                   ║
   ║    3. Component library — .card / .badge / .stat-card / table /       ║
   ║       .grid-2 / .grid-3 / .stat-grid / .layer-stack / .chain-step /   ║
   ║       .eyebrow-* / .badge-line / .meta-card. All token-driven, so the  ║
@@ -66,7 +66,7 @@
       --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', 'Space Mono', Menlo, Consolas, monospace;
       --radius: 12px;
       --radius-sm: 6px;
-      /* Component palette — shared with the slide template so the
+      /* Component palette — shared with the sibling templates so the
          .card / .badge / .layer-stack / .chain-step / table / .stat-card
          styles below can reference consistent role-based color names
          regardless of which template the page is. The report's primary
@@ -80,7 +80,7 @@
       --deep-blue: #3b82f6;
       --navy: #1e3a5f;
       --white: #ffffff;
-      /* 10-step neutral palette (matches the slide template's role names
+      /* 10-step neutral palette (matches the sibling templates' role names
          so the shared .card / .badge / table / .layer / .chain-step
          styles work in both templates). In dark mode the palette is
          inverted so light-on-dark contrast holds for body text and
@@ -120,7 +120,7 @@
       --deep-blue: #2563eb;
       --navy: #1e3a5f;
       --white: #ffffff;
-      /* Light-mode slate palette (matches the slide template). */
+      /* Light-mode slate palette (matches the sibling templates). */
       --slate-50: #f8fafc;
       --slate-100: #f1f5f9;
       --slate-200: #e2e8f0;
@@ -258,7 +258,7 @@
       .report-panels > [data-panel] { display: block !important; page-break-before: always; }
     }
 
-    /* ── Component library (shared with the slide template) ── */
+    /* ── Component library (shared with the sibling templates) ── */
     .card { 
       background: var(--surface); 
       border: 1px solid var(--border-bright); 
@@ -674,7 +674,7 @@
 /* ═══ Inlined features/graphics/graphics.css (zero-dependency charts/diagrams/tables/motion) ═══ */
 /* ═══════════════════════════════════════════════════════════════════════
    design-pack · graphics.css
-   Shared zero-dependency graphics pack for the report, slide, bento
+   Shared zero-dependency graphics pack for the report, bento
    templates. Pure CSS/HTML — no JS, no canvas, no SVG libraries.
 
    COMPONENTS
@@ -1875,7 +1875,7 @@
           into view, so reviews can hop between findings and methodology without losing their place.</p>
 
         <h2>Replace me</h2>
-        <p>Delete this placeholder section and build your report or slide deck here. Add or remove tabs by
+        <p>Delete this placeholder section and build your report here. Add or remove tabs by
           editing the <code>&lt;nav class="report-sidebar"&gt;</code> and adding/removing
           <code>&lt;section data-panel="..."&gt;</code> blocks below. Both <code>data-tab</code> and
           <code>data-panel</code> use the same string id (the engine uses them interchangeably).</p>

@@ -1,8 +1,8 @@
 ---
 name: design-pack
-description: 'Four self-contained HTML templates — report (5-tab sticky sidebar, offset-anchored annotations, JSON export), slide deck (prev/next nav, inline annotations, JSON export), bento one-pager (2026 bento-grid snapshot briefing, full v2 annotation engine), and htmx dashboard (topbar, KPI row, sparkline, table, demo-mode mock backend). Pick report for ≥3 long sections, slide for ≤12 beats, bento for a one-page briefing, dashboard for live data. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", "one-pager", "briefing", "recap page", "SVG diagram", "infographic", "ecosystem" (HTML or standalone .svg), or MD/DOCX/PDF → HTML conversion. Ships a 94-template hand-drawn SVG diagram library + a zero-dep CSS graphics pack. Report/slide/bento ship the v2 annotation system; dashboard omits it (live data is not a stable anchor). All four are dark-first with glass chrome and density + font-size toggles.'
-version: 0.25.0
-updated: "2026-10-18"
+description: 'Three self-contained HTML templates — report (5-tab sticky sidebar, offset-anchored annotations, JSON export), bento one-pager (2026 bento-grid snapshot briefing, full v2 annotation engine), and htmx dashboard (topbar, KPI row, sparkline, table, demo-mode mock backend). Decks are designed SVG slides (5 theme sets × 6 designs + 16 backgrounds, 94-diagram library, composer gates) delivered as per-slide PNG + one merged vector PDF; report/bento ship v2 annotations, dashboard/decks omit them (baked SVG and live data are not stable anchors). Pick report for ≥3 long sections, bento for a briefing, dashboard for live data, svg-slides for any deck. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", "one-pager", "briefing", "recap page", "SVG diagram", "infographic", or MD/DOCX/PDF → HTML conversion. Dark-first, glass chrome, density + font-size toggles.'
+version: 0.26.0
+updated: "2026-10-21"
 triggers:
   - "HTML report"
   - "annotated report"
@@ -21,7 +21,7 @@ license: MIT
 
 # design-pack
 
-Four production-grade HTML templates, each self-contained (no external CDN dependencies beyond Google Fonts / htmx when used). The report, slide, and bento templates carry the v2 review/annotation system and the light/dark theme toggle; the dashboard template carries the theme toggle plus an htmx-driven live-data shell. All four are **dark-first** (dark is the starting theme, refined glass chrome, fluid display typography — the v0.7.0 aesthetic pass), and all four carry the density + font-size toggles from v0.6.1. The report and slide templates were battle-tested on a long-form research report with multiple sections and a companion slide deck in 2026; the bento template follows the 2026 bento-grid trend for snapshot summaries.
+Three production-grade HTML templates, each self-contained (no external CDN dependencies beyond Google Fonts / htmx when used), plus the SVG slide-deck toolchain. The report and bento templates carry the v2 review/annotation system and the light/dark theme toggle; the dashboard template carries the theme toggle plus an htmx-driven live-data shell. All three are **dark-first** (dark is the starting theme, refined glass chrome, fluid display typography — the v0.7.0 aesthetic pass), and all three carry the density + font-size toggles from v0.6.1. The report template was battle-tested on a long-form research report in 2026; the bento template follows the 2026 bento-grid trend for snapshot summaries. Since v0.26.0 the HTML slide template is **removed**: every deck ask composes designed SVG slides (see *Slide designs*) and delivers them as per-slide PNGs plus one merged vector PDF via `bin/svg-export.js --png --pdf --pdf-out deck.pdf`.
 
 ## When to invoke
 
@@ -29,15 +29,15 @@ Four production-grade HTML templates, each self-contained (no external CDN depen
 
 - "Build me an HTML report from `<path/to/file.md>`"
 - "Make this Markdown into a reviewable HTML page"
-- "Create a slide deck about X"
-- "Convert this DOCX / PDF to a deck"
+- "Create a slide deck about X" → svg-slides: compose designed slides, deliver PNG + merged PDF
+- "Convert this DOCX / PDF to a deck" → svg-slides (text goes through payloads; composer gates keep each slide inside its budgets)
 - "I need a single-file HTML the team can comment on"
 - "Generate the grant submission recap as HTML"
 - "Make a reading version of my manuscript"
 - "Give me a one-page briefing/recap of this sprint"
 - "Summarize this into a one-pager the panel can comment on"
 - "Draw me a mind map / org chart / process diagram as an SVG for my slides" → **standalone SVG**, no page (see *Standalone SVG* below)
-- "Make me a PowerPoint / .pptx deck with these diagrams" → **no .pptx builder** (removed in v0.23.0): compose SVG slides (see *Slide designs*) or export the figures (see *Standalone SVG*, `--png` for raster) for the user to place
+- "Make me a PowerPoint / .pptx deck with these diagrams" → **no .pptx builder** (removed in v0.23.0): compose SVG slides (see *Slide designs*) and deliver PNG + PDF (`--png --pdf --pdf-out`), or export the figures (see *Standalone SVG*, `--png` for raster) for the user to place
 - "The slides need to look designed, not like a template" / "a cover slide with a real design" → **svg-slides designs + composer** (see *Slide designs* below)
 
 **Do not invoke** for:
@@ -53,25 +53,25 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 | If the content has…                                                      | Use                                                                               | Why                                                                                                                                                                                 |
 | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ≥3 long sections, lots of prose, charts, references, appendices          | **report template** (`templates/report/template.html`)                            | Multi-tab lumen-guide pattern handles 20+ sections cleanly. Tab navigation + Mermaid diagrams work together. Reviewer can switch tabs, leave comments per tab, export one JSON.     |
-| ≤12 discrete visual beats, one idea per slide, mostly bullets + headings | **slide template** (`templates/slide/slide-template.html`)                        | Single-page deck with prev/next nav, fullscreen mode, slide-per-page print. Reviewer scrolls through slides linearly.                                                               |
+| ≤12 discrete visual beats, one idea per slide, mostly bullets + headings | **svg-slides** (`templates/svg-slides/` + `bin/compose-slide.js`)                      | Any deck ask goes here since v0.26.0. Compose one designed 1280×720 SVG per slide, deliver per-slide PNG + one merged vector PDF. Baked artifacts — no annotation system, no live theme toggle; re-theme by re-composing from payload JSONs. |
 | Live/polling data — KPIs, status tables, ops metrics, admin views        | **dashboard template** (`templates/dashboard/dashboard-template.html`)            | htmx-driven shell (topbar, stat row, sparkline chart, activity feed, sortable/filterable table) wired to `/api/*` endpoints. Not for review/annotation — for monitoring live state. |
 | One-page snapshot briefing — sprint recap, weekly readout, one-page proposal, everything at a glance + reviewer comments | **bento template** (`templates/bento/bento-template.html`)                        | 2026 bento-grid one-pager: modular glass cards (KPIs, pure-CSS chart, progress, timeline, quote, CTA) on a dark-first surface. Full v2 annotation engine. Static snapshot — numbers live in the file, not a server. |
 | Only one or a few diagrams/infographics, no page (for PPT, Word, Figma, a poster or a paper) | **svg-library component(s) → `bin/svg-export.js`** | Standalone `.svg` with the palette baked in, so it renders outside a browser. See *Standalone SVG (no HTML page)*. |
-| Decks that need real slide **design** (cover, chapter break, big statement, figure slides), not just layout chrome | **svg-slides** (`templates/svg-slides/sets/<set>/designs/` + `bin/compose-slide.js --set`) → one SVG per slide | Hand-drawn full-slide designs with slot markers. Text is budgeted and gated, svg-library graphics are inlined, colours are baked. See *Slide designs*. |
+| Decks that need real slide **design** (cover, chapter break, big statement, figure slides) | **svg-slides** (`templates/svg-slides/sets/<set>/designs/` + `bin/compose-slide.js --set`) → one SVG per slide | Same toolchain as every other deck (since v0.26.0 all decks are SVG). Hand-drawn full-slide designs with slot markers. Text is budgeted and gated, svg-library graphics are inlined, colours are baked. See *Slide designs*. |
 | Mixed: both a long-form report AND a summary deck                        | **report template as the canonical**, link to the deck as a downloadable artifact | Don't ship two HTMLs. The report template is the review surface; if the user also wants a separate deck, build that as a second file in the same project directory.                 |
 
 ### Decision rubric (use this in your first response)
 
 0. **If the user wants only a graphic** (a diagram, infographic or figure, not a page) → **standalone SVG**: skip the templates and export from the svg-library. If no catalog component matches the requested graphic type, don't stop at "not found" — search online for suitable examples and grow the library by hand-drawing a new component (see *Standalone SVG* step 1).
 1. **Count the sections in the source content.** If ≥3 sections each > 1 page, → **report template**.
-2. **If mostly bullets + headings + one idea per slide**, → **slide template**.
+2. **If mostly bullets + headings + one idea per slide**, → **svg-slides** (any deck, v0.26.0; payload per slide, compose, export PNG + PDF).
 3. **If the user wants live/polling data — metrics, status, KPIs, an admin/ops view backed by a server**, → **dashboard template**.
 4. **If user says "report" or "manuscript reading version" or "review page"**, → **report template**.
-5. **If user says "deck" or "slides" or "presentation"**, → **slide template** (unless they say "review deck", which means a long-form reading artifact — use the report template).
+5. **If user says "deck" or "slides" or "presentation"**, → **svg-slides** (they say "review deck", which means a long-form reading artifact — use the report template).
 6. **If user says "dashboard", "admin panel", "ops view", "htmx dashboard", or wants filtering/sorting/polling against live data**, → **dashboard template**.
 7. **If the content is a one-page snapshot summary** — sprint recap, weekly readout, one-page proposal, status snapshot — where the reader should see everything at a glance and leave inline review notes → **bento template**. (If it grows past one page or needs long prose sections, it graduates to the report template; if the numbers need to refresh from a server, it's a dashboard.)
 8. **If user says "one-pager", "briefing", "snapshot", "recap page", or "everything on one page"** → bento template.
-9. **Decks that need real slide DESIGN** (not just layout chrome) → `templates/svg-slides` + `compose-slide.js`, one composed SVG per slide. There is no `.pptx` builder (removed in v0.23.0); "deck" or "slides" alone still means the HTML slide template.
+9. **Every deck** → `templates/svg-slides` + `compose-slide.js`, one composed SVG per slide, delivered with `svg-export.js --png --pdf --pdf-out deck.pdf`. There is no `.pptx` builder (removed in v0.23.0) and no HTML slide template (removed in v0.26.0).
 10. **When in doubt, ask the user** with `ask_user_question` offering the template options.
 
 ## Files in this skill
@@ -83,13 +83,11 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 ├── templates/
 │   ├── report/
 │   │   └── template.html                       ← finalized report template (812 lines)
-│   ├── slide/
-│   │   └── slide-template.html                 ← finalized slide template (817 lines)
 │   ├── bento/
 │   │   └── bento-template.html                 ← bento one-pager (2026 bento grid, dark-first glass, v2 annotation engine inline)
 │   ├── dashboard/
 │   │   └── dashboard-template.html              ← finalized dashboard template (htmx + demo-mode mock backend)
-│   ├── svg-slides/                             ← v0.21.0 slide-design library, v0.24.0 theme sets (see templates/svg-slides/README.md)
+│   ├── svg-slides/                             ← Slide-design library (v0.21.0) + theme sets (v0.24.0); the ONLY deck toolchain since v0.26.0 (see templates/svg-slides/README.md)
 │   │   ├── README.md                           ← slot-marker spec, layout rule, gates, set list, lab slot tables
 │   │   ├── sets/<set>/                          ← lab (hand-drawn, default) · swiss · boardroom · editorial · bold (generated)
 │   │   │   ├── set.json                        ← label, description, light/dark palette, font pair
@@ -112,29 +110,23 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 │   │   ├── annotate.css                        ← annotation styles (216 lines)
 │   │   ├── theme-toggle.js                     ← light/dark toggle (66 lines)
 │   │   └── theme-toggle.css                    ← toggle styles (16 lines)
-│   ├── slide/
-│   │   ├── highlight-annotate.js               ← same v2 engine, available as upgrade
-│   │   ├── annotate.css                        ← same v2 styles
-│   │   ├── theme-toggle.js                     ← same toggle
-│   │   └── theme-toggle.css                    ← same styles
 │   └── dashboard/
 │       ├── theme-toggle.js                     ← same toggle engine (no fixed positioning; lives in the topbar)
 │       └── theme-toggle.css                    ← same toggle styles, unpositioned
 ├── bin/
-│   ├── svg-export.js                           ← bake a library SVG to a renderer-safe standalone .svg (`--png`: 2x PNG via headless Chrome)
+│   ├── svg-export.js                           ← bake a library SVG to a renderer-safe standalone .svg (`--png`: 2x PNG; `--pdf`/`--pdf-out`: vector PDF per file + merged deck PDF via pdfunite, both via headless Chrome)
 │   ├── svg-bake.js                             ← v0.21.0 shared token → hex bake logic (svg-export + compose-slide)
 │   ├── compose-slide.js                        ← v0.21.0 design + payload → one composed, baked SVG slide
 │   ├── build-slides-gallery.js                 ← v0.21.0 regenerates templates/svg-slides/gallery.html (one section per set)
 │   └── draw-slide-sets.js                      ← v0.24.0 draws the generated theme sets (edit here, never the .svg)
 └── test/
     ├── smoke-test-report.js
-    ├── smoke-test-slide.js
     ├── smoke-test-dashboard.js
     ├── smoke-test-slides.py                    ← v0.21.0 design QA + composer gates (run by run-all.js)
     └── run-all.js
 ```
 
-## The four templates at a glance
+## The three templates + the deck toolchain at a glance
 
 ### Report template (`templates/report/template.html`)
 
@@ -142,7 +134,7 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 
 **Annotation system**: **v2** (offset-anchored, multi-tab aware, JSON import+export, orphaned-state detection, **4 annotation types**: comment / delete / insert / replace). The UI uses `mark.annot` / `#annot-toggle` / `.annot-drawer` / `.annot-toolbar` / `#annot-editor`. Panel uses `data-annot-storage` to namespace by report. Types: comment, delete, insert, replace — delete/replace strike the original inline and show the suggested replacement; insert drops a caret marker with the proposed text. The v2 engine's `jumpTo` activates the correct tab/panel via `[data-tab]` buttons before scrolling — seamless cross-tab navigation from the annotation drawer.
 
-**Component library**: shared with the slide template (token-driven, so the same markup works in either template's brand palette): `.card` (with `.highlight`/`.warning`/`.success`/`.info` variants), `.badge` (with `.green`/`.teal`/`.amber`/`.blue` variants), `.stat-card` + `.stat-grid` for KPI blocks, `table` with navy header strip and slate borders, `.layer-stack` (with `.layer-1`..`.layer-5` color variants) for multi-stage processes, `.chain-step` + `.chain-arrow` for causal narratives, and the graphics-pack diagram set (`.flow` flowchart, `.mstrip` milestones, `.funnel`, `.venn`/`.venn.triple`, `.swot`, `.otree` org tree, `.cycle` loop — all zero-dependency, see `features/graphics/graphics.css` headers for usage), `.grid-2` / `.grid-3` for card layouts, `<pre><code>` code blocks (report + slide only; token-themed, no syntax highlighter, scroll on screen / wrap in print, annotatable), `.eyebrow` (with `.eyebrow-teal`/`.coral`/`.amber`/`.green`/`.navy` variants) for section labels, `.badge-line` for above-title pills, `.meta-card` + `.meta-grid` for project/event metadata, Mermaid diagrams (Mermaid 10+ via CDN), theme toggle button.
+**Component library**: shared with the report and bento templates (token-driven, so the same markup works in either template's brand palette): `.card` (with `.highlight`/`.warning`/`.success`/`.info` variants), `.badge` (with `.green`/`.teal`/`.amber`/`.blue` variants), `.stat-card` + `.stat-grid` for KPI blocks, `table` with navy header strip and slate borders, `.layer-stack` (with `.layer-1`..`.layer-5` color variants) for multi-stage processes, `.chain-step` + `.chain-arrow` for causal narratives, and the graphics-pack diagram set (`.flow` flowchart, `.mstrip` milestones, `.funnel`, `.venn`/`.venn.triple`, `.swot`, `.otree` org tree, `.cycle` loop — all zero-dependency, see `features/graphics/graphics.css` headers for usage), `.grid-2` / `.grid-3` for card layouts, `<pre><code>` code blocks (report + bento; token-themed, no syntax highlighter, scroll on screen / wrap in print, annotatable), `.eyebrow` (with `.eyebrow-teal`/`.coral`/`.amber`/`.green`/`.navy` variants) for section labels, `.badge-line` for above-title pills, `.meta-card` + `.meta-grid` for project/event metadata, Mermaid diagrams (Mermaid 10+ via CDN), theme toggle button.
 
 **Print**: `@media print` hides sidebar, shows all panels sequentially with page breaks. `beforeprint` event re-renders Mermaid. Tested with `google-chrome --headless --print-to-pdf`.
 
@@ -150,25 +142,21 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 
 **Best for**: long-form research reports, grant progress reports, manuscript reading versions, gap analyses, EOI drafts.
 
-### Slide template (`templates/slide/slide-template.html`)
+### Slide-deck delivery (svg-slides → composed SVG → PNG + PDF; since v0.26.0)
 
-**Pattern**: single-page prev/next deck with dots, counter, fullscreen, home button, slide-per-page print.
+**Replacement of the removed HTML slide template** (`templates/slide/slide-template.html`, deleted in v0.26.0 — its prev/next shell, v1 annotation system and inline deck chrome went with it). Every deck ask now:
 
-**Annotation system**: **v2** (offset-anchored, 4 types: comment/delete/insert/replace, JSON import+export, orphaned-state detection, per-slide `data-panel` for cross-slide navigation). Inline CSS + JS (inlined from `features/slide/{annotate.css,highlight-annotate.js}`). The UI uses `mark.annot` / `.annot-toggle` / `.annot-toolbar` / `.annot-editor` / `.annot-drawer` / `.annot-insert-toggle`. Panel uses localStorage key `annotations:slide-template` (set via `data-annot-storage` on `<body>`; change the body attribute to namespace per deck). A small inline adapter wraps `__deckGoTo` so clicking a drawer item switches slides first, then scrollIntoView fires.
+1. Author one JSON payload per slide against the chosen theme set's slot tables (`templates/svg-slides/sets/<set>/README.md`).
+2. Compose: `node bin/compose-slide.js <design> --set <set> --payload <p>.json --theme <light|dark> --out slides/` (composer gates fail loudly — fix by shortening lines, never by editing budgets).
+3. Deliver: `node bin/svg-export.js slides/*.svg --theme <light|dark> --out deck/ --png --pdf --pdf-out deck.pdf` — per-slide baked SVG + 2x PNG + vector PDF, plus one merged, page-sized PDF via pdfunite.
 
-**Component library**: tokens (slate-50 to slate-900 + brand teal/coral/amber/navy), `.card.highlight/warning/success/info`, `.badge-*`, `.stat-card`, `.layer-stack`, `.chain-step`, `+ 2 component reference slides` showing every reusable block.
-
-**Print**: `@media print` hides UI chrome and forces `slide { position: static; page-break-after: always; height: 100vh; }` — one slide per page PDF.
-
-**Self-contained**: All CSS inline, all JS inline. No external dependencies. Drop the file anywhere.
-
-**Best for**: pitch decks, conference talks, lightning talks, research summary decks, internal readouts (≤12 slides).
+Baked slides are frozen artifacts: no inline annotation (a baked SVG is not a stable text anchor), no live theming — re-theme from the payloads. Review-capable HTML work stays with the report and bento templates. (The compose-then-inline-into-an-HTML-shell hybrid used for genomics-gap-deck in 2026-10 is no longer a shipped deliverable; PNG + PDF replaces it.)
 
 ### Bento brief template (`templates/bento/bento-template.html`)
 
 **Pattern**: single-page bento grid — a hero header (eyebrow pill, gradient display title, lede, meta chips) above a 12-column grid of modular glass cards. Card variants: KPI row (`.kpi-row`), pure-CSS bar chart (`.bars`), progress list (`.progress-item`), gradient quote card (`.quote`), timeline (`.tl`), key-list (`.key-list`), gradient CTA (`.cta`); spans `.span-4`–`.span-12` (collapse to full width <980px). Dark-first glass: translucent `color-mix` surfaces + `backdrop-filter`, ambient radial accent glow behind the grid, hover lift + accent-glow shadow.
 
-**Annotation system**: **v2** — the full engine inlined from the slide template (the token-mapping `:root` block was stripped; the bento defines the generic token names directly). Select text → comment/ask/delete/replace/format; drawer with JSON export/import; localStorage namespace via `data-annot-storage="bento-template"` on `<body>` (change it per brief).
+**Annotation system**: **v2** — the full engine inlined (its token-mapping `:root` block was stripped; the bento defines the generic token names directly). Select text → comment/ask/delete/replace/format; drawer with JSON export/import; localStorage namespace via `data-annot-storage="bento-template"` on `<body>` (change it per brief).
 
 **Chrome parity**: theme toggle (◐), density toggle (▤/▥ — `[data-density]` drives `--bento-pad`/`--bento-gap`/`--bento-kpi-gap`), font-size toggle (S/M/L root scaling), all with bento-specific storage keys (`bento-density`, `bento-font-size`) and print resets.
 
@@ -186,7 +174,7 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 
 **Demo mode (ships on by default)**: the template is *not* wired to a real server out of the box. A `data-demo-mode` attribute on `<body>` plus a small `XMLHttpRequest` shim (marked with `« BEGIN/END DEMO MODE »` banners near the end of `<body>`) intercepts every request to `/api/*` and answers it from an embedded mock dataset (`DASHBOARD_MOCK`), so the file opens in a browser and is fully interactive — filtering, sorting, polling, pause/resume — before any backend exists. **Delete the demo-mode block and the `data-demo-mode` attribute once a real backend is wired**; every `hx-get`/`hx-trigger`/`hx-vals` attribute in the markup is already what you'd point at production routes and does not change.
 
-**Component library**: same design tokens as the report/slide templates (`--bg`, `--surface`, `--accent`, etc.) plus dashboard-only additions: `.stat-card`, `.panel`, `.chart-wrap` (inline SVG sparkline), `.feed` (activity list), `.badge.success/warning/error/info`, sortable `<th data-sort-key>`.
+**Component library**: same design tokens as the report template (`--bg`, `--surface`, `--accent`, etc.) plus dashboard-only additions: `.stat-card`, `.panel`, `.chart-wrap` (inline SVG sparkline), `.feed` (activity list), `.badge.success/warning/error/info`, sortable `<th data-sort-key>`.
 
 **Annotation system**: **none, intentionally**. Live/polling data is not a stable annotation target — highlighted text would shift underneath its anchor on every refresh. If the user needs reviewer comments on a snapshot of dashboard data, export a static report instead (report template), don't annotate this page.
 
@@ -333,7 +321,7 @@ When the user wants **only a diagram or a few graphics**, for a PowerPoint/Keyno
 1. Pick the component(s) by intent from the catalog above. **If no component matches the requested graphic type, wire in online search before giving up:** search for reference examples of that graphic type (2–4 varied queries, e.g. the type name + "diagram", "infographic", "science template"), curate the best 2–4 source URLs (fetch them to see the actual layouts), then hand-draw a **new svg-library component** from those references following *Adding a new component* in `features/graphics/svg-library/README.md` (its step 0 is this research pass). Add the catalog row, add the component to the delivery, and rebuild (`node bin/build-svg-gallery.js`) + re-run tests (`node test/run-all.js`) so the library grows every time the user asks for a graphic kind it lacks. Known-fetchable source sites: BioRender template gallery, Wikimedia Commons diagrams, USGS/NOAA/NPS, edu.rsc.org, Kuraplan, LivePhysics infographics, Mind the Graph. Sites that 403 (bot walls) or return empty: Magnific, Shutterstock, Dreamstime, Adobe Stock, Britannica, Dribbble — don't burn fetches on them.
 2. Copy `features/graphics/svg-library/svg/<name>.svg` into the user's working directory and edit the `<text>` labels, `aria-label` and `<title>` there (same rules as pasting into a page).
 3. Export: `node <skill>/bin/svg-export.js <edited>.svg [--theme light|dark] --out <dir>`. Library files rely on `var()` + `color-mix()`, which **only browsers resolve**; PowerPoint, Word, Inkscape, Illustrator, Figma import and cairo/rsvg converters render them black or blank. The export bakes one palette into plain hex + `fill-opacity`/`stroke-opacity`, strips the authoring comment, and sets `width="800" height="450"`. `--theme dark` also paints a background, because light text on a transparent canvas disappears on white pages.
-4. Hand over the exported file(s). Need PNG? Add `--png` (2x raster of the exported file via headless Chrome); never screenshot the raw library file.
+4. Hand over the exported file(s). Need PNG? Add `--png` (2x raster of the exported file via headless Chrome); never screenshot the raw library file. Need PDF? Add `--pdf` (vector, page-sized, text stays selectable) and `--pdf-out deck.pdf` to merge several files into one deck PDF.
 
 ### Slide designs (svg-slides + composer)
 
@@ -350,66 +338,67 @@ When the user wants **only a diagram or a few graphics**, for a PowerPoint/Keyno
 5. A background slide: `node <skill>/bin/compose-slide.js bg-<name> --payload '{}' --theme dark --out <dir>`. Any payload key is `SLOT-UNKNOWN`.
 6. A new archetype? Follow *Adding a new design* in the svg-slides README: research 2–4 examples first, draw the design slot-marked, add a sample payload and a slot table, then rebuild the gallery and run the tests.
 
-## Pipeline (Decide → Copy → Adapt → Render → Wire annotation / backend)
+## Pipeline (Decide → Copy/Compose → Adapt → Render → Wire annotation / backend)
 
 1. **Decide** — apply the decision rubric above. If unsure, ask the user.
-2. **Copy** — copy `templates/<report|slide|dashboard>/*.html` to the project's working directory. Set the `<title>` and the `data-report-id` (report) / `DECK_CONFIG` (slide) / topbar title + `data-report-id` (dashboard) at the top.
+2. **Copy / compose** — copy `templates/<report|bento|dashboard>/*.html` to the project's working directory and set the `<title>` + `data-report-id` (report) / topbar title (dashboard) / hero + `data-annot-storage` (bento); for a deck, compose slides per *Slide designs* and export per *Slide-deck delivery*.
 3. **Adapt**:
    - Report: replace each `<main class="content" data-annot-root data-panel="...">` with the section content.
-   - Slide: replace each `<section class="slide slide-title active" id="...">` with the slide content. The reference slides can be deleted after the user has copied the components they need.
+   - Deck: one payload JSON per slide; fix composer-gate failures by shortening text, never by editing budgets.
    - Dashboard: adjust the sidebar nav links, stat/table/chart column meaning to match the real data, and — once a backend exists — replace `DASHBOARD_MOCK`'s four routes with real server routes returning the same fragment shapes.
    - Bento: replace the hero (eyebrow/title/lede/meta chips) and each `.b-card` with the brief's content; keep card spans roughly balanced (8/4, 4/4/4, 7/5 works well); set `data-annot-storage` to a unique per-brief key.
-4. **Render** — open the HTML in a browser. Check that the theme toggle works; for report/slide, that the annotation drawer opens and keyboard nav works (slides) and print preview looks clean; for dashboard, that the KPI row/chart/feed/table populate and that search/sort/filter/pause-resume all work.
+4. **Render** — open the HTML in a browser (or view a rendered PNG for decks). Check that the theme toggle works; for report/bento, that the annotation drawer opens and print preview looks clean; for dashboard, that the KPI row/chart/feed/table populate and that search/sort/filter/pause-resume all work; for decks, that the PDF page count matches the slide count and the PNGs are complete (view at least the title slide).
 5. **Wire annotation / backend**:
-   - Report: verify the storage key is unique (don't reuse keys from other reports); set `data-annot-storage="my-report-2026-q3"` on `<body>`.
-   - Slide: set `DECK_CONFIG.storageKey` in the inline script.
+   - Report/bento: verify the storage key is unique (don't reuse keys from other reports); set `data-annot-storage="my-report-2026-q3"` on `<body>`.
    - Dashboard: once a real backend serves `/api/stats|chart|activity|table`, delete the `« BEGIN/END DEMO MODE »` script block and the `data-demo-mode` attribute on `<body>`. Nothing else in the markup changes.
+   - Decks: n/a — baked artifacts, no annotation system.
 
 ## Annotation system — what ships in the box
 
-The report, slide, and bento templates ship with a full annotation system; the dashboard template intentionally ships **none** (see its section above for why).
+The report and bento templates ship with a full annotation system; the dashboard template and the SVG deck toolchain intentionally ship **none** (dashboard: live data is not a stable anchor; baked slides: text is hex-baked SVG, not selectable HTML).
 
-| Feature                                               | Report template (v2)     | Slide template (v2)               |
+| Feature                                               | Report template (v2)     | Bento template (v2)               |
 | ----------------------------------------------------- | ------------------------ | --------------------------------- |
 | Select text → floating comment pill                   | ✓ (3-button toolbar)     | ✓ (3-button toolbar)              |
 | Side drawer with list of annotations                  | ✓ (right-side drawer)    | ✓ (right-side drawer)             |
-| Click highlight to jump to drawer entry               | ✓                        | ✓ (with slide-jump adapter)       |
+| Click highlight to jump to drawer entry               | ✓                        | ✓                                 |
 | Edit + delete existing annotations                    | ✓                        | ✓                                 |
 | Export JSON                                           | ✓ (download + clipboard) | ✓ (download + clipboard)          |
 | Import JSON (merge by id)                             | ✓                        | ✓                                 |
 | Orphaned-state detection                              | ✓ (red border + warning) | ✓ (red border + warning)          |
-| Multi-tab panel activation on jump                    | ✓ (uses `[data-tab]`)    | ✓ (uses `[data-panel]` per slide) |
+| Multi-tab panel activation on jump                    | ✓ (uses `[data-tab]`)    | —                                 |
 | Anchor on offsets (survives Mermaid re-render)        | ✓                        | ✓                                 |
 | Annotation types: comment / delete / insert / replace | ✓                        | ✓                                 |
-| localStorage namespace                                | `annotations:<id>`       | `annotations:slide-template`      | `annotations:bento-template`     |
+| localStorage namespace                                | `annotations:<id>`       | `annotations:bento-template`      |
 
-**Both report and slide templates ship the v2 annotation engine as of v0.4.0.** The slide template's inline CSS+JS are kept in sync with `features/slide/{annotate.css,highlight-annotate.js}` (the two `features/*` copies are also byte-identical to the report's `features/report/*` — see the invariant below). If you want a different annotation UI surface (e.g. a tooltip instead of a drawer, or a comment-only single-button toolbar), edit one place: the inline block in `templates/slide/slide-template.html`.
+**Report and bento ship the v2 annotation engine.** The bento's inline CSS+JS come from `features/report/{annotate.css,highlight-annotate.js}` (the engine's canonical home since the HTML slide template was removed in v0.26.0). If you want a different annotation UI surface (e.g. a tooltip instead of a drawer, or a comment-only single-button toolbar), edit the engine in `features/report/` and re-check both consumers.
 
 ## Theme toggle
 
-All three templates have a `◐ dark` / `◑ light` button. Report and dashboard templates use `features/*/theme-toggle.js`. Slide template uses an inline equivalent (4 lines). All of them:
+All three templates have a `◐ dark` / `◑ light` button. Report and dashboard templates use `features/*/theme-toggle.js`; bento inlines an equivalent. All of them:
 
-- Persist to localStorage (dashboard uses its own key, `dashboard-theme`, so it doesn't collide with a report/slide open in the same origin)
+- Persist to localStorage (dashboard uses its own key, `dashboard-theme`, so it doesn't collide with a report open in the same origin)
 - Honour `prefers-color-scheme` on first visit
 - Switch every component (cards, badges, stats, Mermaid, dashboard panels) via `[data-theme]` attribute on `<html>`
 - Hidden in print
 
-Positioning differs: report/slide float the button `position: fixed` top-right; the dashboard places it inline in the topbar (no `position: fixed`), since the topbar is already a persistent chrome element.
+Positioning differs: the report floats the button `position: fixed` top-right; the dashboard places it inline in the topbar (no `position: fixed`), since the topbar is already a persistent chrome element.
 
 ## Hard invariants (do not lower)
 
-- **All UI must remain reachable**: theme toggle (◐), density toggle (▤), font-size toggle (M), annotation panel (💬, report/slide/bento only), navigation (slide template: prev/next/dots, report template: tab strip, dashboard: sidebar + table toolbar). Never hide these without a visible alternative.
-- **Annotations must persist across reloads** (report/slide). localStorage must remain valid JSON at all times. If parsing fails, start fresh — never crash the page.
-- **Print must work cleanly** (report/slide; dashboard hides topbar/sidebar/table actions in `@media print` but is not designed as a primary print artifact — recommend the report template for anything that must be printed/PDF'd).
+- **All UI must remain reachable**: theme toggle (◐), density toggle (▤), font-size toggle (M), annotation panel (💬, report/bento only), navigation (report: tab strip, dashboard: sidebar + table toolbar). Never hide these without a visible alternative.
+- **Annotations must persist across reloads** (report/bento). localStorage must remain valid JSON at all times. If parsing fails, start fresh — never crash the page.
+- **Print must work cleanly** (report template; dashboard hides topbar/sidebar/table actions in `@media print` but is not designed as a primary print artifact — for decks, deliver `--pdf-out` merged PDFs; for anything else that must be printed/PDF'd, recommend the report template).
 - **Single-file portability**: when a user copies the HTML to a new project, all CSS/JS must work without external CDN (Google Fonts and the pinned htmx CDN script with SRI are the only allowed exceptions; everything else must be inlined or local).
 - **Dashboard demo mode must never silently ship to production**: when adapting the dashboard template for a real deployment, always confirm the `« BEGIN/END DEMO MODE »` block and `data-demo-mode` attribute were removed once real `/api/*` routes exist — a demo mock left in place will mask a missing/broken backend.
 
 ## Sources
 
-- `template.html` and `slide-template.html` (research report + slide deck, 2026-07) — battle-tested templates
+- `template.html` (research report, 2026-07) — battle-tested template; the former `slide-template.html` (its companion deck, 2026-07) was removed in v0.26.0 when decks moved fully to svg-slides
 - `dashboard-template.html` (added 2026-07-11) — htmx dashboard shell, new template family for live/polling data views
-- `bento-template.html` (added 2026-09-08, v0.7.0) — bento-grid one-pager. The full v2 annotation engine is inlined from the slide template with its token-mapping `:root` block stripped (the bento defines generic token names directly); density/font-size IIFEs reused with `bento-density`/`bento-font-size` storage keys. Bar chart is pure CSS, no Mermaid/htmx. Aesthetic sourced from the 2026 UI-trends research pass (bento grids as the default snapshot pattern, dark-first design, restrained glass, hover-glow micro-interactions).
+- `bento-template.html` (added 2026-09-08, v0.7.0) — bento-grid one-pager. The full v2 annotation engine is inlined with its token-mapping `:root` block stripped (the bento defines generic token names directly); density/font-size IIFEs reused with `bento-density`/`bento-font-size` storage keys. Bar chart is pure CSS, no Mermaid/htmx. Aesthetic sourced from the 2026 UI-trends research pass (bento grids as the default snapshot pattern, dark-first design, restrained glass, hover-glow micro-interactions).
 - v0.13.0 SVG library to 40 components (2026-10-07) — second delegation round (claude code via herdr, svglib-v13-claude; 18 inspiration page fetches incl. subpages of infodiagram/free-powerpoint-templates-design/presentationgo; **magnific.com 403'd WebFetch and curl — its pages were never seen**). 20 new templates: timeline-vertical, swimlane-gantt, honeycomb-cluster, dual-hub, petal-cycle, decision-tree, snake-path, onion-layers, pillars-foundation, versus-columns, lightbulb-layers, matrix-nine-box, s-curve-adoption, growth-tree, spiral-growth, domino-chain, network-mesh, merge-paths, five-w-agenda, orbit-satellites. Professional polish pass on all 20 originals now standardised into one type scale (hero 20/700 · label 16/600 · annotation 13 · caption 12 · eyebrow 11/700 ls-1.2 · badge 13/700), normalised arrowheads (13×13 connectors, 16×16 spines), quadrant got the offset shadow, puzzle label overlap + radar glyph fixed. Validator hardened: rejects `<mask>/<pattern>/<clipPath>` and `fill="var(...)"`/`stroke="var(...)` presentation attributes; **XML-comment `--` check added** (staircase-steps had illegal `--accent` inside a comment that xml.etree rejected but the old validator missed). New techniques documented: pre-computed polygon sampling instead of clipPath (bulb slices), knockout label halos via `paint-order:stroke` for labels-on-lines. Verified: 40/40 build + independent convention recheck (my ET.parse loop) + both-theme screenshots + 60/60 tests; agent-side rotation-aware getBBox check (final: 0 clipped, 0 overlaps; earlier runs caught 4 real overlaps, fixed).
+- v0.26.0 HTML slide template removed; decks → PNG + PDF (2026-10-21) — user decision taken over from the 2026-10-18 round: since svg-slides had matured (5 theme sets × 6 designs + 16 backgrounds, composer gates), the HTML slide feature was **replaced**, not merged: `templates/slide/`, `features/slide/`, `test/smoke-test-slide.js` and `docs/slide/` deleted; every deck ask routes to svg-slides and delivers per-slide baked SVG + 2x PNG + a merged vector PDF (`svg-export.js --png --pdf --pdf-out deck.pdf`; per-slide PDF is page-sized and margin-free via headless-Chrome print-to-pdf of a wrapper HTML, merged in input order with pdfunite). Decks lose the v1/v2 inline-annotation review surface (baked SVG is not a stable text anchor — same rationale as the dashboard) and live theming (re-theme via payload re-compose); report + bento keep the annotation engine (canonical copy in `features/report/`). Verified: 2-sample compose→export round trip (2-page PDF at 960×540 pt = 1280×720 px, PNG eyeballed), plus the full suite green. Note for the future: the composé-then-inline-into-an-HTML-shell hybrid (genomics-gap-deck, 2026-10-20) is no longer a shipped deliverable.
 - v0.25.0 renamed (2026-10-18) — the skill/repo was renamed **from `html-template-pack` to `design-pack`** (user choice after a 3-round collision-checked brainstorm; "design-kit"/"design-pack" were the requested flavour, "design-pack" carried 1214 generic GitHub hits but no exact-name product owner). All in-repo labels, URLs (`github.com/cheahhl814/design-pack`, Pages `cheahhl814.github.io/design-pack/`), local dir, and downstream dependencies (`red-pen`, `research-lifecycle`, `~/.pi/agent/AGENTS.md` routing) updated in lockstep. Old Pages URL does NOT redirect.
 - v0.24.0 svg-slides theme sets (2026-10-18) — four new slide theme sets beside the hand-drawn `lab` set (moved to `sets/lab/`): `swiss` (International Typographic Style, after KeynotePro "Geneva"), `boardroom` (generic consulting: deckary.com design-guide rules, unofficial consulting-style prompt themes), `editorial` (Gamma "warm editorial", tosea.ai editorial decks, Lovable "Stone Paper") and `bold` (Slidev "bricks", Keynote "Bold" themes); composition and palette cues only, no assets. Each has the six slide designs with lab's slot contract plus two backgrounds, a `set.json` palette (light/dark + font pair) baked over the defaults, and a generated README. `compose-slide.js --set`; `bin/draw-slide-sets.js` draws the four sets (`--out` for a diff run). Tests: set contract, generator reproducibility, every set × design × theme composing the shared samples, and a Chrome fit check that fills every slot to its budget (mutants caught: widened budget, renamed slot, hand edit). Gallery: one section per set with scoped palettes.
 - v0.23.0 PPTX builder removed (2026-10-18) — the user found the composed SVG slide decks sufficient. Deleted `bin/make-pptx-deck.py`, `bin/pptx-preview.py`, `templates/deck/` (house bases, author script, chrome) and `test/smoke-test-pptx-deck.py`. `compose-slide.js` now writes only `<name>.svg` (no `.bg.svg` / `.slides.json` sidecar); designs drop `data-native-footer`. Papercuts: `svg-export.js --png` (2x PNG via headless Chrome); the svg-library gallery now orders and numbers cards by the README catalog (build fails on a component without a catalog row). The v0.18–v0.22 entries below describe the removed builder as history.

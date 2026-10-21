@@ -5,7 +5,7 @@
 [![Live demo](https://img.shields.io/badge/demo-GitHub%20Pages-2ea44f)](https://cheahhl814.github.io/design-pack/)
 [![Type](https://img.shields.io/badge/type-agent%20skill-blueviolet)](#-installation)
 
-Four self-contained HTML templates — **report** (sticky sidebar, 5 icon+label tabs, v2 offset-anchored annotations, theme toggle), **slide deck** (prev/next nav, inline v2 annotations, theme toggle), **bento brief** (2026 bento-grid one-page snapshot briefing, dark-first glass, full v2 annotation engine), and **htmx dashboard** (topbar, KPI row, sparkline chart, activity feed, sortable table, demo-mode mock backend). All four ship the **v0.12.0 zero-dependency graphics pack** (donut, radial gauge, horizontal bars, heatmap, data-bar cells, pure-CSS flowchart, milestone strip, conversion funnel, venn, SWOT grid, org tree, cycle loop, comparison table, pull-quote, scroll-driven motion) and are single-file, review-ready HTML with no external CDN dependencies beyond Google Fonts (report/slide/bento) and pinned htmx with SRI (dashboard). All four are **dark-first** with refined glass chrome, fluid display typography, and hover-glow micro-interactions (v0.7.0 aesthetic pass).
+Three self-contained HTML templates — **report** (sticky sidebar, 5 icon+label tabs, v2 offset-anchored annotations, theme toggle), **bento brief** (2026 bento-grid one-page snapshot briefing, dark-first glass, full v2 annotation engine), and **htmx dashboard** (topbar, KPI row, sparkline chart, activity feed, sortable table, demo-mode mock backend) — plus a full **SVG slide-deck toolchain** (5 theme sets × 6 designs + 16 backgrounds, composer with text-budget gates, delivery as per-slide PNG + one merged vector PDF). Decks are **not** HTML since v0.26.0 (the HTML slide template was removed; see the slide-designs section below). All three templates ship the **v0.12.0 zero-dependency graphics pack** (donut, radial gauge, horizontal bars, heatmap, data-bar cells, pure-CSS flowchart, milestone strip, conversion funnel, venn, SWOT grid, org tree, cycle loop, comparison table, pull-quote, scroll-driven motion) and are single-file, review-ready HTML with no external CDN dependencies beyond Google Fonts (report/bento) and pinned htmx with SRI (dashboard). All three are **dark-first** with refined glass chrome, fluid display typography, and hover-glow micro-interactions (v0.7.0 aesthetic pass).
 
 **Repository**: https://github.com/cheahhl814/design-pack
 
@@ -24,9 +24,9 @@ Ninety-four **hand-drawn inline SVG infographic templates** for concept/summary 
 
 Every file: `role="img"` + `aria-label` + `<title>`, id-free markup (safe to paste several into one page), token-driven colors wired via `style` attributes (`var(--token, #fallback)` + `color-mix()` — adapts to every template palette and both themes with zero edits), constant 800×450 `viewBox`. Conventions and the add-a-component workflow: [`features/graphics/svg-library/README.md`](./features/graphics/svg-library/README.md). Regenerate the gallery with `node bin/build-svg-gallery.js`. **Need just the graphic, no page?** `node bin/svg-export.js <name|file.svg> [--theme dark] --out <dir>` writes a standalone `.svg` with the palette baked in, which renders in PowerPoint, Word, Figma and Inkscape.
 
-## 🎞️ SVG slide designs + composer (v0.21.0; theme sets v0.24.0)
+## 🎞️ SVG slide designs + composer (v0.21.0; theme sets v0.24.0; the only deck toolchain since v0.26.0)
 
-Whole **slide designs** drawn as SVG in the svg-library style, for decks that need real design and not just layout chrome. The six designs live in [`templates/svg-slides/sets/`](./templates/svg-slides/), in five theme sets, with a generated, token-driven [`gallery.html`](./templates/svg-slides/gallery.html):
+All decks (any length, any ask) are composed here as **slide designs** drawn as SVG in the svg-library style — real design, not layout chrome. The six designs live in [`templates/svg-slides/sets/`](./templates/svg-slides/), in five theme sets, with a generated, token-driven [`gallery.html`](./templates/svg-slides/gallery.html):
 
 `title-hero` · `section-break` · `big-statement` · `content-two-col` · `full-diagram` · `closing`
 
@@ -58,12 +58,12 @@ Slot spec, layout rule, per-design slot tables and the add-a-design workflow: [`
 ## Contents
 
 - [SVG diagram library (v0.16.0)](#️-svg-diagram-library-v0160)
-- [SVG slide designs + composer (v0.21.0; theme sets v0.24.0)](#️-svg-slide-designs--composer-v0210-theme-sets-v0240)
+- [SVG slide designs + composer (v0.21.0; theme sets v0.24.0; the only deck toolchain since v0.26.0)](#️-svg-slide-designs--composer-v0210-theme-sets-v0240-the-only-deck-toolchain-since-v0260)
 - [Live demo](#-live-demo)
 - [Installation](#-installation)
 - [Usage examples](#-usage-examples)
 - [What this skill does](#-what-this-skill-does)
-- [Annotation system](#-annotation-system-report--slide)
+- [Annotation system](#-annotation-system-report--bento)
 - [Theme toggle](#-theme-toggle)
 - [Density and font-size toggles](#-density-and-font-size-toggles-all-three-templates)
 - [Graphics pack](#-graphics-pack-v080)
@@ -72,19 +72,19 @@ Slot spec, layout rule, per-design slot tables and the add-a-design workflow: [`
 
 ## 🚀 Live demo
 
-All four templates are deployed as a working demo on GitHub Pages. Open any of them to interact with the live UI — no setup, no build step, no backend.
+All three HTML templates are deployed as a working demo on GitHub Pages. Open any of them to interact with the live UI — no setup, no build step, no backend.
 
 | | |
 |---|---|
 | 🌐 **Launcher** | https://cheahhl814.github.io/design-pack/ |
 | 📄 **[Report demo](https://cheahhl814.github.io/design-pack/report/)** | "Q3 Operations Review — Northwind Logistics" (5 tabs, custom content) |
-| 🎞️ **[Slide demo](https://cheahhl814.github.io/design-pack/slide/)** | "Helios 2 — Real-Time Inference for the Edge" (7 slides incl. graphics-pack demos) |
+| 🎞️ **[Slide demo](https://cheahhl814.github.io/design-pack/slide/)** | REPLACED in v0.26.0 — decks are now designed SVG slides (compose + export PNG/PDF), see the svg-slides section and `templates/svg-slides/gallery.html` |
 | 🍱 **[Bento demo](https://cheahhl814.github.io/design-pack/bento/)** | "Project Phoenix — One-page Recap" (bento grid, full annotation engine) |
 | 🧩 **[Components demo](https://cheahhl814.github.io/design-pack/components/)** | The graphics pack in one page — donut, gauge, bars, heatmap, flow, compare, pull-quote, motion legend |
 | 🖍️ **[SVG library demo](https://cheahhl814.github.io/design-pack/svg-library/)** | All 94 SVG infographic templates, token-driven, with source blocks — ◐ toggle previews both palettes |
 | 📊 **[Dashboard demo](https://cheahhl814.github.io/design-pack/dashboard/)** | "Northwind Logistics — Operations Dashboard" (mock data, live polling) |
 
-Each demo is a curated showcase with realistic content (not a blank template). Try the **◐ theme toggle**, **▤ density toggle**, **S/M/L font size toggle** in the top-right of every demo. In the report, slide, and bento demos, select any text to leave tracked-changes-style annotations, then export them as JSON from the 💬 Notes panel.
+Each demo is a curated showcase with realistic content (not a blank template). Try the **◐ theme toggle**, **▤ density toggle**, **S/M/L font size toggle** in the top-right of every demo. In the report and bento demos, select any text to leave tracked-changes-style annotations, then export them as JSON from the 💬 Notes panel.
 
 **Source files** (for starting your own document): see [`templates/`](./templates/) and follow the usage examples below.
 
@@ -98,9 +98,9 @@ This is an **agent skill**, not a user-facing library. The skill is loaded by th
 Import the following skill: https://github.com/cheahhl814/design-pack
 ```
 
-**Optional, for the SVG tooling only:** `node` for `bin/svg-export.js` / `bin/compose-slide.js`, plus Chrome/Chromium for `svg-export.js --png`. The HTML templates need none of these.
+**Optional, for the SVG tooling only:** `node` for `bin/svg-export.js` / `bin/compose-slide.js`, plus Chrome/Chromium for `svg-export.js --png --pdf` and `pdfunite` (poppler-utils) for merged deck PDFs. The HTML templates need none of these.
 
-Once installed, the skill is **auto-invoked**: when you ask the agent for an HTML report, slide deck, or dashboard, the agent routes the request here automatically. No manual `cp` needed — the agent copies the appropriate template, fills in the content, and hands you a ready-to-review `.html` file.
+Once installed, the skill is **auto-invoked**: when you ask the agent for an HTML report, a slide deck (composed SVG slides → PNG + PDF), or a dashboard, the agent routes the request here automatically.
 
 ## 💡 Usage examples
 
@@ -140,7 +140,7 @@ Generate the grant submission recap as HTML.
 </details>
 
 <details>
-<summary><b>Slide deck</b> (≤12 visual beats, bullets, one idea per slide)</summary>
+<summary><b>Slide deck</b> (designed SVG slides → PNG + merged PDF; since v0.26.0)</summary>
 
 ```
 Create a slide deck about X.
@@ -178,9 +178,9 @@ The exported JSON is the bridge between human reviewers and the AI — it's the 
 If the agent picks the wrong template, you can be explicit:
 
 ```
-Use the slide template, not the report template.
+Use svg-slides, not the report template.
 That's a dashboard, not a report.
-Don't use the report template here — the content has 8 discrete bullets, use the slide deck.
+Don't use the report template here — the content has 8 discrete beats, give me a deck from svg-slides.
 ```
 
 Or steer away from this skill entirely:
@@ -202,13 +202,11 @@ As of **v0.8.0**, the Metrics panel includes a donut chart, three animated radia
 
 **Best for**: research reports, grant progress reports, manuscript reading versions, gap analyses, EOI drafts — anything a human will read end-to-end and leave comments on.
 
-### Slide template
+### Slide decks (svg-slides → PNG + PDF; replaced the HTML slide template in v0.26.0)
 
-A single-page scrolling deck with prev/next navigation, a page counter, a fullscreen toggle, and a home button. Each slide is a section with v2 annotations (notes you can leave on any text) and a per-slide identifier so a notes drawer click jumps directly to that slide. When printed, each slide becomes one PDF page.
+Decks are **not** HTML any more. Every deck ask composes one designed 1280×720 SVG slide per beat from `templates/svg-slides/` via `bin/compose-slide.js` (payload JSONs, slot budgets, composer gates — see the section above), then delivers with `bin/svg-export.js … --png --pdf --pdf-out deck.pdf`: per-slide baked SVG, a 2x PNG per slide, a vector PDF per slide, and one merged, page-sized PDF. There is no prev/next HTML shell, no inline deck annotations, and no live theming — baked slides are frozen artifacts; re-theme by re-composing from the payloads. Interactive slide-deck previews of the designs live in [`templates/svg-slides/gallery.html`](./templates/svg-slides/gallery.html).
 
-The current starter deck ships **7 slides**: a title, two content slides, two template-reference slides for cards/badges/blocks, two new **v0.8.0** graphics-pack demos (charts on slide 5: donut, gauges, bars; diagrams + pull-quote on slide 6), and a closing. Animated gauges replay each time you navigate to slide 5 (the `goTo()` hook in the deck script restarts `.gauge.animated` children). A `slide-ref-code` reference slide shows a `<pre><code>` block in a `.layout-split` (keep slide snippets to ~8 lines).
-
-**Best for**: pitch decks, conference talks, lightning talks, internal readouts, research summary decks — any sequential presentation of 12 or fewer visual beats.
+**Best for**: pitch decks, conference talks, lightning talks, internal readouts, research summary decks — any deck; especially when printing/PDF or PowerPoint import is the destination.
 
 ### Dashboard template
 
@@ -222,18 +220,18 @@ The template ships in **demo mode** out of the box: a small mock backend interce
 
 A one-page snapshot briefing in the 2026 bento-grid style: a hero header (eyebrow pill, gradient display title, meta chips) above a 12-column grid of modular glass cards — KPI row, pure-CSS bar chart, progress bars, gradient quote card, milestone timeline, key highlights, and a CTA card. Dark-first glass surfaces with an ambient accent glow; cards lift with an accent-glow shadow on hover. It carries the full v2 annotation engine (select any text to leave tracked-changes-style notes, export/import JSON), plus the theme, density, and font-size toggles with bento-specific storage keys. No JS dependencies at all — the chart is pure CSS.
 
-As of **v0.8.0**, a fourth row adds donut + gauges (animated), a sightings heatmap, a feature-comparison table, and a pull-quote card — same component classes as the report/slide graphics pack, just packaged into the bento grid.
+As of **v0.8.0**, a fourth row adds donut + gauges (animated), a sightings heatmap, a feature-comparison table, and a pull-quote card — same component classes as the report graphics pack, just packaged into the bento grid.
 
 **Best for**: sprint recaps, weekly readouts, one-page proposals, status snapshots for review panels — anything the reader should grasp in 60 seconds and annotate inline. If the content grows past one page, graduate to the report template; if the numbers need to refresh from a server, it's the dashboard.
 
-## 💬 Annotation system (report, slide + bento)
+## 💬 Annotation system (report + bento)
 
 > **Audience: human reviewers.** The other sections of this README document what
 > the agent/harness should do. This section is for the *human* who opens the
 > rendered HTML in a browser and wants to leave review notes. The agent does
 > not interact with the annotation UI directly.
 
-When you open a report or slide in a browser, you can leave tracked-changes-style notes directly on the text. Select any passage, choose what kind of note you want to leave, and a small floating toolbar appears with options. Your notes are saved in your browser automatically and can be exported as a file to send to an AI coding agent for revision.
+When you open a report or bento brief in a browser, you can leave tracked-changes-style notes directly on the text. Select any passage, choose what kind of note you want to leave, and a small floating toolbar appears with options. Your notes are saved in your browser automatically and can be exported as a file to send to an AI coding agent for revision.
 
 ### The review cycle
 
@@ -260,7 +258,7 @@ sequenceDiagram
 
 For quick reference, here's the full feature matrix across the two templates:
 
-| Feature | Report | Slide |
+| Feature | Report | Bento |
 |---------|:------:|:-----:|
 | Select text → floating toolbar (4 options) | ✅ | ✅ |
 | Right-side Notes panel with all notes | ✅ | ✅ |
@@ -270,14 +268,14 @@ For quick reference, here's the full feature matrix across the two templates:
 | Export to clipboard | ✅ | ✅ |
 | Import JSON (merge by id) | ✅ | ✅ |
 | Flag orphaned notes (text shifted) | ✅ | ✅ |
-| Auto-switch to the right tab/slide on jump | ✅ | ✅ |
+| Auto-switch to the right tab on jump | ✅ | — |
 | Notes survive Mermaid diagram re-renders | ✅ | ✅ |
 
 ## 🎨 Theme toggle
 
 All three templates have a **◐ dark / ◑ light** button at the top-right (dashboard has it inline in the topbar). Click it to switch between light and dark themes. The choice is remembered in your browser and follows your operating system's dark-mode preference on first visit. The theme toggle is hidden when you print the document.
 
-## ⚡ Density and font-size toggles (all four templates)
+## ⚡ Density and font-size toggles (all three templates)
 
 Two extra buttons appear next to the theme toggle. They help reviewers read dense content more comfortably.
 
@@ -286,13 +284,13 @@ Two extra buttons appear next to the theme toggle. They help reviewers read dens
 <tr>
   <td><b>Density</b> (<code>▤</code> / <code>▥</code>)</td>
   <td>comfortable (default) → compact</td>
-  <td><code>report-density</code>, <code>slide-density</code>, <code>dashboard-density</code></td>
+  <td><code>report-density</code>, <code>bento-density</code>, <code>dashboard-density</code></td>
   <td>Card padding, table cell padding, stat-card padding, grid gaps, panel top spacing</td>
 </tr>
 <tr>
   <td><b>Font size</b> (<code>S</code> / <code>M</code> / <code>L</code>)</td>
   <td>Small (14px) → Medium (16px, default) → Large (18px)</td>
-  <td><code>report-font-size</code>, <code>slide-font-size</code>, <code>dashboard-font-size</code></td>
+  <td><code>report-font-size</code>, <code>bento-font-size</code>, <code>dashboard-font-size</code></td>
   <td>Every text element using proportional units</td>
 </tr>
 </table>
@@ -309,7 +307,7 @@ The **dashboard** template's toggles are especially useful when viewing dense da
 
 ## 🧩 Graphics pack (v0.8.0)
 
-All four templates ship with a shared **zero-dependency graphics pack** — eleven components, pure CSS/HTML, no JS, no chart library, no canvas. Lives in [`features/graphics/graphics.css`](./features/graphics/graphics.css) (inlined into each template) with a copy-paste reference at [`features/graphics/snippets.html`](./features/graphics/snippets.html).
+All three templates ship with a shared **zero-dependency graphics pack** — eleven components, pure CSS/HTML, no JS, no chart library, no canvas. Lives in [`features/graphics/graphics.css`](./features/graphics/graphics.css) (inlined into each template) with a copy-paste reference at [`features/graphics/snippets.html`](./features/graphics/snippets.html).
 
 | | Component | Class |
 |---|---|---|
@@ -358,11 +356,11 @@ Full workflow, draft-mode (hotlink) caveat, and placeholder syntax: [`docs/latex
 
 - UI always reachable (theme, annotations, navigation)
 - Annotations persist across reloads (valid JSON or fresh start)
-- Print works cleanly (report/slide primary; dashboard secondary)
+- Print works cleanly (report primary; dashboard secondary; decks print via `svg-export.js --pdf-out` merged PDFs)
 - Single-file portable (only Google Fonts + pinned htmx SRI allowed external)
 - Dashboard demo-mode never ships to production
 - Graphics pack ships with no JS dependencies (conic-gradient + CSS grid only)
-- Motion triggers on visibility, not page load: animated gauges (`.gauge.animated`) replay when a slide becomes active (slide `goTo()`) or a report panel is shown (`showTab()`), so the sweep is visible to the reader instead of completing before they navigate to it. Honors `prefers-reduced-motion` (skips the restart; static fallback applies).
+- Motion triggers on visibility, not page load: animated gauges (`.gauge.animated`) replay when a report panel is shown (`showTab()`), so the sweep is visible to the reader instead of completing before they navigate to it. Honors `prefers-reduced-motion` (skips the restart; static fallback applies).
 
 ## License
 

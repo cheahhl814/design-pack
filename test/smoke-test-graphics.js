@@ -22,7 +22,6 @@ if (!fs.existsSync(TMP_DIR)) fs.mkdirSync(TMP_DIR, { recursive: true });
 
 const targets = [
   { name: 'report', template: 'templates/report/template.html',       out: `${TMP_DIR}/report.png` },
-  { name: 'slide',  template: 'templates/slide/slide-template.html',  out: `${TMP_DIR}/slide.png` },
   { name: 'bento',  template: 'templates/bento/bento-template.html',  out: `${TMP_DIR}/bento.png` }
 ];
 

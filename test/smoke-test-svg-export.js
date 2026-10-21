@@ -40,6 +40,22 @@ try {
   if (/needs google-chrome/.test(String(e.stderr))) console.log('  SKIP --png: no Chrome');
   else check(false, `--png: ${e.stderr || e.message}`);
 }
+// --pdf/--pdf-out: CLI prints each baked file to a page-sized vector PDF and
+// merges them in input order (skipped without Chrome + pdfunite)
+try {
+  execFileSync('node', [path.join(__dirname, '..', 'bin', 'svg-export.js'), 'mind-map', 'venn-overlap',
+    '--png', '--pdf', '--pdf-out', path.join(tmp, 'deck.pdf'), '--out', tmp], { stdio: 'pipe' });
+  const pdf = fs.readFileSync(path.join(tmp, 'deck.pdf'));
+  check(pdf.slice(0, 5).toString() === '%PDF-', '--pdf: per-file PDFs render (PDF magic bytes)');
+  check((pdf.toString('latin1').match(/\/Type\s*\/Page\b/g) || []).length === 2, '--pdf-out: merged deck has 2 pages');
+  check(fs.existsSync(path.join(tmp, 'mind-map.pdf')) && fs.existsSync(path.join(tmp, 'venn-overlap.pdf')), '--pdf: per-file PDFs written');
+  const png2 = fs.readFileSync(path.join(tmp, 'mind-map.png'));
+  check(png2.readUInt32BE(16) === 1600 && png2.readUInt32BE(20) === 900, '--png: 1600x900 PNG (combined run)');
+} catch (e) {
+  const msg = String(e.stderr || e.message);
+  if (/need google-chrome|needs pdfunite/.test(msg)) console.log('  SKIP --pdf: no Chrome or pdfunite');
+  else check(false, `--pdf: ${msg}`);
+}
 fs.rmSync(tmp, { recursive: true, force: true });
 console.log(`  svg-export: ${files.length} components × 2 themes`);
 console.log(`  TOTAL: ${pass} passed · ${fail} failed`);
