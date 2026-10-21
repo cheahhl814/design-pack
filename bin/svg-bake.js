@@ -83,11 +83,19 @@ function flattenStyle(style, theme) {
 }
 
 function exportSvg(src, themeName, theme = THEMES[themeName]) {
-  let svg = src.replace(/<!--[\s\S]*?-->\s*/g, '').trim();
+  // Strip authoring comments AND any existing XML declaration: feeding an
+  // already-exported file back in must be idempotent — prepending without
+  // stripping produced a mid-document `<?xml?>` that Chrome rejects with
+  // "XML declaration allowed only at the start of the document".
+  let svg = src.replace(/<!--[\s\S]*?-->\s*/g, '').replace(/^\s*<\?xml[^?]*\?>\s*/g, '').trim();
   svg = svg.replace(/style="([^"]*)"/g, (_, st) => `style="${flattenStyle(st, theme)}"`);
   const [, , w, h] = svg.match(/viewBox="([\d.\s-]+)"/)[1].trim().split(/\s+/).map(Number);
   svg = svg.replace(/style="width:100%;height:auto"/, `width="${w}" height="${h}"`);
   if (themeName === 'dark') {
+    // Idempotency, part 2: drop a previously-inserted surface rect (exact baked
+    // form — no source file matches it) before adding this pass's, so re-baking
+    // a dark export doesn't stack duplicate surface rects after </title>.
+    svg = svg.replace(`\n  <rect width="${w}" height="${h}" style="fill:${theme.surface}"/>`, "");
     svg = svg.replace(/(<\/title>)/, `$1\n  <rect width="${w}" height="${h}" style="fill:${theme.surface}"/>`);
   }
   if (/var\(|color-mix/.test(svg)) throw new Error('unresolved var()/color-mix() left in output');
