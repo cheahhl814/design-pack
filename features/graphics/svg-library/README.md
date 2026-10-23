@@ -1,8 +1,8 @@
 # svg-library — hand-drawn SVG diagram templates (design-pack v0.16.0)
 
-Ninety-four agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
+One hundred and two agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
 explanatory and summary visuals — plus **seventeen SMIL-animated variants** (`anim-*`, see
-rule 8) with static twins kept — the complement to the pure-CSS graphics pack
+rule 8) with static twins kept (119 files total) — the complement to the pure-CSS graphics pack
 (`features/graphics/graphics.css`). Where the CSS pack covers charts built from real
 data (donut, gauge, heatmap, bars), the SVG library covers **concept diagrams**:
 processes, loops, hierarchies, matrices, funnels, roadmaps, cause-effect maps, goals,
@@ -144,6 +144,15 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
 | 109 | `anim-water-cycle.svg` | Droplets cycling: evaporation rising, rain falling, runoff sliding | Teaching the hydrological cycle, live water briefs |
 | 110 | `anim-food-web.svg` | Energy dots flowing along the food-to-feeder arrows | Teaching energy flow, live ecosystem overviews |
 | 111 | `anim-carbon-cycle.svg` | Carbon pulses flowing along the existing flux arrows | Sources vs sinks, net-zero logic, live climate briefs |
+| | **Computers & programming** | *static; see the section below the catalog* | |
+| 112 | `cli-pipeline.svg` | Two commands wired through one pipe: stdout solid, stderr dashed straight to the screen, fds labelled | Teaching unix pipelines, terminal data-flow explainers |
+| 113 | `prompt-anatomy.svg` | One monospace command line annotated by dashed leaders: prompt, command, flags, arguments | CLI tutorials, command documentation |
+| 114 | `directory-tree.svg` | Filesystem tree with user homes (one expanded) and the current path highlighted | Teaching cd/ls navigation, project structure |
+| 115 | `git-branch-merge.svg` | Commit graph with a feature branch and a two-parent merge commit, HEAD/branch pointers explained | Git tutorials, collaboration workflows |
+| 116 | `git-stage-flow.svg` | Working tree → index → local repo → remote with state badges and a dashed restore arrow, "save is four jobs" | Teaching what save means in git |
+| 117 | `stack-heap-memory.svg` | Stack frames + stack pointer vs heap blocks with pointers and a freed gap | Teaching memory management, allocation explainers |
+| 118 | `async-event-loop.svg` | Call stack, Web APIs, task queue and the loop circle with numbered order; microtask footnote | Async explainers, event-driven intros |
+| 119 | `compile-pipeline.svg` | Source → lexer → parser → AST → optimiser → codegen → binary with per-stage artifacts and a diagnostics branch | Teaching compilers, language internals |
 
 **When to use which graphics system:**
 
@@ -333,6 +342,10 @@ Two components (92 and 93). `transformer-block` follows the encoder–decoder fi
 LLM, delete the encoder and the cross-attention pair (Transformer Explainer, The Illustrated
 Transformer). `api-request-lifecycle` is a sequence diagram of one client-server call, with requests as
 solid arrows, responses dashed and numbered in order (AlgoMaster, Akamai client-server glossary).
+
+## Computers & programming
+
+Eight components (112 to 119). `cli-pipeline` follows the wizardzines pipe convention and the VUW pipeviz solid-stdout / dashed-stderr arrow language: the pipe is one-way and errors bypass it unless you redirect (`2>&1 |`). `git-branch-merge`'s topology is correct as drawn: the merge commit has two parents and fast-forward is impossible because main moved after the split (mermaid gitGraph / gitgifs conventions). `git-stage-flow` follows the add/commit/push staging model: push moves commits and refs, never working files. `stack-heap-memory` is simplified but correct: frames pushed on call and popped on return; heap blocks live until `free()`/GC; a block with no pointing pointer leaks. `async-event-loop` is the simplified single-thread picture with a footnote naming the microtask queue (`fetch().then()` callbacks never sit in the task queue). `compile-pipeline`'s optimiser step is a real constant-fold (2*3 → 6); machine-code bytes are illustrative. These files use `var(--font-mono, ui-monospace, Menlo, Consolas, monospace)` for command text — a token no template defines yet, so it always uses the fallback stack.
 
 ## Standalone use (no HTML page)
 

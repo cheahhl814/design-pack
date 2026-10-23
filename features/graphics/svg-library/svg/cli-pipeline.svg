@@ -1,0 +1,86 @@
+<!--
+design-pack · svg-library · cli-pipeline
+  A shell pipeline explained: ls /data | wc -l. The pipe joins the stdout
+  (fd 1) of ls to the stdin (fd 0) of wc, one way only; wc writes its count
+  to the terminal. STDERR (fd 2) of each process is dashed and bypasses the
+  pipe, dropping straight to the screen, unless redirected with 2>&1 or |&.
+  Conventions after the wizardzines bash-pipes comic and the VUW pipeviz
+  notation (solid stdout, dashed stderr).
+  Tokens: teal amber coral deep-blue text text-muted surface border font-head font-sans font-mono.
+  Edit: command names (box x 60 / 470), the hero command line, the error
+  message in the screen box. Add a third command by shrinking the boxes and
+  repeating the box, connector, pipe, connector unit.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Shell pipeline ls /data | wc -l: the pipe carries the stdout of ls one way into the stdin of wc, wc prints its count to the terminal, and the stderr of both commands bypasses the pipe and goes straight to the screen" style="width:100%;height:auto">
+  <title>Shell pipeline: stdout, stdin, stderr and the pipe</title>
+  <!-- header + legend -->
+  <g>
+  <text x="40" y="34" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">SHELL PIPELINE</text>
+  <line x1="470" y1="30" x2="500" y2="30" style="stroke:var(--text,#0f172a);stroke-width:2.5;stroke-linecap:round"/>
+  <text x="506" y="34" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">stdout (data)</text>
+  <line x1="600" y1="30" x2="630" y2="30" stroke-dasharray="6 4" style="stroke:var(--coral,#ef4444);stroke-width:2.5"/>
+  <text x="636" y="34" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">stderr (errors)</text>
+  <text x="400" y="86" text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">$ ls /data | wc -l</text>
+  <text x="400" y="110" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">fd 0 = stdin · fd 1 = stdout · fd 2 = stderr</text>
+  </g>
+  <!-- stderr: dashed, bypasses the pipe (drawn first, under the boxes) -->
+  <g>
+  <path d="M 140 210 V 353 H 237" fill="none" stroke-dasharray="6 4" stroke-linejoin="round" style="stroke:var(--coral,#ef4444);stroke-width:2.5"/>
+  <polygon points="250,353 237,346.5 237,359.5" style="fill:var(--coral,#ef4444)"/>
+  <text x="150" y="290" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">stderr</text>
+  <path d="M 590 210 V 353 H 563" fill="none" stroke-dasharray="6 4" stroke-linejoin="round" style="stroke:var(--coral,#ef4444);stroke-width:2.5"/>
+  <polygon points="550,353 563,346.5 563,359.5" style="fill:var(--coral,#ef4444)"/>
+  <text x="580" y="290" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">stderr</text>
+  </g>
+  <!-- process boxes -->
+  <g>
+  <rect x="60" y="140" width="160" height="70" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="60" y="140" width="160" height="70" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="140" y="173" text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">ls /data</text>
+  <text x="140" y="195" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">process 1 · lists files</text>
+  <rect x="470" y="140" width="160" height="70" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="470" y="140" width="160" height="70" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="550" y="173" text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">wc -l</text>
+  <text x="550" y="195" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">process 2 · counts lines</text>
+  <rect x="672" y="140" width="98" height="70" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke:color-mix(in srgb, var(--text-muted,#64748b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="672" y="140" width="98" height="70" rx="12" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 12%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <text x="721" y="168" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">terminal</text>
+  <text x="721" y="194" text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">12</text>
+  </g>
+  <!-- the pipe: one-way tube between the processes -->
+  <g>
+  <rect x="280" y="156" width="130" height="38" rx="19" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="280" y="156" width="130" height="38" rx="19" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="332" y="180" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">PIPE</text>
+  <polyline points="364,168 372,175 364,182" fill="none" stroke-linecap="round" stroke-linejoin="round" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2.5"/>
+  <polyline points="378,168 386,175 378,182" fill="none" stroke-linecap="round" stroke-linejoin="round" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2.5"/>
+  <text x="345" y="146" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">the | operator</text>
+  <text x="345" y="216" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">one way only</text>
+  <text x="345" y="232" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">wc cannot write back to ls</text>
+  </g>
+  <!-- stdout connectors (solid) -->
+  <g>
+  <line x1="220" y1="175" x2="267" y2="175" style="stroke:var(--text,#0f172a);stroke-width:2.5;stroke-linecap:butt"/>
+  <polygon points="280,175 267,168.5 267,181.5" style="fill:var(--text,#0f172a)"/>
+  <text x="248" y="166" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">stdout</text>
+  <line x1="410" y1="175" x2="457" y2="175" style="stroke:var(--text,#0f172a);stroke-width:2.5;stroke-linecap:butt"/>
+  <polygon points="470,175 457,168.5 457,181.5" style="fill:var(--text,#0f172a)"/>
+  <text x="440" y="166" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">stdin</text>
+  <line x1="630" y1="175" x2="659" y2="175" style="stroke:var(--text,#0f172a);stroke-width:2.5;stroke-linecap:butt"/>
+  <polygon points="672,175 659,168.5 659,181.5" style="fill:var(--text,#0f172a)"/>
+  <text x="651" y="166" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">stdout</text>
+  </g>
+  <!-- error collector: the screen -->
+  <g>
+  <rect x="250" y="318" width="300" height="70" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="250" y="318" width="300" height="70" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 12%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="400" y="344" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">screen (stderr skips the pipe)</text>
+  <text x="400" y="370" text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">ls: cannot access '/data'</text>
+  </g>
+  <!-- footer -->
+  <g>
+  <text x="40" y="428" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">A pipe feeds one process's stdout into the next one's stdin; errors on stderr still go straight to the screen.</text>
+  <text x="40" y="443" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">To send errors down the pipe too, use ls /data 2&gt;&amp;1 | wc -l (or |&amp; in bash). After wizardzines and VUW pipeviz.</text>
+  </g>
+</svg>

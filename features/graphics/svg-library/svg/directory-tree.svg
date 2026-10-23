@@ -1,0 +1,103 @@
+<!--
+design-pack · svg-library · directory-tree
+  Unix filesystem tree in box-and-connector style (after the Software
+  Carpentry Unix Shell figures): root / holds bin, etc, home and tmp;
+  home holds three user folders, one expanded to Documents, Projects and
+  notes.txt. The current path /home/cheahh/Projects is a thick accent line
+  running down the tree (where cd has taken you), and a terminal card shows
+  the matching cd and pwd.
+  Tokens: accent amber text text-muted surface border font-head font-sans font-mono.
+  Edit: folder names; node rows sit at y 136 / 224 / 312 with bus lines
+  26 px above each row. To move the current path, redraw the accent
+  overlay path and swap which nodes use the accent card style.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Filesystem tree: root holds bin, etc, home and tmp; home holds alice, cheahh and sam; cheahh holds Documents, Projects and notes.txt; the current path /home/cheahh/Projects is highlighted from the root down to Projects" style="width:100%;height:auto">
+  <title>Unix directory tree with the current path highlighted</title>
+  <text x="40" y="40" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">FILESYSTEM TREE</text>
+  <!-- connectors -->
+  <g fill="none" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M 400 84 V 110 M 110 136 V 110 H 680 V 136 M 240 110 V 136 M 450 110 V 136" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <path d="M 450 172 V 198 M 330 224 V 198 H 570 V 224 M 450 198 V 224" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <path d="M 450 260 V 286 M 320 312 V 286 H 600 V 312 M 460 286 V 312" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  </g>
+  <!-- current path: glow + thick accent line -->
+  <g fill="none" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M 400 66 V 110 H 450 V 286 H 460 V 330" style="stroke:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke-width:14"/>
+  <path d="M 400 84 V 110 H 450 V 136 M 450 172 V 224 M 450 260 V 286 H 460 V 312" style="stroke:var(--accent,#0d9488);stroke-width:5"/>
+  </g>
+  <!-- nodes on the current path -->
+  <g>
+  <rect x="360" y="48" width="80" height="36" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="360" y="48" width="80" height="36" rx="12" style="fill:color-mix(in srgb, var(--accent,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2.5"/>
+  <circle cx="378" cy="66" r="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="404" y="73" text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">/</text>
+  <text x="452" y="71" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">root</text>
+  <rect x="402" y="136" width="96" height="36" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="402" y="136" width="96" height="36" rx="12" style="fill:color-mix(in srgb, var(--accent,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2.5"/>
+  <circle cx="418" cy="154" r="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="430" y="160" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">home</text>
+  <rect x="400" y="224" width="100" height="36" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="400" y="224" width="100" height="36" rx="12" style="fill:color-mix(in srgb, var(--accent,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2.5"/>
+  <circle cx="416" cy="242" r="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="428" y="248" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">cheahh</text>
+  <rect x="400" y="312" width="120" height="36" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="400" y="312" width="120" height="36" rx="12" style="fill:color-mix(in srgb, var(--accent,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2.5"/>
+  <circle cx="416" cy="330" r="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="428" y="336" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Projects</text>
+  </g>
+  <!-- other folders and the file -->
+  <g>
+  <rect x="62" y="136" width="96" height="36" rx="12" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 8%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <circle cx="78" cy="154" r="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="90" y="160" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">bin</text>
+  <rect x="192" y="136" width="96" height="36" rx="12" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 8%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <circle cx="208" cy="154" r="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="220" y="160" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">etc</text>
+  <rect x="632" y="136" width="96" height="36" rx="12" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 8%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <circle cx="648" cy="154" r="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="660" y="160" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">tmp</text>
+  <rect x="280" y="224" width="100" height="36" rx="12" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 8%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <circle cx="296" cy="242" r="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="308" y="248" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">alice</text>
+  <rect x="520" y="224" width="100" height="36" rx="12" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 8%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <circle cx="536" cy="242" r="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="548" y="248" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">sam</text>
+  <rect x="260" y="312" width="120" height="36" rx="12" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 8%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <circle cx="276" cy="330" r="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="288" y="336" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Documents</text>
+  <rect x="540" y="312" width="120" height="36" rx="12" style="fill:var(--surface,#ffffff);stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <path d="M 552 321 H 560 L 566 327 V 340 H 552 Z" stroke-linejoin="round" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5"/>
+  <path d="M 560 321 V 327 H 566" fill="none" stroke-linejoin="round" style="stroke:var(--text,#0f172a);stroke-width:1.5"/>
+  <text x="574" y="336" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">notes.txt</text>
+  </g>
+  <!-- you-are-here cue -->
+  <g>
+  <line x1="460" y1="378" x2="460" y2="359" style="stroke:var(--accent,#0d9488);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="460,348 454.5,359 465.5,359" style="fill:var(--accent,#0d9488)"/>
+  <text x="460" y="396" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">you are here</text>
+  </g>
+  <!-- terminal card: cd + pwd -->
+  <g>
+  <rect x="524" y="34" width="250" height="58" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke:color-mix(in srgb, var(--text-muted,#64748b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="524" y="34" width="250" height="58" rx="12" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 8%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <text x="538" y="58" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">$ cd /home/cheahh/Projects</text>
+  <text x="538" y="80" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">$ pwd</text>
+  <text x="586" y="80" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:400;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">/home/cheahh/Projects</text>
+  </g>
+  <!-- key -->
+  <g>
+  <text x="40" y="300" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">KEY</text>
+  <line x1="42" y1="320" x2="70" y2="320" style="stroke:var(--accent,#0d9488);stroke-width:5;stroke-linecap:round"/>
+  <text x="82" y="324" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">current path</text>
+  <circle cx="56" cy="342" r="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="82" y="346" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">folder</text>
+  <path d="M 50 356 H 58 L 64 362 V 375 H 50 Z" stroke-linejoin="round" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5"/>
+  <text x="82" y="368" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">file</text>
+  </g>
+  <!-- footer -->
+  <g>
+  <text x="40" y="428" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">An absolute path is the route from / down the tree, one / per level: /home/cheahh/Projects. cd moves you; pwd prints where you are.</text>
+  <text x="40" y="443" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Relative paths start where you are: .. is one level up, so cd ../Documents lands in /home/cheahh/Documents.</text>
+  </g>
+</svg>

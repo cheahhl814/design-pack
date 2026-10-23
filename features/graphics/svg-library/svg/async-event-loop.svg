@@ -1,0 +1,126 @@
+<!--
+design-pack · svg-library · async-event-loop
+  The JavaScript event loop in four panels: the call stack (one thread),
+  the browser's Web APIs holding a fetch and a timer, the task queue with
+  three task cards (the oldest highlighted as next), and the event loop
+  itself as a round arrow. Numbered messages 1 to 5 in order, like
+  anim-sequence-lifelines: setTimeout hands cb to a timer, fetch starts,
+  the timer fires and cb joins the back of the queue, the loop takes the
+  oldest task, and runs it once the stack is empty.
+  Simplified on purpose: promise callbacks (fetch then) go to a separate
+  microtask queue that drains before the next task; the footer says so.
+  Tokens: teal amber deep-blue text text-muted surface border font-head font-sans font-mono.
+  Edit: frame names, card labels, message labels. Loop circle centre 340,196 r 50.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="JavaScript event loop: code on the single call stack hands a callback to a timer and starts a fetch in the browser's Web APIs; when the timer fires the callback joins the task queue, and the event loop moves the oldest task onto the stack once the stack is empty" style="width:100%;height:auto">
+  <title>JavaScript event loop</title>
+  <text x="40" y="36" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">JAVASCRIPT EVENT LOOP</text>
+  <!-- panels -->
+  <g>
+  <rect x="30" y="56" width="180" height="244" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="30" y="56" width="180" height="244" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 8%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="470" y="56" width="300" height="140" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="470" y="56" width="300" height="140" rx="14" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 8%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <rect x="230" y="290" width="540" height="80" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="230" y="290" width="540" height="80" rx="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 8%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  </g>
+  <g>
+  <text x="120" y="82" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Call stack</text>
+  <text x="120" y="100" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">the one JS thread</text>
+  <text x="486" y="82" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Web APIs</text>
+  <text x="486" y="100" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">run by the browser, not your thread</text>
+  <text x="250" y="324" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Task queue</text>
+  <text x="250" y="342" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">first in, first out</text>
+  </g>
+  <!-- call stack frames -->
+  <g>
+  <rect x="46" y="132" width="148" height="34" rx="5" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-dasharray:5 4"/>
+  <rect x="46" y="172" width="148" height="34" rx="5" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 24%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <rect x="46" y="212" width="148" height="34" rx="5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 18%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="46" y="252" width="148" height="34" rx="5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 18%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  </g>
+  <g text-anchor="middle">
+  <text x="120" y="153" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">next frame</text>
+  <text x="120" y="194" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">setTimeout(cb, 0)</text>
+  <text x="120" y="234" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">start()</text>
+  <text x="120" y="274" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">main()</text>
+  </g>
+  <!-- Web API cards: fetch + timer -->
+  <g>
+  <rect x="486" y="110" width="124" height="72" rx="12" style="fill:var(--surface,#ffffff);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="548" y="134" text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">fetch(url)</text>
+  <text x="548" y="152" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">network request</text>
+  <text x="548" y="169" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">then() → microtask</text>
+  <rect x="630" y="110" width="124" height="72" rx="12" style="fill:var(--surface,#ffffff);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <circle cx="654" cy="138" r="11" style="fill:none;stroke:var(--text,#0f172a);stroke-width:2"/>
+  <path d="M 654 131 V 138 H 660" fill="none" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--text,#0f172a);stroke-width:2"/>
+  <text x="674" y="143" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">timer</text>
+  <text x="692" y="169" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">fires after 0 ms</text>
+  </g>
+  <!-- task cards: oldest (front) on the left -->
+  <g>
+  <rect x="400" y="304" width="100" height="52" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="400" y="304" width="100" height="52" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 30%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2.5"/>
+  <rect x="520" y="304" width="100" height="52" rx="12" style="fill:var(--surface,#ffffff);stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <rect x="640" y="304" width="100" height="52" rx="12" style="fill:var(--surface,#ffffff);stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  </g>
+  <g text-anchor="middle">
+  <text x="450" y="328" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">click</text>
+  <text x="450" y="346" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">oldest, runs next</text>
+  <text x="570" y="328" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">message</text>
+  <text x="570" y="346" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">waiting</text>
+  <text x="690" y="328" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">cb</text>
+  <text x="690" y="346" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">newest</text>
+  </g>
+  <!-- the event loop: round arrow -->
+  <g>
+  <circle cx="340" cy="196" r="50" style="fill:color-mix(in srgb, var(--teal,#0d9488) 8%, var(--surface,#ffffff));stroke:none"/>
+  <path d="M 365 152.7 A 50 50 0 1 1 315 152.7" fill="none" stroke-linecap="round" style="stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <polygon points="326.3,146.2 318.25,158.3 311.75,147.1" style="fill:var(--teal,#0d9488)"/>
+  <text x="340" y="196" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">event loop</text>
+  <text x="340" y="214" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">stack empty?</text>
+  </g>
+  <!-- messages 1 to 5 -->
+  <g stroke-linecap="butt">
+  <line x1="210" y1="96" x2="457" y2="96" style="stroke:var(--text,#0f172a);stroke-width:2.5"/>
+  <line x1="210" y1="122" x2="457" y2="122" style="stroke:var(--text,#0f172a);stroke-width:2.5"/>
+  <line x1="690" y1="182" x2="690" y2="291" style="stroke:var(--text,#0f172a);stroke-width:2.5"/>
+  <line x1="450" y1="304" x2="384.6" y2="240.6" style="stroke:var(--text,#0f172a);stroke-width:2.5"/>
+  <line x1="290" y1="196" x2="223" y2="196" style="stroke:var(--text,#0f172a);stroke-width:2.5"/>
+  </g>
+  <g>
+  <polygon points="470,96 457,89.5 457,102.5" style="fill:var(--text,#0f172a)"/>
+  <polygon points="470,122 457,115.5 457,128.5" style="fill:var(--text,#0f172a)"/>
+  <polygon points="690,304 683.5,291 696.5,291" style="fill:var(--text,#0f172a)"/>
+  <polygon points="375.4,231.4 389.2,236 380,245.2" style="fill:var(--text,#0f172a)"/>
+  <polygon points="210,196 223,189.5 223,202.5" style="fill:var(--text,#0f172a)"/>
+  </g>
+  <g style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a);paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">
+  <text x="350" y="90" text-anchor="middle">setTimeout hands cb to a timer</text>
+  <text x="350" y="116" text-anchor="middle">fetch starts the request</text>
+  <text x="676" y="252" text-anchor="end">timer fires: cb joins the back</text>
+  <text x="432" y="276">loop takes the oldest task</text>
+  <text x="246" y="226" text-anchor="middle">runs it once empty</text>
+  </g>
+  <g>
+  <circle cx="228" cy="96" r="9" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <circle cx="228" cy="122" r="9" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <circle cx="690" cy="222" r="9" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <circle cx="417" cy="272" r="9" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <circle cx="250" cy="196" r="9" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  </g>
+  <g text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">
+  <text x="228" y="100.5">1</text>
+  <text x="228" y="126.5">2</text>
+  <text x="690" y="226.5">3</text>
+  <text x="417" y="276.5">4</text>
+  <text x="250" y="200.5">5</text>
+  </g>
+  <!-- footer -->
+  <g>
+  <text x="40" y="404" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">One thread, one queue, never two at once.</text>
+  <text x="40" y="428" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Run to completion: a task never interrupts another, and the loop moves the next task only when the call stack is empty.</text>
+  <text x="40" y="443" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Simplified: promise callbacks such as fetch().then() wait in a microtask queue that empties before the next task.</text>
+  </g>
+</svg>

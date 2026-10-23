@@ -1,0 +1,211 @@
+<!--
+design-pack · svg-library · compile-pipeline
+  Source to binary: source, lexer, parser, AST (drawn as a triangle),
+  optimiser and code generator, ending in an ELF binary block. Above each
+  stage a tiny example of what it produces for x = a + 2*3; : the text,
+  token chips, a grammar check, the AST mini-tree, the folded expression
+  (2*3 becomes 6), x86-64 assembly and its machine-code bytes
+  (83 C0 06 = add eax, 6). The arrow labels name what flows between stages.
+  A dashed error branch drops from the parser to a diagnostics box.
+  Tokens: teal amber green coral deep-blue text text-muted surface border font-head font-sans font-mono.
+  Edit: stage centres are x = 70 + 110 * i (boxes 86 wide, cards 100 wide);
+  replace card contents to suit your language. Phase brackets on top group
+  front end / middle / back end.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Compiler pipeline: source text goes through the lexer into tokens, the parser checks the grammar and builds an abstract syntax tree, the optimiser folds 2 times 3 into 6, and the code generator emits machine code into an ELF binary; syntax errors branch from the parser to diagnostics" style="width:100%;height:auto">
+  <title>Compiler pipeline from source to binary</title>
+  <text x="40" y="30" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">COMPILER PIPELINE</text>
+  <!-- phase brackets -->
+  <g fill="none" stroke-linejoin="round" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5">
+  <path d="M 22 78 V 70 H 448 V 78"/>
+  <path d="M 462 78 V 70 H 558 V 78"/>
+  <path d="M 572 78 V 70 H 778 V 78"/>
+  </g>
+  <g text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">
+  <text x="235" y="62">FRONT END</text>
+  <text x="510" y="62">MIDDLE</text>
+  <text x="675" y="62">BACK END</text>
+  </g>
+  <!-- example artifact cards -->
+  <g>
+  <rect x="20" y="86" width="100" height="110" rx="12" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 6%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <rect x="130" y="86" width="100" height="110" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 6%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <rect x="240" y="86" width="100" height="110" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 6%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <rect x="350" y="86" width="100" height="110" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 6%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:1.5"/>
+  <rect x="460" y="86" width="100" height="110" rx="12" style="fill:color-mix(in srgb, var(--green,#10b981) 6%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:1.5"/>
+  <rect x="570" y="86" width="100" height="110" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 6%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5"/>
+  <rect x="680" y="86" width="100" height="110" rx="12" style="fill:color-mix(in srgb, var(--text,#0f172a) 6%, var(--surface,#ffffff));stroke:var(--text,#0f172a);stroke-width:1.5"/>
+  </g>
+  <!-- card 1: source text -->
+  <text x="70" y="140" text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:11px;font-weight:700;fill:var(--text,#0f172a)">x = a + 2*3;</text>
+  <!-- card 2: token chips -->
+  <g style="fill:color-mix(in srgb, var(--teal,#0d9488) 20%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5">
+  <rect x="138" y="112" width="18" height="18" rx="4"/>
+  <rect x="160" y="112" width="18" height="18" rx="4"/>
+  <rect x="182" y="112" width="18" height="18" rx="4"/>
+  <rect x="204" y="112" width="18" height="18" rx="4"/>
+  <rect x="138" y="136" width="18" height="18" rx="4"/>
+  <rect x="160" y="136" width="18" height="18" rx="4"/>
+  <rect x="182" y="136" width="18" height="18" rx="4"/>
+  <rect x="204" y="136" width="18" height="18" rx="4"/>
+  </g>
+  <g text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:11px;font-weight:700;fill:var(--text,#0f172a)">
+  <text x="147" y="125">x</text>
+  <text x="169" y="125">=</text>
+  <text x="191" y="125">a</text>
+  <text x="213" y="125">+</text>
+  <text x="147" y="149">2</text>
+  <text x="169" y="149">*</text>
+  <text x="191" y="149">3</text>
+  <text x="213" y="149">;</text>
+  </g>
+  <!-- card 3: grammar check -->
+  <g style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">
+  <text x="256" y="122">stmt</text>
+  <text x="256" y="142">expr</text>
+  <text x="256" y="162">';'</text>
+  </g>
+  <g style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))">
+  <text x="318" y="122">✓</text>
+  <text x="318" y="142">✓</text>
+  <text x="318" y="162">✓</text>
+  </g>
+  <!-- card 4: AST mini-tree -->
+  <g stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:1.5">
+  <line x1="388" y1="106" x2="364" y2="128"/>
+  <line x1="388" y1="106" x2="412" y2="128"/>
+  <line x1="412" y1="128" x2="396" y2="150"/>
+  <line x1="412" y1="128" x2="428" y2="150"/>
+  <line x1="428" y1="150" x2="416" y2="172"/>
+  <line x1="428" y1="150" x2="440" y2="172"/>
+  </g>
+  <g style="fill:var(--surface,#ffffff);stroke:var(--amber,#f59e0b);stroke-width:1.5">
+  <circle cx="388" cy="106" r="8"/>
+  <circle cx="364" cy="128" r="8"/>
+  <circle cx="412" cy="128" r="8"/>
+  <circle cx="396" cy="150" r="8"/>
+  <circle cx="428" cy="150" r="8"/>
+  <circle cx="416" cy="172" r="8"/>
+  <circle cx="440" cy="172" r="8"/>
+  </g>
+  <g text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:10px;font-weight:700;fill:var(--text,#0f172a)">
+  <text x="388" y="109.5">=</text>
+  <text x="364" y="131.5">x</text>
+  <text x="412" y="131.5">+</text>
+  <text x="396" y="153.5">a</text>
+  <text x="428" y="153.5">*</text>
+  <text x="416" y="175.5">2</text>
+  <text x="440" y="175.5">3</text>
+  </g>
+  <!-- card 5: constant folding -->
+  <text x="510" y="124" text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">a + 2*3</text>
+  <line x1="513" y1="120" x2="537" y2="120" style="stroke:var(--coral,#ef4444);stroke-width:1.5"/>
+  <line x1="510" y1="132" x2="510" y2="141" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <polygon points="510,152 504.5,141 515.5,141" style="fill:var(--text-muted,#64748b)"/>
+  <text x="510" y="170" text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">a + 6</text>
+  <!-- card 6: assembly -->
+  <g style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:11px;font-weight:400;fill:var(--text,#0f172a)">
+  <text x="580" y="124">mov eax,[a]</text>
+  <text x="580" y="144">add eax,6</text>
+  <text x="580" y="164">mov [x],eax</text>
+  </g>
+  <!-- card 7: machine bytes -->
+  <g text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;font-weight:700;fill:var(--text,#0f172a)">
+  <text x="730" y="124">8B 05 …</text>
+  <text x="730" y="144">83 C0 06</text>
+  <text x="730" y="164">89 05 …</text>
+  </g>
+  <!-- card captions -->
+  <g text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">
+  <text x="70" y="186">plain text</text>
+  <text x="180" y="186">8 tokens</text>
+  <text x="290" y="186">grammar OK</text>
+  <text x="510" y="186">2*3 folded</text>
+  <text x="620" y="186">assembly</text>
+  <text x="730" y="186">machine code</text>
+  </g>
+  <!-- card-to-stage leaders -->
+  <g stroke-dasharray="3 4" style="stroke:var(--text-muted,#64748b);stroke-width:1.5">
+  <line x1="70" y1="196" x2="70" y2="214"/>
+  <line x1="180" y1="196" x2="180" y2="214"/>
+  <line x1="290" y1="196" x2="290" y2="214"/>
+  <line x1="400" y1="196" x2="400" y2="208"/>
+  <line x1="510" y1="196" x2="510" y2="214"/>
+  <line x1="620" y1="196" x2="620" y2="214"/>
+  <line x1="730" y1="196" x2="730" y2="206"/>
+  </g>
+  <!-- error branch: parser to diagnostics (dashed) -->
+  <g>
+  <line x1="290" y1="266" x2="290" y2="321" stroke-dasharray="6 4" style="stroke:var(--coral,#ef4444);stroke-width:2.5"/>
+  <polygon points="290,334 283.5,321 296.5,321" style="fill:var(--coral,#ef4444)"/>
+  <text x="298" y="322" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">syntax error</text>
+  <rect x="180" y="334" width="220" height="50" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="180" y="334" width="220" height="50" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 12%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="290" y="355" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">diagnostics</text>
+  <text x="290" y="374" text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">1:12: expected ';'</text>
+  <text x="414" y="364" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">compile stops: no binary</text>
+  </g>
+  <!-- stage boxes -->
+  <g>
+  <rect x="27" y="214" width="86" height="52" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent);stroke:color-mix(in srgb, var(--text-muted,#64748b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="27" y="214" width="86" height="52" rx="12" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 14%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <rect x="137" y="214" width="86" height="52" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="137" y="214" width="86" height="52" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="247" y="214" width="86" height="52" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="247" y="214" width="86" height="52" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <polygon points="400,208 443,268 357,268" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <polygon points="400,208 443,268 357,268" stroke-linejoin="round" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <rect x="467" y="214" width="86" height="52" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+  <rect x="467" y="214" width="86" height="52" rx="12" style="fill:color-mix(in srgb, var(--green,#10b981) 16%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <rect x="577" y="214" width="86" height="52" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="577" y="214" width="86" height="52" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 16%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <rect x="687" y="206" width="86" height="68" rx="5" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--text,#0f172a) 22%, transparent);stroke:color-mix(in srgb, var(--text,#0f172a) 45%, transparent);stroke-width:1.5"/>
+  <rect x="687" y="206" width="86" height="68" rx="5" style="fill:var(--text,#0f172a);stroke:var(--text,#0f172a);stroke-width:2"/>
+  </g>
+  <g text-anchor="middle">
+  <text x="70" y="237" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">source</text>
+  <text x="70" y="255" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">main.c</text>
+  <text x="180" y="237" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">lexer</text>
+  <text x="180" y="255" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">scans</text>
+  <text x="290" y="237" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">parser</text>
+  <text x="290" y="255" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">grammar</text>
+  <text x="400" y="258" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">AST</text>
+  <text x="510" y="237" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">optimiser</text>
+  <text x="510" y="255" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">IR passes</text>
+  <text x="620" y="237" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">codegen</text>
+  <text x="620" y="255" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">x86-64</text>
+  <text x="730" y="236" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--surface,#ffffff)">binary</text>
+  <text x="730" y="256" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;font-weight:700;fill:var(--surface,#ffffff)">ELF a.out</text>
+  </g>
+  <!-- stage connectors -->
+  <g style="stroke:var(--text,#0f172a);stroke-width:2.5">
+  <line x1="113" y1="240" x2="124" y2="240"/>
+  <line x1="223" y1="240" x2="234" y2="240"/>
+  <line x1="333" y1="240" x2="364" y2="240"/>
+  <line x1="423" y1="240" x2="454" y2="240"/>
+  <line x1="553" y1="240" x2="564" y2="240"/>
+  <line x1="663" y1="240" x2="674" y2="240"/>
+  </g>
+  <g style="fill:var(--text,#0f172a)">
+  <polygon points="137,240 124,233.5 124,246.5"/>
+  <polygon points="247,240 234,233.5 234,246.5"/>
+  <polygon points="377,240 364,233.5 364,246.5"/>
+  <polygon points="467,240 454,233.5 454,246.5"/>
+  <polygon points="577,240 564,233.5 564,246.5"/>
+  <polygon points="687,240 674,233.5 674,246.5"/>
+  </g>
+  <g text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">
+  <text x="125" y="298">characters</text>
+  <text x="235" y="298">tokens</text>
+  <text x="355" y="298">syntax tree</text>
+  <text x="445" y="298">IR</text>
+  <text x="565" y="298">better IR</text>
+  <text x="675" y="298">machine code</text>
+  </g>
+  <!-- footer -->
+  <g>
+  <text x="40" y="428" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Each stage rewrites the program in a lower-level form: characters, tokens, tree, IR, machine code.</text>
+  <text x="40" y="443" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">The optimiser folded 2*3 into 6 at compile time. Real compilers also check types and link libraries (not shown).</text>
+  </g>
+</svg>

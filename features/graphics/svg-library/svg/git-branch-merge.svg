@@ -1,0 +1,103 @@
+<!--
+design-pack · svg-library · git-branch-merge
+  Git commit graph (style cues: mermaid gitGraph, gitgifs building blocks):
+  main runs C1 to C4; feature/x splits off after C2 and gains F1 to F3 while
+  main moves on; a merge commit M with two parents (C4 and F3) joins both
+  histories. Branch names are pills at the line heads (a branch is a movable
+  pointer); HEAD points at main.
+  Tokens: teal amber text text-muted surface border font-head font-sans font-mono.
+  Edit: commit labels and hashes; main y 190 and feature y 310; commits are
+  circles r 12 on the 3px spines. Move the split by moving the first curve's
+  start, the merge by moving M and the last curve's end.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Git commit graph: main has commits C1 to C4, feature/x branches off after C2 with commits F1 to F3, and a merge commit M with parents C4 and F3 joins both histories; HEAD points at main" style="width:100%;height:auto">
+  <title>Git branch and merge commit graph</title>
+  <text x="40" y="40" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">GIT BRANCH &amp; MERGE</text>
+  <!-- spines -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M 210 190 C 250 190 250 310 290 310 H 530 C 580 310 580 190 620 190" style="stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <path d="M 70 190 H 648" style="stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <path d="M 542 310 H 590" style="stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  </g>
+  <!-- main commits -->
+  <g>
+  <circle cx="100" cy="190" r="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="100" cy="190" r="12" style="fill:var(--surface,#ffffff);stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <circle cx="210" cy="190" r="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="210" cy="190" r="12" style="fill:var(--surface,#ffffff);stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <circle cx="340" cy="190" r="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="340" cy="190" r="12" style="fill:var(--surface,#ffffff);stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <circle cx="460" cy="190" r="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="460" cy="190" r="12" style="fill:var(--surface,#ffffff);stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <circle cx="620" cy="190" r="17" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="620" cy="190" r="17" style="fill:var(--surface,#ffffff);stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <circle cx="620" cy="190" r="9" style="fill:var(--teal,#0d9488)"/>
+  </g>
+  <!-- feature commits -->
+  <g>
+  <circle cx="310" cy="310" r="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="310" cy="310" r="12" style="fill:var(--surface,#ffffff);stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <circle cx="420" cy="310" r="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="420" cy="310" r="12" style="fill:var(--surface,#ffffff);stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <circle cx="530" cy="310" r="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="530" cy="310" r="12" style="fill:var(--surface,#ffffff);stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  </g>
+  <!-- commit labels + hashes -->
+  <g text-anchor="middle">
+  <text x="100" y="168" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">C1</text>
+  <text x="210" y="168" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">C2</text>
+  <text x="340" y="168" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">C3</text>
+  <text x="460" y="168" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">C4</text>
+  <text x="100" y="222" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">3f1a</text>
+  <text x="210" y="222" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">8c2e</text>
+  <text x="340" y="222" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">b71d</text>
+  <text x="460" y="222" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">e04c</text>
+  <text x="620" y="228" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">M</text>
+  <text x="310" y="288" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">F1</text>
+  <text x="420" y="288" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">F2</text>
+  <text x="530" y="288" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">F3</text>
+  <text x="310" y="342" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">41ab</text>
+  <text x="420" y="342" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">9d03</text>
+  <text x="530" y="342" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">c5f8</text>
+  </g>
+  <!-- branch pills (movable pointers) + HEAD -->
+  <g>
+  <rect x="648" y="178" width="64" height="24" rx="12" style="fill:var(--teal,#0d9488);stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="680" y="195" text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">main</text>
+  <rect x="590" y="298" width="96" height="24" rx="12" style="fill:var(--amber,#f59e0b);stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="638" y="315" text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">feature/x</text>
+  <rect x="652" y="128" width="56" height="24" rx="12" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:2"/>
+  <text x="680" y="145" text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">HEAD</text>
+  <line x1="680" y1="152" x2="680" y2="167" style="stroke:var(--text,#0f172a);stroke-width:2;stroke-linecap:round"/>
+  <polygon points="680,178 674.5,167 685.5,167" style="fill:var(--text,#0f172a)"/>
+  </g>
+  <!-- git commands at the split and the merge -->
+  <g>
+  <text x="232" y="262" text-anchor="end" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;font-weight:400;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">git switch -c feature/x</text>
+  <text x="560" y="250" text-anchor="end" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;font-weight:400;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round">git merge feature/x</text>
+  </g>
+  <!-- callout: the merge -->
+  <g>
+  <line x1="620" y1="162" x2="620" y2="120" stroke-dasharray="3 4" style="stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <circle cx="620" cy="162" r="3.5" style="fill:var(--text-muted,#64748b)"/>
+  <text x="560" y="92" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">a merge joins both histories</text>
+  <text x="560" y="112" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">M has two parents: C4 and F3</text>
+  </g>
+  <!-- key -->
+  <g>
+  <text x="40" y="378" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">KEY</text>
+  <circle cx="50" cy="396" r="7" style="fill:var(--surface,#ffffff);stroke:var(--text-muted,#64748b);stroke-width:2.5"/>
+  <text x="64" y="400" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">commit (snapshot)</text>
+  <circle cx="196" cy="396" r="9" style="fill:var(--surface,#ffffff);stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <circle cx="196" cy="396" r="4.5" style="fill:var(--text-muted,#64748b)"/>
+  <text x="212" y="400" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">merge commit</text>
+  <rect x="314" y="387" width="34" height="18" rx="9" style="fill:var(--text-muted,#64748b)"/>
+  <text x="356" y="400" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">branch = movable pointer</text>
+  </g>
+  <!-- footer -->
+  <g>
+  <text x="40" y="428" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">A branch is a label that moves to each new commit; every commit points back to its parent.</text>
+  <text x="40" y="443" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">main moved on (C3, C4) after the split, so git cannot fast-forward: the merge commit M records both parents.</text>
+  </g>
+</svg>

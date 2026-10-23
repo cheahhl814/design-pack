@@ -1,0 +1,130 @@
+<!--
+design-pack · svg-library · git-stage-flow
+  Saving in git as four jobs (VizLearn framing): working tree, then
+  git add to the index (staging area), git commit to the local repository,
+  git push to the remote. One file changes state box by box: modified,
+  staged, committed, pushed. In the remote it appears as a commit that the
+  branch ref now points to: push moves commits and refs, not working files.
+  A dashed arc back from the index restores the working tree
+  (git checkout with a dash-dash path separator, newer form git restore).
+  Tokens: amber teal green deep-blue coral text text-muted surface border font-head font-sans font-mono.
+  Edit: box titles/captions, command pills, the file name and hash.
+  Boxes are 136 wide, 68 apart (x 26 / 230 / 434 / 638); each arch runs
+  from x+84 of one box to x+52 of the next.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Git save flow in four jobs: a modified file in the working tree is staged with git add into the index, recorded with git commit into the local repository, and shared with git push to the remote; git checkout restores the working tree from the index" style="width:100%;height:auto">
+  <title>Git working tree, index, local repo and remote</title>
+  <text x="40" y="40" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">SAVING IN GIT</text>
+  <!-- boxes -->
+  <g>
+  <rect x="26" y="140" width="136" height="170" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="26" y="140" width="136" height="170" rx="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 10%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <rect x="230" y="140" width="136" height="170" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="230" y="140" width="136" height="170" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 10%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="434" y="140" width="136" height="170" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+  <rect x="434" y="140" width="136" height="170" rx="14" style="fill:color-mix(in srgb, var(--green,#10b981) 10%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <rect x="638" y="140" width="136" height="170" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="638" y="140" width="136" height="170" rx="14" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 10%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  </g>
+  <!-- number badges -->
+  <g text-anchor="middle">
+  <circle cx="46" cy="140" r="11" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="46" y="144.5" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">1</text>
+  <circle cx="250" cy="140" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="250" y="144.5" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">2</text>
+  <circle cx="454" cy="140" r="11" style="fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="454" y="144.5" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">3</text>
+  <circle cx="658" cy="140" r="11" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="658" y="144.5" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">4</text>
+  </g>
+  <!-- titles + where it lives -->
+  <g text-anchor="middle">
+  <text x="94" y="176" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Working tree</text>
+  <text x="94" y="194" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">files on disk</text>
+  <text x="298" y="176" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Index</text>
+  <text x="298" y="194" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">staging area</text>
+  <text x="502" y="176" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Local repo</text>
+  <text x="502" y="194" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">.git history</text>
+  <text x="706" y="176" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Remote</text>
+  <text x="706" y="194" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">origin (e.g. GitHub)</text>
+  </g>
+  <!-- the file, one state per box -->
+  <g stroke-linejoin="round">
+  <path d="M 77 206 H 101 L 111 216 V 248 H 77 Z" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <path d="M 101 206 V 216 H 111" fill="none" style="stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <path d="M 281 206 H 305 L 315 216 V 248 H 281 Z" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <path d="M 305 206 V 216 H 315" fill="none" style="stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <path d="M 485 206 H 509 L 519 216 V 248 H 485 Z" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <path d="M 509 206 V 216 H 519" fill="none" style="stroke:var(--green,#10b981);stroke-width:2"/>
+  <path d="M 689 206 H 713 L 723 216 V 248 H 689 Z" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <path d="M 713 206 V 216 H 723" fill="none" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  </g>
+  <g stroke-linecap="round">
+  <line x1="83" y1="224" x2="103" y2="224" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <line x1="83" y1="232" x2="99" y2="232" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <line x1="83" y1="240" x2="105" y2="240" style="stroke:var(--amber,#f59e0b);stroke-width:2.5"/>
+  <line x1="287" y1="224" x2="307" y2="224" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <line x1="287" y1="232" x2="303" y2="232" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <line x1="287" y1="240" x2="309" y2="240" style="stroke:var(--teal,#0d9488);stroke-width:2.5"/>
+  <line x1="491" y1="224" x2="511" y2="224" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <line x1="491" y1="232" x2="507" y2="232" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <line x1="491" y1="240" x2="513" y2="240" style="stroke:var(--green,#10b981);stroke-width:2.5"/>
+  <line x1="695" y1="224" x2="715" y2="224" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <line x1="695" y1="232" x2="711" y2="232" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <line x1="695" y1="240" x2="717" y2="240" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2.5"/>
+  </g>
+  <g text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">
+  <text x="94" y="265">app.py</text>
+  <text x="298" y="265">app.py</text>
+  <text x="502" y="265">commit c3f9</text>
+  <text x="706" y="265">main → c3f9</text>
+  </g>
+  <!-- state badges -->
+  <g text-anchor="middle">
+  <rect x="50" y="276" width="88" height="22" rx="11" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 28%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:1.5"/>
+  <text x="94" y="291.5" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">modified</text>
+  <rect x="254" y="276" width="88" height="22" rx="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <text x="298" y="291.5" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">staged</text>
+  <rect x="458" y="276" width="88" height="22" rx="11" style="fill:color-mix(in srgb, var(--green,#10b981) 28%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:1.5"/>
+  <text x="502" y="291.5" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">committed</text>
+  <rect x="662" y="276" width="88" height="22" rx="11" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 28%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="706" y="291.5" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">pushed</text>
+  </g>
+  <!-- forward arches: add, commit, push -->
+  <g fill="none" stroke-linecap="round">
+  <path d="M 110 140 C 110 92 282 92 282 127" style="stroke:var(--text,#0f172a);stroke-width:2.5"/>
+  <path d="M 314 140 C 314 92 486 92 486 127" style="stroke:var(--text,#0f172a);stroke-width:2.5"/>
+  <path d="M 518 140 C 518 92 690 92 690 127" style="stroke:var(--text,#0f172a);stroke-width:2.5"/>
+  </g>
+  <g>
+  <polygon points="282,140 275.5,127 288.5,127" style="fill:var(--text,#0f172a)"/>
+  <polygon points="486,140 479.5,127 492.5,127" style="fill:var(--text,#0f172a)"/>
+  <polygon points="690,140 683.5,127 696.5,127" style="fill:var(--text,#0f172a)"/>
+  </g>
+  <g text-anchor="middle">
+  <rect x="146" y="66" width="100" height="24" rx="12" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:2"/>
+  <text x="196" y="83" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">git add</text>
+  <rect x="350" y="66" width="100" height="24" rx="12" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:2"/>
+  <text x="400" y="83" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">git commit</text>
+  <rect x="554" y="66" width="100" height="24" rx="12" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:2"/>
+  <text x="604" y="83" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">git push</text>
+  </g>
+  <!-- restore: index back to working tree (dashed) -->
+  <g>
+  <path d="M 266 310 C 266 362 126 362 126 323" fill="none" stroke-dasharray="6 4" style="stroke:var(--coral,#ef4444);stroke-width:2.5"/>
+  <polygon points="126,310 119.5,323 132.5,323" style="fill:var(--coral,#ef4444)"/>
+  <text x="196" y="374" text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">git checkout -- .</text>
+  <text x="196" y="391" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">drop unstaged edits (git restore .)</text>
+  </g>
+  <!-- remote note -->
+  <g text-anchor="middle">
+  <text x="706" y="334" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">gets commits; its main</text>
+  <text x="706" y="349" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">moves to c3f9</text>
+  </g>
+  <!-- footer -->
+  <g>
+  <text x="40" y="428" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Save in git is four jobs: edit the file, stage it (add), record a snapshot (commit), share it (push).</text>
+  <text x="40" y="443" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Push uploads commits and moves the remote branch; it never writes files into anyone's working tree.</text>
+  </g>
+</svg>

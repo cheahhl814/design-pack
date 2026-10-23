@@ -134,6 +134,14 @@ const META = {
   'anim-water-cycle': { desc: 'ANIMATED. Droplets cycle through the landscape: evaporation rising, rain falling from the cloud, runoff sliding downslope', use: 'Teaching the hydrological cycle, live catchment/water briefs' },
   'anim-food-web': { desc: 'ANIMATED. Energy dots flow along the existing arrows in the food-to-feeder direction across all four tiers', use: 'Teaching energy flow, live ecosystem overviews' },
   'anim-carbon-cycle': { desc: 'ANIMATED. Carbon pulses flow along the existing flux arrows (fossil emissions up, plant and ocean exchange) on staggered loops', use: 'Explaining sources vs sinks, net-zero logic, live climate briefs' },
+  'cli-pipeline': { desc: 'Shell pipeline explained: two command boxes wired through one pipe, stdout solid, stderr dashed straight to the screen, file-descriptor labels and 2>&1 footer note', use: 'Teaching unix pipelines, data-flow explainers on terminal workflows' },
+  'prompt-anatomy': { desc: 'One monospace command line annotated with dashed leaders: prompt (user/host/cwd), command, flags, arguments and a caption leg per part', use: 'CLI tutorials, command docs, teaching shell syntax' },
+  'directory-tree': { desc: 'Filesystem tree with root, system dirs, user homes (one expanded), and the current path highlighted as a thick accent line', use: 'Teaching cd/ls navigation, project structure, storage organisation' },
+  'git-branch-merge': { desc: 'Commit graph: main line plus feature branch splitting at C2, three parallel commits, merge commit M with two parents, HEAD and branch-pointer pills, keys', use: 'Git tutorials, collaboration workflows, branch strategy briefs' },
+  'git-stage-flow': { desc: 'Working tree -> add -> index -> commit -> local repo -> push -> remote, file state badges per stage, dashed restore arrow, caption "save is four jobs"', use: 'Teaching what save means in git, onboarding devs to version control' },
+  'stack-heap-memory': { desc: 'One address space: stack of frames with a stack-pointer arrow and free-frame gap, heap blocks with pointers from frames and a freed-gap, leak footnote', use: 'Teaching memory management, C/C++ basics, allocation explainers' },
+  'async-event-loop': { desc: 'JS single-thread loop: call stack, Web APIs (timer/fetch), task queue with newest/oldest markers, numbered arrows and the loop circle, microtask footnote', use: 'Async explainers, JS/TS talks, event-driven architecture intros' },
+  'compile-pipeline': { desc: 'Source-to-binary stages: lexer, parser, AST, optimiser, codegen with per-stage example artifacts, syntax-error diagnostics branch, front/middle/back-end bands', use: 'Teaching compilers, language internals, build-system explainers' },
 };
 
 function validate(name, src) {
