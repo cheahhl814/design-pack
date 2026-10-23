@@ -1,0 +1,69 @@
+<!--
+design-pack · svg-library · terminal-window
+  A terminal window explained: window chrome (title bar with three traffic-light
+  dots and a title) over a dark console body showing alternating prompts and
+  output, with a filled block cursor after the last prompt. Two dashed leaders
+  (same pattern as prompt-anatomy) label the chrome and the cursor.
+  Tokens: navy green teal amber coral text text-muted surface font-head font-sans font-mono.
+  Light mono text on the navy body is mixed toward a light literal (#f1f5f9), not toward
+  surface, because surface turns dark in the dark theme and would vanish on navy.
+  Animation: none. The cursor is a static filled block on purpose; a blink would be a
+  looping opacity animation and a bake or capture could freeze it mid-blink at frame 0.
+  Edit labels: title text (user@lab: ~), the six console lines, the progress text,
+  'window chrome' + sub-line, 'block cursor' + '(insertion point)', and the footer caption.
+  Console lines sit at y 128 168 208 248 288 328; mono 14px is about 8.4 px per character,
+  so the two progress squares (x 366 and 382) follow the progress text, which ends near x 350.
+  Move the cursor rect (x 82, y 314) and its leader (y 323) together.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="A terminal window: a title bar with three coloured dots, then a dark body where each typed command (pixi run nextflow, git status) is answered by output lines, ending in a new prompt with a block cursor waiting for the next command" style="width:100%;height:auto">
+  <title>Anatomy of a terminal window</title>
+  <text x="40" y="40" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">A TERMINAL WINDOW</text>
+  <!-- window: shadow, body, title bar -->
+  <g>
+  <rect x="40" y="64" width="520" height="308" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent)"/>
+  <rect x="40" y="64" width="520" height="308" rx="12" style="fill:var(--navy,#0f1b33);stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <path d="M 40 98 V 76 A 12 12 0 0 1 52 64 H 548 A 12 12 0 0 1 560 76 V 98 Z" style="fill:color-mix(in srgb, var(--navy,#0f1b33) 78%, #94a3b8)"/>
+  <path d="M 40 98 H 560" fill="none" style="stroke:color-mix(in srgb, var(--navy,#0f1b33) 60%, #94a3b8);stroke-width:1.5"/>
+  <circle cx="62" cy="81" r="6" style="fill:var(--coral,#ef4444)"/>
+  <circle cx="84" cy="81" r="6" style="fill:var(--amber,#f59e0b)"/>
+  <circle cx="106" cy="81" r="6" style="fill:var(--green,#10b981)"/>
+  <text x="300" y="86" text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;font-weight:400;fill:color-mix(in srgb, var(--text-muted,#64748b) 40%, #e2e8f0)">user@lab: ~</text>
+  </g>
+  <!-- console lines: prompts then output -->
+  <g style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:14px;font-weight:400">
+  <text x="64" y="128" style="font-weight:700;fill:color-mix(in srgb, var(--green,#10b981) 60%, #f1f5f9)">$</text>
+  <text x="82" y="128" style="fill:#f1f5f9">pixi run nextflow pipeline.nf</text>
+  <text x="64" y="168" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 35%, #e2e8f0)">Launching `pipeline.nf` [fuzzy-meme]</text>
+  <text x="64" y="208" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 60%, #f1f5f9)">[e4/12] process SAMTOOLS_SORT (2%)</text>
+  <text x="64" y="248" style="font-weight:700;fill:color-mix(in srgb, var(--green,#10b981) 60%, #f1f5f9)">$</text>
+  <text x="82" y="248" style="fill:#f1f5f9">git status</text>
+  <text x="64" y="288" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 35%, #e2e8f0)">nothing to commit, working tree clean</text>
+  <text x="64" y="328" style="font-weight:700;fill:color-mix(in srgb, var(--green,#10b981) 60%, #f1f5f9)">$</text>
+  </g>
+  <!-- progress segments: one done, one pending -->
+  <rect x="366" y="197" width="11" height="11" rx="1.5" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 60%, #f1f5f9)"/>
+  <rect x="382" y="197" width="11" height="11" rx="1.5" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 60%, #f1f5f9);stroke-width:1.5"/>
+  <!-- block cursor (static) -->
+  <rect x="82" y="314" width="9" height="18" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, #f1f5f9)"/>
+  <!-- leaders -->
+  <g fill="none" stroke-dasharray="3 4" stroke-linejoin="round">
+  <path d="M 500 81 H 586" style="stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <path d="M 96 323 H 586" style="stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  </g>
+  <g>
+  <circle cx="500" cy="81" r="3.5" style="fill:var(--text-muted,#64748b)"/>
+  <circle cx="96" cy="323" r="3.5" style="fill:var(--text-muted,#64748b)"/>
+  </g>
+  <!-- labels -->
+  <g>
+  <text x="596" y="80" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">window chrome</text>
+  <text x="596" y="98" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">title bar, buttons, title</text>
+  <text x="596" y="322" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">block cursor</text>
+  <text x="596" y="340" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">(insertion point)</text>
+  </g>
+  <!-- footer -->
+  <g>
+  <text x="40" y="428" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">The prompt asks, the shell answers; each line is a fresh question.</text>
+  </g>
+</svg>

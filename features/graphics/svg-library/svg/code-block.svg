@@ -1,0 +1,57 @@
+<!--
+design-pack · svg-library · code-block
+  A syntax-highlighted code card: filename tab, dark navy panel with a thin teal
+  accent bar on the left, a muted line-number gutter, and nine lines of Python.
+  Each line is one text node with 2 to 3 tinted tspans: keyword teal, string amber,
+  function green, number coral, comment muted italic, everything else light grey.
+  Tokens: navy teal green amber coral text text-muted surface font-head font-sans font-mono.
+  Light text on the navy panel is mixed toward a light literal (#f1f5f9), not toward
+  surface, because surface turns dark in the dark theme and would vanish on navy.
+  Animation: none, fully static (no typing sweep, so frame 0 is the complete card).
+  Edit: the filename in the tab, the nine code lines (baseline y = 120 + 28 * (n - 1),
+  gutter number at x 88 right-aligned, code at x 110 plus 36 per indent level since
+  leading spaces collapse in SVG), and the footer caption. The snippet is valid Python
+  that counts .tif tiles per sample prefix and prints a table.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="A dark code card for src/count_tiles.py showing nine numbered lines of Python that count tiles per sample and print a table, with keywords, strings, function names, numbers and comments in different colours" style="width:100%;height:auto">
+  <title>A syntax-highlighted code block</title>
+  <text x="40" y="40" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">A CODE BLOCK</text>
+  <!-- filename tab, panel, accent bar -->
+  <g>
+  <rect x="40" y="90" width="720" height="276" rx="10" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 22%, transparent)"/>
+  <rect x="40" y="90" width="720" height="276" rx="10" style="fill:var(--navy,#0f1b33);stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <path d="M 64 90 V 74 A 8 8 0 0 1 72 66 H 232 A 8 8 0 0 1 240 74 V 90 Z" style="fill:var(--navy,#0f1b33);stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <rect x="66" y="88" width="172" height="4" style="fill:var(--navy,#0f1b33)"/>
+  <text x="152" y="84" text-anchor="middle" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 45%, #f1f5f9)">src/count_tiles.py</text>
+  <rect x="40" y="104" width="5" height="248" rx="2.5" style="fill:var(--teal,#0d9488)"/>
+  </g>
+  <!-- line numbers -->
+  <g text-anchor="end" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:15px;font-weight:400;fill:color-mix(in srgb, var(--text-muted,#64748b) 80%, var(--navy,#0f1b33))">
+  <text x="88" y="120">1</text>
+  <text x="88" y="148">2</text>
+  <text x="88" y="176">3</text>
+  <text x="88" y="204">4</text>
+  <text x="88" y="232">5</text>
+  <text x="88" y="260">6</text>
+  <text x="88" y="288">7</text>
+  <text x="88" y="316">8</text>
+  <text x="88" y="344">9</text>
+  </g>
+  <!-- code: keyword teal, string amber, function green, number coral, comment muted -->
+  <g style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:15px;font-weight:400;fill:#e2e8f0">
+  <text x="110" y="120"><tspan style="fill:color-mix(in srgb, var(--teal,#0d9488) 60%, #f1f5f9)">from</tspan> pathlib <tspan style="fill:color-mix(in srgb, var(--teal,#0d9488) 60%, #f1f5f9)">import</tspan> Path</text>
+  <text x="110" y="148"><tspan style="fill:color-mix(in srgb, var(--teal,#0d9488) 60%, #f1f5f9)">def</tspan> <tspan style="fill:color-mix(in srgb, var(--green,#10b981) 65%, #f1f5f9)">count_tiles</tspan>(folder):<tspan dx="9" style="font-style:italic;fill:color-mix(in srgb, var(--text-muted,#64748b) 55%, #e2e8f0)"># tiles per sample</tspan></text>
+  <text x="146" y="176">counts = {}</text>
+  <text x="146" y="204"><tspan style="fill:color-mix(in srgb, var(--teal,#0d9488) 60%, #f1f5f9)">for</tspan> f <tspan style="fill:color-mix(in srgb, var(--teal,#0d9488) 60%, #f1f5f9)">in</tspan> sorted(Path(folder).glob(<tspan style="fill:color-mix(in srgb, var(--amber,#f59e0b) 65%, #f1f5f9)">"*.tif"</tspan>)):</text>
+  <text x="182" y="232">sample = f.stem.split(<tspan style="fill:color-mix(in srgb, var(--amber,#f59e0b) 65%, #f1f5f9)">"_"</tspan>)[<tspan style="fill:color-mix(in srgb, var(--coral,#ef4444) 65%, #f1f5f9)">0</tspan>]</text>
+  <text x="182" y="260">counts[sample] = counts.get(sample, <tspan style="fill:color-mix(in srgb, var(--coral,#ef4444) 65%, #f1f5f9)">0</tspan>) + <tspan style="fill:color-mix(in srgb, var(--coral,#ef4444) 65%, #f1f5f9)">1</tspan></text>
+  <text x="146" y="288"><tspan style="fill:color-mix(in srgb, var(--teal,#0d9488) 60%, #f1f5f9)">for</tspan> sample, n <tspan style="fill:color-mix(in srgb, var(--teal,#0d9488) 60%, #f1f5f9)">in</tspan> counts.items():</text>
+  <text x="182" y="316"><tspan style="fill:color-mix(in srgb, var(--green,#10b981) 65%, #f1f5f9)">print</tspan>(<tspan style="fill:color-mix(in srgb, var(--amber,#f59e0b) 65%, #f1f5f9)">f"{sample:&lt;8}{n:&gt;4}"</tspan>)</text>
+  <text x="110" y="344"><tspan style="fill:color-mix(in srgb, var(--green,#10b981) 65%, #f1f5f9)">count_tiles</tspan>(<tspan style="fill:color-mix(in srgb, var(--amber,#f59e0b) 65%, #f1f5f9)">"tiles"</tspan>)</text>
+  </g>
+  <!-- footer -->
+  <g>
+  <text x="40" y="428" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Copy-paste-ready; tokens follow the host template palette.</text>
+  </g>
+</svg>

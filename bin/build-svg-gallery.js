@@ -142,6 +142,8 @@ const META = {
   'stack-heap-memory': { desc: 'One address space: stack of frames with a stack-pointer arrow and free-frame gap, heap blocks with pointers from frames and a freed-gap, leak footnote', use: 'Teaching memory management, C/C++ basics, allocation explainers' },
   'async-event-loop': { desc: 'JS single-thread loop: call stack, Web APIs (timer/fetch), task queue with newest/oldest markers, numbered arrows and the loop circle, microtask footnote', use: 'Async explainers, JS/TS talks, event-driven architecture intros' },
   'compile-pipeline': { desc: 'Source-to-binary stages: lexer, parser, AST, optimiser, codegen with per-stage example artifacts, syntax-error diagnostics branch, front/middle/back-end bands', use: 'Teaching compilers, language internals, build-system explainers' },
+  'terminal-window': { desc: 'Terminal window, annotated: traffic-light chrome and title, six mono prompt/output lines with a progress process line, static filled block cursor named by leaders', use: 'CLI/agent-session explainers, tutorial screenshot stand-ins, terminal walkthroughs' },
+  'code-block': { desc: 'Syntax-highlighted code card: filename tab, line-number gutter, keyword/string/function/number/comment token tints via tspan runs, accent left bar', use: 'Code walkthroughs, README figures, teaching snippets with themed highlighting' },
 };
 
 function validate(name, src) {

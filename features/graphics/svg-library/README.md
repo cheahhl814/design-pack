@@ -1,8 +1,8 @@
 # svg-library — hand-drawn SVG diagram templates (design-pack v0.16.0)
 
-One hundred and two agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
+One hundred and four agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
 explanatory and summary visuals — plus **seventeen SMIL-animated variants** (`anim-*`, see
-rule 8) with static twins kept (119 files total) — the complement to the pure-CSS graphics pack
+rule 8) with static twins kept (121 files total) — the complement to the pure-CSS graphics pack
 (`features/graphics/graphics.css`). Where the CSS pack covers charts built from real
 data (donut, gauge, heatmap, bars), the SVG library covers **concept diagrams**:
 processes, loops, hierarchies, matrices, funnels, roadmaps, cause-effect maps, goals,
@@ -153,6 +153,9 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
 | 117 | `stack-heap-memory.svg` | Stack frames + stack pointer vs heap blocks with pointers and a freed gap | Teaching memory management, allocation explainers |
 | 118 | `async-event-loop.svg` | Call stack, Web APIs, task queue and the loop circle with numbered order; microtask footnote | Async explainers, event-driven intros |
 | 119 | `compile-pipeline.svg` | Source → lexer → parser → AST → optimiser → codegen → binary with per-stage artifacts and a diagnostics branch | Teaching compilers, language internals |
+| | **Window & snippet** | *static; annotated chrome + highlighted code* | |
+| 120 | `terminal-window.svg` | Terminal window annotated: traffic-light chrome, six mono prompt/output lines, progress process line, static block cursor | CLI/session explainers, tutorial stand-ins |
+| 121 | `code-block.svg` | Syntax-highlighted code card: filename tab, line numbers, tinted token runs, accent left bar | Code walkthroughs, README figures |
 
 **When to use which graphics system:**
 
@@ -345,7 +348,7 @@ solid arrows, responses dashed and numbered in order (AlgoMaster, Akamai client-
 
 ## Computers & programming
 
-Eight components (112 to 119). `cli-pipeline` follows the wizardzines pipe convention and the VUW pipeviz solid-stdout / dashed-stderr arrow language: the pipe is one-way and errors bypass it unless you redirect (`2>&1 |`). `git-branch-merge`'s topology is correct as drawn: the merge commit has two parents and fast-forward is impossible because main moved after the split (mermaid gitGraph / gitgifs conventions). `git-stage-flow` follows the add/commit/push staging model: push moves commits and refs, never working files. `stack-heap-memory` is simplified but correct: frames pushed on call and popped on return; heap blocks live until `free()`/GC; a block with no pointing pointer leaks. `async-event-loop` is the simplified single-thread picture with a footnote naming the microtask queue (`fetch().then()` callbacks never sit in the task queue). `compile-pipeline`'s optimiser step is a real constant-fold (2*3 → 6); machine-code bytes are illustrative. These files use `var(--font-mono, ui-monospace, Menlo, Consolas, monospace)` for command text — a token no template defines yet, so it always uses the fallback stack.
+Eight components (112 to 119) plus two window/snippet components (120 and 121). `cli-pipeline` follows the wizardzines pipe convention and the VUW pipeviz solid-stdout / dashed-stderr arrow language: the pipe is one-way and errors bypass it unless you redirect (`2>&1 |`). `git-branch-merge`'s topology is correct as drawn: the merge commit has two parents and fast-forward is impossible because main moved after the split (mermaid gitGraph / gitgifs conventions). `git-stage-flow` follows the add/commit/push staging model: push moves commits and refs, never working files. `stack-heap-memory` is simplified but correct: frames pushed on call and popped on return; heap blocks live until `free()`/GC; a block with no pointing pointer leaks. `async-event-loop` is the simplified single-thread picture with a footnote naming the microtask queue (`fetch().then()` callbacks never sit in the task queue). `compile-pipeline`'s optimiser step is a real constant-fold (2*3 → 6); machine-code bytes are illustrative. These files use `var(--font-mono, ui-monospace, Menlo, Consolas, monospace)` for command text — a token no template defines yet, so it always uses the fallback stack. `terminal-window`'s cursor is deliberately a static filled block (no SMIL — any blink can be caught mid-off by a bake), and `code-block`'s token tints mix toward a literal light grey `#f1f5f9` rather than `--surface`, because `--surface` itself goes dark in dark theme — the same navy/deep-blue dark-token rule.
 
 ## Standalone use (no HTML page)
 

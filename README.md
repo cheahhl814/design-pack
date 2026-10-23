@@ -89,7 +89,7 @@ All three HTML templates are deployed as a working demo on GitHub Pages. Open an
 | 🎞️ **[Slide demo](https://cheahhl814.github.io/design-pack/slide/)** | REPLACED in v0.26.0 — decks are now designed SVG slides (compose + export PNG/PDF), see the svg-slides section and `templates/svg-slides/gallery.html` |
 | 🍱 **[Bento demo](https://cheahhl814.github.io/design-pack/bento/)** | "Project Phoenix — One-page Recap" (bento grid, full annotation engine) |
 | 🧩 **[Components demo](https://cheahhl814.github.io/design-pack/components/)** | The graphics pack in one page — donut, gauge, bars, heatmap, flow, compare, pull-quote, motion legend |
-| 🖍️ **[SVG library demo](https://cheahhl814.github.io/design-pack/svg-library/)** | All 119 SVG infographic templates (incl. 17 SMIL-animated), token-driven, with source blocks — ◐ toggle previews both palettes |
+| 🖍️ **[SVG library demo](https://cheahhl814.github.io/design-pack/svg-library/)** | All 121 SVG infographic templates (incl. 17 SMIL-animated), token-driven, with source blocks — ◐ toggle previews both palettes |
 | 📊 **[Dashboard demo](https://cheahhl814.github.io/design-pack/dashboard/)** | "Northwind Logistics — Operations Dashboard" (mock data, live polling) |
 
 Each demo is a curated showcase with realistic content (not a blank template). Try the **◐ theme toggle**, **▤ density toggle**, **S/M/L font size toggle** in the top-right of every demo. In the report and bento demos, select any text to leave tracked-changes-style annotations, then export them as JSON from the 💬 Notes panel.
