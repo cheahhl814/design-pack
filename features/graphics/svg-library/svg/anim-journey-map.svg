@@ -1,0 +1,58 @@
+<!--
+design-pack · svg-library · anim-journey-map
+  Five-stage journey with an emotion curve; a small marker glides along the curve through the faces.
+  Tokens: teal deep-blue coral amber green border border-bright text text-muted surface font-head font-sans.
+  Edit: stage names, touchpoints, captions. The marker path is the emotion curve relative to its start (100,240.6); re-shape both together.
+  ANIMATED (SMIL only, README rule 8): delete the <animate*> children for a static twin.
+  No ids, defs, path references or style blocks, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Animated five-stage customer journey with touchpoints and an emotion curve dipping at onboarding and peaking at advocacy" style="width:100%;height:auto">
+  <title>Animated journey map with emotion curve</title>
+  <!-- column guides -->
+  <g style="stroke:var(--border,#e2e8f0);stroke-width:1.5" stroke-dasharray="3 5">
+    <line x1="175" y1="30" x2="175" y2="420"/>
+    <line x1="325" y1="30" x2="325" y2="420"/>
+    <line x1="475" y1="30" x2="475" y2="420"/>
+    <line x1="625" y1="30" x2="625" y2="420"/>
+  </g>
+  <line x1="30" y1="282" x2="770" y2="282" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-dasharray="6 6"/>
+  <text x="30" y="186" letter-spacing="1" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">delight</text>
+  <text x="30" y="386" letter-spacing="1" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">friction</text>
+  <!-- stage headers + touchpoints -->
+  <rect x="30" y="34" width="140" height="42" rx="21" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="30" y="34" width="140" height="42" rx="21" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="100" y="61" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Discover</text>
+  <text x="100" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">search · referral</text>
+  <rect x="180" y="34" width="140" height="42" rx="21" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+    <rect x="180" y="34" width="140" height="42" rx="21" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="250" y="61" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Sign up</text>
+  <text x="250" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">form · email check</text>
+  <rect x="330" y="34" width="140" height="42" rx="21" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+    <rect x="330" y="34" width="140" height="42" rx="21" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="400" y="61" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Onboard</text>
+  <text x="400" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">tutorial · setup</text>
+  <rect x="480" y="34" width="140" height="42" rx="21" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+    <rect x="480" y="34" width="140" height="42" rx="21" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="550" y="61" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Use</text>
+  <text x="550" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">daily app · support</text>
+  <rect x="630" y="34" width="140" height="42" rx="21" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+    <rect x="630" y="34" width="140" height="42" rx="21" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <text x="700" y="61" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Advocate</text>
+  <text x="700" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">reviews · invites</text>
+  <!-- emotion curve -->
+  <path d="M 100 240.6 C 125 251.3 200 286.6 250 305 C 300 323.4 350 358.7 400 351 C 450 343.3 500 283.5 550 259 C 600 234.5 675 213 700 203.8" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:3" stroke-linecap="round"/>
+  <!-- faces: green = delight, amber = neutral, coral = friction (mouth curve follows the score) -->
+  <g style="stroke:var(--green,#10b981);stroke-width:2" stroke-linecap="round"><circle cx="100" cy="240.6" r="17" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, var(--surface,#ffffff))"/><path d="M 93 244.6 Q 100 247.8 107 244.6" fill="none"/><circle cx="94" cy="235.6" r="1.6" style="fill:var(--green,#10b981)"/><circle cx="106" cy="235.6" r="1.6" style="fill:var(--green,#10b981)"/></g>
+  <text x="100" y="418" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">finds us easily</text>
+  <g style="stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linecap="round"><circle cx="250" cy="305" r="17" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, var(--surface,#ffffff))"/><path d="M 243 309 Q 250 307.2 257 309" fill="none"/><circle cx="244" cy="300" r="1.6" style="fill:var(--amber,#f59e0b)"/><circle cx="256" cy="300" r="1.6" style="fill:var(--amber,#f59e0b)"/></g>
+  <text x="250" y="418" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">too many fields</text>
+  <g style="stroke:var(--coral,#ef4444);stroke-width:2" stroke-linecap="round"><circle cx="400" cy="351" r="17" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, var(--surface,#ffffff))"/><path d="M 393 355 Q 400 349.8 407 355" fill="none"/><circle cx="394" cy="346" r="1.6" style="fill:var(--coral,#ef4444)"/><circle cx="406" cy="346" r="1.6" style="fill:var(--coral,#ef4444)"/></g>
+  <text x="400" y="418" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">first error, stuck</text>
+  <g style="stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linecap="round"><circle cx="550" cy="259" r="17" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, var(--surface,#ffffff))"/><path d="M 543 263 Q 550 264.8 557 263" fill="none"/><circle cx="544" cy="254" r="1.6" style="fill:var(--amber,#f59e0b)"/><circle cx="556" cy="254" r="1.6" style="fill:var(--amber,#f59e0b)"/></g>
+  <text x="550" y="418" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">help arrives fast</text>
+  <g style="stroke:var(--green,#10b981);stroke-width:2" stroke-linecap="round"><circle cx="700" cy="203.8" r="17" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, var(--surface,#ffffff))"/><path d="M 693 207.8 Q 700 213.8 707 207.8" fill="none"/><circle cx="694" cy="198.8" r="1.6" style="fill:var(--green,#10b981)"/><circle cx="706" cy="198.8" r="1.6" style="fill:var(--green,#10b981)"/></g>
+  <text x="700" y="418" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">tells a colleague</text>
+  <circle cx="100" cy="240.6" r="4.5" style="fill:var(--text,#0f172a);stroke:var(--surface,#ffffff);stroke-width:2">
+    <animateMotion path="M 0 0 C 25 10.7 100 46 150 64.4 C 200 82.8 250 118.1 300 110.4 C 350 102.7 400 42.9 450 18.4 C 500 -6.1 575 -27.6 600 -36.8" dur="12s" begin="0s" repeatCount="indefinite"/>
+  </circle>
+</svg>

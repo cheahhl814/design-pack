@@ -1,0 +1,91 @@
+<!--
+design-pack · svg-library · anim-pcr-thermal-cycle
+  Thermocycler profile; a cursor rides the temperature curve through denature, anneal and extend, then loops.
+  Tokens: coral teal amber text text-muted surface font-head font-sans.
+  Edit: temperatures (recompute y), cycle count, inset numbers. The cursor path is the profile polyline relative to its start (84,265); edit it with the profile.
+  ANIMATED (SMIL only, README rule 8): delete the <animate*> children for a static twin.
+  No ids, defs, path references or style blocks, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Animated PCR thermal cycle: repeated denaturation at about 95 degrees, annealing at about 55 to 65 degrees and extension at 72 degrees; each cycle doubles the DNA so n cycles give 2 to the n copies" style="width:100%;height:auto">
+  <title>Animated PCR thermal cycling profile and exponential amplification</title>
+  <!-- axes -->
+  <g>
+  <line x1="80" y1="57" x2="80" y2="330" style="stroke:var(--text,#0f172a);stroke-width:2;stroke-linecap:round"/>
+  <line x1="80" y1="330" x2="540" y2="330" style="stroke:var(--text,#0f172a);stroke-width:2;stroke-linecap:round"/>
+  <polygon points="548,330 537,335.5 537,324.5" style="fill:var(--text,#0f172a)"/>
+  <line x1="75" y1="330" x2="80" y2="330" style="stroke:var(--text,#0f172a);stroke-width:1.5;stroke-linecap:round"/>
+  <text x="71" y="334" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">0</text>
+  <line x1="75" y1="265" x2="80" y2="265" style="stroke:var(--text,#0f172a);stroke-width:1.5;stroke-linecap:round"/>
+  <text x="71" y="269" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">25</text>
+  <line x1="75" y1="200" x2="80" y2="200" style="stroke:var(--text,#0f172a);stroke-width:1.5;stroke-linecap:round"/>
+  <text x="71" y="204" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">50</text>
+  <line x1="75" y1="135" x2="80" y2="135" style="stroke:var(--text,#0f172a);stroke-width:1.5;stroke-linecap:round"/>
+  <text x="71" y="139" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">75</text>
+  <line x1="75" y1="70" x2="80" y2="70" style="stroke:var(--text,#0f172a);stroke-width:1.5;stroke-linecap:round"/>
+  <text x="71" y="74" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">100</text>
+  <text x="44" y="194.8" text-anchor="middle" transform="rotate(-90 44 194.8)" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Temperature (°C)</text>
+  <text x="536" y="350" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">time →</text>
+  <line x1="80" y1="83" x2="540" y2="83" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1;stroke-linecap:round;stroke-dasharray:3 4"/>
+  <line x1="80" y1="142.8" x2="540" y2="142.8" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1;stroke-linecap:round;stroke-dasharray:3 4"/>
+  <line x1="80" y1="179.2" x2="540" y2="179.2" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1;stroke-linecap:round;stroke-dasharray:3 4"/>
+  </g>
+  <!-- temperature profile -->
+  <g>
+  <path d="M 84 265 L 98 83 L 134 83 L 164 83 L 176 179.2 L 212 179.2 L 220 142.8 L 262 142.8 L 272 83 L 302 83 L 314 179.2 L 350 179.2 L 357 142.8 L 399 142.8 L 406 122" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:3;stroke-linejoin:round;stroke-linecap:round"/>
+  <path d="M 426 122 L 432 142.8 L 472 142.8 L 484 319.6 L 536 319.6" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:3;stroke-linejoin:round;stroke-linecap:round"/>
+  <line x1="410" y1="153.2" x2="418" y2="101.2" style="stroke:var(--text,#0f172a);stroke-width:2;stroke-linecap:round"/>
+  <line x1="418" y1="153.2" x2="426" y2="101.2" style="stroke:var(--text,#0f172a);stroke-width:2;stroke-linecap:round"/>
+  <line x1="134" y1="83" x2="164" y2="83" style="stroke:var(--coral,#ef4444);stroke-width:6;stroke-linecap:round"/>
+  <line x1="176" y1="179.2" x2="212" y2="179.2" style="stroke:var(--teal,#0d9488);stroke-width:6;stroke-linecap:round"/>
+  <line x1="220" y1="142.8" x2="262" y2="142.8" style="stroke:var(--amber,#f59e0b);stroke-width:6;stroke-linecap:round"/>
+  </g>
+  <!-- step labels -->
+  <g>
+  <text x="149" y="53" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Denature</text>
+  <text x="149" y="68" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">~95 °C · strands split</text>
+  <text x="194" y="201.2" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Anneal</text>
+  <text x="194" y="216.2" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">~55–65 °C · primers bind</text>
+  <text x="241" y="112.8" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Extend</text>
+  <text x="241" y="127.8" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">~72 °C · DNA copied</text>
+  <text x="116" y="101" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">initial</text>
+  <text x="452" y="130.8" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">final</text>
+  <text x="510" y="309.6" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">4 °C hold</text>
+  <path d="M 134 342 L 134 350 L 272 350 L 272 342" style="fill:none;stroke:var(--text,#0f172a);stroke-width:1.5"/>
+  <text x="203" y="368" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">one cycle · repeat 25–35×</text>
+  </g>
+  <!-- amplification inset -->
+  <g>
+  <rect x="580" y="66" width="186" height="290" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 6%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <text x="673" y="90" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Copies double each cycle</text>
+  <line x1="598" y1="296" x2="750" y2="296" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round"/>
+  <rect x="602" y="290.8" width="17" height="5.2" rx="3" style="fill:color-mix(in srgb, var(--teal,#0d9488) 50%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <text x="610.5" y="284.8" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">1</text>
+  <text x="610.5" y="312" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">0</text>
+  <rect x="627" y="285.6" width="17" height="10.4" rx="3" style="fill:color-mix(in srgb, var(--teal,#0d9488) 50%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <text x="635.5" y="279.6" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">2</text>
+  <text x="635.5" y="312" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">1</text>
+  <rect x="652" y="275.2" width="17" height="20.8" rx="3" style="fill:color-mix(in srgb, var(--teal,#0d9488) 50%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <text x="660.5" y="269.2" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">4</text>
+  <text x="660.5" y="312" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">2</text>
+  <rect x="677" y="254.4" width="17" height="41.6" rx="3" style="fill:color-mix(in srgb, var(--teal,#0d9488) 50%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <text x="685.5" y="248.4" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">8</text>
+  <text x="685.5" y="312" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">3</text>
+  <rect x="702" y="212.8" width="17" height="83.2" rx="3" style="fill:color-mix(in srgb, var(--teal,#0d9488) 50%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <text x="710.5" y="206.8" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">16</text>
+  <text x="710.5" y="312" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">4</text>
+  <rect x="727" y="129.6" width="17" height="166.4" rx="3" style="fill:color-mix(in srgb, var(--teal,#0d9488) 50%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <text x="735.5" y="123.6" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">32</text>
+  <text x="735.5" y="312" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">5</text>
+  <text x="673" y="328" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">cycle n → 2ⁿ copies</text>
+  <text x="673" y="344" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">30 cycles ≈ 10⁹ (ideal)</text>
+  </g>
+  <!-- captions -->
+  <g>
+  <text x="40" y="30" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">PCR THERMAL CYCLE</text>
+  <text x="40" y="410" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Typical values; real temperatures and times are protocol-specific (annealing ≈ primer Tm − 3–5 °C, enzyme, amplicon length).</text>
+  <text x="40" y="426" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Copy numbers assume 100% efficiency; real reactions run 90–105% and plateau late as reagents run out.</text>
+  </g>
+  <circle cx="84" cy="265" r="6" style="fill:var(--text,#0f172a);stroke:var(--surface,#ffffff);stroke-width:2">
+    <animateMotion path="M 0 0 L 14 -182 L 50 -182 L 80 -182 L 92 -85.8 L 128 -85.8 L 136 -122.2 L 178 -122.2 L 188 -182 L 218 -182 L 230 -85.8 L 266 -85.8 L 273 -122.2 L 315 -122.2 L 322 -143 L 342 -143 L 348 -122.2 L 388 -122.2 L 400 54.6 L 452 54.6" dur="14s" begin="0s" repeatCount="indefinite"/>
+  </circle>
+</svg>

@@ -1,0 +1,58 @@
+<!--
+design-pack · svg-library · anim-cycle-loop
+  4-node loop; connector dashes march clockwise and one dot circles the loop (behind the nodes).
+  Tokens: teal green coral amber text text-muted surface font-head font-sans.
+  Edit: node labels/captions + centre title. The dot path is the r=150 circle centred (400,225), started at the top (400,75); keep it in step with the arcs.
+  ANIMATED (SMIL only, README rule 8): delete the <animate*> children for a static twin.
+  No ids, defs, path references or style blocks, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Animated four-node cycle Plan, Build, Measure, Learn with clockwise arrows returning to the first node" style="width:100%;height:auto">
+  <title>Animated cycle loop diagram</title>
+  <!-- arcs between nodes on the same circle (clockwise) -->
+  <path d="M 542.4 178 A 150 150 0 0 1 542.4 272" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-linecap="round" stroke-dasharray="7 5">
+    <animate attributeName="stroke-dashoffset" from="0" to="-12" dur="0.8s" repeatCount="indefinite"/>
+  </path>
+  <polygon points="540.6,277.2 538.2,262.9 550.7,266.7" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 447 367.4 A 150 150 0 0 1 353 367.4" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-linecap="round" stroke-dasharray="7 5">
+    <animate attributeName="stroke-dashoffset" from="0" to="-12" dur="0.8s" repeatCount="indefinite"/>
+  </path>
+  <polygon points="347.8,365.6 362.1,363.2 358.3,375.7" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 257.6 272 A 150 150 0 0 1 257.6 178" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-linecap="round" stroke-dasharray="7 5">
+    <animate attributeName="stroke-dashoffset" from="0" to="-12" dur="0.8s" repeatCount="indefinite"/>
+  </path>
+  <polygon points="259.4,172.8 261.8,187.1 249.3,183.3" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 353 82.6 A 150 150 0 0 1 447 82.6" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-linecap="round" stroke-dasharray="7 5">
+    <animate attributeName="stroke-dashoffset" from="0" to="-12" dur="0.8s" repeatCount="indefinite"/>
+  </path>
+  <polygon points="452.2,84.4 437.9,86.8 441.7,74.3" style="fill:var(--text-muted,#64748b)"/>
+  <circle cx="400" cy="75" r="6" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:2">
+    <animateMotion path="M 0 0 A 150 150 0 1 1 0 300 A 150 150 0 1 1 0 0" dur="8s" begin="0s" repeatCount="indefinite"/>
+  </circle>
+  <text x="400" y="223" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Iterate</text>
+  <text x="400" y="245" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">repeat the loop</text>
+  <!-- nodes (number + label inside, caption outside) -->
+  <circle cx="506.1" cy="118.9" r="54" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <circle cx="506.1" cy="118.9" r="54" style="fill:color-mix(in srgb, var(--teal,#0d9488) 18%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="506.1" y="108.9" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">01</text>
+  <text x="506.1" y="130.9" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Plan</text>
+  <text x="574.1" y="116.9" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">set the goal</text>
+  <text x="574.1" y="134.9" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">and the metric</text>
+  <circle cx="506.1" cy="331.1" r="54" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+    <circle cx="506.1" cy="331.1" r="54" style="fill:color-mix(in srgb, var(--green,#10b981) 18%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <text x="506.1" y="321.1" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))">02</text>
+  <text x="506.1" y="343.1" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Build</text>
+  <text x="574.1" y="329.1" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">ship the smallest</text>
+  <text x="574.1" y="347.1" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">useful slice</text>
+  <circle cx="293.9" cy="331.1" r="54" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+    <circle cx="293.9" cy="331.1" r="54" style="fill:color-mix(in srgb, var(--coral,#ef4444) 18%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="293.9" y="321.1" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">03</text>
+  <text x="293.9" y="343.1" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Measure</text>
+  <text x="225.9" y="329.1" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">collect real</text>
+  <text x="225.9" y="347.1" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">usage data</text>
+  <circle cx="293.9" cy="118.9" r="54" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+    <circle cx="293.9" cy="118.9" r="54" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 18%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="293.9" y="108.9" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">04</text>
+  <text x="293.9" y="130.9" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Learn</text>
+  <text x="225.9" y="116.9" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">decide: keep,</text>
+  <text x="225.9" y="134.9" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">change or drop</text>
+</svg>

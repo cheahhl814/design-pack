@@ -1,0 +1,136 @@
+<!--
+design-pack · svg-library · anim-food-web
+  Food web over four trophic tiers; energy dots travel food to feeder along the drawn arrows, tier by tier.
+  Tokens: green amber coral deep-blue text text-muted surface font-head font-sans.
+  Edit: node names; keep arrows prey to predator. Each dot path runs from an arrow tail to its head (the same direction as the arrowhead).
+  ANIMATED (SMIL only, README rule 8): delete the <animate*> children for a static twin.
+  No ids, defs, path references or style blocks, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Animated food web: grasses, shrubs and clover feed grasshoppers, mice and rabbits, which feed frogs, snakes and foxes, which feed an eagle; decomposers return nutrients to producers" style="width:100%;height:auto">
+  <title>Animated food web with energy-flow arrows</title>
+  <!-- energy arrows -->
+  <g>
+  <line x1="260" y1="315" x2="260" y2="285" style="stroke:var(--text-muted,#64748b);stroke-width:5;stroke-linecap:round"/>
+  <polygon points="260,269 268,285 252,285" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="288" y1="315" x2="358" y2="276.7" style="stroke:var(--text-muted,#64748b);stroke-width:5;stroke-linecap:round"/>
+  <polygon points="372,269 361.8,283.7 354.1,269.7" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="428" y1="315" x2="498" y2="276.7" style="stroke:var(--text-muted,#64748b);stroke-width:5;stroke-linecap:round"/>
+  <polygon points="512,269 501.8,283.7 494.1,269.7" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="540" y1="315" x2="540" y2="285" style="stroke:var(--text-muted,#64748b);stroke-width:5;stroke-linecap:round"/>
+  <polygon points="540,269 548,285 532,285" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="260" y1="231" x2="260" y2="198" style="stroke:var(--text-muted,#64748b);stroke-width:3.5;stroke-linecap:round"/>
+  <polygon points="260,185 266.5,198 253.5,198" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="400" y1="231" x2="400" y2="198" style="stroke:var(--text-muted,#64748b);stroke-width:3.5;stroke-linecap:round"/>
+  <polygon points="400,185 406.5,198 393.5,198" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="428" y1="231" x2="500.6" y2="191.2" style="stroke:var(--text-muted,#64748b);stroke-width:3.5;stroke-linecap:round"/>
+  <polygon points="512,185 503.7,196.9 497.5,185.5" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="540" y1="231" x2="540" y2="198" style="stroke:var(--text-muted,#64748b);stroke-width:3.5;stroke-linecap:round"/>
+  <polygon points="540,185 546.5,198 533.5,198" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="315" y1="166" x2="332" y2="166" style="stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="345,166 332,172.5 332,159.5" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="400" y1="147" x2="400" y2="114" style="stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="400,101 406.5,114 393.5,114" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="512" y1="147" x2="439.4" y2="107.2" style="stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round"/>
+  <polygon points="428,101 442.5,101.5 436.3,112.9" style="fill:var(--text-muted,#64748b)"/>
+  </g>
+  <!-- organisms -->
+  <g>
+  <rect x="345" y="63" width="110" height="38" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="345" y="63" width="110" height="38" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 30%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="400" y="87" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Eagle</text>
+  <rect x="205" y="147" width="110" height="38" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="205" y="147" width="110" height="38" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="260" y="171" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Frog</text>
+  <rect x="345" y="147" width="110" height="38" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="345" y="147" width="110" height="38" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="400" y="171" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Snake</text>
+  <rect x="485" y="147" width="110" height="38" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="485" y="147" width="110" height="38" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="540" y="171" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Fox</text>
+  <rect x="205" y="231" width="110" height="38" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="205" y="231" width="110" height="38" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="260" y="255" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Grasshopper</text>
+  <rect x="345" y="231" width="110" height="38" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="345" y="231" width="110" height="38" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="400" y="255" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Mouse</text>
+  <rect x="485" y="231" width="110" height="38" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="485" y="231" width="110" height="38" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="540" y="255" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Rabbit</text>
+  <rect x="205" y="315" width="110" height="38" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+  <rect x="205" y="315" width="110" height="38" rx="12" style="fill:color-mix(in srgb, var(--green,#10b981) 18%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <text x="260" y="339" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Grasses</text>
+  <rect x="345" y="315" width="110" height="38" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+  <rect x="345" y="315" width="110" height="38" rx="12" style="fill:color-mix(in srgb, var(--green,#10b981) 18%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <text x="400" y="339" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Berry shrubs</text>
+  <rect x="485" y="315" width="110" height="38" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+  <rect x="485" y="315" width="110" height="38" rx="12" style="fill:color-mix(in srgb, var(--green,#10b981) 18%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <text x="540" y="339" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Clover</text>
+  </g>
+  <!-- tier labels -->
+  <g>
+  <text x="40" y="80" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">APEX</text>
+  <text x="40" y="96" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">tertiary consumer</text>
+  <text x="40" y="164" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">CARNIVORES</text>
+  <text x="40" y="180" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">secondary consumers</text>
+  <text x="40" y="248" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">HERBIVORES</text>
+  <text x="40" y="264" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">primary consumers</text>
+  <text x="40" y="332" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">PRODUCERS</text>
+  <text x="40" y="348" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">make food by photosynthesis</text>
+  </g>
+  <!-- decomposers -->
+  <g>
+  <line x1="455" y1="82" x2="620" y2="82" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:5 4"/>
+  <line x1="595" y1="166" x2="620" y2="166" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:5 4"/>
+  <line x1="595" y1="250" x2="620" y2="250" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:5 4"/>
+  <line x1="595" y1="322" x2="620" y2="322" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:5 4"/>
+  <line x1="620" y1="82" x2="620" y2="322" style="stroke:var(--text-muted,#64748b);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:5 4"/>
+  <line x1="620" y1="236" x2="639" y2="236" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-linecap:round"/>
+  <polygon points="650,236 639,241.5 639,230.5" style="fill:var(--text-muted,#64748b)"/>
+  <text x="612" y="76" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">dead matter</text>
+  <rect x="650" y="206" width="112" height="60" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="650" y="206" width="112" height="60" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="706" y="232" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Decomposers</text>
+  <text x="706" y="250" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">fungi · bacteria</text>
+  <path d="M 706 266 L 706 388 L 400 388 L 400 366" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:7 5"/>
+  <polygon points="400,353 406.5,366 393.5,366" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))"/>
+  <text x="553" y="382" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">nutrients (not energy) return to the soil</text>
+  </g>
+  <!-- caption -->
+  <g>
+  <text x="40" y="420" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Arrow = energy flowing from food to feeder · thicker = more energy (shrinks up each level)</text>
+  <text x="40" y="437" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Energy leaves as heat at every step; only nutrients are recycled by decomposers.</text>
+  </g>
+  <circle cx="260" cy="315" r="4.5" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5">
+    <animateMotion path="M 0 0 L 0 -46" dur="2.4s" begin="0s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="288" cy="315" r="4.5" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5">
+    <animateMotion path="M 0 0 L 84 -46" dur="2.4s" begin="0.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="428" cy="315" r="4.5" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5">
+    <animateMotion path="M 0 0 L 84 -46" dur="2.4s" begin="1.0s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="540" cy="315" r="4.5" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5">
+    <animateMotion path="M 0 0 L 0 -46" dur="2.4s" begin="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="260" cy="231" r="4" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5">
+    <animateMotion path="M 0 0 L 0 -46" dur="2.4s" begin="0.4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="400" cy="231" r="4" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5">
+    <animateMotion path="M 0 0 L 0 -46" dur="2.4s" begin="0.9s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="428" cy="231" r="4" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5">
+    <animateMotion path="M 0 0 L 84 -46" dur="2.4s" begin="1.4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="540" cy="231" r="4" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5">
+    <animateMotion path="M 0 0 L 0 -46" dur="2.4s" begin="1.9s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="315" cy="166" r="3.5" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5">
+    <animateMotion path="M 0 0 L 30 0" dur="2.4s" begin="0.8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="400" cy="147" r="3.5" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5">
+    <animateMotion path="M 0 0 L 0 -46" dur="2.4s" begin="1.3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="512" cy="147" r="3.5" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5">
+    <animateMotion path="M 0 0 L -84 -46" dur="2.4s" begin="1.8s" repeatCount="indefinite"/>
+  </circle>
+</svg>

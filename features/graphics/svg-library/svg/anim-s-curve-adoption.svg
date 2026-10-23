@@ -1,0 +1,57 @@
+<!--
+design-pack · svg-library · anim-s-curve-adoption
+  Logistic S-curve over four phases with a rate bell; the curve redraws itself once after a hold (frame 0 is complete) and the we-are-here marker pulses.
+  Tokens: accent coral border-bright text text-muted surface font-head font-sans.
+  Edit: phase eyebrows + captions, legend, marker label. Marker and pulse circle share cx/cy; the curve paths use pathLength=100, so the draw needs no length maths.
+  ANIMATED (SMIL only, README rule 8): delete the <animate*> children for a static twin.
+  No ids, defs, path references or style blocks, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Animated S-shaped adoption curve over time across four phases, Emerge, Grow, Mature and Saturate, with a dashed adoption-rate bell and a We are here marker" style="width:100%;height:auto">
+  <title>Animated S-curve adoption</title>
+  <!-- phase bands -->
+  <text x="165" y="68" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">EMERGE</text>
+  <text x="165" y="85" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">few early users</text>
+  <rect x="250" y="50" width="170" height="330" style="fill:color-mix(in srgb, var(--accent,#0d9488) 6%, transparent)"/>
+  <line x1="250" y1="52" x2="250" y2="380" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="4 5"/>
+  <text x="335" y="68" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">GROW</text>
+  <text x="335" y="85" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">rapid uptake</text>
+  <line x1="420" y1="52" x2="420" y2="380" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="4 5"/>
+  <text x="505" y="68" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">MATURE</text>
+  <text x="505" y="85" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">mainstream</text>
+  <rect x="590" y="50" width="170" height="330" style="fill:color-mix(in srgb, var(--accent,#0d9488) 6%, transparent)"/>
+  <line x1="590" y1="52" x2="590" y2="380" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="4 5"/>
+  <text x="675" y="68" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">SATURATE</text>
+  <text x="675" y="85" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">market full</text>
+  <!-- area + S-curve with offset shadow, dashed adoption-rate bell -->
+  <path d="M 80 379.7 L 88.5 379.7 L 97 379.6 L 105.5 379.5 L 114 379.4 L 122.5 379.3 L 131 379.2 L 139.5 379 L 148 378.8 L 156.5 378.6 L 165 378.3 L 173.5 378 L 182 377.6 L 190.5 377.1 L 199 376.6 L 207.5 375.9 L 216 375.1 L 224.5 374.2 L 233 373.1 L 241.5 371.8 L 250 370.3 L 258.5 368.4 L 267 366.3 L 275.5 363.8 L 284 360.8 L 292.5 357.3 L 301 353.3 L 309.5 348.7 L 318 343.3 L 326.5 337.2 L 335 330.3 L 343.5 322.5 L 352 313.8 L 360.5 304.2 L 369 293.8 L 377.5 282.6 L 386 270.8 L 394.5 258.4 L 403 245.6 L 411.5 232.7 L 420 219.8 L 428.5 207.2 L 437 195 L 445.5 183.3 L 454 172.4 L 462.5 162.3 L 471 153 L 479.5 144.7 L 488 137.2 L 496.5 130.6 L 505 124.7 L 513.5 119.6 L 522 115.2 L 530.5 111.4 L 539 108.1 L 547.5 105.3 L 556 102.9 L 564.5 100.9 L 573 99.2 L 581.5 97.7 L 590 96.5 L 598.5 95.4 L 607 94.6 L 615.5 93.8 L 624 93.2 L 632.5 92.7 L 641 92.3 L 649.5 91.9 L 658 91.6 L 666.5 91.3 L 675 91.1 L 683.5 90.9 L 692 90.8 L 700.5 90.6 L 709 90.5 L 717.5 90.5 L 726 90.4 L 734.5 90.3 L 743 90.3 L 751.5 90.2 L 760 90.2 L 760 380 L 80 380 Z" style="fill:color-mix(in srgb, var(--accent,#0d9488) 10%, transparent)"/>
+  <path d="M 80 379.7 L 88.5 379.7 L 97 379.6 L 105.5 379.5 L 114 379.4 L 122.5 379.3 L 131 379.2 L 139.5 379 L 148 378.8 L 156.5 378.6 L 165 378.3 L 173.5 378 L 182 377.6 L 190.5 377.1 L 199 376.6 L 207.5 375.9 L 216 375.1 L 224.5 374.2 L 233 373.1 L 241.5 371.8 L 250 370.3 L 258.5 368.4 L 267 366.3 L 275.5 363.8 L 284 360.8 L 292.5 357.3 L 301 353.3 L 309.5 348.7 L 318 343.3 L 326.5 337.2 L 335 330.3 L 343.5 322.5 L 352 313.8 L 360.5 304.2 L 369 293.8 L 377.5 282.6 L 386 270.8 L 394.5 258.4 L 403 245.6 L 411.5 232.7 L 420 219.8 L 428.5 207.2 L 437 195 L 445.5 183.3 L 454 172.4 L 462.5 162.3 L 471 153 L 479.5 144.7 L 488 137.2 L 496.5 130.6 L 505 124.7 L 513.5 119.6 L 522 115.2 L 530.5 111.4 L 539 108.1 L 547.5 105.3 L 556 102.9 L 564.5 100.9 L 573 99.2 L 581.5 97.7 L 590 96.5 L 598.5 95.4 L 607 94.6 L 615.5 93.8 L 624 93.2 L 632.5 92.7 L 641 92.3 L 649.5 91.9 L 658 91.6 L 666.5 91.3 L 675 91.1 L 683.5 90.9 L 692 90.8 L 700.5 90.6 L 709 90.5 L 717.5 90.5 L 726 90.4 L 734.5 90.3 L 743 90.3 L 751.5 90.2 L 760 90.2" fill="none" transform="translate(4 5)" style="stroke:color-mix(in srgb, var(--accent,#0d9488) 30%, transparent);stroke-width:3" stroke-linecap="round" pathLength="100" stroke-dasharray="100 100" stroke-dashoffset="0">
+    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" begin="0.8s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.3 0 0.2 1"/>
+  </path>
+  <path d="M 80 379.7 L 88.5 379.7 L 97 379.6 L 105.5 379.5 L 114 379.4 L 122.5 379.3 L 131 379.2 L 139.5 379 L 148 378.8 L 156.5 378.6 L 165 378.3 L 173.5 378 L 182 377.6 L 190.5 377.1 L 199 376.6 L 207.5 375.9 L 216 375.1 L 224.5 374.2 L 233 373.1 L 241.5 371.8 L 250 370.3 L 258.5 368.4 L 267 366.3 L 275.5 363.8 L 284 360.8 L 292.5 357.3 L 301 353.3 L 309.5 348.7 L 318 343.3 L 326.5 337.2 L 335 330.3 L 343.5 322.5 L 352 313.8 L 360.5 304.2 L 369 293.8 L 377.5 282.6 L 386 270.8 L 394.5 258.4 L 403 245.6 L 411.5 232.7 L 420 219.8 L 428.5 207.2 L 437 195 L 445.5 183.3 L 454 172.4 L 462.5 162.3 L 471 153 L 479.5 144.7 L 488 137.2 L 496.5 130.6 L 505 124.7 L 513.5 119.6 L 522 115.2 L 530.5 111.4 L 539 108.1 L 547.5 105.3 L 556 102.9 L 564.5 100.9 L 573 99.2 L 581.5 97.7 L 590 96.5 L 598.5 95.4 L 607 94.6 L 615.5 93.8 L 624 93.2 L 632.5 92.7 L 641 92.3 L 649.5 91.9 L 658 91.6 L 666.5 91.3 L 675 91.1 L 683.5 90.9 L 692 90.8 L 700.5 90.6 L 709 90.5 L 717.5 90.5 L 726 90.4 L 734.5 90.3 L 743 90.3 L 751.5 90.2 L 760 90.2" fill="none" style="stroke:var(--accent,#0d9488);stroke-width:3" stroke-linecap="round" stroke-linejoin="round" pathLength="100" stroke-dasharray="100 100" stroke-dashoffset="0">
+    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" begin="0.8s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.3 0 0.2 1"/>
+  </path>
+  <path d="M 80 379.1 L 88.5 378.9 L 97 378.7 L 105.5 378.5 L 114 378.2 L 122.5 377.8 L 131 377.4 L 139.5 376.9 L 148 376.3 L 156.5 375.6 L 165 374.7 L 173.5 373.7 L 182 372.5 L 190.5 371 L 199 369.3 L 207.5 367.3 L 216 364.9 L 224.5 362 L 233 358.7 L 241.5 354.8 L 250 350.2 L 258.5 344.8 L 267 338.6 L 275.5 331.4 L 284 323.1 L 292.5 313.7 L 301 303.1 L 309.5 291.3 L 318 278.3 L 326.5 264.2 L 335 249.3 L 343.5 233.7 L 352 217.9 L 360.5 202.4 L 369 187.9 L 377.5 174.8 L 386 164 L 394.5 156 L 403 151.2 L 411.5 150.1 L 420 152.5 L 428.5 158.5 L 437 167.5 L 445.5 179.2 L 454 192.9 L 462.5 207.8 L 471 223.5 L 479.5 239.2 L 488 254.6 L 496.5 269.3 L 505 283 L 513.5 295.6 L 522 307 L 530.5 317.2 L 539 326.1 L 547.5 334 L 556 340.9 L 564.5 346.8 L 573 351.9 L 581.5 356.2 L 590 359.9 L 598.5 363.1 L 607 365.8 L 615.5 368 L 624 369.9 L 632.5 371.6 L 641 372.9 L 649.5 374.1 L 658 375 L 666.5 375.8 L 675 376.5 L 683.5 377.1 L 692 377.5 L 700.5 377.9 L 709 378.3 L 717.5 378.6 L 726 378.8 L 734.5 379 L 743 379.2 L 751.5 379.3 L 760 379.4" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6"/>
+  <!-- axes -->
+  <line x1="80" y1="380" x2="760" y2="380" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round"/>
+  <polygon points="772,380 760,386 760,374" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="80" y1="380" x2="80" y2="58" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round"/>
+  <polygon points="80,46 86,58 74,58" style="fill:var(--text-muted,#64748b)"/>
+  <text x="770" y="404" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text-muted,#64748b)">Time</text>
+  <text x="0" y="0" text-anchor="middle" transform="translate(52 235) rotate(-90)" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text-muted,#64748b)">Adoption</text>
+  <text x="72" y="384" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">0%</text>
+  <text x="72" y="94" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">100%</text>
+  <line x1="76" y1="90" x2="84" y2="90" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round"/>
+  <!-- legend -->
+  <line x1="100" y1="128" x2="124" y2="128" style="stroke:var(--accent,#0d9488);stroke-width:3" stroke-linecap="round"/>
+  <text x="132" y="132" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text,#0f172a)">cumulative adoption</text>
+  <line x1="100" y1="150" x2="124" y2="150" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round" stroke-dasharray="6 4"/>
+  <text x="132" y="154" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text,#0f172a)">adoption rate</text>
+  <!-- you-are-here marker -->
+  <line x1="460" y1="165.2" x2="514" y2="238" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="4 4"/>
+  <circle cx="460" cy="165.2" r="3.5" style="fill:var(--coral,#ef4444)"/>
+  <circle cx="460" cy="165.2" r="7" style="fill:var(--coral,#ef4444);stroke:var(--surface,#ffffff);stroke-width:3">
+    <animate attributeName="r" values="7;9;7" dur="2.4s" repeatCount="indefinite"/>
+  </circle>
+  <text x="520" y="242" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">We are here</text>
+  <text x="520" y="260" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">early majority</text>
+</svg>

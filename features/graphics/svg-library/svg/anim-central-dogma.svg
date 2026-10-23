@@ -1,0 +1,158 @@
+<!--
+design-pack · svg-library · anim-central-dogma
+  Central dogma: a polymerase dot travels the DNA, a ribosome dot reads the mRNA while a protein bead trail grows above the codons.
+  Tokens: deep-blue teal amber coral green navy text text-muted surface font-head font-sans.
+  Edit: The sequence is real (ATG GCT TCA GAA, AUG GCU UCA GAA, Met-Ala-Ser-Glu); change all three together. Trail beads sit above codon centres x = 335/374/413/452 and appear as the ribosome dot (path H 143 from x = 322) passes.
+  ANIMATED (SMIL only, README rule 8): delete the <animate*> children for a static twin.
+  No ids, defs, path references or style blocks, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Animated central dogma: DNA is transcribed into mRNA, which a ribosome translates into a protein chain Met-Ala-Ser-Glu" style="width:100%;height:auto">
+  <title>Animated central dogma: DNA to RNA to protein</title>
+  <!-- DNA -->
+  <g>
+  <path d="M 72 225.9 L 74 225.4 L 76 224.7 L 78 223.8 L 80 222.5 L 82 221 L 84 219.3 L 86 217.4 L 88 215.3 L 90 213 L 92 210.6 L 94 208 L 96 205.4 L 98 202.7 L 100 200 L 102 197.3 L 104 194.6 L 106 192 L 108 189.4 L 110 187 L 112 184.7 L 114 182.6 L 116 180.7 L 118 179 L 120 177.5 L 122 176.2 L 124 175.3 L 126 174.6 L 128 174.1 L 130 174" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 55%, var(--surface,#ffffff));stroke-width:4"/>
+  <path d="M 192 225.9 L 194 225.4 L 196 224.7 L 198 223.8 L 200 222.5 L 202 221 L 204 219.3 L 206 217.4 L 208 215.3 L 210 213 L 212 210.6 L 214 208 L 216 205.4 L 218 202.7 L 220 200" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 55%, var(--surface,#ffffff));stroke-width:4"/>
+  <path d="M 40 200 L 42 197.3 L 44 194.6 L 46 192 L 48 189.4 L 50 187 L 52 184.7 L 54 182.6 L 56 180.7 L 58 179 L 60 177.5 L 62 176.2 L 64 175.3 L 66 174.6 L 68 174.1 L 70 174" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke-width:4"/>
+  <path d="M 132 225.9 L 134 225.4 L 136 224.7 L 138 223.8 L 140 222.5 L 142 221 L 144 219.3 L 146 217.4 L 148 215.3 L 150 213 L 152 210.6 L 154 208 L 156 205.4 L 158 202.7 L 160 200 L 162 197.3 L 164 194.6 L 166 192 L 168 189.4 L 170 187 L 172 184.7 L 174 182.6 L 176 180.7 L 178 179 L 180 177.5 L 182 176.2 L 184 175.3 L 186 174.6 L 188 174.1 L 190 174" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke-width:4"/>
+  <line x1="45.5" y1="207.4" x2="45.5" y2="200" style="stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <line x1="45.5" y1="200" x2="45.5" y2="192.6" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+  <line x1="56.5" y1="219.8" x2="56.5" y2="200" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+  <line x1="56.5" y1="200" x2="56.5" y2="180.2" style="stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <line x1="67.5" y1="225.8" x2="67.5" y2="200" style="stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <line x1="67.5" y1="200" x2="67.5" y2="174.2" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+  <line x1="78.5" y1="223.5" x2="78.5" y2="200" style="stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <line x1="78.5" y1="200" x2="78.5" y2="176.5" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+  <line x1="89.5" y1="213.6" x2="89.5" y2="200" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+  <line x1="89.5" y1="200" x2="89.5" y2="186.4" style="stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <line x1="111.5" y1="185.3" x2="111.5" y2="200" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+  <line x1="111.5" y1="200" x2="111.5" y2="214.7" style="stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <line x1="122.5" y1="176" x2="122.5" y2="200" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+  <line x1="122.5" y1="200" x2="122.5" y2="224" style="stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <line x1="133.5" y1="174.4" x2="133.5" y2="200" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+  <line x1="133.5" y1="200" x2="133.5" y2="225.6" style="stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <line x1="144.5" y1="181.1" x2="144.5" y2="200" style="stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <line x1="144.5" y1="200" x2="144.5" y2="218.9" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+  <line x1="155.5" y1="193.9" x2="155.5" y2="200" style="stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <line x1="155.5" y1="200" x2="155.5" y2="206.1" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+  <line x1="166.5" y1="208.7" x2="166.5" y2="200" style="stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <line x1="166.5" y1="200" x2="166.5" y2="191.3" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+  <line x1="177.5" y1="220.6" x2="177.5" y2="200" style="stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <line x1="177.5" y1="200" x2="177.5" y2="179.4" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+  <line x1="188.5" y1="225.9" x2="188.5" y2="200" style="stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <line x1="188.5" y1="200" x2="188.5" y2="174.1" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+  <line x1="199.5" y1="222.8" x2="199.5" y2="200" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+  <line x1="199.5" y1="200" x2="199.5" y2="177.2" style="stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <line x1="210.5" y1="212.4" x2="210.5" y2="200" style="stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <line x1="210.5" y1="200" x2="210.5" y2="187.6" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+  <path d="M 40 200 L 42 202.7 L 44 205.4 L 46 208 L 48 210.6 L 50 213 L 52 215.3 L 54 217.4 L 56 219.3 L 58 221 L 60 222.5 L 62 223.8 L 64 224.7 L 66 225.4 L 68 225.9 L 70 226" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:4"/>
+  <path d="M 132 174.1 L 134 174.6 L 136 175.3 L 138 176.2 L 140 177.5 L 142 179 L 144 180.7 L 146 182.6 L 148 184.7 L 150 187 L 152 189.4 L 154 192 L 156 194.6 L 158 197.3 L 160 200 L 162 202.7 L 164 205.4 L 166 208 L 168 210.6 L 170 213 L 172 215.3 L 174 217.4 L 176 219.3 L 178 221 L 180 222.5 L 182 223.8 L 184 224.7 L 186 225.4 L 188 225.9 L 190 226" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:4"/>
+  <path d="M 72 174.1 L 74 174.6 L 76 175.3 L 78 176.2 L 80 177.5 L 82 179 L 84 180.7 L 86 182.6 L 88 184.7 L 90 187 L 92 189.4 L 94 192 L 96 194.6 L 98 197.3 L 100 200 L 102 202.7 L 104 205.4 L 106 208 L 108 210.6 L 110 213 L 112 215.3 L 114 217.4 L 116 219.3 L 118 221 L 120 222.5 L 122 223.8 L 124 224.7 L 126 225.4 L 128 225.9 L 130 226" fill="none" stroke-linecap="round" style="stroke:var(--teal,#0d9488);stroke-width:4"/>
+  <path d="M 192 174.1 L 194 174.6 L 196 175.3 L 198 176.2 L 200 177.5 L 202 179 L 204 180.7 L 206 182.6 L 208 184.7 L 210 187 L 212 189.4 L 214 192 L 216 194.6 L 218 197.3 L 220 200" fill="none" stroke-linecap="round" style="stroke:var(--teal,#0d9488);stroke-width:4"/>
+  </g>
+  <!-- replication loop -->
+  <g>
+  <path d="M 90 160 C 70 100 190 100 172 152" fill="none" stroke-linecap="round" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <polygon points="170,166 167.5,154 178.2,156.8" style="fill:var(--text-muted,#64748b)"/>
+  <text x="130" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">replication</text>
+  </g>
+  <!-- mRNA strand with codons -->
+  <g>
+  <line x1="310" y1="200" x2="478" y2="200" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a));stroke-width:4"/>
+  <line x1="322" y1="200" x2="322" y2="180" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:4"/>
+  <text x="322" y="222" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">A</text>
+  <line x1="335" y1="200" x2="335" y2="180" stroke-linecap="round" style="stroke:var(--coral,#ef4444);stroke-width:4"/>
+  <text x="335" y="222" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">U</text>
+  <line x1="348" y1="200" x2="348" y2="180" stroke-linecap="round" style="stroke:var(--teal,#0d9488);stroke-width:4"/>
+  <text x="348" y="222" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">G</text>
+  <line x1="361" y1="200" x2="361" y2="180" stroke-linecap="round" style="stroke:var(--teal,#0d9488);stroke-width:4"/>
+  <text x="361" y="222" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">G</text>
+  <line x1="374" y1="200" x2="374" y2="180" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:4"/>
+  <text x="374" y="222" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">C</text>
+  <line x1="387" y1="200" x2="387" y2="180" stroke-linecap="round" style="stroke:var(--coral,#ef4444);stroke-width:4"/>
+  <text x="387" y="222" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">U</text>
+  <line x1="400" y1="200" x2="400" y2="180" stroke-linecap="round" style="stroke:var(--coral,#ef4444);stroke-width:4"/>
+  <text x="400" y="222" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">U</text>
+  <line x1="413" y1="200" x2="413" y2="180" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:4"/>
+  <text x="413" y="222" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">C</text>
+  <line x1="426" y1="200" x2="426" y2="180" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:4"/>
+  <text x="426" y="222" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">A</text>
+  <line x1="439" y1="200" x2="439" y2="180" stroke-linecap="round" style="stroke:var(--teal,#0d9488);stroke-width:4"/>
+  <text x="439" y="222" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">G</text>
+  <line x1="452" y1="200" x2="452" y2="180" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:4"/>
+  <text x="452" y="222" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">A</text>
+  <line x1="465" y1="200" x2="465" y2="180" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:4"/>
+  <text x="465" y="222" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">A</text>
+  <line x1="355" y1="210" x2="355" y2="228" style="stroke:var(--text-muted,#64748b);stroke-width:1"/>
+  <line x1="394" y1="210" x2="394" y2="228" style="stroke:var(--text-muted,#64748b);stroke-width:1"/>
+  <line x1="433" y1="210" x2="433" y2="228" style="stroke:var(--text-muted,#64748b);stroke-width:1"/>
+  </g>
+  <!-- flows -->
+  <g>
+  <line x1="230" y1="200" x2="289" y2="200" stroke-linecap="round" style="stroke:var(--text-muted,#64748b);stroke-width:2.5"/>
+  <polygon points="302,200 289,206.5 289,193.5" style="fill:var(--text-muted,#64748b)"/>
+  <text x="266" y="152" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">transcription</text>
+  <text x="266" y="168" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">RNA polymerase</text>
+  </g>
+  <!-- ribosome + translation -->
+  <g>
+  <line x1="486" y1="200" x2="560" y2="200" stroke-linecap="round" style="stroke:var(--text-muted,#64748b);stroke-width:2.5"/>
+  <polygon points="573,200 560,206.5 560,193.5" style="fill:var(--text-muted,#64748b)"/>
+  <ellipse cx="522" cy="184" rx="28" ry="18" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <ellipse cx="522" cy="184" rx="28" ry="18" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 40%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <ellipse cx="522" cy="210" rx="22" ry="11" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 60%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="522" y="142" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">translation</text>
+  <text x="522" y="158" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">ribosome reads codons</text>
+  </g>
+  <!-- protein bead chain -->
+  <g>
+  <line x1="600" y1="200" x2="640" y2="176" style="stroke:var(--text-muted,#64748b);stroke-width:3"/>
+  <line x1="640" y1="176" x2="682" y2="196" style="stroke:var(--text-muted,#64748b);stroke-width:3"/>
+  <line x1="682" y1="196" x2="724" y2="172" style="stroke:var(--text-muted,#64748b);stroke-width:3"/>
+  <circle cx="600" cy="200" r="19" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="600" cy="200" r="19" style="fill:color-mix(in srgb, var(--green,#10b981) 30%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <text x="600" y="204" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Met</text>
+  <circle cx="640" cy="176" r="19" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="640" cy="176" r="19" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="640" y="180" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Ala</text>
+  <circle cx="682" cy="196" r="19" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="682" cy="196" r="19" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 30%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="682" y="200" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Ser</text>
+  <circle cx="724" cy="172" r="19" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="724" cy="172" r="19" style="fill:color-mix(in srgb, var(--coral,#ef4444) 30%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="724" y="176" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Glu</text>
+  </g>
+  <!-- station labels -->
+  <g>
+  <text x="130" y="280" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">DNA</text>
+  <text x="130" y="300" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">stores the code</text>
+  <text x="394" y="280" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">mRNA</text>
+  <text x="394" y="300" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">carries a copy</text>
+  <text x="662" y="280" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Protein</text>
+  <text x="662" y="300" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">does the work</text>
+  <text x="394" y="244" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">codons: AUG · GCU · UCA · GAA</text>
+  </g>
+  <!-- footer -->
+  <g>
+  <line x1="40" y1="340" x2="760" y2="340" style="stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <text x="40" y="372" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">CENTRAL DOGMA OF MOLECULAR BIOLOGY</text>
+  <text x="40" y="396" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Genetic information flows DNA → RNA → protein; each codon (3 bases) specifies one amino acid.</text>
+  </g>
+  <circle cx="40" cy="200" r="6" style="fill:var(--coral,#ef4444);stroke:var(--surface,#ffffff);stroke-width:2">
+    <animateMotion path="M 0 0 H 180" dur="4s" begin="0s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="322" cy="200" r="6" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:2">
+    <animateMotion path="M 0 0 H 143" dur="7s" begin="0s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.8;1" calcMode="linear"/>
+  </circle>
+  <circle cx="335" cy="166" r="5" style="fill:color-mix(in srgb, var(--green,#10b981) 30%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:1.5">
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.073;0.103;1" dur="7s" begin="7s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="374" cy="166" r="5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5">
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.291;0.321;1" dur="7s" begin="7s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="413" cy="166" r="5" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 30%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:1.5">
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.509;0.539;1" dur="7s" begin="7s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="452" cy="166" r="5" style="fill:color-mix(in srgb, var(--coral,#ef4444) 30%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:1.5">
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.727;0.757;1" dur="7s" begin="7s" repeatCount="indefinite"/>
+  </circle>
+</svg>

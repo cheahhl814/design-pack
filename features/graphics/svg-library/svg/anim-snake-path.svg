@@ -1,0 +1,53 @@
+<!--
+design-pack · svg-library · anim-snake-path
+  Winding road with seven stations; a marker travels the whole road from START to the goal flag and repeats.
+  Tokens: accent teal deep-blue amber green text text-muted surface font-head font-sans.
+  Edit: station labels + captions, goal label. The marker path repeats the road path relative to START (60,135): H 620, U-turn arc, H 90.
+  ANIMATED (SMIL only, README rule 8): delete the <animate*> children for a static twin.
+  No ids, defs, path references or style blocks, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Animated winding road with seven numbered stations from Brief to Roll-out that turns back on itself and ends at a goal flag" style="width:100%;height:auto">
+  <title>Animated winding process path</title>
+  <!-- road: offset shadow, band, dashed centre line -->
+  <path d="M 60 135 H 680 A 85 85 0 0 1 680 305 H 150" fill="none" transform="translate(4 5)" style="stroke:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke-width:30" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 60 135 H 680 A 85 85 0 0 1 680 305 H 150" fill="none" style="stroke:color-mix(in srgb, var(--accent,#0d9488) 18%, var(--surface,#ffffff));stroke-width:30" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 60 135 H 680 A 85 85 0 0 1 680 305 H 150" fill="none" style="stroke:color-mix(in srgb, var(--accent,#0d9488) 70%, transparent);stroke-width:1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 9"/>
+  <circle cx="140" cy="135" r="18" style="fill:var(--surface,#ffffff);stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <text x="140" y="140" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">1</text>
+  <text x="140" y="86" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Brief</text>
+  <text x="140" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">agree the goal</text>
+  <circle cx="300" cy="135" r="18" style="fill:var(--surface,#ffffff);stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <text x="300" y="140" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">2</text>
+  <text x="300" y="86" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Research</text>
+  <text x="300" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">users + data</text>
+  <circle cx="460" cy="135" r="18" style="fill:var(--surface,#ffffff);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+  <text x="460" y="140" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">3</text>
+  <text x="460" y="86" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Concept</text>
+  <text x="460" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">three options</text>
+  <circle cx="620" cy="135" r="18" style="fill:var(--surface,#ffffff);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+  <text x="620" y="140" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">4</text>
+  <text x="620" y="86" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Prototype</text>
+  <text x="620" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">testable draft</text>
+  <circle cx="620" cy="305" r="18" style="fill:var(--surface,#ffffff);stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <text x="620" y="310" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">5</text>
+  <text x="620" y="354" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Pilot</text>
+  <text x="620" y="372" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">one real team</text>
+  <circle cx="460" cy="305" r="18" style="fill:var(--surface,#ffffff);stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <text x="460" y="310" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">6</text>
+  <text x="460" y="354" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Refine</text>
+  <text x="460" y="372" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">fix what broke</text>
+  <circle cx="300" cy="305" r="18" style="fill:var(--surface,#ffffff);stroke:var(--green,#10b981);stroke-width:3"/>
+  <text x="300" y="310" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))">7</text>
+  <text x="300" y="354" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Roll-out</text>
+  <text x="300" y="372" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">all teams</text>
+  <!-- start + goal flag -->
+  <circle cx="60" cy="135" r="7" style="fill:var(--accent,#0d9488);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="60" y="104" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">START</text>
+  <line x1="150" y1="305" x2="150" y2="238" style="stroke:var(--text,#0f172a);stroke-width:3" stroke-linecap="round"/>
+  <polygon points="150,238 190,250 150,262" style="fill:var(--amber,#f59e0b);stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linejoin="round"/>
+  <text x="150" y="354" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Goal</text>
+  <text x="150" y="372" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">adopted everywhere</text>
+  <circle cx="60" cy="135" r="5" style="fill:var(--text,#0f172a);stroke:var(--surface,#ffffff);stroke-width:2">
+    <animateMotion path="M 0 0 H 620 A 85 85 0 0 1 620 170 H 90" dur="14s" begin="0s" repeatCount="indefinite"/>
+  </circle>
+</svg>

@@ -122,6 +122,18 @@ const META = {
   'anim-radial-gauge': { desc: 'ANIMATED. 270-degree radial progress arc that draws itself once, with ticks, a big percentage and two mini stat cards', use: 'Completion or utilisation KPIs, migration/build progress, goal attainment' },
   'anim-loader-ring': { desc: 'ANIMATED. Spinner of two arcs rotating in opposite directions with a loading label (the one allowed indefinite loop; frame 0 is the rest state)', use: 'Loading/working states, pending-job placeholders, live-view mockups' },
   'anim-sequence-lifelines': { desc: 'ANIMATED. Sequence diagram: three lifelines, five numbered messages drawn in order once, activation bars', use: 'Request/response walkthroughs, protocol handshakes, who-calls-whom explanations' },
+  'anim-cycle-loop': { desc: 'ANIMATED. Four-node circular loop whose connector dashes march clockwise while one accent dot travels the loop (SMIL, indefinite process indicator)', use: 'Live-looking iterative processes: plan-build-measure-learn, audit cycles, feedback loops' },
+  'anim-gear-mechanism': { desc: 'ANIMATED. Three meshing gears counter-rotating at pitch-radius-correct speeds, neighbours in opposite directions (SMIL, indefinite)', use: 'Interdependent parts turning each other, operating models, live mechanism overviews' },
+  'anim-domino-chain': { desc: 'ANIMATED. Five dominoes tip left-to-right in sequence on one repeating cycle from the upright rest state, chain-reaction arc pulsing', use: 'Cause chains, knock-on effects, chain-reaction explainers' },
+  'anim-central-dogma': { desc: 'ANIMATED. Polymerase dot travels the DNA while a ribosome dot reads the mRNA and the protein bead trail grows on a replay cycle', use: 'Teaching gene expression, live gene-usage figures for genomics pages' },
+  'anim-dna-helix-steps': { desc: 'ANIMATED. DNA double helix with a subtle breathing oscillation; the six numbered workflow callouts stay static', use: 'Living explainer headers for sequencing/omics sections, genomics chapter intros' },
+  'anim-pcr-thermal-cycle': { desc: 'ANIMATED. Pulse cursor rides the thermocycler temperature profile through denature, anneal and extend (indefinite)', use: 'PCR and qPCR method figures, teaching amplification cycles' },
+  'anim-s-curve-adoption': { desc: 'ANIMATED. Logistic S-curve draws itself once (frame 0 holds the complete curve), we-are-here marker pulses', use: 'Technology adoption, product life-cycle, migration-progress storytelling' },
+  'anim-journey-map': { desc: 'ANIMATED. Marker dot travels the emotion curve through the five journey stages (indefinite, subtle)', use: 'Customer/user journeys, onboarding walkthroughs, live experience summaries' },
+  'anim-snake-path': { desc: 'ANIMATED. Marker travels the winding road through all seven numbered stations (indefinite)', use: 'Long processes, learning paths, programme journeys shown as live routes' },
+  'anim-water-cycle': { desc: 'ANIMATED. Droplets cycle through the landscape: evaporation rising, rain falling from the cloud, runoff sliding downslope', use: 'Teaching the hydrological cycle, live catchment/water briefs' },
+  'anim-food-web': { desc: 'ANIMATED. Energy dots flow along the existing arrows in the food-to-feeder direction across all four tiers', use: 'Teaching energy flow, live ecosystem overviews' },
+  'anim-carbon-cycle': { desc: 'ANIMATED. Carbon pulses flow along the existing flux arrows (fossil emissions up, plant and ocean exchange) on staggered loops', use: 'Explaining sources vs sinks, net-zero logic, live climate briefs' },
 };
 
 function validate(name, src) {

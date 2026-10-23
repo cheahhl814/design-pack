@@ -1,7 +1,8 @@
 # svg-library — hand-drawn SVG diagram templates (design-pack v0.16.0)
 
 Ninety-four agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
-explanatory and summary visuals — the complement to the pure-CSS graphics pack
+explanatory and summary visuals — plus **seventeen SMIL-animated variants** (`anim-*`, see
+rule 8) with static twins kept — the complement to the pure-CSS graphics pack
 (`features/graphics/graphics.css`). Where the CSS pack covers charts built from real
 data (donut, gauge, heatmap, bars), the SVG library covers **concept diagrams**:
 processes, loops, hierarchies, matrices, funnels, roadmaps, cause-effect maps, goals,
@@ -131,6 +132,18 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
 | 97 | `anim-radial-gauge.svg` | 270-degree radial arc that draws itself, ticks, big percentage, two mini stat cards | Completion/utilisation KPIs, migration or build progress |
 | 98 | `anim-loader-ring.svg` | Two counter-rotating arcs with a loading label (the one indefinite spinner) | Loading and working states, pending-job placeholders |
 | 99 | `anim-sequence-lifelines.svg` | Sequence diagram: 3 lifelines, 5 numbered messages drawn in order, activation bars | Request/response walkthroughs, handshakes, who-calls-whom |
+| 100 | `anim-cycle-loop.svg` | Loop whose connector dashes march clockwise while one accent dot travels the loop | Live-looking iterative processes, audit cycles, feedback loops |
+| 101 | `anim-gear-mechanism.svg` | Three meshing gears counter-rotating at pitch-radius-correct speeds | Interdependent parts turning each other, live mechanism overviews |
+| 102 | `anim-domino-chain.svg` | Five dominoes tipping in sequence on one repeating cycle from the upright rest state | Cause chains, knock-on effects, chain-reaction explainers |
+| 103 | `anim-central-dogma.svg` | Polymerase dot travels the DNA, ribosome dot reads the mRNA, protein bead trail grows | Teaching gene expression, live genomics figures |
+| 104 | `anim-dna-helix-steps.svg` | DNA helix breathing subtly; six numbered callouts stay static | Sequencing/omics explainer headers, genomics intros |
+| 105 | `anim-pcr-thermal-cycle.svg` | Pulse cursor riding the thermocycler temperature profile | PCR and qPCR methods, teaching amplification cycles |
+| 106 | `anim-s-curve-adoption.svg` | S-curve draws itself once (frame 0 holds the complete curve), marker pulses | Technology adoption, life-cycle, migration-progress storytelling |
+| 107 | `anim-journey-map.svg` | Marker dot travelling the emotion curve through the five stages | Customer/user journeys, onboarding walkthroughs |
+| 108 | `anim-snake-path.svg` | Marker travelling the winding road through all seven stations | Long processes, learning paths as live routes |
+| 109 | `anim-water-cycle.svg` | Droplets cycling: evaporation rising, rain falling, runoff sliding | Teaching the hydrological cycle, live water briefs |
+| 110 | `anim-food-web.svg` | Energy dots flowing along the food-to-feeder arrows | Teaching energy flow, live ecosystem overviews |
+| 111 | `anim-carbon-cycle.svg` | Carbon pulses flowing along the existing flux arrows | Sources vs sinks, net-zero logic, live climate briefs |
 
 **When to use which graphics system:**
 

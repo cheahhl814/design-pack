@@ -1,0 +1,83 @@
+<!--
+design-pack · svg-library · anim-carbon-cycle
+  Simplified carbon cycle; pulses flow along each flux arrow in its drawn direction (emissions, photosynthesis, respiration, ocean uptake, outgassing, soil storage).
+  Tokens: coral green teal deep-blue amber text text-muted surface border font-head font-sans.
+  Edit: flow labels and captions. Each pulse path is its arrow path relative to the arrow start; keep them in step with the arrows.
+  ANIMATED (SMIL only, README rule 8): delete the <animate*> children for a static twin.
+  No ids, defs, path references or style blocks, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Animated simplified carbon cycle showing emissions rising from industry, uptake by plants and oceans, and storage in soil" style="width:100%;height:auto">
+  <title>Animated simplified carbon cycle</title>
+  <!-- ground, soil and ocean -->
+  <g>
+  <rect x="30" y="300" width="450" height="28" style="fill:color-mix(in srgb, var(--green,#10b981) 16%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--green,#10b981) 50%, var(--surface,#ffffff));stroke-width:1.5"/>
+  <rect x="30" y="328" width="450" height="110" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 18%, var(--surface,#ffffff))"/>
+  <rect x="480" y="310" width="290" height="128" style="fill:color-mix(in srgb, var(--teal,#0d9488) 32%, var(--surface,#ffffff))"/>
+  <path d="M 480 310 q 9 -7 18 0 t 18 0 q 9 -7 18 0 t 18 0 q 9 -7 18 0 t 18 0 q 9 -7 18 0 t 18 0 q 9 -7 18 0 t 18 0 q 9 -7 18 0 t 18 0 q 9 -7 18 0 t 18 0 q 9 -7 18 0 t 18 0" fill="none" style="stroke:var(--teal,#0d9488);stroke-width:2"/>
+  </g>
+  <!-- atmosphere -->
+  <g>
+  <rect x="290" y="40" width="220" height="56" rx="28" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="290" y="40" width="220" height="56" rx="28" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="400" y="66" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Atmosphere</text>
+  <text x="400" y="84" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">CO₂ in the air</text>
+  </g>
+  <!-- factory + forest -->
+  <g>
+  <rect x="140" y="210" width="14" height="50" style="fill:color-mix(in srgb, var(--coral,#ef4444) 40%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:1.5"/>
+  <polygon points="70,300 70,260 95,242 95,260 120,242 120,260 166,260 166,300" stroke-linejoin="round" style="fill:color-mix(in srgb, var(--coral,#ef4444) 40%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:1.5"/>
+  <rect x="297" y="266" width="6" height="34" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 55%, var(--text,#0f172a))"/>
+  <circle cx="300" cy="245.2" r="26" style="fill:color-mix(in srgb, var(--green,#10b981) 50%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:1.5"/>
+  <rect x="345" y="266" width="6" height="34" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 55%, var(--text,#0f172a))"/>
+  <circle cx="348" cy="240.4" r="32" style="fill:color-mix(in srgb, var(--green,#10b981) 50%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:1.5"/>
+  <rect x="393" y="266" width="6" height="34" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 55%, var(--text,#0f172a))"/>
+  <circle cx="396" cy="246.8" r="24" style="fill:color-mix(in srgb, var(--green,#10b981) 50%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:1.5"/>
+  </g>
+  <!-- flows -->
+  <g>
+  <path d="M 144 200 C 150 130 220 90 270 72" fill="none" stroke-linecap="round" style="stroke:var(--coral,#ef4444);stroke-width:7"/>
+  <polygon points="288,68 271.3,82.8 266.1,63.5" style="fill:var(--coral,#ef4444)"/>
+  <path d="M 330 100 C 320 140 330 170 342 180" fill="none" stroke-linecap="round" style="stroke:var(--green,#10b981);stroke-width:5"/>
+  <polygon points="346,196 332.6,180.9 350,176.3" style="fill:var(--green,#10b981)"/>
+  <path d="M 372 186 C 392 160 410 140 414 118" fill="none" stroke-linecap="round" stroke-dasharray="6 6" style="stroke:var(--green,#10b981);stroke-width:2.5"/>
+  <polygon points="416,102 422.4,118.1 406.9,116.8" style="fill:var(--green,#10b981)"/>
+  <path d="M 510 76 C 600 90 640 150 640 256" fill="none" stroke-linecap="round" style="stroke:var(--teal,#0d9488);stroke-width:5"/>
+  <polygon points="640,276 631,258 649,258" style="fill:var(--teal,#0d9488)"/>
+  <path d="M 690 280 C 694 180 640 90 540 66" fill="none" stroke-linecap="round" stroke-dasharray="6 6" style="stroke:var(--teal,#0d9488);stroke-width:2.5"/>
+  <polygon points="524,63 540.6,58.1 537.9,73.3" style="fill:var(--teal,#0d9488)"/>
+  <path d="M 348 306 C 348 330 348 340 348 352" fill="none" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <polygon points="348,370 340,354 356,354" style="fill:var(--amber,#f59e0b)"/>
+  </g>
+  <!-- flow labels -->
+  <g>
+  <text x="176" y="104" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--coral,#ef4444)">fossil emissions</text>
+  <text x="176" y="120" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">burning coal, oil, gas</text>
+  <text x="318" y="150" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">photosynthesis</text>
+  <text x="424" y="150" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">respiration</text>
+  <text x="612" y="176" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--teal,#0d9488)">ocean</text>
+  <text x="612" y="192" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--teal,#0d9488)">uptake</text>
+  <text x="706" y="176" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">outgassing</text>
+  <text x="362" y="366" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">carbon stored in soil</text>
+  <text x="625" y="380" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">dissolved carbon</text>
+  <text x="110" y="380" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">fossil carbon</text>
+  </g>
+  <text x="40" y="430" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Arrow width shows rough size of each flow; dashed = return flow.</text>
+  <circle cx="144" cy="200" r="4.5" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5">
+    <animateMotion path="M 0 0 C 6 -70 76 -110 126 -128" dur="3.2s" begin="0s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="330" cy="100" r="4" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5">
+    <animateMotion path="M 0 0 C -10 40 0 70 12 80" dur="2.4s" begin="0.6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="372" cy="186" r="3.5" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5">
+    <animateMotion path="M 0 0 C 20 -26 38 -46 42 -68" dur="2.4s" begin="1.4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="510" cy="76" r="4" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5">
+    <animateMotion path="M 0 0 C 90 14 130 74 130 180" dur="4s" begin="0.3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="690" cy="280" r="3.5" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5">
+    <animateMotion path="M 0 0 C 4 -100 -50 -190 -150 -214" dur="4s" begin="2.0s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="348" cy="306" r="3.5" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:1.5">
+    <animateMotion path="M 0 0 C 0 24 0 34 0 46" dur="2s" begin="1.0s" repeatCount="indefinite"/>
+  </circle>
+</svg>
