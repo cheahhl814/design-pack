@@ -1,0 +1,46 @@
+{
+  "label": "Neo-brutalism",
+  "description": "Neo-brutalist style: a high-saturation acid field (lime, hot pink, yellow), white cards, pure black text, 3 to 4 px black borders on every element, hard bottom-right offset shadows drawn as flat offset shapes (no blur), oversized Arial Black headlines over Courier New mono, bold asymmetric blocks with small tilts kept off the text slots. Dark theme: a near-black #0D0D0D field, white text, borders flip to white so they stay visible, hard shadows become solid acid-lime offsets. Not any template's brand.",
+  "generatedBy": "bin/draw-slide-sets.js",
+  "fonts": {
+    "font-head": "Arial Black, Arial, sans-serif",
+    "font-sans": "Courier New, Courier, monospace"
+  },
+  "light": {
+    "surface": "#ccff00",
+    "text": "#000000",
+    "text-muted": "#2e2e2e",
+    "border": "#000000",
+    "border-bright": "#000000",
+    "accent": "#ff2d55",
+    "teal": "#ff2d55",
+    "deep-blue": "#2d5bff",
+    "amber": "#f5f500",
+    "coral": "#ff7a2d",
+    "green": "#00d26a",
+    "navy": "#000000",
+    "block": "#ff2d55",
+    "on-block": "#000000",
+    "ink": "#000000",
+    "on-ink": "#ffffff",
+    "card": "#ffffff",
+    "shadow": "#000000",
+    "lime": "#ccff00"
+  },
+  "dark": {
+    "surface": "#0d0d0d",
+    "text": "#ffffff",
+    "text-muted": "#c8c8c8",
+    "border": "#ffffff",
+    "border-bright": "#ffffff",
+    "accent": "#ccff00",
+    "teal": "#ccff00",
+    "deep-blue": "#7b93ff",
+    "block": "#ff2d55",
+    "on-block": "#000000",
+    "ink": "#000000",
+    "on-ink": "#ffffff",
+    "card": "#1a1a1a",
+    "shadow": "#ccff00"
+  }
+}

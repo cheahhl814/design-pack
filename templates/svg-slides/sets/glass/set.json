@@ -1,0 +1,48 @@
+{
+  "label": "Glassmorphism",
+  "description": "Glassmorphism: a deep indigo field with violet, blue and cyan glow blobs built from stacked translucent circles (the designs forbid gradient defs and filters, so the soft edge is a banded approximation), frosted glass cards (translucent white fill, thin light border, rounded corners) holding thin-weight white text in a light Segoe UI-style head over a sans body, cyan and violet accents. The light theme is light glass on a pale sky field with dark text. Not any template's brand.",
+  "generatedBy": "bin/draw-slide-sets.js",
+  "fonts": {
+    "font-head": "Segoe UI Light, Segoe UI, Arial, sans-serif",
+    "font-sans": "Segoe UI, Arial, sans-serif"
+  },
+  "light": {
+    "surface": "#eaf3ff",
+    "text": "#14163a",
+    "text-muted": "#464c78",
+    "border": "#c9d9f2",
+    "border-bright": "#7aa2e6",
+    "accent": "#0891b2",
+    "teal": "#0891b2",
+    "deep-blue": "#2f5da8",
+    "amber": "#d19a1c",
+    "coral": "#d65a8c",
+    "green": "#2aa583",
+    "navy": "#14163a",
+    "block": "#6b21a8",
+    "on-block": "#ffffff",
+    "blob-a": "#a78bfa",
+    "blob-b": "#7ab3ff",
+    "blob-c": "#67e8f9",
+    "glass": "#ffffff",
+    "glass-line": "#6f9be0",
+    "violet": "#7c5ce6"
+  },
+  "dark": {
+    "surface": "#1a1a4e",
+    "text": "#ffffff",
+    "text-muted": "#e0e0f0",
+    "border": "#2c2c70",
+    "border-bright": "#a78bfa",
+    "accent": "#67e8f9",
+    "teal": "#67e8f9",
+    "deep-blue": "#8aa8ff",
+    "block": "#6b21a8",
+    "blob-a": "#7c2fd0",
+    "blob-b": "#2f5da8",
+    "blob-c": "#22b8d4",
+    "glass": "#8c8cdc",
+    "glass-line": "#ffffff",
+    "violet": "#a78bfa"
+  }
+}

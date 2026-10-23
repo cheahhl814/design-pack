@@ -1,0 +1,42 @@
+{
+  "label": "Gradient Mesh",
+  "description": "Gradient-mesh style: a painterly field of overlapping glowing blobs (hot pink, violet, cyan, warm orange) made of stacked translucent circles (gradient defs are not allowed in designs, so the soft edges are banded), white Arial Black display type with a knockout halo in the surface colour, an Arial body. The light theme is a pale pastel field with the same blobs and dark text. Not any template's brand.",
+  "generatedBy": "bin/draw-slide-sets.js",
+  "fonts": {
+    "font-head": "Arial Black, Arial, sans-serif",
+    "font-sans": "Arial, Helvetica, sans-serif"
+  },
+  "light": {
+    "surface": "#fbf6fb",
+    "text": "#2b2b37",
+    "text-muted": "#555566",
+    "border": "#e9deea",
+    "border-bright": "#cbb9cf",
+    "accent": "#7b61ff",
+    "teal": "#7b61ff",
+    "deep-blue": "#00a9d6",
+    "amber": "#f59e2b",
+    "coral": "#ff6ec7",
+    "green": "#16a98a",
+    "navy": "#2b2b37",
+    "block": "#7b61ff",
+    "on-block": "#ffffff",
+    "pink": "#ff6ec7",
+    "violet": "#7b61ff",
+    "cyan": "#00d4ff",
+    "orange": "#ffb347",
+    "card": "#ffffff"
+  },
+  "dark": {
+    "surface": "#15102e",
+    "text": "#ffffff",
+    "text-muted": "#f0e8ff",
+    "border": "#2e2458",
+    "border-bright": "#7b61ff",
+    "accent": "#ff6ec7",
+    "teal": "#ff6ec7",
+    "deep-blue": "#00d4ff",
+    "block": "#7b61ff",
+    "card": "#241b52"
+  }
+}

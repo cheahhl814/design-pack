@@ -27,7 +27,7 @@ design-pack · svg-slides · editorial · title-hero
     <text x="80" y="450.4" text-anchor="start" style="font-family:var(--font-sans,Helvetica Neue, Helvetica, Arial, sans-serif);font-size:21px;font-weight:400;fill:var(--text-muted,#75644f)">need from the group before the January field trial</text>
   </g>
   <line x1="80" y1="588" x2="800" y2="588" style="fill:none;stroke:var(--border-bright,#cdbb9c);stroke-width:1"/>
-  <g data-slot="meta" data-slot-kind="text" data-slot-box="80 606 720 22" data-slot-font="sans" data-slot-weight="400" data-slot-size="14" data-slot-tracking="1" data-slot-maxlines="1" data-slot-maxchars="80" data-slot-anchor="start" data-slot-fill="var(--text-muted,#75644f)" data-slot-optional="true">
+  <g data-slot="meta" data-slot-kind="text" data-slot-box="80 606 760 22" data-slot-font="sans" data-slot-weight="400" data-slot-size="14" data-slot-tracking="1" data-slot-maxlines="1" data-slot-maxchars="80" data-slot-anchor="start" data-slot-fill="var(--text-muted,#75644f)" data-slot-optional="true">
     <text x="80" y="622.1" text-anchor="start" style="font-family:var(--font-sans,Helvetica Neue, Helvetica, Arial, sans-serif);font-size:14px;font-weight:400;fill:var(--text-muted,#75644f);letter-spacing:1px">A. Researcher · Microfluidics Group · 14 October 2026</text>
   </g>
   <rect x="880" y="120" width="320" height="508" style="fill:none;stroke:var(--border-bright,#cdbb9c);stroke-width:1"/>

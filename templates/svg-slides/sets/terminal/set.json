@@ -1,0 +1,44 @@
+{
+  "label": "Terminal",
+  "description": "Dev-console style: near-black field with a faint 6 percent green grid, code-block panels with a 3 px accent bar on the left, prompt-style ($ and >) eyebrows, a scanline band, Courier New throughout in bright phosphor green with one cyan-blue second accent. The light theme is a paper console: off-white, near-black text, green kept for accents only. Flat geometry only. Not any template's brand.",
+  "generatedBy": "bin/draw-slide-sets.js",
+  "fonts": {
+    "font-head": "Courier New, Courier, monospace",
+    "font-sans": "Courier New, Courier, monospace"
+  },
+  "light": {
+    "surface": "#fafaf7",
+    "text": "#111111",
+    "text-muted": "#555555",
+    "border": "#d9d9d2",
+    "border-bright": "#a8a89f",
+    "accent": "#0f9f0f",
+    "teal": "#0f9f0f",
+    "deep-blue": "#006f99",
+    "amber": "#b58900",
+    "coral": "#c0392b",
+    "green": "#0f9f0f",
+    "navy": "#111111",
+    "block": "#eeeee8",
+    "on-block": "#111111",
+    "card": "#f0f0ea",
+    "grid": "#0f9f0f"
+  },
+  "dark": {
+    "surface": "#0a0a0a",
+    "text": "#33ff33",
+    "text-muted": "#1a991a",
+    "border": "#173d17",
+    "border-bright": "#1a991a",
+    "accent": "#33ff33",
+    "teal": "#33ff33",
+    "deep-blue": "#00ccff",
+    "amber": "#e6c200",
+    "coral": "#ff5f56",
+    "green": "#33ff33",
+    "block": "#111111",
+    "on-block": "#33ff33",
+    "card": "#111111",
+    "grid": "#33ff33"
+  }
+}

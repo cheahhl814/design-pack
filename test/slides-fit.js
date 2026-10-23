@@ -10,9 +10,16 @@ const { listSets, listDesigns, loadDesign, compose, bake } = require('../bin/com
 
 // average English prose; tracked slots (eyebrows) are written in caps, as the README asks
 const PROSE = 'Most failed runs were not chemistry but bubbles in the inlet channel and a small fillet fixed nine in ten of them over the quarter '.repeat(4);
-let k = 0;
-const filler = (n, caps) => {
-  k = (k + 7) % 60; // a different window per slot, so no two lines on a slide are equal
+// window per slot, seeded from set/design/slot/line so the filler for one set
+// never shifts when another set is added or reordered (a global counter here
+// made later sets' filler text move whenever a new set sorted before them)
+const seed = (str) => {
+  let h = 5381;
+  for (let i = 0; i < str.length; i++) h = ((h * 33) ^ str.charCodeAt(i)) >>> 0;
+  return h % 60;
+};
+const filler = (n, caps, seedStr) => {
+  const k = seed(seedStr);
   const s = PROSE.slice(k, k + n).replace(/^\s|\s$/g, 'x');
   return caps ? s.toUpperCase() : s;
 };
@@ -27,7 +34,7 @@ for (const set of listSets()) {
     for (const s of design.slots) {
       payload[s.name] = s.kind === 'graphic' ? 'flow-pipeline'
         : s.name === 'number' ? '88'
-          : Array.from({ length: s.maxlines }, () => filler(s.maxchars, !!s.tracking));
+          : Array.from({ length: s.maxlines }, (_, i) => filler(s.maxchars, !!s.tracking, `${set}/${name}/${s.name}/${i}`));
     }
     const c = compose(design, payload);
     html += `<div data-k="${set}/${name}">${bake(c.svg, 'light', set).replace(/<\?xml[^>]*\?>/, '')}</div>`;

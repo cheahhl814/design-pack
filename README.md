@@ -5,7 +5,7 @@
 [![Live demo](https://img.shields.io/badge/demo-GitHub%20Pages-2ea44f)](https://cheahhl814.github.io/design-pack/)
 [![Type](https://img.shields.io/badge/type-agent%20skill-blueviolet)](#-installation)
 
-Three self-contained HTML templates — **report** (sticky sidebar, 5 icon+label tabs, v2 offset-anchored annotations, theme toggle), **bento brief** (2026 bento-grid one-page snapshot briefing, dark-first glass, full v2 annotation engine), and **htmx dashboard** (topbar, KPI row, sparkline chart, activity feed, sortable table, demo-mode mock backend) — plus a full **SVG slide-deck toolchain** (5 theme sets × 6 designs + 16 backgrounds + infographics & printable info-cards, composer with text-budget gates, delivery as per-slide PNG + one merged vector PDF). Decks are **not** HTML since v0.26.0 (the HTML slide template was removed; see the slide-designs section below). All three templates ship the **v0.12.0 zero-dependency graphics pack** (donut, radial gauge, horizontal bars, heatmap, data-bar cells, pure-CSS flowchart, milestone strip, conversion funnel, venn, SWOT grid, org tree, cycle loop, comparison table, pull-quote, scroll-driven motion) and are single-file, review-ready HTML with no external CDN dependencies beyond Google Fonts (report/bento) and pinned htmx with SRI (dashboard). All three are **dark-first** with refined glass chrome, fluid display typography, and hover-glow micro-interactions (v0.7.0 aesthetic pass).
+Three self-contained HTML templates — **report** (sticky sidebar, 5 icon+label tabs, v2 offset-anchored annotations, theme toggle), **bento brief** (2026 bento-grid one-page snapshot briefing, dark-first glass, full v2 annotation engine), and **htmx dashboard** (topbar, KPI row, sparkline chart, activity feed, sortable table, demo-mode mock backend) — plus a full **SVG slide-deck toolchain** (12 theme sets × 6 designs + 32 backgrounds + infographics & printable info-cards, composer with text-budget gates, delivery as per-slide PNG + one merged vector PDF). Decks are **not** HTML since v0.26.0 (the HTML slide template was removed; see the slide-designs section below). All three templates ship the **v0.12.0 zero-dependency graphics pack** (donut, radial gauge, horizontal bars, heatmap, data-bar cells, pure-CSS flowchart, milestone strip, conversion funnel, venn, SWOT grid, org tree, cycle loop, comparison table, pull-quote, scroll-driven motion) and are single-file, review-ready HTML with no external CDN dependencies beyond Google Fonts (report/bento) and pinned htmx with SRI (dashboard). All three are **dark-first** with refined glass chrome, fluid display typography, and hover-glow micro-interactions (v0.7.0 aesthetic pass).
 
 **Repository**: https://github.com/cheahhl814/design-pack
 
@@ -26,7 +26,7 @@ Every file: `role="img"` + `aria-label` + `<title>`, id-free markup (safe to pas
 
 ## 🎞️ SVG slide designs + composer (v0.21.0; theme sets v0.24.0; the only deck toolchain since v0.26.0)
 
-All decks (any length, any ask) are composed here as **slide designs** drawn as SVG in the svg-library style — real design, not layout chrome. The six slide designs live in [`templates/svg-slides/sets/`](./templates/svg-slides/), in five theme sets, with a generated, token-driven [`gallery.html`](./templates/svg-slides/gallery.html). Since v0.28.0 the lab set also ships **5 infographic/info-card templates** (multi-section web/A4/print canvases — see [`templates/svg-slides/README.md`](./templates/svg-slides/README.md)):
+All decks (any length, any ask) are composed here as **slide designs** drawn as SVG in the svg-library style — real design, not layout chrome. The six slide designs live in [`templates/svg-slides/sets/`](./templates/svg-slides/), in **twelve theme sets**, with a generated, token-driven [`gallery.html`](./templates/svg-slides/gallery.html). Since v0.28.0 the lab set also ships **5 infographic/info-card templates** (multi-section web/A4/print canvases — see [`templates/svg-slides/README.md`](./templates/svg-slides/README.md)):
 
 `title-hero` · `section-break` · `big-statement` · `content-two-col` · `full-diagram` · `closing`
 
@@ -40,14 +40,22 @@ node bin/compose-slide.js content-two-col --payload payload.json --theme light -
 
 **Background designs (v0.22.0).** Eight slot-free, full-bleed stages (`bg-helix-field` · `bg-mosaic-triangles` · `bg-flow-dashes` · `bg-concentric-vortex` · `bg-dot-wash` · `bg-molecule-scatter` · `bg-orbit-arc` · `bg-slat-panel`) for graphic-only or text slides: compose with an empty payload (`--payload '{}'`), and the motif keeps a documented content zone clear.
 
-**Theme sets (v0.24.0).** Every design comes in five sets that share one slot contract, so one payload re-themes a deck with `--set`:
+**Theme sets (v0.24.0; 7 more in v0.30.0).** Every design comes in twelve sets that share one slot contract, so one payload re-themes a deck with `--set`:
 - `lab` (default): hand-drawn science.
 - `swiss`: International Typographic Style, with red colour blocks.
 - `boardroom`: generic consulting, navy plus one accent, serif titles.
 - `editorial`: cream-paper magazine, serif, terracotta.
 - `bold`: saturated geometric polygons with heavy display type.
+- `brutalist`: neo-brutalism — acid fields, thick black borders, hard offset shadows, mono annotations.
+- `academia`: dark academia — warm near-black, antique-gold serif, double inset frame.
+- `terminal`: dev console — green-on-black mono, code-panel left bars, prompt cues, faint grid.
+- `cyberpunk`: HUD — outline-only titles, corner brackets, cyan/magenta on near-black.
+- `glass`: glassmorphism — frosted cards over a deep glow-blob field.
+- `mesh`: gradient mesh — painterly pastel blob field, haloed display type.
+- `deco`: art deco luxe — gold frames, corner sunbursts, stepped collars.
+- `nordic`: nordic organic — warm cream, low-opacity blobs, huge whitespace.
 
-The four new sets were researched from professional theme examples (composition and palette cues only) and are drawn by `bin/draw-slide-sets.js`. A test fills every slot to its budget and measures it in Chrome.
+The theme sets are researched from professional theme examples (composition and palette cues only) and are drawn by `bin/draw-slide-sets.js` — the v0.30.0 batch from two curated style-spec libraries (30-style `pptx-design-styles` + 12-preset slides-ai presets). A test fills every slot to its budget and measures it in Chrome.
 
 ```
 node bin/compose-slide.js title-hero --set editorial --payload payload.json --theme dark --out slides/

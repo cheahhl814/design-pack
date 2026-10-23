@@ -1,0 +1,41 @@
+{
+  "label": "Nordic Organic",
+  "description": "Nordic organic minimal: warm cream (deep warm charcoal in the dark theme), dark warm-brown Georgia display type at regular weight over a light Arial body, large low-opacity organic blob shapes as texture (pre-computed paths, no filters), three small brown dots as the only accent, at least 40 percent whitespace, a thin bottom rule with a wide-tracked Courier New caption. Not any template's brand.",
+  "generatedBy": "bin/draw-slide-sets.js",
+  "fonts": {
+    "font-head": "Georgia, Times New Roman, serif",
+    "font-sans": "Arial, Helvetica, sans-serif"
+  },
+  "light": {
+    "surface": "#f4f1ec",
+    "text": "#3d3530",
+    "text-muted": "#8a7a6a",
+    "border": "#e3ddd3",
+    "border-bright": "#cfc5b6",
+    "accent": "#8b6f55",
+    "teal": "#8b6f55",
+    "deep-blue": "#6f7f86",
+    "amber": "#b59b7e",
+    "coral": "#a8704f",
+    "green": "#7d8a6a",
+    "navy": "#3d3530",
+    "block": "#e9e2d6",
+    "on-block": "#3d3530",
+    "dot-b": "#b59b7e",
+    "dot-c": "#d2c2aa"
+  },
+  "dark": {
+    "surface": "#26221e",
+    "text": "#f4f1ec",
+    "text-muted": "#b3a594",
+    "border": "#38322b",
+    "border-bright": "#52483d",
+    "accent": "#c9a98a",
+    "teal": "#c9a98a",
+    "deep-blue": "#97a7ae",
+    "block": "#322d27",
+    "on-block": "#f4f1ec",
+    "dot-b": "#a68a6c",
+    "dot-c": "#7a6650"
+  }
+}

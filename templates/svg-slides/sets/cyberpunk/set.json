@@ -1,0 +1,44 @@
+{
+  "label": "Cyberpunk HUD",
+  "description": "Cyberpunk HUD outline style: near-black field with a faint 6 percent cyan grid, outline-only Arial Black titles (transparent fill, 1.5 px cyan stroke), four L-shaped corner brackets on every slide, chamfered panels, Courier New data labels, neon cyan with one magenta second accent. The light theme is a white paper HUD: near-black text, cyan and magenta accents, an 8 percent black grid. Not any template's brand.",
+  "generatedBy": "bin/draw-slide-sets.js",
+  "fonts": {
+    "font-head": "Arial Black, Arial, sans-serif",
+    "font-sans": "Courier New, Courier, monospace"
+  },
+  "light": {
+    "surface": "#ffffff",
+    "text": "#0d0d0d",
+    "text-muted": "#3a4a48",
+    "border": "#cfe6e2",
+    "border-bright": "#00a88a",
+    "accent": "#00a88a",
+    "teal": "#00a88a",
+    "deep-blue": "#0077aa",
+    "amber": "#c79a00",
+    "coral": "#c2189f",
+    "green": "#00a88a",
+    "navy": "#0d0d0d",
+    "block": "#0d0d0d",
+    "on-block": "#e6ffff",
+    "grid": "#000000",
+    "mag": "#c2189f"
+  },
+  "dark": {
+    "surface": "#0d0d0d",
+    "text": "#e6ffff",
+    "text-muted": "#8fe8da",
+    "border": "#0e4f46",
+    "border-bright": "#00ffc8",
+    "accent": "#00ffc8",
+    "teal": "#00ffc8",
+    "deep-blue": "#00b8ff",
+    "amber": "#ffe600",
+    "coral": "#ff2bd6",
+    "green": "#00ffc8",
+    "block": "#0d1f1c",
+    "on-block": "#e6ffff",
+    "grid": "#00ffc8",
+    "mag": "#ff2bd6"
+  }
+}

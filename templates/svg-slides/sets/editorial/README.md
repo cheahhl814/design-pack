@@ -57,7 +57,7 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | `eyebrow` | text | 80 96 700 20 | sans 13/700 tracked, start | 1 × 48 ch | yes |
 | `hero-title` | text | 80 220 760 150 | head 56/400, start | 2 × 24 ch | yes |
 | `subtitle` | text | 80 400 720 60 | sans 21/400, start | 2 × 64 ch | yes |
-| `meta` | text | 80 606 720 22 | sans 14/400 tracked, start | 1 × 80 ch | optional |
+| `meta` | text | 80 606 760 22 | sans 14/400 tracked, start | 1 × 80 ch | optional |
 
 ### `section-break`
 | Slot | Kind | Box (x y w h) | Type | Budget | Required |

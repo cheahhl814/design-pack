@@ -1,0 +1,41 @@
+{
+  "label": "Art Deco",
+  "description": "Art Deco luxe: cream paper (near-black in the dark theme), metallic gold and a deeper gold as the only two accents, jet-black / cream text, wide-tracked Georgia titles, thin double rules, stepped chevron collars, corner sunburst rays and fan (concentric arc) motifs, very restrained. Not any template's brand.",
+  "generatedBy": "bin/draw-slide-sets.js",
+  "fonts": {
+    "font-head": "Georgia, Times New Roman, serif",
+    "font-sans": "Arial, Helvetica, sans-serif"
+  },
+  "light": {
+    "surface": "#f2ead3",
+    "text": "#15130f",
+    "text-muted": "#6b5a37",
+    "border": "#d9cba5",
+    "border-bright": "#b98d2f",
+    "accent": "#b98d2f",
+    "teal": "#8f6b1d",
+    "deep-blue": "#46606e",
+    "amber": "#b98d2f",
+    "coral": "#9a4a30",
+    "green": "#566b45",
+    "navy": "#15130f",
+    "block": "#15130f",
+    "on-block": "#f2ead3",
+    "gold": "#b98d2f",
+    "gold-deep": "#8f6b1d"
+  },
+  "dark": {
+    "surface": "#101214",
+    "text": "#f2ead3",
+    "text-muted": "#b9a77a",
+    "border": "#2a2a22",
+    "border-bright": "#b98d2f",
+    "accent": "#d4a93e",
+    "teal": "#b98d2f",
+    "deep-blue": "#8aa4b2",
+    "block": "#1b1a15",
+    "on-block": "#f2ead3",
+    "gold": "#d4a93e",
+    "gold-deep": "#b98d2f"
+  }
+}

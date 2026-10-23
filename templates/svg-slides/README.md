@@ -7,12 +7,13 @@ offset copies, token-driven colour), with **slots** marked for text and for svg-
 A second category, **background designs** (`bg-*`, v0.22.0), are slot-free full-bleed stages for
 graphic-only or text slides (see *Background designs*).
 
-Use this when a deck needs real slide **design**, not just layout chrome. For plain bullet decks the
-HTML slide template (`templates/slide/`) stays the right choice.
+Use this when a deck needs real slide **design**, not just layout chrome. (The HTML slide template
+was removed in v0.26.0 — every deck asks compose here; plain bullet decks compose the same six
+designs with sparse payloads.)
 
-**Theme sets (v0.24.0).** The designs come in five sets that share one slot contract. Pick one with
-`--set`. A payload written for one set re-themes the whole deck in another, as long as its lines
-fit that set's budgets (the composer gates them).
+**Theme sets (v0.24.0; 7 more in v0.30.0).** The designs come in twelve sets that share one slot
+contract. Pick one with `--set`. A payload written for one set re-themes the whole deck in another,
+as long as its lines fit that set's budgets (the composer gates them).
 
 | Set | Look | Slot tables |
 |---|---|---|
@@ -21,6 +22,14 @@ fit that set's budgets (the composer gates them).
 | `boardroom` | generic consulting: navy + one bright accent, serif titles over sans body, thin title rule, agenda tracker, 60:40 chart + insight | [`sets/boardroom/README.md`](sets/boardroom/README.md) |
 | `editorial` | magazine: cream paper, brown serif headlines, terracotta accent, hairline and double rules, pull-quote, old-style numerals | [`sets/editorial/README.md`](sets/editorial/README.md) |
 | `bold` | bold geometric: saturated violet / amber / coral / blue fields, flat polygons, Arial Black display type | [`sets/bold/README.md`](sets/bold/README.md) |
+| `brutalist` (v0.30.0) | neo-brutalism: acid fields, thick black borders, hard offset shadows, mono annotations, oversized Arial Black | [`sets/brutalist/README.md`](sets/brutalist/README.md) |
+| `academia` (v0.30.0) | dark academia: warm near-black, antique-gold italic serif, double inset frame, mono footnotes | [`sets/academia/README.md`](sets/academia/README.md) |
+| `terminal` (v0.30.0) | dev console: green-on-black mono, faint grid, code-panel left bars, `$`/`>` prompt cues | [`sets/terminal/README.md`](sets/terminal/README.md) |
+| `cyberpunk` (v0.30.0) | HUD: outline-only titles, four corner brackets, cyan/magenta tag bar, 7% grid | [`sets/cyberpunk/README.md`](sets/cyberpunk/README.md) |
+| `glass` (v0.30.0) | glassmorphism: frosted 22px cards over a deep glow-blob field (stacked translucent rings), Segoe-style type | [`sets/glass/README.md`](sets/glass/README.md) |
+| `mesh` (v0.30.0) | gradient mesh: painterly pastel blob field, haloed Arial Black display type, centred layout | [`sets/mesh/README.md`](sets/mesh/README.md) |
+| `deco` (v0.30.0) | art deco luxe: gold double frame, corner sunbursts, stepped chevron collar, tracked Georgia | [`sets/deco/README.md`](sets/deco/README.md) |
+| `nordic` (v0.30.0) | nordic organic: warm cream, low-opacity blob paths, three-dot accent, huge whitespace | [`sets/nordic/README.md`](sets/nordic/README.md) |
 
 Every set ships the six slide designs below under the same names, with lab's slot names, kinds,
 required flags and line counts (the tests enforce it), plus its own backgrounds (lab 8, the others 2).

@@ -1,0 +1,44 @@
+{
+  "label": "Dark Academia",
+  "description": "Dark Academia: warm near-black brown with antique-gold titles in italic Georgia, parchment-coloured body text, a double inset border frame (a heavy outer and a hairline inner rule), centred wide-tracked titles, thin gold rules and Courier New footnote captions. The light theme is the print inverse: parchment paper, deep-brown text, the same gold accents. Not any template's brand.",
+  "generatedBy": "bin/draw-slide-sets.js",
+  "fonts": {
+    "font-head": "Georgia, Cambria, serif",
+    "font-sans": "EB Garamond, Georgia, serif"
+  },
+  "light": {
+    "surface": "#f1e7d2",
+    "text": "#2a1d0c",
+    "text-muted": "#6e5a35",
+    "border": "#cdbb93",
+    "border-bright": "#a38c57",
+    "accent": "#8f6b1d",
+    "teal": "#8f6b1d",
+    "deep-blue": "#4f647c",
+    "amber": "#a8791f",
+    "coral": "#8e4a30",
+    "green": "#566b45",
+    "navy": "#2a1d0c",
+    "block": "#2a1d0c",
+    "on-block": "#f1e7d2",
+    "ink": "#2a1d0c",
+    "on-ink": "#f1e7d2"
+  },
+  "dark": {
+    "surface": "#1a1208",
+    "text": "#d4bf9a",
+    "text-muted": "#8a7340",
+    "border": "#3d2e10",
+    "border-bright": "#8a7340",
+    "accent": "#c9a84c",
+    "teal": "#c9a84c",
+    "deep-blue": "#8da1b8",
+    "amber": "#c9a84c",
+    "coral": "#c07a58",
+    "green": "#8fa67a",
+    "block": "#2a1e0c",
+    "on-block": "#d4bf9a",
+    "ink": "#0e0a05",
+    "on-ink": "#d4bf9a"
+  }
+}
