@@ -44,7 +44,7 @@ design-pack · svg-slides · cyberpunk · section-break
   <path d="M 1228 28 L 1252 28 L 1252 52" style="fill:none;stroke:var(--teal,#00a88a);stroke-width:2.5"/>
   <path d="M 52 692 L 28 692 L 28 668" style="fill:none;stroke:var(--teal,#00a88a);stroke-width:2.5"/>
   <path d="M 1228 692 L 1252 692 L 1252 668" style="fill:none;stroke:var(--teal,#00a88a);stroke-width:2.5"/>
-  <polygon points="84,120 534,120 534,560 514,580 64,580 64,140" style="fill:color-mix(in srgb, var(--teal,#00a88a) 5%, transparent);stroke:var(--teal,#00a88a);stroke-width:1.5"/>
+  <polygon points="84,120 484,120 484,560 464,580 64,580 64,140" style="fill:color-mix(in srgb, var(--teal,#00a88a) 5%, transparent);stroke:var(--teal,#00a88a);stroke-width:1.5"/>
   <g data-slot="number" data-slot-kind="text" data-slot-box="96 150 400 240" data-slot-font="head" data-slot-weight="400" data-slot-size="230" data-slot-maxlines="1" data-slot-maxchars="2" data-slot-anchor="start" data-slot-fill="transparent;stroke:var(--teal,#00a88a);stroke-width:1.5;paint-order:stroke;stroke-linejoin:round">
     <text x="96" y="414.5" text-anchor="start" style="font-family:var(--font-head,Arial Black, Arial, sans-serif);font-size:230px;font-weight:400;fill:transparent;stroke:var(--teal,#00a88a);stroke-width:1.5;paint-order:stroke;stroke-linejoin:round">02</text>
   </g>

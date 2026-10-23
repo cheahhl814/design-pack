@@ -50,8 +50,8 @@ design-pack · svg-slides · glass · section-break
   <circle cx="1150" cy="640" r="110.8" style="fill:color-mix(in srgb, var(--blob-b,#7ab3ff) 3.89%, transparent)"/>
   <circle cx="1150" cy="640" r="89.8" style="fill:color-mix(in srgb, var(--blob-b,#7ab3ff) 3.89%, transparent)"/>
   <circle cx="1150" cy="640" r="68.9" style="fill:color-mix(in srgb, var(--blob-b,#7ab3ff) 3.89%, transparent)"/>
-  <rect x="64" y="100" width="470" height="480" rx="22" style="fill:color-mix(in srgb, var(--glass,#ffffff) 40%, transparent);stroke:color-mix(in srgb, var(--glass-line,#6f9be0) 55%, transparent);stroke-width:1.5"/>
-  <line x1="86" y1="102" x2="512" y2="102" style="fill:none;stroke:color-mix(in srgb, var(--glass-line,#6f9be0) 80%, transparent);stroke-width:1.5"/>
+  <rect x="64" y="100" width="440" height="480" rx="22" style="fill:color-mix(in srgb, var(--glass,#ffffff) 40%, transparent);stroke:color-mix(in srgb, var(--glass-line,#6f9be0) 55%, transparent);stroke-width:1.5"/>
+  <line x1="86" y1="102" x2="482" y2="102" style="fill:none;stroke:color-mix(in srgb, var(--glass-line,#6f9be0) 80%, transparent);stroke-width:1.5"/>
   <g data-slot="number" data-slot-kind="text" data-slot-box="124 150 400 230" data-slot-font="head" data-slot-weight="300" data-slot-size="220" data-slot-maxlines="1" data-slot-maxchars="2" data-slot-anchor="start" data-slot-fill="var(--text,#14163a)">
     <text x="124" y="403" text-anchor="start" style="font-family:var(--font-head,Segoe UI Light, Segoe UI, Arial, sans-serif);font-size:220px;font-weight:300;fill:var(--text,#14163a)">02</text>
   </g>
