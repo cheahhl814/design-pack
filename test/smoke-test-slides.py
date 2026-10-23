@@ -323,6 +323,18 @@ if chrome:
         for bad in (m.group(2).strip().splitlines() if m else []):
             check(False, f"text over its slot box: {bad}")
 
+# ── 4. freshness: gallery.html must equal what the generator makes from today's designs; docs copy must match it ──
+GALLERY = os.path.join(ROOT, "templates", "svg-slides", "gallery.html")
+DOCS_COPY = os.path.join(ROOT, "docs", "svg-slides", "index.html")
+committed = open(GALLERY, "rb").read()
+try:
+    r = run(["node", os.path.join(ROOT, "bin", "build-slides-gallery.js")])
+    check(r.returncode == 0, f"build-slides-gallery.js: {r.stderr.strip()}")
+    check(open(GALLERY, "rb").read() == committed, "gallery.html is stale: re-run node bin/build-slides-gallery.js")
+finally:
+    open(GALLERY, "wb").write(committed)  # the test never rewrites the file
+check(open(DOCS_COPY, "rb").read() == committed, "docs/svg-slides/index.html differs from templates/svg-slides/gallery.html: re-sync it")
+
 print(f"  svg-slides: {len(SETS)} sets · {sum(len(NAMES[s]) - len(BGS[s]) for s in SETS)} slide + {sum(len(BGS[s]) for s in SETS)} background designs · composer × 2 themes · budget fit")
 print(f"  TOTAL: {passed} passed · {failed} failed")
 sys.exit(1 if failed else 0)
