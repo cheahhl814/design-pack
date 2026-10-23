@@ -50,7 +50,7 @@ design-pack · svg-slides · glass · closing
   <circle cx="1180" cy="640" r="90" style="fill:color-mix(in srgb, var(--blob-b,#7ab3ff) 3.89%, transparent)"/>
   <circle cx="1180" cy="640" r="73" style="fill:color-mix(in srgb, var(--blob-b,#7ab3ff) 3.89%, transparent)"/>
   <circle cx="1180" cy="640" r="56" style="fill:color-mix(in srgb, var(--blob-b,#7ab3ff) 3.89%, transparent)"/>
-  <rect x="64" y="90" width="1152" height="500" rx="22" style="fill:color-mix(in srgb, var(--glass,#ffffff) 40%, transparent);stroke:color-mix(in srgb, var(--glass-line,#6f9be0) 55%, transparent);stroke-width:1.5"/>
+  <rect x="64" y="90" width="1152" height="546" rx="22" style="fill:color-mix(in srgb, var(--glass,#ffffff) 40%, transparent);stroke:color-mix(in srgb, var(--glass-line,#6f9be0) 55%, transparent);stroke-width:1.5"/>
   <line x1="86" y1="92" x2="1194" y2="92" style="fill:none;stroke:color-mix(in srgb, var(--glass-line,#6f9be0) 80%, transparent);stroke-width:1.5"/>
   <g data-slot="title" data-slot-kind="text" data-slot-box="124 150 900 166" data-slot-font="head" data-slot-weight="300" data-slot-size="72" data-slot-maxlines="2" data-slot-maxchars="22" data-slot-anchor="start" data-slot-fill="var(--text,#14163a)">
     <text x="124" y="232.8" text-anchor="start" style="font-family:var(--font-head,Segoe UI Light, Segoe UI, Arial, sans-serif);font-size:72px;font-weight:300;fill:var(--text,#14163a)">Thank you</text>

@@ -64,8 +64,8 @@ design-pack · svg-slides · terminal · closing
   <line x1="0" y1="15" x2="1280" y2="15" style="fill:none;stroke:color-mix(in srgb, var(--grid,#0f9f0f) 9%, transparent);stroke-width:1"/>
   <line x1="0" y1="20" x2="1280" y2="20" style="fill:none;stroke:color-mix(in srgb, var(--grid,#0f9f0f) 9%, transparent);stroke-width:1"/>
   <line x1="0" y1="25" x2="1280" y2="25" style="fill:none;stroke:color-mix(in srgb, var(--grid,#0f9f0f) 9%, transparent);stroke-width:1"/>
-  <rect x="64" y="100" width="1152" height="520" style="fill:var(--card,#f0f0ea);stroke:var(--border,#d9d9d2);stroke-width:1"/>
-  <rect x="64" y="100" width="3" height="520" style="fill:var(--accent,#0f9f0f)"/>
+  <rect x="64" y="100" width="1152" height="548" style="fill:var(--card,#f0f0ea);stroke:var(--border,#d9d9d2);stroke-width:1"/>
+  <rect x="64" y="100" width="3" height="548" style="fill:var(--accent,#0f9f0f)"/>
   <g data-slot="title" data-slot-kind="text" data-slot-box="96 150 1060 148" data-slot-font="head" data-slot-weight="700" data-slot-size="64" data-slot-maxlines="2" data-slot-maxchars="27" data-slot-anchor="start" data-slot-fill="var(--text,#111111)">
     <text x="96" y="223.6" text-anchor="start" style="font-family:var(--font-head,Courier New, Courier, monospace);font-size:64px;font-weight:700;fill:var(--text,#111111)">Thank you</text>
     <text x="96" y="303.6" text-anchor="start" style="font-family:var(--font-head,Courier New, Courier, monospace);font-size:64px;font-weight:700;fill:var(--text,#111111)">Questions?</text>

@@ -66,8 +66,8 @@ design-pack · svg-slides · terminal · title-hero
   <line x1="0" y1="15" x2="1280" y2="15" style="fill:none;stroke:color-mix(in srgb, var(--grid,#0f9f0f) 9%, transparent);stroke-width:1"/>
   <line x1="0" y1="20" x2="1280" y2="20" style="fill:none;stroke:color-mix(in srgb, var(--grid,#0f9f0f) 9%, transparent);stroke-width:1"/>
   <line x1="0" y1="25" x2="1280" y2="25" style="fill:none;stroke:color-mix(in srgb, var(--grid,#0f9f0f) 9%, transparent);stroke-width:1"/>
-  <rect x="64" y="100" width="1152" height="520" style="fill:var(--card,#f0f0ea);stroke:var(--border,#d9d9d2);stroke-width:1"/>
-  <rect x="64" y="100" width="3" height="520" style="fill:var(--accent,#0f9f0f)"/>
+  <rect x="64" y="100" width="1152" height="548" style="fill:var(--card,#f0f0ea);stroke:var(--border,#d9d9d2);stroke-width:1"/>
+  <rect x="64" y="100" width="3" height="548" style="fill:var(--accent,#0f9f0f)"/>
   <g data-slot="eyebrow" data-slot-kind="text" data-slot-box="96 150 1060 22" data-slot-font="sans" data-slot-weight="700" data-slot-size="14" data-slot-tracking="2" data-slot-maxlines="1" data-slot-maxchars="48" data-slot-anchor="start" data-slot-fill="var(--deep-blue,#006f99)">
     <text x="96" y="166.1" text-anchor="start" style="font-family:var(--font-sans,Courier New, Courier, monospace);font-size:14px;font-weight:700;fill:var(--deep-blue,#006f99);letter-spacing:2px">LAB MEETING · OCTOBER 2026</text>
   </g>

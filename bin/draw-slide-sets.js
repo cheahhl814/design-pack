@@ -744,8 +744,8 @@ SETS.terminal = {
       label: 'Terminal', align: 'start', m: 96, tw: 1060, cw: 1060, hw: 700, etr: 2, calloutHead: false,
       r: { head: 0.6, hcap: 0.6, body: 0.6, cap: 0.6, mono: 0.6 }, sz: { hero: 50, num: 200, secT: 46, stmt: 32, hd: 30, hd2: 28, cl: 64 },
       fill: { t: c('text'), b: c('text'), m: c('text-muted'), e: c('deep-blue') }, fills: { 'content-two-col': { k: c('text') }, 'full-diagram': { k: c('text') } },
-      pre: (n, g) => [...grid, ...scan(0), ...(n === 'title-hero' ? panel(64, 100, 1152, 520) : n === 'section-break' ? panel(64, 120, 420, 440) : n === 'big-statement' ? panel(64, 110, 1152, 440)
-        : n === 'closing' ? panel(64, 100, 1152, 520) : n === 'content-two-col' ? [...panel(...g[n].bodyP), ...panel(...g[n].callP, 'deep-blue'), ...panel(...g[n].figP)] : n === 'full-diagram' ? [...panel(...g[n].figP), ...panel(...g[n].takeP, 'deep-blue')] : [])],
+      pre: (n, g) => [...grid, ...scan(0), ...(n === 'title-hero' ? panel(64, 100, 1152, 548) : n === 'section-break' ? panel(64, 120, 420, 440) : n === 'big-statement' ? panel(64, 110, 1152, 440)
+        : n === 'closing' ? panel(64, 100, 1152, 548) : n === 'content-two-col' ? [...panel(...g[n].bodyP), ...panel(...g[n].callP, 'deep-blue'), ...panel(...g[n].figP)] : n === 'full-diagram' ? [...panel(...g[n].figP), ...panel(...g[n].takeP, 'deep-blue')] : [])],
       post: (n, g) => (g[n].eb ? [prompt(g[n].eb, n === 'title-hero' ? '$' : '>')] : []),
       dec: {
         'title-hero': ['Console cover: a dark code-block panel with a green left bar holds a blue prompt-prefixed eyebrow, a two-line monospace title, a subtitle and a meta line over a faint green grid and a scanline band', 'Cover: a faint 6 percent grid and a thin scanline band; one large code-block panel with a 3 px accent bar on its left edge holds every text slot flush left, the eyebrow led by a $ prompt.'],
@@ -827,7 +827,7 @@ SETS.glass = {
       label: 'Glassmorphism', align: 'start', m: 124, tw: 900, cw: 900, hw: 300, etr: 3, calloutHead: false,
       r: { head: 0.56, hcap: 0.72, body: 0.52, cap: 0.7, mono: 0.6 }, sz: { hero: 58, num: 220, secT: 50, stmt: 38, hd: 36, hd2: 32, cl: 72 },
       fill: { t: c('text'), b: c('text'), m: c('text-muted'), e: c('accent') }, fills: { 'content-two-col': { k: c('text') }, 'full-diagram': { k: c('text') } },
-      pre: (n, g) => [...blobs(n), ...(n === 'title-hero' ? card(64, 96, 1020, 540, 22) : n === 'section-break' ? card(64, 100, 440, 480, 22) : n === 'big-statement' ? card(80, 110, 1120, 420, 22) : n === 'closing' ? card(64, 90, 1152, 500, 22)
+      pre: (n, g) => [...blobs(n), ...(n === 'title-hero' ? card(64, 96, 1020, 540, 22) : n === 'section-break' ? card(64, 100, 440, 480, 22) : n === 'big-statement' ? card(80, 110, 1120, 420, 22) : n === 'closing' ? card(64, 90, 1152, 546, 22)
         : n === 'content-two-col' ? [...card(...g[n].bodyP), ...card(...g[n].callP), ...card(...g[n].figP, 22)] : n === 'full-diagram' ? [...card(...g[n].figP, 22), ...card(...g[n].takeP, 22)] : [])],
       dec: {
         'title-hero': ['Cover on a deep indigo field with soft violet, blue and cyan glow blobs and one frosted glass card holding the cyan eyebrow, a large thin two-line title, a subtitle and a meta line', 'Cover: deep field with stacked-circle glow blobs; one frosted card (translucent fill, light border, 22 px corners) holds all the text flush left.'],
