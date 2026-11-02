@@ -1,0 +1,187 @@
+<!--
+design-pack · svg-library · phase1-reference-genomes
+  Six pipeline cards, each with a text-free pictogram above a short label; a gate that branches (solid arrow to the primary
+  outcome card, dashed arrow to the dashed fallback card), an italic note and a full-width band.
+  Pipeline pitch 131.2, cards 116 wide; outcome cards x = 14 / 458.
+  Pictograms are text-free groups (ghost copy offset + main shape); labels <= 4 words.
+  Tokens: teal deep-blue amber coral accent text text-muted surface font-head font-sans.
+  No ids/markers.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Six-step reference-genome pipeline left to right: taxon list, samples, DNA-quality gate, sequence, assemble and annotate, deposit; below it two outcomes, a complete nuclear genome as the primary route and a mitogenome when gDNA quality blocks whole-genome sequencing as the fallback route" style="width:100%;height:auto">
+  <title>Phase 1: reference genomes first</title>
+  <text x="14" y="14" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--accent,#0d9488)">WPMGN · PHASE 1 · YEARS 1–2</text>
+  <text x="14" y="33" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Reference genomes first</text>
+  <text x="14" y="50" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Phase 1 builds what the region does not have: chromosome-level reference genomes for under-represented</text>
+  <text x="14" y="63" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Western Pacific taxa, to VGP-tier standards, in the open record.</text>
+  <rect x="14" y="74" width="116" height="108" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="14" y="74" width="116" height="108" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 8%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <circle cx="30" cy="88" r="8" style="fill:var(--teal,#0d9488)"/>
+  <text x="30" y="92" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--surface,#ffffff)">1</text>
+  <rect x="57" y="85" width="10" height="10" rx="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="57" y="97" width="10" height="10" rx="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="57" y="109" width="10" height="10" rx="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="69" y="85" width="10" height="10" rx="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="69" y="97" width="10" height="10" rx="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="69" y="109" width="10" height="10" rx="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="81" y="85" width="10" height="10" rx="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="81" y="97" width="10" height="10" rx="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="81" y="109" width="10" height="10" rx="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="55" y="83" width="10" height="10" rx="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="55" y="95" width="10" height="10" rx="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="55" y="107" width="10" height="10" rx="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="67" y="83" width="10" height="10" rx="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="67" y="95" width="10" height="10" rx="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="67" y="107" width="10" height="10" rx="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="79" y="83" width="10" height="10" rx="2.5" style="fill:var(--teal,#0d9488);stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="79" y="95" width="10" height="10" rx="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="79" y="107" width="10" height="10" rx="2.5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="53" y="81" width="0" height="0" rx="0" style="fill:var(--teal,#0d9488)"/>
+  <text x="22" y="129" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">TAXON LIST</text>
+  <text x="22" y="143" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">top-25 from the</text>
+  <text x="22" y="156" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">OBIS × NCBI</text>
+  <text x="22" y="169" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">gap matrix</text>
+  <line x1="130" y1="126" x2="136.2" y2="126" style="stroke:var(--text,#0f172a);stroke-width:2.5"/>
+  <polygon points="145.2,126 136.2,121 136.2,131" style="fill:var(--text,#0f172a)"/>
+  <rect x="145.2" y="74" width="116" height="108" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="145.2" y="74" width="116" height="108" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 8%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <circle cx="161.2" cy="88" r="8" style="fill:var(--teal,#0d9488)"/>
+  <text x="161.2" y="92" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--surface,#ffffff)">2</text>
+  <rect x="197.2" y="89" width="14" height="26" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="197.2" y="103" width="14" height="12" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="195.2" y="86" width="18" height="5" rx="2" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <path d="M 218.2 91 C 218.2 91 214.2 96 214.2 99 A 4 4 0 0 0 222.2 99 C 222.2 96 218.2 91 218.2 91 Z" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="195.2" y="87" width="14" height="26" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="195.2" y="101" width="14" height="12" rx="4" style="fill:var(--teal,#0d9488);stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="193.2" y="84" width="18" height="5" rx="2" style="fill:var(--teal,#0d9488);stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <path d="M 216.2 89 C 216.2 89 212.2 94 212.2 97 A 4 4 0 0 0 220.2 97 C 220.2 94 216.2 89 216.2 89 Z" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="153.2" y="129" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">SAMPLES</text>
+  <text x="153.2" y="143" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">vouchered,</text>
+  <text x="153.2" y="156" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">permitted,</text>
+  <text x="153.2" y="169" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">extracted</text>
+  <line x1="261.2" y1="126" x2="267.4" y2="126" style="stroke:var(--text,#0f172a);stroke-width:2.5"/>
+  <polygon points="276.4,126 267.4,121 267.4,131" style="fill:var(--text,#0f172a)"/>
+  <rect x="276.4" y="74" width="116" height="108" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="276.4" y="74" width="116" height="108" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 8%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <circle cx="292.4" cy="88" r="8" style="fill:var(--amber,#f59e0b)"/>
+  <text x="292.4" y="92" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--surface,#ffffff)">3</text>
+  <polygon points="322.4,89 350.4,89 339.4,103 339.4,112 333.4,112 333.4,103" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <polygon points="320.4,87 348.4,87 337.4,101 337.4,110 331.4,110 331.4,101" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 30%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <circle cx="334.4" cy="115" r="2.4" style="fill:var(--amber,#f59e0b)"/>
+  <circle cx="334.4" cy="94" r="1.8" style="fill:var(--amber,#f59e0b)"/>
+  <text x="284.4" y="129" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">DNA-QUALITY</text>
+  <text x="284.4" y="141" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">GATE</text>
+  <line x1="392.4" y1="126" x2="398.6" y2="126" style="stroke:var(--text,#0f172a);stroke-width:2.5"/>
+  <polygon points="407.6,126 398.6,121 398.6,131" style="fill:var(--text,#0f172a)"/>
+  <rect x="407.6" y="74" width="116" height="108" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 22%, transparent);stroke:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 45%, transparent);stroke-width:1.5"/>
+  <rect x="407.6" y="74" width="116" height="108" rx="12" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 8%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <circle cx="423.6" cy="88" r="8" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="423.6" y="92" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--surface,#ffffff)">4</text>
+  <path d="M 458.6 87 C 476.6 93 476.6 99 467.6 102 C 458.6 105 458.6 111 476.6 117" style="fill:none;stroke:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 45%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <path d="M 476.6 87 C 458.6 93 458.6 99 467.6 102 C 476.6 105 476.6 111 458.6 117" style="fill:none;stroke:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 45%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="463.6" y1="90" x2="471.6" y2="90" style="fill:none;stroke:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 45%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="463.6" y1="114" x2="471.6" y2="114" style="fill:none;stroke:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 45%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <path d="M 456.6 85 C 474.6 91 474.6 97 465.6 100 C 456.6 103 456.6 109 474.6 115" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2;stroke-linecap:round"/>
+  <path d="M 474.6 85 C 456.6 91 456.6 97 465.6 100 C 474.6 103 474.6 109 456.6 115" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2;stroke-linecap:round"/>
+  <line x1="461.6" y1="88" x2="469.6" y2="88" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="461.6" y1="112" x2="469.6" y2="112" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5;stroke-linecap:round"/>
+  <text x="415.6" y="129" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 70%, var(--text,#0f172a))">SEQUENCE</text>
+  <text x="415.6" y="143" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">HiFi + Hi-C</text>
+  <text x="415.6" y="156" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">(Tier A) ·</text>
+  <text x="415.6" y="169" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">nanopore (Tier C)</text>
+  <line x1="523.6" y1="126" x2="529.8" y2="126" style="stroke:var(--text,#0f172a);stroke-width:2.5"/>
+  <polygon points="538.8,126 529.8,121 529.8,131" style="fill:var(--text,#0f172a)"/>
+  <rect x="538.8" y="74" width="116" height="108" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 22%, transparent);stroke:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 45%, transparent);stroke-width:1.5"/>
+  <rect x="538.8" y="74" width="116" height="108" rx="12" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 8%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <circle cx="554.8" cy="88" r="8" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="554.8" y="92" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--surface,#ffffff)">5</text>
+  <rect x="581.8" y="87" width="5" height="30" rx="2.5" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 22%, transparent);stroke:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 45%, transparent);stroke-width:1.5"/>
+  <rect x="588.8" y="91" width="5" height="26" rx="2.5" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 22%, transparent);stroke:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 45%, transparent);stroke-width:1.5"/>
+  <rect x="595.8" y="95" width="5" height="22" rx="2.5" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 22%, transparent);stroke:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 45%, transparent);stroke-width:1.5"/>
+  <rect x="602.8" y="99" width="5" height="18" rx="2.5" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 22%, transparent);stroke:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 45%, transparent);stroke-width:1.5"/>
+  <rect x="609.8" y="103" width="5" height="14" rx="2.5" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 22%, transparent);stroke:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 45%, transparent);stroke-width:1.5"/>
+  <rect x="579.8" y="85" width="5" height="30" rx="2.5" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 30%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <rect x="586.8" y="89" width="5" height="26" rx="2.5" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 30%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <rect x="593.8" y="93" width="5" height="22" rx="2.5" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 30%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <rect x="600.8" y="97" width="5" height="18" rx="2.5" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 30%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <rect x="607.8" y="101" width="5" height="14" rx="2.5" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 30%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="546.8" y="129" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 70%, var(--text,#0f172a))">ASSEMBLE +</text>
+  <text x="546.8" y="141" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 70%, var(--text,#0f172a))">ANNOTATE</text>
+  <text x="546.8" y="156" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">VGP-tier · QC</text>
+  <line x1="654.8" y1="126" x2="661" y2="126" style="stroke:var(--text,#0f172a);stroke-width:2.5"/>
+  <polygon points="670,126 661,121 661,131" style="fill:var(--text,#0f172a)"/>
+  <rect x="670" y="74" width="116" height="108" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="670" y="74" width="116" height="108" rx="12" style="fill:color-mix(in srgb, var(--accent,#0d9488) 8%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2"/>
+  <circle cx="686" cy="88" r="8" style="fill:var(--accent,#0d9488)"/>
+  <text x="686" y="92" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--surface,#ffffff)">6</text>
+  <path d="M 715 92 V 112 A 11 4 0 0 0 737 112 V 92" style="fill:none;stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <ellipse cx="726" cy="92" rx="11" ry="4" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <path d="M 715 102 A 11 4 0 0 0 737 102" style="fill:none;stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="743" y1="114" x2="743" y2="96" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <polygon points="743,89 738.5,96 747.5,96" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <path d="M 713 90 V 110 A 11 4 0 0 0 735 110 V 90" style="fill:none;stroke:var(--accent,#0d9488);stroke-width:2;stroke-linecap:round"/>
+  <ellipse cx="724" cy="90" rx="11" ry="4" style="fill:color-mix(in srgb, var(--accent,#0d9488) 30%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2"/>
+  <path d="M 713 100 A 11 4 0 0 0 735 100" style="fill:none;stroke:var(--accent,#0d9488);stroke-width:2;stroke-linecap:round"/>
+  <line x1="741" y1="112" x2="741" y2="94" style="fill:none;stroke:var(--coral,#ef4444);stroke-width:2;stroke-linecap:round"/>
+  <polygon points="741,87 736.5,94 745.5,94" style="fill:var(--coral,#ef4444);stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="678" y="129" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">DEPOSIT</text>
+  <text x="678" y="143" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">INSDC +</text>
+  <text x="678" y="156" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">meta-catalogue</text>
+  <text x="14" y="198" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">WHAT GETS BUILT</text>
+  <circle cx="306" cy="182" r="3.5" style="fill:var(--text,#0f172a)"/>
+  <line x1="306" y1="182" x2="306" y2="196" style="stroke:var(--text,#0f172a);stroke-width:2.5"/>
+  <polygon points="306,206 300.5,196 311.5,196" style="fill:var(--text,#0f172a)"/>
+  <circle cx="372" cy="182" r="3.5" style="fill:var(--text-muted,#64748b)"/>
+  <polyline points="372,182 372,191 520,191 520,194" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-dasharray:6 5"/>
+  <polygon points="520,206 514.5,194 525.5,194" style="fill:var(--text-muted,#64748b)"/>
+  <rect x="14" y="206" width="420" height="140" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="14" y="206" width="420" height="140" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="26" y="218" width="76" height="18" rx="9.5" style="fill:var(--teal,#0d9488)"/>
+  <text x="64" y="231.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">PRIMARY</text>
+  <text x="26" y="262" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">A COMPLETE NUCLEAR GENOME</text>
+  <text x="26" y="288" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">chromosome-level: HiFi + Hi-C,</text>
+  <text x="26" y="302" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">VGP-tier, phased where possible</text>
+  <rect x="345" y="237" width="10" height="60" rx="5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="359" y="245" width="10" height="52" rx="5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="373" y="253" width="10" height="44" rx="5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="387" y="261" width="10" height="36" rx="5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="401" y="269" width="10" height="28" rx="5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="342" y="234" width="10" height="60" rx="5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="356" y="242" width="10" height="52" rx="5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="370" y="250" width="10" height="44" rx="5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="384" y="258" width="10" height="36" rx="5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="398" y="266" width="10" height="28" rx="5" style="fill:color-mix(in srgb, var(--teal,#0d9488) 30%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="458" y="206" width="312" height="140" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="458" y="206" width="312" height="140" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 6%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2" stroke-dasharray="7 5"/>
+  <rect x="470" y="218" width="110" height="18" rx="9.5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="525" y="231.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">FALLBACK</text>
+  <text x="470" y="258" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">A MITOGENOME — WHEN gDNA QUALITY</text>
+  <text x="470" y="274" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">BLOCKS WGS</text>
+  <text x="470" y="294" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">degraded or museum-grade DNA</text>
+  <text x="470" y="307" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">→ mitogenome + barcodes</text>
+  <text x="470" y="320" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">publishable ·</text>
+  <text x="470" y="333" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">species-verification scout</text>
+  <circle cx="694" cy="312" r="16.5" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <path d="M 694 295.5 A 16.5 16.5 0 0 1 710.5 312" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <path d="M 677.5 312 A 16.5 16.5 0 0 0 694 328.5" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="727" y1="298.5" x2="727" y2="325.5" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="733" y1="298.5" x2="733" y2="325.5" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="739" y1="298.5" x2="739" y2="325.5" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="745" y1="298.5" x2="745" y2="325.5" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="751" y1="298.5" x2="751" y2="325.5" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="757" y1="298.5" x2="757" y2="325.5" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5;stroke-linecap:round"/>
+  <circle cx="691" cy="309" r="16.5" style="fill:none;stroke:var(--amber,#f59e0b);stroke-width:2;stroke-linecap:round"/>
+  <path d="M 691 292.5 A 16.5 16.5 0 0 1 707.5 309" style="fill:none;stroke:var(--amber,#f59e0b);stroke-width:2;stroke-linecap:round"/>
+  <path d="M 674.5 309 A 16.5 16.5 0 0 0 691 325.5" style="fill:none;stroke:var(--coral,#ef4444);stroke-width:2;stroke-linecap:round"/>
+  <circle cx="691" cy="292.5" r="3" style="fill:var(--amber,#f59e0b)"/>
+  <line x1="724" y1="295.5" x2="724" y2="322.5" style="fill:none;stroke:var(--amber,#f59e0b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="730" y1="295.5" x2="730" y2="322.5" style="fill:none;stroke:var(--amber,#f59e0b);stroke-width:2;stroke-linecap:round"/>
+  <line x1="736" y1="295.5" x2="736" y2="322.5" style="fill:none;stroke:var(--amber,#f59e0b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="742" y1="295.5" x2="742" y2="322.5" style="fill:none;stroke:var(--amber,#f59e0b);stroke-width:2;stroke-linecap:round"/>
+  <line x1="748" y1="295.5" x2="748" y2="322.5" style="fill:none;stroke:var(--amber,#f59e0b);stroke-width:1.5;stroke-linecap:round"/>
+  <line x1="754" y1="295.5" x2="754" y2="322.5" style="fill:none;stroke:var(--amber,#f59e0b);stroke-width:2;stroke-linecap:round"/>
+  <text x="14" y="370" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b);font-style:italic">the fallback is a different product, not a smaller version of the same one</text>
+  <rect x="14" y="409" width="772" height="36" rx="8" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="14" y="409" width="772" height="36" rx="8" style="fill:color-mix(in srgb, var(--accent,#0d9488) 10%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2"/>
+  <text x="26" y="423" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text,#0f172a)"><tspan letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">TWO FIRST PILOTS —</tspan><tspan dx="6">one SIDS Tier-C taxon, and a regional 3–5-taxon consortium. Outputs land in INSDC + the regional</tspan></text>
+  <text x="26" y="436" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">meta-catalogue, and the gap starts closing.</text>
+</svg>

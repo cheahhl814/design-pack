@@ -31,7 +31,7 @@ as long as its lines fit that set's budgets (the composer gates them).
 | `deco` (v0.30.0) | art deco luxe: gold double frame, corner sunbursts, stepped chevron collar, tracked Georgia | [`sets/deco/README.md`](sets/deco/README.md) |
 | `nordic` (v0.30.0) | nordic organic: warm cream, low-opacity blob paths, three-dot accent, huge whitespace | [`sets/nordic/README.md`](sets/nordic/README.md) |
 
-Every set ships the six slide designs below under the same names, with lab's slot names, kinds,
+Every set ships the slide designs below (the six classics plus `diagram-hero`) under the same names, with lab's slot names, kinds,
 required flags and line counts (the tests enforce it), plus its own backgrounds (lab 8, the others 2).
 Character budgets follow each set's fonts, and a test fills every slot to its budget and measures it in
 Chrome. Each set's `set.json` holds its light and dark palette and its font pair. The composer bakes
@@ -98,6 +98,7 @@ line and **fails** when a line is over its slot's character budget or there are 
 | `SLOT-UNKNOWN` | a payload key matches no slot |
 | `SLOT-MISSING` | a required slot has no payload |
 | `TEXT-OVERFLOW` | a line is longer than `data-slot-maxchars`, or there are more lines than `data-slot-maxlines` |
+| `GRAPHIC-TOO-SMALL` | the inlined diagrams cover less of the slide than `--graphic-min F` (0..1, default off) or the design's own `data-graphic-min` asks; `diagram-hero` carries 0.667, so a diagram there must fill two thirds (a 16:9 component does; a tall or square one does not) |
 | `GRAPHIC-UNREADABLE` | a graphic is neither a library name nor a readable `.svg` with a viewBox, or it has `id=` |
 | `BAKE-LEFTOVER` | `var(`, `color-mix(` or `data-slot` survived into a composed file |
 
@@ -154,6 +155,7 @@ apply: inline SVG, **no `id` / `<defs>` / `<marker>` / `<filter>` / `<mask>` / `
 | 4 | `content-two-col` | Heading, body card + key-point callout left (full height), framed graphic + caption right | accent underline, offset cards |
 | 5 | `full-diagram` | Heading over a large graphic panel, takeaway rail card on the right | soft panel, amber rail marker |
 | 6 | `closing` | Thanks / summary title, contact lines, meta line | orbit rings around a node network |
+| 7 | `diagram-hero` | Graphic-dominant: thin heading strip over one graphic slot covering at least 2/3 of the slide (enforced) | soft panel, teal/amber tick |
 
 Budgets are per line. `head 54/700` means the heading font at 54 px, weight 700.
 
@@ -197,6 +199,12 @@ Budgets are per line. `head 54/700` means the heading font at 54 px, weight 700.
 | `heading` | text | 50 58 1180 48 | head 36/700, start | 1 × 60 ch | yes |
 | `figure` | graphic | 50 134 880 508 | svg-library component, contain-fit (≈ 880 × 495) | — | yes |
 | `takeaway` | text | 984 200 240 340 | head 20/600, rail card, start | 6 × 24 ch | optional |
+
+### `diagram-hero`
+| Slot | Kind | Box (x y w h) | Type | Budget | Required |
+|---|---|---|---|---|---|
+| `heading` | text | 28 24 1224 40 | head 30/700, start | 1 × 52 ch | yes |
+| `figure` | graphic | 28 88 1224 610 | svg-library component, contain-fit (800 × 450 → 1085 × 610 ≈ 72% of the slide) | — | yes |
 
 ### `closing`
 | Slot | Kind | Box (x y w h) | Type | Budget | Required |

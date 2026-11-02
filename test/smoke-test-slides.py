@@ -289,6 +289,16 @@ with tempfile.TemporaryDirectory(prefix="compose-") as tmp:
             check(r.returncode == 0, f"{design} happy path: {r.stderr.strip()}")
             continue
         check(r.returncode == 1 and r.stderr.startswith(gate), f"gate {gate} did not fire ({design}): {r.stderr.strip()}")
+    # graphic dominance: diagram-hero demands >= 2/3 of the slide; a square diagram (~40%) is rejected,
+    # the 16:9 sample passes, and --graphic-min bites on a design that has no minimum of its own
+    square = os.path.join(tmp, "square.svg")
+    open(square, "w").write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="sq"><rect width="400" height="400"/></svg>')
+    r = compose("diagram-hero", {**SAMPLES["diagram-hero"], "figure": square}, tmp)
+    check(r.returncode == 1 and r.stderr.startswith("GRAPHIC-TOO-SMALL"), f"GRAPHIC-TOO-SMALL did not fire on a square diagram: {r.stderr.strip()}")
+    r = compose("diagram-hero", SAMPLES["diagram-hero"], tmp)
+    check(r.returncode == 0, f"diagram-hero sample must compose: {r.stderr.strip()}")
+    r = subprocess.run(["node", COMPOSER, "full-diagram", "--payload", json.dumps(SAMPLES["full-diagram"]), "--graphic-min", "0.667", "--out", tmp], capture_output=True, text=True)
+    check(r.returncode == 1 and r.stderr.startswith("GRAPHIC-TOO-SMALL"), f"--graphic-min did not bite on full-diagram: {r.stderr.strip()}")
     # a set has its own budgets: an over-long line fails there too; an unknown set is DESIGN-UNKNOWN
     for set_, design, payload, gate in (("bold", "title-hero", {**SAMPLES["title-hero"], "hero-title": ["x" * 30]}, "TEXT-OVERFLOW"),
                                         ("no-such-set", "title-hero", SAMPLES["title-hero"], "DESIGN-UNKNOWN")):

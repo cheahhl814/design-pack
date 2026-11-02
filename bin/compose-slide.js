@@ -20,12 +20,16 @@
  *   --out     output directory (default ./slides); writes <name>.svg, the
  *             composed slide with colours baked to hex
  *   --name    output basename (default: the design name)
+ *   --graphic-min F  graphic-dominance setting (0..1, default 0 = off): the inlined diagrams
+ *             must cover >= F of the slide area, e.g. 0.667 for two thirds. The diagram-hero
+ *             design carries data-graphic-min="0.667" itself, so it is always enforced there.
  *
  * Gates (exit 1, message starts with the gate name and the slot):
  *   DESIGN-UNKNOWN, DESIGN-INVALID (bad slot markup), PAYLOAD-MALFORMED,
  *   SLOT-UNKNOWN (payload key with no slot), SLOT-MISSING (required slot not in
  *   payload), TEXT-OVERFLOW (line > maxchars or lines > maxlines),
- *   GRAPHIC-UNREADABLE, BAKE-LEFTOVER (var()/color-mix()/data-slot survived).
+ *   GRAPHIC-UNREADABLE, GRAPHIC-TOO-SMALL (diagrams under --graphic-min / data-graphic-min of the slide),
+ *   BAKE-LEFTOVER (var()/color-mix()/data-slot survived).
  *
  * Text layout rule (also in templates/svg-slides/README.md): first baseline =
  * box top + size × 1.15, each further line + size × 1.25; x from data-slot-anchor
@@ -111,7 +115,7 @@ function parseDesign(src, label = 'design') {
   const decorOnly = /<svg[^>]*data-decor-only="true"/.test(src);
   if (decorOnly && slots.length) gate('DESIGN-INVALID', `${label}: decor-only design has slot "${slots[0].name}" (backgrounds take no slots)`);
   if (!decorOnly && !slots.length) gate('DESIGN-INVALID', `${label}: no data-slot groups`);
-  return { src, slots, decorOnly };
+  return { src, slots, decorOnly, canvas: [W, H], graphicMin: +(attrs(src.match(/<svg\b[^>]*>/)[0])['data-graphic-min'] || 0) };
 }
 
 function loadDesign(ref, set = 'lab') {
@@ -160,12 +164,14 @@ function renderGraphic(s, ref) {
   const [x, y, w, h] = s.box;
   const name = path.basename(file, '.svg');
   // nested <svg> carrier: viewBox scaling with the default xMidYMid meet keeps the aspect ratio
+  const [, , vw, vh] = vb.split(/\s+/).map(Number);
+  s.area = vw * vh * Math.min(w / vw, h / vh) ** 2; // contain-fit footprint, px² of the canvas
   return `\n    <svg x="${x}" y="${y}" width="${w}" height="${h}" viewBox="${vb}" role="img" aria-label="${esc(label)}" data-component="${esc(name)}">` +
     src.slice(root[0].length, -'</svg>'.length) + '</svg>\n  ';
 }
 
 /** design + payload -> { svg (token-driven, markers dropped), text[], graphics[] } */
-function compose(design, payload) {
+function compose(design, payload, graphicMin = 0) {
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) gate('PAYLOAD-MALFORMED', 'payload must be a JSON object keyed by slot name');
   const names = design.slots.map((s) => s.name);
   for (const k of Object.keys(payload)) if (!names.includes(k)) gate('SLOT-UNKNOWN', `payload key "${k}" (design slots: ${names.join(', ') || 'none, decor-only background'})`);
@@ -183,13 +189,17 @@ function compose(design, payload) {
         anchor: s.anchor, fill: s.fill, tracking: s.tracking });
     } else if (!empty) {
       inner = renderGraphic(s, v);
-      graphics.push({ slot: s.name, component: v, box: s.box });
+      graphics.push({ slot: s.name, component: v, box: s.box, area: s.area });
     }
     svg += design.src.slice(at, s.start) + s.open + inner + '</g>';
     at = s.end;
   }
-  svg = (svg + design.src.slice(at)).replace(/\s+data-(slot[\w-]*|decor-only|canvas)="[^"]*"/g, '');
-  return { svg, text, graphics };
+  // graphic dominance: the inlined diagrams must cover >= graphicMin of the canvas
+  // (the larger of the --graphic-min setting and the design's own data-graphic-min)
+  const need = Math.max(graphicMin, design.graphicMin), share = graphics.reduce((a, g) => a + g.area, 0) / (design.canvas[0] * design.canvas[1]);
+  if (need && graphics.length && share < need - 1e-9) gate('GRAPHIC-TOO-SMALL', `graphics cover ${(share * 100).toFixed(1)}% of the slide, need >= ${(need * 100).toFixed(1)}% (use a bigger slot or a component with a wider aspect)`);
+  svg = (svg + design.src.slice(at)).replace(/\s+data-(slot[\w-]*|decor-only|canvas|graphic-min)="[^"]*"/g, '');
+  return { svg, text, graphics, share };
 }
 
 // One theme of a set: the svg-bake.js THEMES bake palette, overridden by the set's own tokens and fonts
@@ -205,10 +215,10 @@ function bake(svg, theme, set = 'lab') {
 }
 
 /** Write <name>.svg; returns its path */
-function composeToFiles(ref, payload, theme = 'light', out = 'slides', name, set = 'lab') {
+function composeToFiles(ref, payload, theme = 'light', out = 'slides', name, set = 'lab', graphicMin = 0) {
   if (!THEMES[theme]) gate('PAYLOAD-MALFORMED', `theme must be light or dark, not ${theme}`);
   const design = loadDesign(ref, set);
-  const c = compose(design, payload);
+  const c = compose(design, payload, graphicMin);
   name = name || path.basename(ref, '.svg');
   fs.mkdirSync(out, { recursive: true });
   const file = path.join(out, `${name}.svg`);
@@ -218,7 +228,7 @@ function composeToFiles(ref, payload, theme = 'light', out = 'slides', name, set
 
 if (require.main === module) {
   const args = process.argv.slice(2);
-  let theme = 'light', out = 'slides', payloadFile, name, set = 'lab';
+  let theme = 'light', out = 'slides', payloadFile, name, set = 'lab', graphicMin = 0;
   const refs = [];
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--theme') theme = args[++i];
@@ -226,10 +236,11 @@ if (require.main === module) {
     else if (args[i] === '--payload') payloadFile = args[++i];
     else if (args[i] === '--name') name = args[++i];
     else if (args[i] === '--set') set = args[++i];
+    else if (args[i] === '--graphic-min') graphicMin = +args[++i];
     else refs.push(args[i]);
   }
   if (refs.length !== 1 || !payloadFile) {
-    console.error('usage: node bin/compose-slide.js <design|path.svg> --payload payload.json|JSON [--set SET] [--theme light|dark] [--out DIR] [--name NAME]');
+    console.error('usage: node bin/compose-slide.js <design|path.svg> --payload payload.json|JSON [--set SET] [--theme light|dark] [--out DIR] [--name NAME] [--graphic-min 0..1]');
     console.error(`sets: ${listSets().join(', ')}; lab designs: ${listDesigns().join(', ')}`);
     process.exit(2);
   }
@@ -237,7 +248,7 @@ if (require.main === module) {
     let payload;
     // --payload takes a file, or inline JSON ('{}' for a decor-only background)
     try { payload = JSON.parse(payloadFile.trim().startsWith('{') ? payloadFile : fs.readFileSync(payloadFile, 'utf8')); } catch (e) { gate('PAYLOAD-MALFORMED', `${payloadFile}: ${e.message}`); }
-    console.log(composeToFiles(refs[0], payload, theme, out, name, set));
+    console.log(composeToFiles(refs[0], payload, theme, out, name, set, graphicMin));
   } catch (e) {
     console.error(e instanceof GateError ? e.message : `compose-slide: ${e.message}`);
     process.exit(1);

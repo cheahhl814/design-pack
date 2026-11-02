@@ -144,6 +144,11 @@ const META = {
   'compile-pipeline': { desc: 'Source-to-binary stages: lexer, parser, AST, optimiser, codegen with per-stage example artifacts, syntax-error diagnostics branch, front/middle/back-end bands', use: 'Teaching compilers, language internals, build-system explainers' },
   'terminal-window': { desc: 'Terminal window, annotated: traffic-light chrome and title, six mono prompt/output lines with a progress process line, static filled block cursor named by leaders', use: 'CLI/agent-session explainers, tutorial screenshot stand-ins, terminal walkthroughs' },
   'code-block': { desc: 'Syntax-highlighted code card: filename tab, line-number gutter, keyword/string/function/number/comment token tints via tspan runs, accent left bar', use: 'Code walkthroughs, README figures, teaching snippets with themed highlighting' },
+  'three-node-roles': { desc: 'Three parallel role columns with left-to-right flow arrows, a dashed feedback arrow and a full-width principle band', use: 'Framework explainers, three-pillar stakeholder models, node/role architecture' },
+  'three-node-handoff': { desc: 'Three horizontal class lanes with handoff arrows, a split-and-re-merge routing step to Tier-A assembly hubs, a data-platform card and a dashed feedback arrow', use: 'Data-flow explainers, handoff and hand-off diagrams, role-routing maps' },
+  'network-governance': { desc: 'One charter as a roof over four working-group pillars on a phasing slab, with a training-and-capacity side card', use: 'Governance explainers, working-group structure, programme architecture' },
+  'phase1-reference-genomes': { desc: 'Six-step reference-genome pipeline with a two-card outcome block for the nuclear genome and the mitogenome fallback', use: 'Genome assembly pipelines, tiered-ladder explainers, phase roadmaps' },
+  'phase2-population-baselines': { desc: 'Five-step population-baseline pipeline with a two-column conventional-versus-population-genomics contrast block', use: 'Method comparisons, phase roadmaps, standardisation explainers' },
 };
 
 function validate(name, src) {

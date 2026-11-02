@@ -51,6 +51,7 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | 4 | `content-two-col` | Content slide: gold frame; heading over a hairline rule; body text with a gold-barred key point on the left; the graphic sits in a double-ruled plate with a Courier footnote caption. |
 | 5 | `full-diagram` | Figure slide: gold frame; a large double-ruled plate for the graphic and a narrower double-ruled plate for the takeaway on the right. |
 | 6 | `closing` | Closing slide: the cover's double frame and diamond rules; a centred italic gold title, up to three centred contact lines and a mono meta line. |
+| 7 | `diagram-hero` | Graphic-dominant slide: a thin one-line heading strip over one large graphic slot (1224 x 610 of the 1280 x 720 canvas); a contain-fit diagram covers at least two thirds of the slide, enforced by the composer (data-graphic-min 0.667). No takeaway card: put the point in the heading. |
 
 ### `title-hero`
 | Slot | Kind | Box (x y w h) | Type | Budget | Required |
@@ -99,6 +100,12 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | `title` | text | 140 150 1000 148 | head 64/700 tracked, middle | 2 × 18 ch | yes |
 | `contact` | text | 140 348 1000 81 | sans 22/400, middle | 3 × 60 ch | yes |
 | `meta` | text | 140 610 1000 22 | sans 15/400, middle | 1 × 80 ch | optional |
+
+### `diagram-hero`
+| Slot | Kind | Box (x y w h) | Type | Budget | Required |
+|---|---|---|---|---|---|
+| `heading` | text | 28 24 1224 40 | head 30/700, start | 1 × 52 ch | yes |
+| `figure` | graphic | 28 88 1224 610 | svg-library component, contain-fit | — | yes |
 
 ## Backgrounds
 

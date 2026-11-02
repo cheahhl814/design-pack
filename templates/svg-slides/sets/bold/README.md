@@ -50,6 +50,7 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | 4 | `content-two-col` | Content slide: a violet eyebrow and heavy heading over amber and coral bars; a pale body card with a thick violet edge and an amber key-point card on the left; the graphic frame sits on a flat coral offset block on the right. |
 | 5 | `full-diagram` | Figure slide: violet eyebrow and a heavy one-line heading over amber and coral bars, a large graphic slot, and a violet takeaway block on the right with an amber circle cut into its foot. |
 | 6 | `closing` | Closing slide: the cover's violet field and flat polygons, a heavy two-line title, an amber bar, up to three contact lines and a meta line on the left. |
+| 7 | `diagram-hero` | Graphic-dominant slide: a thin one-line heading strip over one large graphic slot (1224 x 610 of the 1280 x 720 canvas); a contain-fit diagram covers at least two thirds of the slide, enforced by the composer (data-graphic-min 0.667). No takeaway card: put the point in the heading. |
 
 ### `title-hero`
 | Slot | Kind | Box (x y w h) | Type | Budget | Required |
@@ -98,6 +99,12 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | `title` | text | 80 170 820 180 | head 70/800, start | 2 × 18 ch | yes |
 | `contact` | text | 80 410 800 84 | sans 22/400, start | 3 × 60 ch | yes |
 | `meta` | text | 80 610 800 22 | sans 16/700, start | 1 × 80 ch | optional |
+
+### `diagram-hero`
+| Slot | Kind | Box (x y w h) | Type | Budget | Required |
+|---|---|---|---|---|---|
+| `heading` | text | 28 24 1224 40 | head 30/700, start | 1 × 52 ch | yes |
+| `figure` | graphic | 28 88 1224 610 | svg-library component, contain-fit | — | yes |
 
 ## Backgrounds
 

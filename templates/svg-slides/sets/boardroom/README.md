@@ -49,6 +49,7 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | 4 | `content-two-col` | Data + insight slide: eyebrow, a one-line serif action title over a thin grey rule, tracker top right; the graphic fills the left 60% with a source line under it, the body text and a navy "so what" box take the right 40%. |
 | 5 | `full-diagram` | Figure slide: eyebrow and a one-line serif action title over a thin grey rule, tracker top right, a large graphic slot, and a pale accent-tinted takeaway card with an accent top edge on the right. |
 | 6 | `closing` | Closing slide: full navy field, accent rule, a two-line serif title, up to three sans contact lines, a thin rule above the meta line and the cover's rising-bar motif on the right. |
+| 7 | `diagram-hero` | Graphic-dominant slide: a thin one-line heading strip over one large graphic slot (1224 x 610 of the 1280 x 720 canvas); a contain-fit diagram covers at least two thirds of the slide, enforced by the composer (data-graphic-min 0.667). No takeaway card: put the point in the heading. |
 
 ### `title-hero`
 | Slot | Kind | Box (x y w h) | Type | Budget | Required |
@@ -97,6 +98,12 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | `title` | text | 96 196 900 164 | head 64/700, start | 2 × 20 ch | yes |
 | `contact` | text | 96 400 900 84 | sans 22/400, start | 3 × 60 ch | yes |
 | `meta` | text | 96 616 900 22 | sans 15/400, start | 1 × 80 ch | optional |
+
+### `diagram-hero`
+| Slot | Kind | Box (x y w h) | Type | Budget | Required |
+|---|---|---|---|---|---|
+| `heading` | text | 28 24 1224 40 | head 30/700, start | 1 × 52 ch | yes |
+| `figure` | graphic | 28 88 1224 610 | svg-library component, contain-fit | — | yes |
 
 ## Backgrounds
 

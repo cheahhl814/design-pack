@@ -51,6 +51,7 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | 4 | `content-two-col` | Content slide: dots, serif heading, body text with a brown bar beside the key point, a pale rounded plate for the graphic and a tracked Courier caption. |
 | 5 | `full-diagram` | Figure slide: a large pale rounded plate for the graphic and a narrow one for the takeaway; a faint blob at the lower left. |
 | 6 | `closing` | Closing slide: left text column, a large pale blob right, a thin foot rule and a tracked Courier meta line. |
+| 7 | `diagram-hero` | Graphic-dominant slide: a thin one-line heading strip over one large graphic slot (1224 x 610 of the 1280 x 720 canvas); a contain-fit diagram covers at least two thirds of the slide, enforced by the composer (data-graphic-min 0.667). No takeaway card: put the point in the heading. |
 
 ### `title-hero`
 | Slot | Kind | Box (x y w h) | Type | Budget | Required |
@@ -99,6 +100,12 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | `title` | text | 120 150 700 148 | head 64/400, start | 2 × 20 ch | yes |
 | `contact` | text | 120 348 700 81 | sans 22/400, start | 3 × 60 ch | yes |
 | `meta` | text | 120 672 700 22 | sans 15/400, start | 1 × 77 ch | optional |
+
+### `diagram-hero`
+| Slot | Kind | Box (x y w h) | Type | Budget | Required |
+|---|---|---|---|---|---|
+| `heading` | text | 28 24 1224 40 | head 30/700, start | 1 × 52 ch | yes |
+| `figure` | graphic | 28 88 1224 610 | svg-library component, contain-fit | — | yes |
 
 ## Backgrounds
 

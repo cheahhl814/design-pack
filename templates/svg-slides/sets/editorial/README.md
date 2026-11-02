@@ -50,6 +50,7 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | 4 | `content-two-col` | Spread: tracked eyebrow and serif heading over a double rule; the left column holds the sans body and a terracotta serif pull-quote between hairlines, a column hairline divides it from a thin-framed figure plate and caption. |
 | 5 | `full-diagram` | Figure slide: tracked eyebrow and serif heading over a double rule, a large thin-framed graphic plate, and a right column opened by a short terracotta rule holding the serif takeaway. |
 | 6 | `closing` | Closing slide: double rules frame the page, a centred two-line serif title, a small terracotta diamond on a hairline, then centred sans contact lines and a tracked meta line. |
+| 7 | `diagram-hero` | Graphic-dominant slide: a thin one-line heading strip over one large graphic slot (1224 x 610 of the 1280 x 720 canvas); a contain-fit diagram covers at least two thirds of the slide, enforced by the composer (data-graphic-min 0.667). No takeaway card: put the point in the heading. |
 
 ### `title-hero`
 | Slot | Kind | Box (x y w h) | Type | Budget | Required |
@@ -98,6 +99,12 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | `title` | text | 140 180 1000 172 | head 68/400, middle | 2 × 20 ch | yes |
 | `contact` | text | 140 410 1000 84 | sans 21/400, middle | 3 × 60 ch | yes |
 | `meta` | text | 140 560 1000 22 | sans 14/400 tracked, middle | 1 × 80 ch | optional |
+
+### `diagram-hero`
+| Slot | Kind | Box (x y w h) | Type | Budget | Required |
+|---|---|---|---|---|---|
+| `heading` | text | 28 24 1224 40 | head 30/700, start | 1 × 52 ch | yes |
+| `figure` | graphic | 28 88 1224 610 | svg-library component, contain-fit | — | yes |
 
 ## Backgrounds
 

@@ -1,8 +1,8 @@
 # svg-library — hand-drawn SVG diagram templates (design-pack v0.16.0)
 
-One hundred and four agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
+One hundred and nine agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
 explanatory and summary visuals — plus **seventeen SMIL-animated variants** (`anim-*`, see
-rule 8) with static twins kept (121 files total) — the complement to the pure-CSS graphics pack
+rule 8) with static twins kept (126 files total) — the complement to the pure-CSS graphics pack
 (`features/graphics/graphics.css`). Where the CSS pack covers charts built from real
 data (donut, gauge, heatmap, bars), the SVG library covers **concept diagrams**:
 processes, loops, hierarchies, matrices, funnels, roadmaps, cause-effect maps, goals,
@@ -156,6 +156,11 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
 | | **Window & snippet** | *static; annotated chrome + highlighted code* | |
 | 120 | `terminal-window.svg` | Terminal window annotated: traffic-light chrome, six mono prompt/output lines, progress process line, static block cursor | CLI/session explainers, tutorial stand-ins |
 | 121 | `code-block.svg` | Syntax-highlighted code card: filename tab, line numbers, tinted token runs, accent left bar | Code walkthroughs, README figures |
+| 122 | `three-node-roles.svg` | Three parallel role columns with left-to-right flow arrows, a dashed feedback arrow and a full-width principle band | Framework explainers, three-pillar stakeholder models, node/role architecture |
+| 123 | `three-node-handoff.svg` | Three horizontal class lanes with handoff arrows, a split-and-re-merge routing step to Tier-A assembly hubs, a data-platform card and a dashed feedback arrow | Data-flow explainers, handoff and hand-off diagrams, role-routing maps |
+| 124 | `network-governance.svg` | One charter as a roof over four working-group pillars on a phasing slab, with a training-and-capacity side card | Governance explainers, working-group structure, programme architecture |
+| 125 | `phase1-reference-genomes.svg` | Six-step reference-genome pipeline with a gate that branches to a primary nuclear-genome card and a dashed mitogenome fallback card | Genome assembly pipelines, tiered-ladder explainers, phase roadmaps |
+| 126 | `phase2-population-baselines.svg` | Five-step population-baseline pipeline with a two-column conventional-versus-population-genomics contrast of three paired rows | Method comparisons, phase roadmaps, standardisation explainers |
 
 **When to use which graphics system:**
 
@@ -178,6 +183,15 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
    `paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px` in its `style`.
    (Exception: if a one-off effect genuinely needs `<defs>`, generate globally-unique
    ids yourself and document it.)
+2b. **No HTML-only elements.** `sub`, `sup`, `b`, `i`, `u`, `span`, `small`, `strong`, `em`,
+   `code`, `p`, `div`, `br`, `table`, `ul`, `ol`, `li`, `font`, `center`, `big`, `tt` are
+   **breakout tags in the HTML parser**: embedded inline in a page, the parser exits SVG
+   mode at the first one and everything after it renders as raw HTML text. A file can be
+   perfectly valid XML (and screenshot fine as a standalone `.svg`) while silently losing
+   half its content the moment it is pasted into a template or wrapped for print. Use
+   `<tspan>` instead: `<tspan dy="3" style="font-size:9px">ST</tspan>` for a subscript,
+   or `<tspan baseline-shift="sub">`. **After any edit, verify the embedded render, not
+   just the standalone file** — print the wrapped HTML to PDF and check the page count is 1.
 3. **Token-driven color.** Every color is `var(--token, #fallback)` inside an inline
    `style` attribute (var() does **not** work in SVG presentation attributes — always
    use `style="fill:…"` / `style="stroke:…"`, never `fill="--teal"`). Tints use

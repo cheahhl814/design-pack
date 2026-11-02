@@ -51,6 +51,7 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | 4 | `content-two-col` | Content slide on the 12-column grid: eyebrow and heading over a heavy black rule with a red tab, body text and a red-ruled key point in the left six columns, a hairline-framed graphic and caption in the right six. |
 | 5 | `full-diagram` | Figure slide: eyebrow and heading over a heavy black rule, a large graphic slot across nine columns, and a red colour-block column on the right holding the takeaway in white. |
 | 6 | `closing` | Closing slide: the red colour block fills the slide; an oversized two-line title, a thin white rule, up to three contact lines and a meta line, all flush left; a black bar anchors the bottom right. |
+| 7 | `diagram-hero` | Graphic-dominant slide: a thin one-line heading strip over one large graphic slot (1224 x 610 of the 1280 x 720 canvas); a contain-fit diagram covers at least two thirds of the slide, enforced by the composer (data-graphic-min 0.667). No takeaway card: put the point in the heading. |
 
 ### `title-hero`
 | Slot | Kind | Box (x y w h) | Type | Budget | Required |
@@ -99,6 +100,12 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | `title` | text | 80 170 1120 184 | head 72/700, start | 2 × 20 ch | yes |
 | `contact` | text | 80 420 800 84 | sans 22/400, start | 3 × 60 ch | yes |
 | `meta` | text | 80 600 900 22 | head 16/500, start | 1 × 80 ch | optional |
+
+### `diagram-hero`
+| Slot | Kind | Box (x y w h) | Type | Budget | Required |
+|---|---|---|---|---|---|
+| `heading` | text | 28 24 1224 40 | head 30/700, start | 1 × 52 ch | yes |
+| `figure` | graphic | 28 88 1224 610 | svg-library component, contain-fit | — | yes |
 
 ## Backgrounds
 

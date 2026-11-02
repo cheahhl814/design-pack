@@ -51,6 +51,7 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | 4 | `content-two-col` | Content slide: outline heading; body text, the key point and the graphic each in a chamfered cyan panel; corner brackets and a magenta tag. |
 | 5 | `full-diagram` | Figure slide: a large chamfered panel for the graphic and a narrower chamfered panel for the takeaway; the heading is outline-only. |
 | 6 | `closing` | Closing slide: grid, brackets and the tag bar; an outline-only two-line title with the contact lines and meta line under it. |
+| 7 | `diagram-hero` | Graphic-dominant slide: a thin one-line heading strip over one large graphic slot (1224 x 610 of the 1280 x 720 canvas); a contain-fit diagram covers at least two thirds of the slide, enforced by the composer (data-graphic-min 0.667). No takeaway card: put the point in the heading. |
 
 ### `title-hero`
 | Slot | Kind | Box (x y w h) | Type | Budget | Required |
@@ -99,6 +100,12 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | `title` | text | 96 150 1088 157 | head 68/400, start | 2 × 22 ch | yes |
 | `contact` | text | 96 357 1088 81 | sans 22/400, start | 3 × 60 ch | yes |
 | `meta` | text | 96 610 1088 22 | sans 15/400, start | 1 × 80 ch | optional |
+
+### `diagram-hero`
+| Slot | Kind | Box (x y w h) | Type | Budget | Required |
+|---|---|---|---|---|---|
+| `heading` | text | 28 24 1224 40 | head 30/700, start | 1 × 52 ch | yes |
+| `figure` | graphic | 28 88 1224 610 | svg-library component, contain-fit | — | yes |
 
 ## Backgrounds
 

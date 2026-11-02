@@ -54,6 +54,7 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | 4 | `content-two-col` | Content slide: acid field; mono eyebrow and an Arial Black heading over a thick black bar with a pink tab; a white body card and a pink key-point card with hard shadows on the left; a white graphic card with a hard shadow and caption on the right. |
 | 5 | `full-diagram` | Figure slide: acid field; mono eyebrow and a one-line Arial Black heading over a thick bar; a large white graphic card with a hard shadow; a pink takeaway card with a hard shadow and a yellow disc at its foot. |
 | 6 | `closing` | Closing slide: hot-pink field; a large white card with a hard shadow holds a centred oversized two-line title, a short thick rule, up to three mono contact lines and a meta line, all centred; a tilted yellow block and a lime disc break out of its edges. |
+| 7 | `diagram-hero` | Graphic-dominant slide: a thin one-line heading strip over one large graphic slot (1224 x 610 of the 1280 x 720 canvas); a contain-fit diagram covers at least two thirds of the slide, enforced by the composer (data-graphic-min 0.667). No takeaway card: put the point in the heading. |
 
 ### `title-hero`
 | Slot | Kind | Box (x y w h) | Type | Budget | Required |
@@ -102,6 +103,12 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | `title` | text | 100 124 1040 184 | head 72/800, middle | 2 × 20 ch | yes |
 | `contact` | text | 100 372 1040 84 | sans 22/400, middle | 3 × 60 ch | yes |
 | `meta` | text | 100 520 1040 22 | sans 16/700, middle | 1 × 80 ch | optional |
+
+### `diagram-hero`
+| Slot | Kind | Box (x y w h) | Type | Budget | Required |
+|---|---|---|---|---|---|
+| `heading` | text | 28 24 1224 40 | head 30/700, start | 1 × 52 ch | yes |
+| `figure` | graphic | 28 88 1224 610 | svg-library component, contain-fit | — | yes |
 
 ## Backgrounds
 

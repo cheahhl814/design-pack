@@ -59,6 +59,10 @@
       "template ruins a run."
     ]
   },
+  "diagram-hero": {
+    "heading": "Amplification doubles the target every cycle",
+    "figure": "pcr-thermal-cycle"
+  },
   "closing": {
     "title": [
       "Thank you",

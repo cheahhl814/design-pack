@@ -55,6 +55,7 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | 4 | `content-two-col` | Content slide: body text, key point and graphic each in a frosted card over soft glow blobs; thin heading above, caption under the graphic. |
 | 5 | `full-diagram` | Figure slide: a large frosted card for the graphic and a narrow frosted card for the takeaway over glow blobs. |
 | 6 | `closing` | Closing slide: one large frosted card over three glows holds the title, up to three contact lines and the meta line. |
+| 7 | `diagram-hero` | Graphic-dominant slide: a thin one-line heading strip over one large graphic slot (1224 x 610 of the 1280 x 720 canvas); a contain-fit diagram covers at least two thirds of the slide, enforced by the composer (data-graphic-min 0.667). No takeaway card: put the point in the heading. |
 
 ### `title-hero`
 | Slot | Kind | Box (x y w h) | Type | Budget | Required |
@@ -103,6 +104,12 @@ colour-block fill and the text on it (`--ink` / `--on-ink` likewise for a revers
 | `title` | text | 124 150 900 166 | head 72/300, start | 2 × 22 ch | yes |
 | `contact` | text | 124 366 900 81 | sans 22/400, start | 3 × 60 ch | yes |
 | `meta` | text | 124 610 900 22 | sans 15/400, start | 1 × 80 ch | optional |
+
+### `diagram-hero`
+| Slot | Kind | Box (x y w h) | Type | Budget | Required |
+|---|---|---|---|---|---|
+| `heading` | text | 28 24 1224 40 | head 30/700, start | 1 × 52 ch | yes |
+| `figure` | graphic | 28 88 1224 610 | svg-library component, contain-fit | — | yes |
 
 ## Backgrounds
 
