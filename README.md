@@ -5,7 +5,7 @@
 [![Live demo](https://img.shields.io/badge/demo-GitHub%20Pages-2ea44f)](https://cheahhl814.github.io/design-pack/)
 [![Type](https://img.shields.io/badge/type-agent%20skill-blueviolet)](#-installation)
 
-Three self-contained HTML templates — **report** (sticky sidebar, 5 icon+label tabs, v2 offset-anchored annotations, theme toggle), **bento brief** (2026 bento-grid one-page snapshot briefing, dark-first glass, full v2 annotation engine), and **htmx dashboard** (topbar, KPI row, sparkline chart, activity feed, sortable table, demo-mode mock backend) — plus a full **SVG slide-deck toolchain** (12 theme sets × 6 designs + 32 backgrounds + infographics & printable info-cards, composer with text-budget gates, delivery as per-slide PNG + one merged vector PDF). Decks are **not** HTML since v0.26.0 (the HTML slide template was removed; see the slide-designs section below). All three templates ship the **v0.12.0 zero-dependency graphics pack** (donut, radial gauge, horizontal bars, heatmap, data-bar cells, pure-CSS flowchart, milestone strip, conversion funnel, venn, SWOT grid, org tree, cycle loop, comparison table, pull-quote, scroll-driven motion) and are single-file, review-ready HTML with no external CDN dependencies beyond Google Fonts (report/bento) and pinned htmx with SRI (dashboard). All three are **dark-first** with refined glass chrome, fluid display typography, and hover-glow micro-interactions (v0.7.0 aesthetic pass).
+Three self-contained HTML templates — **report** (sticky sidebar, 5 icon+label tabs, v2 offset-anchored annotations, theme toggle), **bento brief** (2026 bento-grid one-page snapshot briefing, dark-first glass, full v2 annotation engine), and **htmx dashboard** (topbar, KPI row, sparkline chart, activity feed, sortable table, demo-mode mock backend) — plus a full **SVG slide-deck toolchain** (13 theme sets × 7 designs + 32 backgrounds + infographics & printable info-cards, composer with text-budget gates and an opt-in graphic-dominance gate, delivery as per-slide PNG + one merged vector PDF). Decks are **not** HTML since v0.26.0 (the HTML slide template was removed; see the slide-designs section below). All three templates ship the **v0.12.0 zero-dependency graphics pack** (donut, radial gauge, horizontal bars, heatmap, data-bar cells, pure-CSS flowchart, milestone strip, conversion funnel, venn, SWOT grid, org tree, cycle loop, comparison table, pull-quote, scroll-driven motion) and are single-file, review-ready HTML with no external CDN dependencies beyond Google Fonts (report/bento) and pinned htmx with SRI (dashboard). All three are **dark-first** with refined glass chrome, fluid display typography, and hover-glow micro-interactions (v0.7.0 aesthetic pass).
 
 **Repository**: https://github.com/cheahhl814/design-pack
 
@@ -21,9 +21,9 @@ The skill is a router plus two independently invocable sub-skills, each with its
 
 Each sub-directory holds symlinks (`bin`, `templates`, `features`, `docs`) to the shared copies at the repo root, so it can be linked on its own: `ln -s <repo>/html ~/.agents/skills/design-pack-html` and `ln -s <repo>/svg ~/.agents/skills/design-pack-svg`. Release notes and sources moved to `references/history.md`.
 
-## 🖍️ SVG diagram library (v0.16.0)
+## 🖍️ SVG diagram library (v0.16.0; 126 components as of v0.36.0)
 
-Ninety-four **hand-drawn inline SVG infographic templates** for concept/summary diagrams — a sibling to the CSS graphics pack below. Canonical files in [`features/graphics/svg-library/svg/`](./features/graphics/svg-library/) with a generated, token-driven **preview gallery** ([`gallery.html`](./features/graphics/svg-library/gallery.html), ◐ theme toggle): pick a component, copy the inline `<svg>`, edit the `<text>` labels.
+126 **hand-drawn inline SVG infographic templates** for concept/summary diagrams — a sibling to the CSS graphics pack below. Canonical files in [`features/graphics/svg-library/svg/`](./features/graphics/svg-library/) with a generated, token-driven **preview gallery** ([`gallery.html`](./features/graphics/svg-library/gallery.html), ◐ theme toggle): pick a component, copy the inline `<svg>`, edit the `<text>` labels.
 
 `flow-pipeline` · `cycle-loop` · `hub-spoke` · `pyramid-hierarchy` · `venn-overlap` · `quadrant-matrix` · `funnel-stages` · `roadmap-timeline` · `fishbone-causal` · `layer-stack` · `target-bullseye` · `staircase-steps` · `chevron-progression` · `iceberg-depth` · `balance-scale` · `radar-spider` · `journey-map` · `converging-forces` · `puzzle-pieces` · `gear-mechanism`  \
 `timeline-vertical` · `swimlane-gantt` · `honeycomb-cluster` · `dual-hub` · `petal-cycle` · `decision-tree` · `snake-path` · `onion-layers` · `pillars-foundation` · `versus-columns` · `lightbulb-layers` · `matrix-nine-box` · `s-curve-adoption` · `growth-tree` · `spiral-growth` · `domino-chain` · `network-mesh` · `merge-paths` · `five-w-agenda` · `orbit-satellites` · `metro-map`  \
@@ -32,15 +32,21 @@ Ninety-four **hand-drawn inline SVG infographic templates** for concept/summary 
 `dna-helix-steps` · `central-dogma` · `cell-to-dna-zoom` · `lab-glassware-steps` · `cell-membrane` · `punnett-square` · `mutation-types` · `gel-electrophoresis` · `well-plate-layout` · `scientific-method`  \
 `cladogram-ladder` · `cladogram-anatomy` · `cladogram-matrix` · `nested-clades` · `circular-cladogram` · `cladogram-styles`  \
 `food-web` · `trophic-pyramid` · `water-cycle` · `nitrogen-cycle` · `symbiosis-types` · `ecological-succession` · `ocean-zones`  \
-`plate-boundaries` · `reaction-coordinate` · `states-of-matter` · `em-spectrum` · `crispr-editing` · `immune-response` · `pcr-thermal-cycle` · `transformer-block` · `api-request-lifecycle`
+`plate-boundaries` · `reaction-coordinate` · `states-of-matter` · `em-spectrum` · `crispr-editing` · `immune-response` · `pcr-thermal-cycle` · `transformer-block` · `api-request-lifecycle`  \
+`protocol-loop-steps`  \
+**Animated (17, SMIL-only, frame 0 = rest state):** `anim-flow-pipeline` · `anim-stepper` · `anim-radial-gauge` · `anim-loader-ring` · `anim-sequence-lifelines` · `anim-cycle-loop` · `anim-gear-mechanism` · `anim-domino-chain` · `anim-central-dogma` · `anim-dna-helix-steps` · `anim-pcr-thermal-cycle` · `anim-s-curve-adoption` · `anim-journey-map` · `anim-snake-path` · `anim-water-cycle` · `anim-food-web` · `anim-carbon-cycle`  \
+**Computers & programming (v0.31–v0.32):** `cli-pipeline` · `prompt-anatomy` · `directory-tree` · `git-branch-merge` · `git-stage-flow` · `stack-heap-memory` · `async-event-loop` · `compile-pipeline` · `terminal-window` · `code-block`  \
+**Framework/governance (v0.33–v0.35):** `three-node-roles` · `three-node-handoff` · `network-governance` · `phase1-reference-genomes` · `phase2-population-baselines`
 
 Every file: `role="img"` + `aria-label` + `<title>`, id-free markup (safe to paste several into one page), token-driven colors wired via `style` attributes (`var(--token, #fallback)` + `color-mix()` — adapts to every template palette and both themes with zero edits), constant 800×450 `viewBox`. Conventions and the add-a-component workflow: [`features/graphics/svg-library/README.md`](./features/graphics/svg-library/README.md). Regenerate the gallery with `node bin/build-svg-gallery.js`. **Need just the graphic, no page?** `node bin/svg-export.js <name|file.svg> [--theme dark] --out <dir>` writes a standalone `.svg` with the palette baked in, which renders in PowerPoint, Word, Figma and Inkscape.
 
 ## 🎞️ SVG slide designs + composer (v0.21.0; theme sets v0.24.0; the only deck toolchain since v0.26.0)
 
-All decks (any length, any ask) are composed here as **slide designs** drawn as SVG in the svg-library style — real design, not layout chrome. The six slide designs live in [`templates/svg-slides/sets/`](./templates/svg-slides/), in **twelve theme sets**, with a generated, token-driven [`gallery.html`](./templates/svg-slides/gallery.html). Since v0.28.0 the lab set also ships **5 infographic/info-card templates** (multi-section web/A4/print canvases — see [`templates/svg-slides/README.md`](./templates/svg-slides/README.md)):
+All decks (any length, any ask) are composed here as **slide designs** drawn as SVG in the svg-library style — real design, not layout chrome. The seven slide designs live in [`templates/svg-slides/sets/`](./templates/svg-slides/), in **thirteen theme sets**, with a generated, token-driven [`gallery.html`](./templates/svg-slides/gallery.html). Since v0.28.0 the lab set also ships **5 infographic/info-card templates** (multi-section web/A4/print canvases — see [`templates/svg-slides/README.md`](./templates/svg-slides/README.md)):
 
-`title-hero` · `section-break` · `big-statement` · `content-two-col` · `full-diagram` · `closing`
+`title-hero` · `section-break` · `big-statement` · `content-two-col` · `full-diagram` · `closing` · `diagram-hero`
+
+**Graphic dominance (v0.36.0).** `diagram-hero` gives the diagram a 1224×610 slot under a heading strip, so a 16:9 library component covers about 72% of the slide. The composer gate `GRAPHIC-TOO-SMALL` enforces a minimum graphic share: it is on for `diagram-hero` (`data-graphic-min="0.667"`) and opt-in for any design via `--graphic-min 0.667`; the older `full-diagram` (about 49%) and `content-two-col` (about 21%) deliberately do not meet it.
 
 Each design is a complete 1280×720 slide whose text and graphic areas are marked as **slots** (`data-slot` groups with a box, a type and a per-line character budget). `bin/compose-slide.js` fills them from a JSON payload and writes one renderer-safe composed `.svg`, colours baked to hex for light or dark, with svg-library components inlined into graphic slots.
 
@@ -52,7 +58,7 @@ node bin/compose-slide.js content-two-col --payload payload.json --theme light -
 
 **Background designs (v0.22.0).** Eight slot-free, full-bleed stages (`bg-helix-field` · `bg-mosaic-triangles` · `bg-flow-dashes` · `bg-concentric-vortex` · `bg-dot-wash` · `bg-molecule-scatter` · `bg-orbit-arc` · `bg-slat-panel`) for graphic-only or text slides: compose with an empty payload (`--payload '{}'`), and the motif keeps a documented content zone clear.
 
-**Theme sets (v0.24.0; 7 more in v0.30.0).** Every design comes in twelve sets that share one slot contract, so one payload re-themes a deck with `--set`:
+**Theme sets (v0.24.0; 7 more in v0.30.0).** Every design comes in thirteen sets that share one slot contract, so one payload re-themes a deck with `--set`:
 - `lab` (default): hand-drawn science.
 - `swiss`: International Typographic Style, with red colour blocks.
 - `boardroom`: generic consulting, navy plus one accent, serif titles.
