@@ -14,6 +14,7 @@ const suites = [
   { name: 'Dashboard template (htmx panels, demo-mode mock backend, theme toggle)', script: 'test/smoke-test-dashboard.js' },
   { name: 'Graphics pack (v0.8.0 shared component library in report + bento)', script: 'test/smoke-test-graphics.js' },
   { name: 'SVG export (standalone, renderer-safe .svg from the svg-library; --png/--pdf deck delivery)', script: 'test/smoke-test-svg-export.js' },
+  { name: 'Skill split (router + html + svg sub-skills: names, description limit, link/path resolution)', script: 'test/smoke-test-skills.js' },
   // v0.21.0 svg-slides: design QA + composer gates (node + python stdlib)
   { name: 'SVG slide designs (5 theme sets, slot contract, compose-slide gates, budget fit)', cmd: 'python3 test/smoke-test-slides.py' }
 ];

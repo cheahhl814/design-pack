@@ -9,6 +9,18 @@ Three self-contained HTML templates — **report** (sticky sidebar, 5 icon+label
 
 **Repository**: https://github.com/cheahhl814/design-pack
 
+## 🧩 Sub-skills (v0.37.0)
+
+The skill is a router plus two independently invocable sub-skills, each with its own `SKILL.md`:
+
+| Skill name | Directory | Covers |
+|---|---|---|
+| `design-pack` | `SKILL.md` (root) | router: picks the sub-skill and template |
+| `design-pack-html` | `html/SKILL.md` | report, bento, dashboard, CSS graphics pack, annotations |
+| `design-pack-svg` | `svg/SKILL.md` | svg-slides decks (PNG + merged PDF), SVG diagram library, standalone export |
+
+Each sub-directory holds symlinks (`bin`, `templates`, `features`, `docs`) to the shared copies at the repo root, so it can be linked on its own: `ln -s <repo>/html ~/.agents/skills/design-pack-html` and `ln -s <repo>/svg ~/.agents/skills/design-pack-svg`. Release notes and sources moved to `references/history.md`.
+
 ## 🖍️ SVG diagram library (v0.16.0)
 
 Ninety-four **hand-drawn inline SVG infographic templates** for concept/summary diagrams — a sibling to the CSS graphics pack below. Canonical files in [`features/graphics/svg-library/svg/`](./features/graphics/svg-library/) with a generated, token-driven **preview gallery** ([`gallery.html`](./features/graphics/svg-library/gallery.html), ◐ theme toggle): pick a component, copy the inline `<svg>`, edit the `<text>` labels.
@@ -65,6 +77,7 @@ Slot spec, layout rule, per-design slot tables and the add-a-design workflow: [`
 
 ## Contents
 
+- [Sub-skills](#-sub-skills-v0370)
 - [SVG diagram library (v0.16.0)](#️-svg-diagram-library-v0160)
 - [SVG slide designs + composer (v0.21.0; theme sets v0.24.0; the only deck toolchain since v0.26.0)](#️-svg-slide-designs--composer-v0210-theme-sets-v0240-the-only-deck-toolchain-since-v0260)
 - [Live demo](#-live-demo)
@@ -89,7 +102,7 @@ All three HTML templates are deployed as a working demo on GitHub Pages. Open an
 | 🎞️ **[Slide demo](https://cheahhl814.github.io/design-pack/slide/)** | REPLACED in v0.26.0 — decks are now designed SVG slides (compose + export PNG/PDF), see the svg-slides section and `templates/svg-slides/gallery.html` |
 | 🍱 **[Bento demo](https://cheahhl814.github.io/design-pack/bento/)** | "Project Phoenix — One-page Recap" (bento grid, full annotation engine) |
 | 🧩 **[Components demo](https://cheahhl814.github.io/design-pack/components/)** | The graphics pack in one page — donut, gauge, bars, heatmap, flow, compare, pull-quote, motion legend |
-| 🖍️ **[SVG library demo](https://cheahhl814.github.io/design-pack/svg-library/)** | All 121 SVG infographic templates (incl. 17 SMIL-animated), token-driven, with source blocks — ◐ toggle previews both palettes |
+| 🖍️ **[SVG library demo](https://cheahhl814.github.io/design-pack/svg-library/)** | All 126 SVG infographic templates (incl. 17 SMIL-animated), token-driven, with source blocks — ◐ toggle previews both palettes |
 | 📊 **[Dashboard demo](https://cheahhl814.github.io/design-pack/dashboard/)** | "Northwind Logistics — Operations Dashboard" (mock data, live polling) |
 
 Each demo is a curated showcase with realistic content (not a blank template). Try the **◐ theme toggle**, **▤ density toggle**, **S/M/L font size toggle** in the top-right of every demo. In the report and bento demos, select any text to leave tracked-changes-style annotations, then export them as JSON from the 💬 Notes panel.

@@ -44,7 +44,7 @@ If the request is ambiguous, ask with `ask_user_question` offering the template 
 
 ## Workflow
 
-1. **Read** this skill's `SKILL.md` for the full decision rubric.
+1. **Read** this skill's root `SKILL.md` (router), then the sub-skill it points to: `html/SKILL.md` (report/bento/dashboard) or `svg/SKILL.md` (decks, SVG library, export). Sub-skills can also be symlinked and invoked independently as `design-pack-html` / `design-pack-svg`.
 2. **Build the artifact**: templates (`templates/report/template.html`, `templates/bento/bento-template.html`, `templates/dashboard/dashboard-template.html`) are copied to the working directory; decks are composed (`bin/compose-slide.js --set <name>`) and exported (`bin/svg-export.js … --png --pdf --pdf-out deck.pdf`).
 3. **Edit** the placeholders:
    - Report: title, `data-report-id`, content blocks.
