@@ -1,6 +1,6 @@
 ---
 name: design-pack
-description: 'Router for the design-pack family: review-ready HTML (report with v2 annotations, bento one-pager, htmx dashboard → design-pack-html) and designed SVG output (slide decks as PNG + merged PDF, 126-component SVG diagram/infographic library, standalone exporter → design-pack-svg). Invoke first for "HTML report", "HTML page", "annotated report", "reading version", "one-pager", "briefing", "HTML dashboard", "ops dashboard", "slide deck", "presentation", "SVG diagram", "infographic", or MD/DOCX/PDF → HTML conversion; it picks the sub-skill and template, then hands off.'
+description: 'Router for the design-pack family: review-ready HTML (report with v2 annotations, bento one-pager, htmx dashboard → design-pack-html) and designed SVG output (slide decks as PNG + merged PDF, 128-component SVG diagram/infographic library, standalone exporter → design-pack-svg). Invoke first for "HTML report", "HTML page", "annotated report", "reading version", "one-pager", "briefing", "HTML dashboard", "ops dashboard", "slide deck", "presentation", "SVG diagram", "infographic", or MD/DOCX/PDF → HTML conversion; it picks the sub-skill and template, then hands off.'
 version: 0.37.0
 updated: 2026-11-08
 triggers:
@@ -12,6 +12,7 @@ triggers:
   - "SVG diagram or infographic"
   - "convert MD/DOCX/PDF to HTML"
 license: MIT
+disable-model-invocation: true
 ---
 
 # design-pack
@@ -21,7 +22,7 @@ Router for the design-pack family. Since v0.37.0 the detailed instructions live 
 | Sub-skill | Directory | Covers |
 | --- | --- | --- |
 | **design-pack-html** | [`html/`](./html/SKILL.md) | report, bento and dashboard templates; the CSS graphics pack; annotation system; theme/density/font toggles |
-| **design-pack-svg** | [`svg/`](./svg/SKILL.md) | svg-slides decks (composer + 13 theme sets, PNG + merged PDF); the 126-component SVG library; standalone SVG export; infographic and info-card templates |
+| **design-pack-svg** | [`svg/`](./svg/SKILL.md) | svg-slides decks (composer + 13 theme sets, PNG + merged PDF); the 128-component SVG library; standalone SVG export; infographic and info-card templates |
 
 Read the matching sub-skill's `SKILL.md` before doing the work; this file only routes. The sub-skill directories hold symlinks (`bin`, `templates`, `features`, `docs`) to the shared copies at the repo root, so relative paths in each sub-skill resolve the same from either location. Release notes and sources: [`references/history.md`](./references/history.md).
 
@@ -75,7 +76,7 @@ design-pack/
 ├── references/history.md     ← release notes, sources, SVG-library growth log
 ├── AGENTS.md, README.md
 ├── templates/{report,bento,dashboard,svg-slides,graphics}/
-├── features/{report,dashboard,graphics}/   (graphics/svg-library/ holds the 126 components)
+├── features/{report,dashboard,graphics}/   (graphics/svg-library/ holds the 128 components)
 ├── bin/                      ← svg-export, svg-bake, compose-slide, build-*-gallery, draw-slide-sets, codecogs_render
 ├── docs/                     ← Pages demos (byte-identical copies of the generated galleries)
 └── test/                     ← run-all.js + smoke tests (report, bento, dashboard, graphics, svg-export, slides, skills)

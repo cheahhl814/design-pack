@@ -1,8 +1,8 @@
 # svg-library — hand-drawn SVG diagram templates (design-pack v0.16.0)
 
-One hundred and nine agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
+One hundred and eleven agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
 explanatory and summary visuals — plus **seventeen SMIL-animated variants** (`anim-*`, see
-rule 8) with static twins kept (126 files total) — the complement to the pure-CSS graphics pack
+rule 8) with static twins kept (128 files total) — the complement to the pure-CSS graphics pack
 (`features/graphics/graphics.css`). Where the CSS pack covers charts built from real
 data (donut, gauge, heatmap, bars), the SVG library covers **concept diagrams**:
 processes, loops, hierarchies, matrices, funnels, roadmaps, cause-effect maps, goals,
@@ -161,6 +161,8 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
 | 124 | `network-governance.svg` | One charter as a roof over four working-group pillars on a phasing slab, with a training-and-capacity side card | Governance explainers, working-group structure, programme architecture |
 | 125 | `phase1-reference-genomes.svg` | Six-step reference-genome pipeline with a gate that branches to a primary nuclear-genome card and a dashed mitogenome fallback card | Genome assembly pipelines, tiered-ladder explainers, phase roadmaps |
 | 126 | `phase2-population-baselines.svg` | Five-step population-baseline pipeline with a two-column conventional-versus-population-genomics contrast of three paired rows | Method comparisons, phase roadmaps, standardisation explainers |
+| 127 | `system-prompt-anatomy.svg` | Three-layer anatomy of one harnessed API call — fixed system prompt (base prompt + AGENTS.md + skills catalog + tool schemas + injections) re-sent every turn, growing history, small per-turn slice, plus the send→reply→append loop | Explaining how harnesses assemble context; why the prefix is re-paid every turn |
+| 128 | `token-cascade.svg` | Per-turn input bars growing linearly + the quadratic total (N·S + m·N²/2), with the levers that inflate S vs m | Explaining token-cost escalation and prefix-caching economics |
 
 **When to use which graphics system:**
 
@@ -402,7 +404,7 @@ takeaway)? Use the slide designs in [`templates/svg-slides/`](../../../templates
    SVG is the point of the library; treat the shipped files as style reference
    (rounded rx=12 cards — 8 for bars, 4–6 for slabs, 14 for large panels; 2px primary
    strokes, 1.5px shadows/leaders, 2.5px connectors, 3px spines; dashed 1.5px leaders
-   start at a 3.5px dot). **Type scale (shared by all 99):** hero 20/700 (one central
+   start at a 3.5px dot). **Type scale (shared by all 128):** hero 20/700 (one central
    subject or headline) · label 16/600 · annotation 13/400 muted · caption 12/400 muted ·
    eyebrow 11/700 caps with `letter-spacing="1.2"` · badge number 13/700.
    **Arrowheads:** 13×13 on connectors, 11×11 on small cue arrows, 16×16 on thick spines

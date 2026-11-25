@@ -1,6 +1,6 @@
 ---
 name: design-pack-svg
-description: 'design-pack SVG toolchain — designed SVG slide decks (13 theme sets incl. swiss/boardroom/editorial/brutalist/terminal/glass/mesh/deco/nordic, slot-marked designs, diagram-hero, composer gates) delivered as per-slide 2x PNG + one merged vector PDF; a 126-component hand-drawn SVG diagram/infographic library (static + SMIL-animated) with a standalone exporter that bakes palettes so SVGs open in PowerPoint/Word/Figma/Inkscape; plus infographic and info-card templates (web 800×2000, A4 print, social 4:5, A6). Invoke for "slide deck", "presentation", "pitch deck", "designed slides", "SVG diagram", "infographic", "mind map", "org chart", "process diagram", "figure for my slides/paper/poster", "info card", "PowerPoint-ready graphic". HTML reports/bento/dashboards → design-pack-html.'
+description: 'design-pack SVG toolchain — designed SVG slide decks (13 theme sets incl. swiss/boardroom/editorial/brutalist/terminal/glass/mesh/deco/nordic, slot-marked designs, diagram-hero, composer gates) delivered as per-slide 2x PNG + one merged vector PDF; a 128-component hand-drawn SVG diagram/infographic library (static + SMIL-animated) with a standalone exporter that bakes palettes so SVGs open in PowerPoint/Word/Figma/Inkscape; plus infographic and info-card templates (web 800×2000, A4 print, social 4:5, A6). Invoke for "slide deck", "presentation", "pitch deck", "designed slides", "SVG diagram", "infographic", "mind map", "org chart", "process diagram", "figure for my slides/paper/poster", "info card", "PowerPoint-ready graphic". HTML reports/bento/dashboards → design-pack-html.'
 version: 0.37.0
 updated: 2026-11-08
 triggers:
@@ -11,6 +11,7 @@ triggers:
   - "standalone SVG for PowerPoint/Word/Figma"
   - "info card or printable infographic"
 license: MIT
+disable-model-invocation: true
 ---
 
 # design-pack-svg
@@ -31,7 +32,7 @@ Baked slides are frozen artifacts: no inline annotation (a baked SVG is not a st
 
 ## SVG diagram library (`features/graphics/svg-library/` + `bin/build-svg-gallery.js` + `bin/svg-export.js`)
 
-A sibling to the CSS graphics pack: **126 hand-drawn inline SVG infographic templates** (static infographics plus 17 SMIL-animated `anim-` twins) for explanatory/summary visuals — concept diagrams the CSS pack does not cover. The full numbered catalog (component · shows · when to use) is in `features/graphics/svg-library/README.md`; read it to pick by intent. Growth history per release: `../references/history.md`.
+A sibling to the CSS graphics pack: **128 hand-drawn inline SVG infographic templates** (static infographics plus 17 SMIL-animated `anim-` twins) for explanatory/summary visuals — concept diagrams the CSS pack does not cover. The full numbered catalog (component · shows · when to use) is in `features/graphics/svg-library/README.md`; read it to pick by intent. Growth history per release: `../references/history.md`.
 
 **Animated components (opt-in, SMIL only):** seventeen `anim-` twins of static components (family started with five in v0.27.0, grown by twelve in v0.29.0): `anim-flow-pipeline` (marching-dash pipeline with travelling packets), `anim-stepper` (pulsing active step + travelling progress dot), `anim-radial-gauge` (self-drawing radial KPI), `anim-loader-ring` (counter-rotating spinner) and `anim-sequence-lifelines` (sequence diagram, messages drawn in order); since v0.29.0 also `anim-cycle-loop`, `anim-gear-mechanism` (pitch-radius-correct counter-rotation), `anim-domino-chain` (staggered tipping on one shared cycle from the upright rest state), `anim-central-dogma` (travelling polymerase/ribosome + growing protein trail, replay cycle with full-trail frame 0), `anim-dna-helix-steps` (subtle breathing), `anim-pcr-thermal-cycle` (cursor rides the temperature profile), `anim-s-curve-adoption` (self-drawing curve, marker pulse), `anim-journey-map` / `anim-snake-path` (travelling markers), `anim-water-cycle` / `anim-food-web` / `anim-carbon-cycle` (droplets and flux dots along the static twins' arrows). Frame 0 is the settled/rest state (draw-ins freeze after a begin delay; loops are sanctioned process indicators), so PNG/PDF exports are safe; delete the `<animate*>` children for a static twin. Rules: README convention 8.
 

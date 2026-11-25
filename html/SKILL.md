@@ -13,6 +13,7 @@ triggers:
   - "htmx dashboard"
   - "ops dashboard"
 license: MIT
+disable-model-invocation: true
 ---
 
 # design-pack-html

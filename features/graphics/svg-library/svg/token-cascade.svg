@@ -1,0 +1,76 @@
+<!--
+design-pack · svg-library · token-cascade
+  Why harness token spend compounds: per-turn input bars grow linearly while the
+  session total grows quadratically (total ≈ N·S + m·N²/2). Left panel: per-turn
+  bars for turns 1–8. Right panel: the formula, the worked example, and the two
+  levers that inflate the fixed prefix (S) vs. the per-turn growth (m).
+  Illustrative numbers (S = 20k, m = 2k) — swap for your own measurements.
+  Tokens: navy teal amber border text text-muted surface font-head font-sans font-mono.
+  Edit: S/m values, bar heights, the worked example. Bars: h = value × 6.7, baseline y = 352.
+  No ids/markers.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Bar chart of per-turn input tokens growing linearly across turns 1 to 8, beside the quadratic total-cost formula and the levers that inflate the fixed prefix and the per-turn growth" style="width:100%;height:auto">
+  <title>Token cascade — flat prefix, quadratic bill</title>
+
+  <!-- header -->
+  <text x="28" y="26" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:10.5px;font-weight:700;letter-spacing:1.2px;fill:var(--text-muted,#64748b)">TOKEN ECONOMICS</text>
+  <text x="28" y="50" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Flat prefix, quadratic bill</text>
+  <text x="28" y="68" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">Illustrative: S = 20k-token fixed prefix · history grows ≈ 2k tokens per turn</text>
+
+  <!-- ===== left: per-turn bar chart ===== -->
+  <line x1="64" y1="104" x2="64" y2="352" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <polygon points="64,96 59.5,108 68.5,108" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="64" y1="352" x2="432" y2="352" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <text transform="translate(30 226) rotate(-90)" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:10px;font-weight:700;letter-spacing:1.2px;fill:var(--text-muted,#64748b)">INPUT TOKENS / TURN</text>
+
+  <!-- bars: values 22 24 26 28 30 32 34 36 (h = v × 6.7) -->
+  <rect x="88"  y="205" width="24" height="147" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <rect x="130" y="191" width="24" height="161" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <rect x="172" y="178" width="24" height="174" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <rect x="214" y="164" width="24" height="188" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <rect x="256" y="151" width="24" height="201" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <rect x="298" y="138" width="24" height="214" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <rect x="340" y="124" width="24" height="228" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <rect x="382" y="111" width="24" height="241" rx="4" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+
+  <text x="100" y="197" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:10.5px;font-weight:700;fill:var(--text,#0f172a)">22k</text>
+  <text x="394" y="132" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text,#0f172a)">36k</text>
+
+  <line x1="100" y1="190" x2="366" y2="111" style="stroke:var(--amber,#f59e0b);stroke-width:2;stroke-dasharray:6 4"/>
+  <polygon points="375,106 363.4,115.2 360.6,103.8" style="fill:var(--amber,#f59e0b)"/>
+  <text x="246" y="136" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">+2k per turn</text>
+
+  <text x="100" y="370" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">T1</text>
+  <text x="142" y="370" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">T2</text>
+  <text x="184" y="370" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">T3</text>
+  <text x="226" y="370" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">T4</text>
+  <text x="268" y="370" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">T5</text>
+  <text x="310" y="370" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">T6</text>
+  <text x="352" y="370" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">T7</text>
+  <text x="394" y="370" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text,#0f172a)">T8</text>
+
+  <!-- ===== right column: the math + levers ===== -->
+  <rect x="452" y="92" width="324" height="112" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--navy,#1a2744) 22%, transparent);stroke:color-mix(in srgb, var(--navy,#1a2744) 45%, transparent);stroke-width:1.5"/>
+  <rect x="452" y="92" width="324" height="112" rx="12" style="fill:color-mix(in srgb, var(--navy,#1a2744) 14%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="466" y="113" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:10.5px;font-weight:700;letter-spacing:1.2px;fill:var(--text-muted,#64748b)">THE MATH</text>
+  <text x="466" y="136" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;fill:var(--text,#0f172a)">cost(t)  ≈  S + m·t</text>
+  <text x="466" y="157" style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);font-size:13px;fill:var(--text,#0f172a)">total(N) ≈ N·S + m·N(N+1)/2</text>
+  <text x="466" y="179" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">N=30 · S=20k · m=2k → ≈ 1.5M input tok</text>
+  <text x="466" y="196" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text,#0f172a)">prefix alone ≈ 0.6M tok (~40%)</text>
+
+  <rect x="452" y="212" width="324" height="86" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <text x="466" y="232" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:10.5px;font-weight:700;letter-spacing:1.2px;fill:var(--text-muted,#64748b)">INFLATES S — EVERY TURN</text>
+  <text x="466" y="252" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text,#0f172a)">each added skill / MCP tool raises S forever</text>
+  <text x="466" y="269" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text,#0f172a)">this machine: AGENTS.md ≈ 4.4k + catalog ≈ 9k</text>
+  <text x="466" y="286" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:10.5px;fill:var(--text-muted,#64748b)">and that is before a single tool schema</text>
+
+  <rect x="452" y="306" width="324" height="64" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:1.5"/>
+  <text x="466" y="326" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:10.5px;font-weight:700;letter-spacing:1.2px;fill:var(--text-muted,#64748b)">INFLATES m — EVERY TURN</text>
+  <text x="466" y="346" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text,#0f172a)">tool outputs re-sent verbatim, forever</text>
+  <text x="466" y="363" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text,#0f172a)">skill bodies + injected reminders stay resident</text>
+
+  <!-- footer note -->
+  <rect x="28" y="384" width="748" height="46" rx="10" style="fill:none;stroke:var(--border-bright,#cbd5e1);stroke-width:1.5;stroke-dasharray:5 4"/>
+  <text x="44" y="403" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11.5px;font-weight:600;fill:var(--text,#0f172a)">Release valve: compaction — lossy, and the compaction pass is itself billed.</text>
+  <text x="44" y="421" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">Prefix caching discounts re-reads; it never deletes history — one changed early byte re-bills the full prefix.</text>
+</svg>

@@ -1,0 +1,88 @@
+<!--
+design-pack · svg-library · system-prompt-anatomy
+  Three-layer anatomy of one harnessed API call: a fixed SYSTEM PROMPT re-sent on
+  every turn (base prompt, AGENTS.md, skills catalog, tool schemas, extension
+  injections), the growing HISTORY layer, and the small THIS-TURN slice — with the
+  session-vs-request loop on the right. Byte sizes shown are measured on the author's
+  machine (2026-11-13, ≈4 bytes/token); edit the labels for your own harness.
+  Tokens: navy teal amber border text text-muted surface border-bright font-head font-sans.
+  Edit: layer labels/rows, measured sizes, loop boxes.
+  No ids/markers.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Three-layer anatomy of one harnessed API call: a fixed system prompt re-sent every turn, a growing conversation history, a small per-turn slice, and the send-reply-append loop that makes context compound" style="width:100%;height:auto">
+  <title>System prompt anatomy — what rides on every request</title>
+
+  <!-- header -->
+  <text x="28" y="26" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:10.5px;font-weight:700;letter-spacing:1.2px;fill:var(--text-muted,#64748b)">HARNESS ANATOMY · PER REQUEST</text>
+  <text x="28" y="50" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Every turn re-sends everything</text>
+  <text x="28" y="68" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">The model is stateless — the harness re-sends all three layers on each API call.</text>
+
+  <!-- ===== left column: the three layers ===== -->
+  <!-- card A · system prompt -->
+  <rect x="28" y="88" width="408" height="156" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--navy,#1a2744) 22%, transparent);stroke:color-mix(in srgb, var(--navy,#1a2744) 45%, transparent);stroke-width:1.5"/>
+  <rect x="28" y="88" width="408" height="156" rx="12" style="fill:color-mix(in srgb, var(--navy,#1a2744) 16%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <rect x="28" y="88" width="10" height="156" rx="5" style="fill:var(--navy,#1a2744)"/>
+  <text x="52" y="110" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--text,#0f172a)">1 · SYSTEM PROMPT</text>
+  <text x="424" y="109" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:9px;font-weight:700;letter-spacing:1px;fill:var(--text-muted,#64748b)">RE-SENT EVERY TURN</text>
+  <text x="52" y="127" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">assembled at session start · paid again on every turn</text>
+  <text x="52" y="149" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text,#0f172a)">pi base prompt + env block</text>
+  <text x="424" y="149" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">startup assembly</text>
+  <text x="52" y="169" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text,#0f172a)">global AGENTS.md</text>
+  <text x="424" y="169" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">17.7 KB ≈ 4.4k tok</text>
+  <text x="52" y="189" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text,#0f172a)">skills catalog · 73 skills</text>
+  <text x="424" y="189" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">≈ 36k chars ≈ 9k tok</text>
+  <text x="52" y="209" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text,#0f172a)">tool schemas (pi + extensions)</text>
+  <text x="424" y="209" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">dozens of tools · JSON</text>
+  <text x="52" y="229" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text,#0f172a)">extension injections</text>
+  <text x="424" y="229" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">wiki status · skill prefetch</text>
+
+  <!-- card B · history -->
+  <rect x="28" y="252" width="408" height="88" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="28" y="252" width="408" height="88" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 12%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="28" y="252" width="10" height="88" rx="5" style="fill:var(--teal,#0d9488)"/>
+  <text x="52" y="274" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--text,#0f172a)">2 · HISTORY — earlier turns</text>
+  <text x="424" y="273" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:9px;font-weight:700;letter-spacing:1px;fill:var(--text-muted,#64748b)">GROWS +1 / TURN</text>
+  <text x="52" y="296" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11.5px;fill:var(--text,#0f172a)">user + assistant messages, tool calls and tool outputs</text>
+  <text x="52" y="313" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11.5px;fill:var(--text,#0f172a)">(file reads, logs, diffs — full text, every time)</text>
+  <text x="52" y="331" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:10.5px;fill:var(--text-muted,#64748b)">turn N re-sends turns 1…N−1 verbatim</text>
+
+  <!-- card C · this turn -->
+  <rect x="28" y="348" width="408" height="64" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="28" y="348" width="408" height="64" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <rect x="28" y="348" width="10" height="64" rx="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="52" y="371" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:var(--text,#0f172a)">3 · THIS TURN</text>
+  <text x="424" y="370" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:9px;font-weight:700;letter-spacing:1px;fill:var(--text-muted,#64748b)">SMALL</text>
+  <text x="52" y="393" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">your message + any fresh injections on top</text>
+
+  <!-- ===== right column: the loop ===== -->
+  <text x="464" y="98" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:10.5px;font-weight:700;letter-spacing:1.2px;fill:var(--text-muted,#64748b)">THE LOOP</text>
+
+  <rect x="464" y="104" width="312" height="40" rx="10" style="fill:var(--surface,#ffffff);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5"/>
+  <text x="620" y="128" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">YOU — types a message</text>
+  <line x1="620" y1="144" x2="620" y2="156" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <polygon points="620,164 614,152 626,152" style="fill:var(--text-muted,#64748b)"/>
+
+  <rect x="464" y="166" width="312" height="56" rx="10" style="fill:color-mix(in srgb, var(--navy,#1a2744) 14%, var(--surface,#ffffff));stroke:var(--navy,#1a2744);stroke-width:2"/>
+  <text x="620" y="190" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">HARNESS re-sends 1 + 2 + 3</text>
+  <text x="620" y="208" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:10.5px;fill:var(--text-muted,#64748b)">system + history + new message</text>
+  <line x1="620" y1="222" x2="620" y2="234" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <polygon points="620,242 614,230 626,230" style="fill:var(--text-muted,#64748b)"/>
+
+  <rect x="464" y="244" width="312" height="40" rx="10" style="fill:var(--surface,#ffffff);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5"/>
+  <text x="620" y="268" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">MODEL replies · maybe tool calls</text>
+  <line x1="620" y1="284" x2="620" y2="296" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <polygon points="620,304 614,292 626,292" style="fill:var(--text-muted,#64748b)"/>
+
+  <rect x="464" y="306" width="312" height="56" rx="10" style="fill:color-mix(in srgb, var(--teal,#0d9488) 12%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="620" y="329" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:700;fill:var(--text,#0f172a)">HISTORY GROWS +1 TURN</text>
+  <text x="620" y="347" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:10.5px;fill:var(--text-muted,#64748b)">reply + tool results appended to layer 2</text>
+
+  <path d="M 776 334 C 794 334 794 194 776 194" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2;stroke-dasharray:5 4"/>
+  <polygon points="776,194 786.5,187.5 786.5,200.5" style="fill:var(--text-muted,#64748b)"/>
+
+  <text x="464" y="384" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:10.5px;font-weight:700;letter-spacing:1.2px;fill:var(--text-muted,#64748b)">PREFIX CACHE</text>
+  <text x="464" y="402" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text,#0f172a)">identical prefix → billed at a fraction (cache read)</text>
+  <text x="464" y="419" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text,#0f172a)">one changed early byte → full prefix re-billed</text>
+
+  <text x="28" y="438" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:9.5px;fill:var(--text-muted,#64748b)">Sizes measured on this machine, 2026-11-13 · ≈4 bytes per token · S = fixed prefix cost</text>
+</svg>

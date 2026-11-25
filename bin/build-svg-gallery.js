@@ -149,6 +149,8 @@ const META = {
   'network-governance': { desc: 'One charter as a roof over four working-group pillars on a phasing slab, with a training-and-capacity side card', use: 'Governance explainers, working-group structure, programme architecture' },
   'phase1-reference-genomes': { desc: 'Six-step reference-genome pipeline with a two-card outcome block for the nuclear genome and the mitogenome fallback', use: 'Genome assembly pipelines, tiered-ladder explainers, phase roadmaps' },
   'phase2-population-baselines': { desc: 'Five-step population-baseline pipeline with a two-column conventional-versus-population-genomics contrast block', use: 'Method comparisons, phase roadmaps, standardisation explainers' },
+  'system-prompt-anatomy': { desc: 'Three-layer anatomy of one harnessed API call: fixed system prompt re-sent every turn, growing history, small per-turn slice, plus the send-reply-append loop', use: 'Explaining harness context assembly, agent cost mechanics, session vs request' },
+  'token-cascade': { desc: 'Per-turn input-token bars growing linearly beside the quadratic total-cost formula, with the levers that inflate the fixed prefix and the per-turn growth', use: 'Explaining token-cost escalation, context-window economics, prefix caching' },
 };
 
 function validate(name, src) {
