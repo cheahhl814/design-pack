@@ -205,6 +205,20 @@ return `    <figure class="card" id="c-${c.name}">
     </figure>`;
 }
 
+// Per-set palettes for the recolour switcher (same source as `svg-export.js --palette <set>`)
+const { palette: setPalette, listSets } = require('./compose-slide.js');
+const PALETTES = {};
+for (const set of listSets().filter((n) => n !== 'lab')) {
+  PALETTES[set] = {};
+  for (const th of ['light', 'dark']) {
+    const p = setPalette(set, th), o = {};
+    for (const k of ['surface', 'text', 'text-muted', 'border', 'accent', 'teal', 'deep-blue', 'coral', 'amber', 'green', 'navy']) if (/^#/.test(p[k] || '')) o[k] = p[k];
+    if (p['font-head']) o['font-head'] = p['font-head'];
+    if (p['font-sans']) o['font-sans'] = p['font-sans'];
+    PALETTES[set][th] = o;
+  }
+}
+
 const page = `<!--
   GENERATED FILE — do not hand-edit.
   Source of truth: svg/*.svg in this directory; regenerate with:
@@ -240,7 +254,9 @@ const page = `<!--
   header { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
   h1 { font-family: var(--font-head); font-size: clamp(26px, 3.5vw, 38px); }
   header p { color: var(--text-muted); max-width: 62ch; }
-  .toggle { margin-left: auto; background: var(--surface2); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 6px 14px; cursor: pointer; font-size: 14px; }
+  .pal { margin-left: auto; color: var(--text-muted); font-size: 13px; }
+  .pal select { background: var(--surface2); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 5px 8px; font-size: 13px; }
+  .toggle { margin-left: 8px; background: var(--surface2); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 6px 14px; cursor: pointer; font-size: 14px; }
   .catalog { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 24px; }
   @media (max-width: 520px) { .catalog { grid-template-columns: 1fr; } }
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; scroll-margin-top: 20px; }
@@ -263,6 +279,7 @@ const page = `<!--
   <header>
     <h1>svg-library</h1>
     <p>Hand-drawn SVG diagram templates for the design-pack templates. Every component is token-driven (adapts to each template's palette + light/dark) and id-free (safe to paste multiple). Copy-paste the inline SVG, then edit the labels. Toggle the theme to preview both palettes.</p>
+    <label class="pal">Palette <select id="pal"><option value="">Lab (default)</option>${Object.keys(PALETTES).map((n) => `<option>${n}</option>`).join('')}</select></label>
     <button class="toggle" onclick="var h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark')">◐</button>
   </header>
   <nav>${cards.map(c => `<a href="#c-${c.name}">${c.name}</a>`).join('')}</nav>
@@ -270,6 +287,19 @@ const page = `<!--
 ${cards.map((c, i) => card(c, i)).join('\n')}
   </main>
 <script>
+  // Recolour switcher: previews svg-export.js --palette <set> (tokens set on each .stage only)
+  var PALETTES = ${JSON.stringify(PALETTES)};
+  function applyPalette() {
+    var set = document.getElementById('pal').value, th = document.documentElement.getAttribute('data-theme');
+    document.querySelectorAll('.stage').forEach(function (st) {
+      st.removeAttribute('style');
+      var p = set && PALETTES[set][th] || {};
+      Object.keys(p).forEach(function (k) { st.style.setProperty('--' + k, p[k]); });
+      if (p.surface) st.style.setProperty('--bg', p.surface);
+    });
+  }
+  document.getElementById('pal').addEventListener('change', applyPalette);
+  new MutationObserver(applyPalette).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   document.querySelectorAll('figure.card').forEach(function (fig) {
     var svg = fig.querySelector('.stage svg');
     if (svg) fig.querySelector('.src').textContent = svg.outerHTML;

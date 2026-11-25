@@ -9,12 +9,16 @@
  * This script bakes one theme's palette into plain hex (+ fill/stroke-opacity),
  * drops the authoring comment, and gives the root a fixed width/height.
  *
- *     node bin/svg-export.js <name|path.svg>... [--theme light|dark] [--out DIR] [--png] [--pdf] [--pdf-out FILE]
+ *     node bin/svg-export.js <name|path.svg>... [--theme light|dark] [--palette SPEC] [--out DIR] [--png] [--pdf] [--pdf-out FILE]
  *
  *   name     component name (e.g. mind-map) or a path to any token-driven .svg
  *            (e.g. a copy whose labels you already edited)
  *   --theme  light (default) or dark; dark also paints a background rect,
  *            since light-on-transparent text vanishes on white pages
+ *   --palette  recolour to match the document the diagram goes into: a slide set
+ *            name (lab, swiss, nordic...), a tokens .json, or a .pptx/.docx/.xlsx
+ *            (its own theme: dk/lt + accent1-6 + fonts). Default = Lab. Warns on
+ *            low contrast (text < 4.5:1, marks < 3:1); never fails on it.
  *   --out    output directory (default ./svg-export); files are <name>.svg
  *            or <name>-dark.svg
  *   --png    also write <name>[-dark].png at 2x, rendered from the exported
@@ -32,16 +36,18 @@ const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const { THEMES, exportSvg, colour } = require('./svg-bake.js');
+const { resolvePalette, contrastWarnings } = require('./palette.js');
 
 const SVG_DIR = path.join(__dirname, '..', 'features', 'graphics', 'svg-library', 'svg');
 
 if (require.main === module) {
   const args = process.argv.slice(2);
-  let theme = 'light', out = 'svg-export', png = false, pdf = false, pdfOut = '';
+  let theme = 'light', palette = '', out = 'svg-export', png = false, pdf = false, pdfOut = '';
   const names = [];
   const pdfs = []; // generated per-file PDFs, in input order (for --pdf-out)
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--theme') theme = args[++i];
+    else if (args[i] === '--palette') palette = args[++i];
     else if (args[i] === '--out') out = args[++i];
     else if (args[i] === '--png') png = true;
     else if (args[i] === '--pdf') pdf = true;
@@ -49,15 +55,17 @@ if (require.main === module) {
     else names.push(args[i]);
   }
   if (!names.length || !THEMES[theme] || (pdfOut && !pdf)) {
-    console.error('usage: node bin/svg-export.js <name|path.svg>... [--theme light|dark] [--out DIR] [--png] [--pdf] [--pdf-out FILE]');
+    console.error('usage: node bin/svg-export.js <name|path.svg>... [--theme light|dark] [--palette SPEC] [--out DIR] [--png] [--pdf] [--pdf-out FILE]');
     process.exit(2);
   }
   fs.mkdirSync(out, { recursive: true });
+  const tokens = { ...THEMES[theme], ...resolvePalette(palette, theme) };
+  for (const w of palette ? contrastWarnings(tokens) : []) console.error(`warning: palette ${palette}: ${w}`);
   for (const n of names) {
     const file = n.endsWith('.svg') ? n : path.join(SVG_DIR, `${n}.svg`);
     const base = path.basename(file, '.svg') + (theme === 'dark' ? '-dark' : '');
     const dest = path.join(out, `${base}.svg`);
-    const svg = exportSvg(fs.readFileSync(file, 'utf8'), theme);
+    const svg = exportSvg(fs.readFileSync(file, 'utf8'), theme, tokens);
     fs.writeFileSync(dest, svg);
     console.log(dest);
     if (png) console.log(renderPng(dest, svg));
@@ -115,4 +123,4 @@ svg { display: block; }
   return out;
 }
 
-module.exports = { exportSvg, colour };
+module.exports = { exportSvg, colour, renderPng };

@@ -9,12 +9,11 @@ const ROOT = path.resolve(__dirname, '..');
 process.chdir(ROOT);
 
 const suites = [
-  { name: 'Report template (multi-tab capable, v2 annotation, theme toggle)', script: 'test/smoke-test-report.js' },
-  { name: 'Bento template (one-page bento grid, v2 inline annotation, dark-first glass)', script: 'test/smoke-test-bento.js' },
-  { name: 'Dashboard template (htmx panels, demo-mode mock backend, theme toggle)', script: 'test/smoke-test-dashboard.js' },
-  { name: 'Graphics pack (v0.8.0 shared component library in report + bento)', script: 'test/smoke-test-graphics.js' },
+  { name: 'Report template (multi-tab capable, v2 annotation, theme toggle; genoffice PDF source)', script: 'test/smoke-test-report.js' },
+  { name: 'Graphics pack (shared component library in the report template)', script: 'test/smoke-test-graphics.js' },
   { name: 'SVG export (standalone, renderer-safe .svg from the svg-library; --png/--pdf deck delivery)', script: 'test/smoke-test-svg-export.js' },
-  { name: 'Skill split (router + html + svg sub-skills: names, description limit, link/path resolution)', script: 'test/smoke-test-skills.js' },
+  { name: 'Skill integrity (router + svg sub-skill: names, description limit, link/path resolution, genoffice dependency)', script: 'test/smoke-test-skills.js' },
+  { name: 'GenOffice integration (palette recolour, deck bridge -> native pptx, OOXML theme read)', script: 'test/smoke-test-genoffice.js' },
   // v0.21.0 svg-slides: design QA + composer gates (node + python stdlib)
   { name: 'SVG slide designs (5 theme sets, slot contract, compose-slide gates, budget fit)', cmd: 'python3 test/smoke-test-slides.py' }
 ];

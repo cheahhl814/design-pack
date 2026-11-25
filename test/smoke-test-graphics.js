@@ -21,8 +21,7 @@ const LOG = '/tmp/html-pack-graphics-test.log';
 if (!fs.existsSync(TMP_DIR)) fs.mkdirSync(TMP_DIR, { recursive: true });
 
 const targets = [
-  { name: 'report', template: 'templates/report/template.html',       out: `${TMP_DIR}/report.png` },
-  { name: 'bento',  template: 'templates/bento/bento-template.html',  out: `${TMP_DIR}/bento.png` }
+  { name: 'report', template: 'templates/report/template.html',       out: `${TMP_DIR}/report.png` }
 ];
 
 // Per-template markup checks (what the demo content actually renders).
@@ -50,14 +49,6 @@ const perTemplate = {
     { name: 'hbar rows',                  re: /class="hbar"/g,                         expectMin: 1 },
     { name: 'flowchart',                  re: /class="flow-node/,                      expectMin: 1 },
     { name: 'milestone strip',            re: /class="mstrip"/,                        expectMin: 1 },
-    { name: 'pull-quote',                 re: /class="pull-quote"/,                    expectMin: 1 },
-  ],
-  bento: [
-    { name: 'donut chart',                re: /class="donut"/g,                        expectMin: 1 },
-    { name: 'donut sr-only table',        re: /<table class="sr-only">/,               expectMin: 1 },
-    { name: 'gauge with .animated',       re: /class="gauge[^"]*animated/,             expectMin: 1 },
-    { name: 'heatmap data-level cells',   re: /data-level="\d"/g,                      expectMin: 3 },
-    { name: 'comparison table',           re: /class="compare"/,                       expectMin: 1 },
     { name: 'pull-quote',                 re: /class="pull-quote"/,                    expectMin: 1 },
   ],
 };
