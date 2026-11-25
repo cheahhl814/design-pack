@@ -1,7 +1,6 @@
 # LaTeX equations in the templates
 
-CodeCogs-based equation rendering for **report**, **slide**, **bento**, and
-**dashboard** templates — keyless, stdlib-only, no JS math library.
+CodeCogs-based equation rendering for the **report** template (and any other HTML page) — keyless, stdlib-only, no JS math library.
 
 ## Why not MathJax/KaTeX?
 

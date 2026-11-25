@@ -198,7 +198,7 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
    `style` attribute (var() does **not** work in SVG presentation attributes — always
    use `style="fill:…"` / `style="stroke:…"`, never `fill="--teal"`). Tints use
    `color-mix(in srgb, var(--x) N%, var(--surface))`, so each component adapts to the
-   host template's palette (report blue / slide teal / bento mixed) and both themes
+   host document's palette (report blue / slide-set colours / any `--palette`) and both themes
    with zero per-use editing. Fallbacks are the slide template's **light-mode** values
    so a bare `.svg` file opened directly still renders correctly.
    **Dark tokens + colored text:** `--navy` and `--deep-blue` stay dark in the dark
@@ -252,7 +252,7 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
 3. **Copy the `<svg>` element only** (skip the HTML comment when pasting).
 4. **Edit in place**: replace placeholder labels, adjust counts (see per-file notes),
    swap `var(--token,#hex)` for a token the host template actually defines if needed
-   (report/slide/bento define: `--text --text-muted --accent --teal --coral --green
+   (report/slide define: `--text --text-muted --accent --teal --coral --green
    --amber --navy --deep-blue --surface --border`; dashboard omits the accent palette —
    use `--accent` + `--text-muted` there).
 5. **Verify in the browser**, light and dark: labels legible, no clipping, arrows

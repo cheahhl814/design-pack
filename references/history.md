@@ -1,6 +1,14 @@
 # design-pack — history and sources
 
-Moved verbatim out of SKILL.md when the skill was split into router + html + svg sub-skills (v0.37.0). Newest first.
+Moved verbatim out of SKILL.md when the skill was split (v0.37.0); v1.0.0 entry added on top. Newest first.
+
+## v1.0.0 — GenOffice refurbish (2026-11-25), BREAKING
+
+GenOffice (genspark-ai/genoffice) became a mandatory dependency (app + CLI + skill); design-pack is now its design layer.
+- **Removed**: `design-pack-html` sub-skill, bento and dashboard templates, `features/dashboard`, their smoke tests and Pages demos. Last version with them: tag `v0.37.0-final`. The report template stays (PDF/review source).
+- **Added**: `bin/preflight.js` (dependency gate), `bin/genoffice-bridge.js` (slide payloads → native pptx: art PNG + native text boxes, then `slides audit`), `bin/palette.js` + `svg-export.js --palette <set|tokens.json|pptx|docx|xlsx>` (recolour diagrams to the host document; contrast warnings), a Palette switcher in the svg-library gallery, `test/smoke-test-genoffice.js` (84 checks).
+- **Spike findings** (`references/genoffice-integration.md`): deck specs reject SVG pictures (PNG works); `convert report.html --to pdf` works, `--to docx` hangs on the full template; docx `insert_image` works.
+- svg/SKILL.md rewritten (15.1 KB → ~7 KB; animated-component and research-source detail moved to `references/svg-library-notes.md`); library 126 → 128 (system-prompt-anatomy, token-cascade).
 
 ## SVG library growth log (formerly the SVG-library intro paragraph and per-release notes)
 

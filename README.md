@@ -1,25 +1,51 @@
 # design-pack
 
 > **Renamed from `html-template-pack` (2026-10-18, v0.25.0).** GitHub redirects git traffic and repo links from the old URL, but the old Pages address (`cheahhl814.github.io/html-template-pack/`) does NOT redirect — use `https://cheahhl814.github.io/design-pack/`.
+
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Live demo](https://img.shields.io/badge/demo-GitHub%20Pages-2ea44f)](https://cheahhl814.github.io/design-pack/)
 [![Type](https://img.shields.io/badge/type-agent%20skill-blueviolet)](#-installation)
+[![Requires](https://img.shields.io/badge/requires-GenOffice-orange)](https://github.com/genspark-ai/genoffice)
 
-Three self-contained HTML templates — **report** (sticky sidebar, 5 icon+label tabs, v2 offset-anchored annotations, theme toggle), **bento brief** (2026 bento-grid one-page snapshot briefing, dark-first glass, full v2 annotation engine), and **htmx dashboard** (topbar, KPI row, sparkline chart, activity feed, sortable table, demo-mode mock backend) — plus a full **SVG slide-deck toolchain** (13 theme sets × 7 designs + 32 backgrounds + infographics & printable info-cards, composer with text-budget gates and an opt-in graphic-dominance gate, delivery as per-slide PNG + one merged vector PDF). Decks are **not** HTML since v0.26.0 (the HTML slide template was removed; see the slide-designs section below). All three templates ship the **v0.12.0 zero-dependency graphics pack** (donut, radial gauge, horizontal bars, heatmap, data-bar cells, pure-CSS flowchart, milestone strip, conversion funnel, venn, SWOT grid, org tree, cycle loop, comparison table, pull-quote, scroll-driven motion) and are single-file, review-ready HTML with no external CDN dependencies beyond Google Fonts (report/bento) and pinned htmx with SRI (dashboard). All three are **dark-first** with refined glass chrome, fluid display typography, and hover-glow micro-interactions (v0.7.0 aesthetic pass).
+**The design layer for [GenOffice](https://github.com/genspark-ai/genoffice).** GenOffice creates, converts and edits the documents (docx, pptx, xlsx, pdf, md, html); design-pack supplies what they look like:
+
+- a **128-component SVG diagram/infographic library** that **recolours to the document it goes into** — a slide-set palette, a tokens JSON, or the theme of your own `.pptx`/`.docx` (`svg-export.js --palette`);
+- **13 SVG slide-design theme sets** (7 designs + 32 backgrounds + infographics and info-cards) bridged into **native, editable GenOffice `.pptx` decks** — design art as PNG, titles and body as real text boxes (`bin/genoffice-bridge.js`), with composer text-budget and graphic-dominance gates; a PNG + vector-PDF fallback for pixel-exact decks;
+- one **themed report template** (v2 annotations, theme toggle, zero-dependency CSS graphics pack) whose rendered PDF GenOffice produces.
+
+> ⚠️ **GenOffice is a mandatory dependency** — the app (provides the `genoffice` CLI) *and* its skill ([`skills/genoffice/SKILL.md`](https://github.com/genspark-ai/genoffice/blob/main/skills/genoffice/SKILL.md)). `node bin/preflight.js` checks both. **v1.0.0 retired** the HTML-first family (`design-pack-html`, bento one-pager, htmx dashboard): the last version that has them is tag [`v0.37.0-final`](https://github.com/cheahhl814/design-pack/tree/v0.37.0-final).
 
 **Repository**: https://github.com/cheahhl814/design-pack
 
-## 🧩 Sub-skills (v0.37.0)
-
-The skill is a router plus two independently invocable sub-skills, each with its own `SKILL.md`:
+## 🧩 Skills (v1.0.0)
 
 | Skill name | Directory | Covers |
 |---|---|---|
-| `design-pack` | `SKILL.md` (root) | router: picks the sub-skill and template |
-| `design-pack-html` | `html/SKILL.md` | report, bento, dashboard, CSS graphics pack, annotations |
-| `design-pack-svg` | `svg/SKILL.md` | svg-slides decks (PNG + merged PDF), SVG diagram library, standalone export |
+| `design-pack` | `SKILL.md` (root) | router: preflight, routing, report recipe |
+| `design-pack-svg` | `svg/SKILL.md` | diagram library + recolouring, slide designs, genoffice bridge, PNG/PDF fallback |
 
-Each sub-directory holds symlinks (`bin`, `templates`, `features`, `docs`) to the shared copies at the repo root, so it can be linked on its own: `ln -s <repo>/html ~/.agents/skills/design-pack-html` and `ln -s <repo>/svg ~/.agents/skills/design-pack-svg`. Release notes and sources moved to `references/history.md`.
+`svg/` holds symlinks (`bin`, `templates`, `features`, `docs`) to the shared copies at the repo root, so it can be linked on its own: `ln -s <repo>/svg ~/.agents/skills/design-pack-svg`. Integration findings: [`references/genoffice-integration.md`](./references/genoffice-integration.md). Release notes: [`references/history.md`](./references/history.md).
+
+## 🎨 Recolour a diagram to its document (v1.0.0)
+
+Library components are token-driven (`var(--teal,#0d9488)` …); the built-in fallbacks are the **Lab** palette. The exporter bakes any other palette into plain hex, so a diagram matches the deck or document it lands in:
+
+```bash
+node bin/svg-export.js mind-map --palette swiss --png            # a slide set's colours + fonts
+node bin/svg-export.js mind-map --palette brand.json --png       # any subset of the tokens
+node bin/svg-export.js mind-map --palette my-deck.pptx --png     # the pptx/docx/xlsx's own theme (accent1-6, dk/lt, fonts)
+```
+
+Colours from an Office theme are matched to the nearest hue role (coral / green / teal / deep-blue / amber); the exporter warns when text falls under 4.5:1 or marks under 3:1 against the surface. Then place the PNG with genoffice (`docs apply insert_image`, `slides apply addPicture`) — genoffice's deck specs take PNG, not SVG.
+
+## 🏗️ Native decks through GenOffice (v1.0.0)
+
+```bash
+node bin/preflight.js
+node bin/genoffice-bridge.js deck.json --render     # deck.json: {"set":"swiss","theme":"light","slides":[{"design":"title-hero","payload":{…}}, …]}
+```
+
+Per slide: composer gates → art PNG (text removed) + native GenOffice text boxes at the slot geometry → `genoffice create --type pptx` → `slides audit` (+ `render`). Edit the result with genoffice (`slides read` / `slides apply`). Same payload format as `compose-slide.js`; 1280×720 designs only.
 
 ## 🖍️ SVG diagram library (v0.16.0; 128 components)
 
@@ -83,35 +109,25 @@ Slot spec, layout rule, per-design slot tables and the add-a-design workflow: [`
 
 ## Contents
 
-- [Sub-skills](#-sub-skills-v0370)
-- [SVG diagram library (v0.16.0)](#️-svg-diagram-library-v0160)
-- [SVG slide designs + composer (v0.21.0; theme sets v0.24.0; the only deck toolchain since v0.26.0)](#️-svg-slide-designs--composer-v0210-theme-sets-v0240-the-only-deck-toolchain-since-v0260)
-- [Live demo](#-live-demo)
-- [Installation](#-installation)
-- [Usage examples](#-usage-examples)
-- [What this skill does](#-what-this-skill-does)
-- [Annotation system](#-annotation-system-report--bento)
-- [Theme toggle](#-theme-toggle)
-- [Density and font-size toggles](#-density-and-font-size-toggles-all-three-templates)
-- [Graphics pack](#-graphics-pack-v080)
-- [LaTeX equations (CodeCogs)](#-latex-equations-codecogs-v090)
-- [Hard invariants](#-hard-invariants)
+- [Skills](#-skills-v100) · [Recolour a diagram](#-recolour-a-diagram-to-its-document-v100) · [Native decks](#️-native-decks-through-genoffice-v100)
+- [SVG diagram library](#️-svg-diagram-library-v0160-128-components) · [SVG slide designs + composer](#️-svg-slide-designs--composer-v0210-theme-sets-v0240-the-only-deck-toolchain-since-v0260)
+- [Live demo](#-live-demo) · [Installation](#-installation) · [Usage examples](#-usage-examples)
+- [What this skill does](#-what-this-skill-does) · [Annotation system](#-annotation-system-report) · [Theme toggle](#-theme-toggle) · [Density and font-size toggles](#-density-and-font-size-toggles-report)
+- [Graphics pack](#-graphics-pack-v080) · [LaTeX equations](#-latex-equations-codecogs-v090) · [Hard invariants](#-hard-invariants)
 
 ## 🚀 Live demo
 
-All three HTML templates are deployed as a working demo on GitHub Pages. Open any of them to interact with the live UI — no setup, no build step, no backend.
+Static galleries deployed on GitHub Pages — no setup, no backend.
 
 | | |
 |---|---|
 | 🌐 **Launcher** | https://cheahhl814.github.io/design-pack/ |
-| 📄 **[Report demo](https://cheahhl814.github.io/design-pack/report/)** | "Q3 Operations Review — Northwind Logistics" (5 tabs, custom content) |
-| 🎞️ **[Slide demo](https://cheahhl814.github.io/design-pack/slide/)** | REPLACED in v0.26.0 — decks are now designed SVG slides (compose + export PNG/PDF), see the svg-slides section and `templates/svg-slides/gallery.html` |
-| 🍱 **[Bento demo](https://cheahhl814.github.io/design-pack/bento/)** | "Project Phoenix — One-page Recap" (bento grid, full annotation engine) |
-| 🧩 **[Components demo](https://cheahhl814.github.io/design-pack/components/)** | The graphics pack in one page — donut, gauge, bars, heatmap, flow, compare, pull-quote, motion legend |
-| 🖍️ **[SVG library demo](https://cheahhl814.github.io/design-pack/svg-library/)** | All 128 SVG infographic templates (incl. 17 SMIL-animated), token-driven, with source blocks — ◐ toggle previews both palettes |
-| 📊 **[Dashboard demo](https://cheahhl814.github.io/design-pack/dashboard/)** | "Northwind Logistics — Operations Dashboard" (mock data, live polling) |
+| 📄 **[Report demo](https://cheahhl814.github.io/design-pack/report/)** | "Q3 Operations Review — Northwind Logistics" (5 tabs, annotations; the source whose PDF genoffice renders) |
+| 🧩 **[Components demo](https://cheahhl814.github.io/design-pack/components/)** | The CSS graphics pack in one page — donut, gauge, bars, heatmap, flow, compare, pull-quote, motion legend |
+| 🖍️ **[SVG library demo](https://cheahhl814.github.io/design-pack/svg-library/)** | All 128 SVG diagram templates (incl. 17 SMIL-animated), token-driven, with source blocks — ◐ toggle previews both palettes |
+| 🎞️ **[SVG slides gallery](https://cheahhl814.github.io/design-pack/svg-slides/)** | 13 theme sets × 9 designs: the slides that `genoffice-bridge.js` turns into native pptx decks |
 
-Each demo is a curated showcase with realistic content (not a blank template). Try the **◐ theme toggle**, **▤ density toggle**, **S/M/L font size toggle** in the top-right of every demo. In the report and bento demos, select any text to leave tracked-changes-style annotations, then export them as JSON from the 💬 Notes panel.
+Try the **◐ theme toggle**, **▤ density toggle** and **S/M/L font-size toggle** in the report demo; leave notes by selecting text. (The bento and dashboard demos were removed in v1.0.0.)
 
 **Source files** (for starting your own document): see [`templates/`](./templates/) and follow the usage examples below.
 
@@ -125,9 +141,11 @@ This is an **agent skill**, not a user-facing library. The skill is loaded by th
 Import the following skill: https://github.com/cheahhl814/design-pack
 ```
 
-**Optional, for the SVG tooling only:** `node` for `bin/svg-export.js` / `bin/compose-slide.js`, plus Chrome/Chromium for `svg-export.js --png --pdf` and `pdfunite` (poppler-utils) for merged deck PDFs. The HTML templates need none of these.
+**Required first:** install the **GenOffice app** (it provides the `genoffice` CLI) and the **genoffice skill** ([`SKILL.md`](https://github.com/genspark-ai/genoffice/blob/main/skills/genoffice/SKILL.md)) into your harness's skills directory (e.g. `~/.agents/skills/genoffice`); then run `node bin/preflight.js` in this repo — it checks the CLI (≥ 0.9.0), the skill and Chrome, and exits 1 with install pointers if anything is missing.
 
-Once installed, the skill is **auto-invoked**: when you ask the agent for an HTML report, a slide deck (composed SVG slides → PNG + PDF), or a dashboard, the agent routes the request here automatically.
+Also needed: `node`, Chrome/Chromium (PNG art), `unzip` (for `--palette file.pptx`), and optionally `pdfunite` (poppler-utils) for the fallback merged deck PDF.
+
+Once installed, the skill is **auto-invoked**: ask the agent for a slide deck, an SVG diagram or infographic, or a report PDF and it routes here, runs the preflight, and builds the file through GenOffice.
 
 ## 💡 Usage examples
 
@@ -155,7 +173,7 @@ If auto-detection works, you can just use natural language prompts — the harne
 These phrases auto-invoke the skill via your agent's global skill-routing guide:
 
 <details>
-<summary><b>Report</b> (≥3 long sections, prose, charts, references)</summary>
+<summary><b>Report</b> (≥3 long sections, prose, charts, references → themed HTML + PDF)</summary>
 
 ```
 Build me an HTML report from path/to/source.md.
@@ -167,24 +185,13 @@ Generate the grant submission recap as HTML.
 </details>
 
 <details>
-<summary><b>Slide deck</b> (designed SVG slides → PNG + merged PDF; since v0.26.0)</summary>
+<summary><b>Slide deck</b> (designed SVG slides → native, editable GenOffice .pptx; v1.0.0)</summary>
 
 ```
 Create a slide deck about X.
 Convert this DOCX / PDF into a deck.
 Make a pitch deck from this outline.
 Build a 5-slide internal readout on the latest experiment results.
-```
-</details>
-
-<details>
-<summary><b>Dashboard</b> (live data, KPIs, ops metrics)</summary>
-
-```
-Build me a dashboard for tracking X.
-Set up an ops dashboard with these KPIs.
-Create an admin panel showing the live state of the system.
-Wire up an htmx dashboard against /api/stats, /api/activity, etc.
 ```
 </details>
 
@@ -206,7 +213,6 @@ If the agent picks the wrong template, you can be explicit:
 
 ```
 Use svg-slides, not the report template.
-That's a dashboard, not a report.
 Don't use the report template here — the content has 8 discrete beats, give me a deck from svg-slides.
 ```
 
@@ -219,46 +225,28 @@ Skip the HTML, write a plain text outline instead.
 
 ## 🎯 What this skill does
 
-The skill ships four HTML templates. Pick the one that matches your content.
+GenOffice builds the file; design-pack supplies the design. Three assets:
+
+### SVG diagram library + recolouring
+
+128 hand-drawn components (above), exported with a baked palette that can come from a slide set, a tokens JSON or an Office theme, then placed into Word/PowerPoint through genoffice. **Best for**: figures in reports, papers, decks and posters that must look like part of the document.
+
+### Slide designs → native decks
+
+Thirteen theme sets × seven designs (+ backgrounds, infographics, info-cards), composed by `compose-slide.js` with budget gates; `genoffice-bridge.js` builds an editable pptx (art PNG + native text). The pixel-exact PNG + merged-PDF path remains as a fallback. **Best for**: pitch decks, conference talks, lightning talks, internal readouts, research summaries.
 
 ### Report template
 
-A long-form reading document with a sticky left sidebar of tabs. The reviewer clicks between tabs to read different sections (Summary, Metrics, Methodology, Findings, Annotations), selects text to leave tracked-changes-style notes, and exports the notes as a JSON file when finished. The sidebar collapses to a horizontal tab strip on narrow screens. When printed, the sidebar hides and all sections flow sequentially with page breaks.
+A long-form reading document with a sticky left sidebar of tabs (Summary, Metrics, Methodology, Findings, Annotations), v2 offset-anchored annotations, theme/density/font toggles and the zero-dependency CSS graphics pack (donut, three animated radial gauges, horizontal bars, heatmap, data-bar cells, flowchart, milestone strip, comparison table, pull-quote). `genoffice convert report.html --to pdf` renders it to a polished PDF (the full template hangs `convert --to docx` — for an editable Word report use `genoffice create --type docx --from report.md`). **Best for**: research reports, grant progress reports, manuscript reading versions, gap analyses — anything a human reads end-to-end and comments on.
 
-As of **v0.8.0**, the Metrics panel includes a donut chart, three animated radial gauges, horizontal workflow bars, a sightings heatmap, and data-bar table cells; the Methodology panel adds a pure-CSS screening-flowchart and a horizontal milestone strip; the Findings panel adds a pull-quote and a feature-comparison table. The Methodology panel also carries a plain `<pre><code>` code-block example (no highlighter; reviewers can annotate any line). A scroll-tied reading-progress bar is pinned to the top edge of the page (the same `animation-timeline: scroll()` API used by [Medium](https://medium.com)-style readers).
-
-**Best for**: research reports, grant progress reports, manuscript reading versions, gap analyses, EOI drafts — anything a human will read end-to-end and leave comments on.
-
-### Slide decks (svg-slides → PNG + PDF; replaced the HTML slide template in v0.26.0)
-
-Decks are **not** HTML any more. Every deck ask composes one designed 1280×720 SVG slide per beat from `templates/svg-slides/` via `bin/compose-slide.js` (payload JSONs, slot budgets, composer gates — see the section above), then delivers with `bin/svg-export.js … --png --pdf --pdf-out deck.pdf`: per-slide baked SVG, a 2x PNG per slide, a vector PDF per slide, and one merged, page-sized PDF. There is no prev/next HTML shell, no inline deck annotations, and no live theming — baked slides are frozen artifacts; re-theme by re-composing from the payloads. Interactive slide-deck previews of the designs live in [`templates/svg-slides/gallery.html`](./templates/svg-slides/gallery.html).
-
-**Best for**: pitch decks, conference talks, lightning talks, internal readouts, research summary decks — any deck; especially when printing/PDF or PowerPoint import is the destination.
-
-### Dashboard template
-
-A fixed-topbar shell with a sidebar navigation and a content area laid out as a grid: a row of KPI stat cards, a sparkline chart panel, a recent-activity feed, and a sortable/filterable/searchable data table. The interactions are wired with htmx — the table polls every few seconds, search is debounced, and sort state carries across requests. The four data endpoints (`/api/stats`, `/api/chart`, `/api/activity`, `/api/table`) are expected to return HTML fragments, not JSON.
-
-The template ships in **demo mode** out of the box: a small mock backend intercepts every request to `/api/*` and answers from an embedded dataset, so the file opens in a browser and is fully interactive (filter, sort, poll, pause/resume) before any real backend exists. Once you have a real server, delete the `data-demo-mode` attribute on the body and the `« BEGIN/END DEMO MODE »` script block at the end of the file. Nothing else in the markup changes.
-
-**Best for**: ops dashboards, admin panels, status pages, internal metrics views — anything meant to be watched and interacted with live, not read and annotated.
-
-### Bento brief template (v0.7.0; v0.8.0 adds graphics)
-
-A one-page snapshot briefing in the 2026 bento-grid style: a hero header (eyebrow pill, gradient display title, meta chips) above a 12-column grid of modular glass cards — KPI row, pure-CSS bar chart, progress bars, gradient quote card, milestone timeline, key highlights, and a CTA card. Dark-first glass surfaces with an ambient accent glow; cards lift with an accent-glow shadow on hover. It carries the full v2 annotation engine (select any text to leave tracked-changes-style notes, export/import JSON), plus the theme, density, and font-size toggles with bento-specific storage keys. No JS dependencies at all — the chart is pure CSS.
-
-As of **v0.8.0**, a fourth row adds donut + gauges (animated), a sightings heatmap, a feature-comparison table, and a pull-quote card — same component classes as the report graphics pack, just packaged into the bento grid.
-
-**Best for**: sprint recaps, weekly readouts, one-page proposals, status snapshots for review panels — anything the reader should grasp in 60 seconds and annotate inline. If the content grows past one page, graduate to the report template; if the numbers need to refresh from a server, it's the dashboard.
-
-## 💬 Annotation system (report + bento)
+## 💬 Annotation system (report)
 
 > **Audience: human reviewers.** The other sections of this README document what
 > the agent/harness should do. This section is for the *human* who opens the
 > rendered HTML in a browser and wants to leave review notes. The agent does
 > not interact with the annotation UI directly.
 
-When you open a report or bento brief in a browser, you can leave tracked-changes-style notes directly on the text. Select any passage, choose what kind of note you want to leave, and a small floating toolbar appears with options. Your notes are saved in your browser automatically and can be exported as a file to send to an AI coding agent for revision.
+When you open a report in a browser, you can leave tracked-changes-style notes directly on the text. Select any passage, choose what kind of note you want to leave, and a small floating toolbar appears with options. Your notes are saved in your browser automatically and can be exported as a file to send to an AI coding agent for revision.
 
 ### The review cycle
 
@@ -283,26 +271,26 @@ sequenceDiagram
 
 ### Feature reference
 
-For quick reference, here's the full feature matrix across the two templates:
+Feature reference (report template):
 
-| Feature | Report | Bento |
-|---------|:------:|:-----:|
-| Select text → floating toolbar (4 options) | ✅ | ✅ |
-| Right-side Notes panel with all notes | ✅ | ✅ |
-| Click a note to jump back to its text | ✅ | ✅ |
-| Edit or delete a note | ✅ | ✅ |
-| Export to JSON file | ✅ | ✅ |
-| Export to clipboard | ✅ | ✅ |
-| Import JSON (merge by id) | ✅ | ✅ |
-| Flag orphaned notes (text shifted) | ✅ | ✅ |
-| Auto-switch to the right tab on jump | ✅ | — |
-| Notes survive Mermaid diagram re-renders | ✅ | ✅ |
+| Feature | Report |
+|---------|:------:|
+| Select text → floating toolbar (4 options) | ✅ |
+| Right-side Notes panel with all notes | ✅ |
+| Click a note to jump back to its text | ✅ |
+| Edit or delete a note | ✅ |
+| Export to JSON file | ✅ |
+| Export to clipboard | ✅ |
+| Import JSON (merge by id) | ✅ |
+| Flag orphaned notes (text shifted) | ✅ |
+| Auto-switch to the right tab on jump | ✅ |
+| Notes survive Mermaid diagram re-renders | ✅ |
 
 ## 🎨 Theme toggle
 
-All three templates have a **◐ dark / ◑ light** button at the top-right (dashboard has it inline in the topbar). Click it to switch between light and dark themes. The choice is remembered in your browser and follows your operating system's dark-mode preference on first visit. The theme toggle is hidden when you print the document.
+The report template has a **◐ dark / ◑ light** button at the top-right. Click it to switch between light and dark themes. The choice is remembered in your browser and follows your operating system's dark-mode preference on first visit. The theme toggle is hidden when you print the document.
 
-## ⚡ Density and font-size toggles (all three templates)
+## ⚡ Density and font-size toggles (report)
 
 Two extra buttons appear next to the theme toggle. They help reviewers read dense content more comfortably.
 
@@ -311,13 +299,13 @@ Two extra buttons appear next to the theme toggle. They help reviewers read dens
 <tr>
   <td><b>Density</b> (<code>▤</code> / <code>▥</code>)</td>
   <td>comfortable (default) → compact</td>
-  <td><code>report-density</code>, <code>bento-density</code>, <code>dashboard-density</code></td>
+  <td><code>report-density</code></td>
   <td>Card padding, table cell padding, stat-card padding, grid gaps, panel top spacing</td>
 </tr>
 <tr>
   <td><b>Font size</b> (<code>S</code> / <code>M</code> / <code>L</code>)</td>
   <td>Small (14px) → Medium (16px, default) → Large (18px)</td>
-  <td><code>report-font-size</code>, <code>bento-font-size</code>, <code>dashboard-font-size</code></td>
+  <td><code>report-font-size</code></td>
   <td>Every text element using proportional units</td>
 </tr>
 </table>
@@ -328,13 +316,12 @@ Both toggles:
 - Reset to defaults when you print (so PDF output looks consistent)
 - Apply to whichever template you're viewing
 
-The **dashboard** template's toggles are especially useful when viewing dense data tables — switch to compact + small to fit more rows on screen, or comfortable + large for a presentation-style view.
 
-**Why these toggles work**: every element in each template uses proportional units (`rem` or `em`) relative to the root font size. Changing the root font size cascades through every element. The slide template had a bug where `body { font-size: 16px }` blocked this cascade; that's been fixed so all three templates behave the same way.
+**Why these toggles work**: every element in the report template uses proportional units (`rem` or `em`) relative to the root font size. Changing the root font size cascades through every element. The slide template had a bug where `body { font-size: 16px }` blocked this cascade; that's been fixed so all three templates behave the same way.
 
 ## 🧩 Graphics pack (v0.8.0)
 
-All three templates ship with a shared **zero-dependency graphics pack** — eleven components, pure CSS/HTML, no JS, no chart library, no canvas. Lives in [`features/graphics/graphics.css`](./features/graphics/graphics.css) (inlined into each template) with a copy-paste reference at [`features/graphics/snippets.html`](./features/graphics/snippets.html).
+The report template ships with a shared **zero-dependency graphics pack** — eleven components, pure CSS/HTML, no JS, no chart library, no canvas. Lives in [`features/graphics/graphics.css`](./features/graphics/graphics.css) (inlined into each template) with a copy-paste reference at [`features/graphics/snippets.html`](./features/graphics/snippets.html).
 
 | | Component | Class |
 |---|---|---|
@@ -383,9 +370,9 @@ Full workflow, draft-mode (hotlink) caveat, and placeholder syntax: [`docs/latex
 
 - UI always reachable (theme, annotations, navigation)
 - Annotations persist across reloads (valid JSON or fresh start)
-- Print works cleanly (report primary; dashboard secondary; decks print via `svg-export.js --pdf-out` merged PDFs)
-- Single-file portable (only Google Fonts + pinned htmx SRI allowed external)
-- Dashboard demo-mode never ships to production
+- Print/PDF works cleanly (report via `genoffice convert --to pdf`; fallback decks via `svg-export.js --pdf-out`)
+- Report is single-file portable (only Google Fonts and Mermaid CDN allowed external)
+- GenOffice is mandatory: preflight first, never fall back silently
 - Graphics pack ships with no JS dependencies (conic-gradient + CSS grid only)
 - Motion triggers on visibility, not page load: animated gauges (`.gauge.animated`) replay when a report panel is shown (`showTab()`), so the sweep is visible to the reader instead of completing before they navigate to it. Honors `prefers-reduced-motion` (skips the restart; static fallback applies).
 

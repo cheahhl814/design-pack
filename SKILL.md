@@ -1,89 +1,61 @@
 ---
 name: design-pack
-description: 'Router for the design-pack family: review-ready HTML (report with v2 annotations, bento one-pager, htmx dashboard → design-pack-html) and designed SVG output (slide decks as PNG + merged PDF, 128-component SVG diagram/infographic library, standalone exporter → design-pack-svg). Invoke first for "HTML report", "HTML page", "annotated report", "reading version", "one-pager", "briefing", "HTML dashboard", "ops dashboard", "slide deck", "presentation", "SVG diagram", "infographic", or MD/DOCX/PDF → HTML conversion; it picks the sub-skill and template, then hands off.'
-version: 0.37.0
-updated: 2026-11-08
+description: 'Use when asked for a slide deck, presentation, designed slides, SVG diagram, infographic, figure for a document, HTML report or reading version. Design layer for GenOffice (mandatory dependency: app + skill): a 128-component SVG diagram library that recolours to the host pptx/docx, SVG slide-design theme sets bridged into native editable .pptx decks, and a themed report template for PDF output. Runs the dependency preflight, then hands to design-pack-svg or the report recipe; GenOffice builds and edits the files.'
+version: 1.0.0
+updated: 2026-11-25
+requires:
+  - genoffice (app + CLI >= 0.9.0 + skill; https://github.com/genspark-ai/genoffice)
 triggers:
-  - "HTML report"
-  - "annotated report"
-  - "bento one-pager"
-  - "htmx dashboard"
-  - "slide deck"
+  - "slide deck or presentation"
   - "SVG diagram or infographic"
-  - "convert MD/DOCX/PDF to HTML"
+  - "diagram recoloured to match a pptx/docx"
+  - "HTML report or reading version"
 license: MIT
 disable-model-invocation: true
 ---
 
 # design-pack
 
-Router for the design-pack family. Since v0.37.0 the detailed instructions live in two sub-skills, each with its own `SKILL.md` and its own harness-visible name, so either can be symlinked and invoked on its own:
+**GenOffice builds and edits the documents; design-pack supplies the design.** Since v1.0.0 the HTML-first family (`design-pack-html`, bento, dashboard) is retired; what remains is the SVG design layer plus one report template.
 
-| Sub-skill | Directory | Covers |
-| --- | --- | --- |
-| **design-pack-html** | [`html/`](./html/SKILL.md) | report, bento and dashboard templates; the CSS graphics pack; annotation system; theme/density/font toggles |
-| **design-pack-svg** | [`svg/`](./svg/SKILL.md) | svg-slides decks (composer + 13 theme sets, PNG + merged PDF); the 128-component SVG library; standalone SVG export; infographic and info-card templates |
+## Requires GenOffice (mandatory)
 
-Read the matching sub-skill's `SKILL.md` before doing the work; this file only routes. The sub-skill directories hold symlinks (`bin`, `templates`, `features`, `docs`) to the shared copies at the repo root, so relative paths in each sub-skill resolve the same from either location. Release notes and sources: [`references/history.md`](./references/history.md).
+1. Run `node bin/preflight.js` first. It checks the `genoffice` CLI (≥ 0.9.0; PATH or `~/.genoffice/launcher`), the genoffice skill (`~/.agents/skills/genoffice/SKILL.md`) and Chrome. On failure report the message verbatim and stop; install from https://github.com/genspark-ai/genoffice.
+2. Read `~/.agents/skills/genoffice/SKILL.md` before any genoffice command (its pipeline for decks: style sheet → outline → per-page spec → create → render/audit).
+3. Rules of the split: genoffice owns the file (create, convert, `docs/slides/sheet apply`, render, audit); design-pack owns palettes, SVG art, slide designs and the report template. Tested behaviour (SVG pictures are rejected, PNG works; the full report template converts to PDF but hangs on docx): `references/genoffice-integration.md`.
 
-## When to invoke
+## Routing
 
-**Invoke `design-pack` whenever** the user asks for an HTML artifact that is meant to be **read and reviewed by a human**, not just rendered for screen-sharing or embedding. Concrete triggers:
-
-- "Build me an HTML report from `<path/to/file.md>`"
-- "Make this Markdown into a reviewable HTML page"
-- "Create a slide deck about X" → svg-slides: compose designed slides, deliver PNG + merged PDF
-- "Convert this DOCX / PDF to a deck" → svg-slides (text goes through payloads; composer gates keep each slide inside its budgets)
-- "I need a single-file HTML the team can comment on"
-- "Generate the grant submission recap as HTML"
-- "Make a reading version of my manuscript"
-- "Give me a one-page briefing/recap of this sprint"
-- "Summarize this into a one-pager the panel can comment on"
-- "Draw me a mind map / org chart / process diagram as an SVG for my slides" → **standalone SVG**, no page (`design-pack-svg`)
-- "Make me a PowerPoint / .pptx deck with these diagrams" → **no .pptx builder** (removed in v0.23.0): compose SVG slides (`design-pack-svg`) and deliver PNG + PDF (`--png --pdf --pdf-out`), or export the figures (`design-pack-svg`, standalone SVG, `--png` for raster) for the user to place
-- "The slides need to look designed, not like a template" / "a cover slide with a real design" → **svg-slides designs + composer** (`design-pack-svg`)
-
-**Do not invoke** for:
-
-- Web apps (form handlers, login pages) → use `frontend-create` / `pi-frontend-create`
-- One-shot visual diagrams (no review needed) → use `lumen-mermaid`
-- Slide decks for live presentation / screen sharing only (no review) → use `lumen-slides`
-
-Interactive data dashboards now live in **this** skill (the dashboard template) rather than being routed elsewhere — see the table below. Still route to `lumen-diagram` / `lumen-chart` if the user wants a diagram/chart *embedded inside* the report template, not a standalone dashboard page. For **real data charts** (interactive tooltips, box/violin plots, sankey, treemap, network graphs — anything beyond the pure-CSS graphics pack), route to the [chartz](https://github.com/cheahhl814/chartz) skill, render the chart there, and embed it per `features/graphics/chartz-embed.md`.
-
-## Which sub-skill and template
-
-| If the request is… | Sub-skill → output |
+| Request | Do |
 | --- | --- |
-| ≥3 long sections, prose, references; "report", "manuscript reading version", "review page", MD/DOCX/PDF → HTML | `design-pack-html` → **report template** |
-| One-page snapshot: "one-pager", "briefing", "recap page", sprint/weekly readout | `design-pack-html` → **bento template** |
-| Live/polling data: KPIs, ops metrics, admin panel, "htmx dashboard" | `design-pack-html` → **dashboard template** |
-| Any deck: "slides", "presentation", "pitch deck", "talk", a cover/chapter/figure slide that must look designed | `design-pack-svg` → **svg-slides** (compose → per-slide PNG + one merged PDF) |
-| Only a diagram, infographic or figure (for PPT, Word, Figma, a poster, a paper) | `design-pack-svg` → **standalone SVG** via `bin/svg-export.js` |
-| A printable or social infographic / info card | `design-pack-svg` → **info-\* / card-\* designs** |
-| A "review deck" meaning a long reading artifact | `design-pack-html` → report template |
-| Both a long report and a summary deck | report as canonical (`-html`), deck as a second file (`-svg`) |
+| Slide deck / presentation / designed slides | [`svg/SKILL.md`](./svg/SKILL.md) → `bin/genoffice-bridge.js` → native pptx (PNG + PDF fallback for pixel-exact) |
+| Diagram, infographic, figure for a deck or Word/PDF doc | [`svg/SKILL.md`](./svg/SKILL.md) → `svg-export.js --palette <host> --png` → place with genoffice |
+| Edit a slide/paragraph of the user's own pptx/docx | genoffice only; add design-pack diagrams as recoloured PNGs |
+| Report / reading version / MD → polished PDF | Report recipe below |
+| Spreadsheet, plain Word doc, conversions | genoffice only (no design-pack asset) |
+| Live data charts | `chartz`; Mermaid flow/ER → `lumen-mermaid` |
+| Web app, dashboard, bento one-pager | **Not here** (retired in v1.0.0; `git checkout v0.37.0-final` for the old templates) |
 
-Rules of thumb: count the sections first (≥3 sections each over a page → report); a graphic-only ask skips every template; when in doubt, ask the user with `ask_user_question` offering the options.
+## Report recipe (HTML → PDF)
 
-## Files in this skill
+`templates/report/template.html` (v2 annotation engine, tabs, theme/density/font toggles, CSS graphics pack; self-contained, ≥ 3 sections) is the themed source. Copy it, fill title/`data-report-id`/content, check it in a browser, then `genoffice convert report.html --to pdf --out report.pdf` and look at the rendered pages. For an **editable Word** report do not convert the full template (it hangs): write Markdown or a restricted HTML fragment and `genoffice create --type docx --from …`, then insert design-pack diagrams (`docs apply insert_image`). Math: render LaTeX with `bin/codecogs_render.py` (see `docs/latex-equations.md`), never MathJax/KaTeX. Mermaid is the only CDN dependency of the template.
+
+## Files
 
 ```
 design-pack/
-├── SKILL.md                  ← this router
-├── html/  SKILL.md           ← design-pack-html (+ symlinks bin templates features docs)
-├── svg/   SKILL.md           ← design-pack-svg  (+ symlinks bin templates features docs)
-├── references/history.md     ← release notes, sources, SVG-library growth log
-├── AGENTS.md, README.md
-├── templates/{report,bento,dashboard,svg-slides,graphics}/
-├── features/{report,dashboard,graphics}/   (graphics/svg-library/ holds the 128 components)
-├── bin/                      ← svg-export, svg-bake, compose-slide, build-*-gallery, draw-slide-sets, codecogs_render
-├── docs/                     ← Pages demos (byte-identical copies of the generated galleries)
-└── test/                     ← run-all.js + smoke tests (report, bento, dashboard, graphics, svg-export, slides, skills)
+├── SKILL.md                this router            ├── svg/SKILL.md   design-pack-svg (diagrams, decks, export)
+├── bin/  preflight, genoffice-bridge, palette, compose-slide, svg-export, svg-bake, draw-slide-sets, build-*-gallery, codecogs_render
+├── templates/{report,svg-slides}/    features/{report,graphics}/ (svg-library = 128 components)
+├── references/  genoffice-integration.md, svg-library-notes.md, history.md
+├── docs/  Pages demos (generated galleries + launcher)       └── test/  run-all.js + smoke tests
 ```
 
-## Hard invariants (apply to both sub-skills)
+## Invariants
 
-- Every HTML or SVG deliverable follows this family: never hand-roll a different aesthetic for report/deck work.
-- Decks are baked artifacts (no annotation, no live theme); report and bento carry the v2 annotation engine; the dashboard intentionally has none.
-- Each sub-skill's own invariants list is authoritative for its area.
+- Preflight before any work; never silently fall back from GenOffice.
+- Every deliverable keeps this family's look; do not hand-roll another aesthetic.
+- Decks from the PNG+PDF fallback are baked (no annotation, no live theme); the bridge's decks keep native text.
+- Report template: leave its `beforeprint` re-render listener in place.
+
+Release notes: [`references/history.md`](./references/history.md). Tests: `node test/run-all.js` (run in the background; > 120 s).

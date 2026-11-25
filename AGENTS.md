@@ -1,80 +1,39 @@
-# Agent wiring for design-pack
+# Agent wiring for design-pack (v1.0.0)
 
-> **Note for the agent:** This file is for **human readers** (e.g. a developer
-> importing the skill into another harness). It is NOT auto-loaded by pi.
-> The actual auto-invocation rule is in the global
-> [`~/.pi/agent/AGENTS.md`](../../../AGENTS.md) "HTML output rule" section,
-> plus the `description:` field in this skill's `SKILL.md` (which the system
-> prompt injects at startup). For the trigger logic the LLM actually uses,
-> see those two files.
-> 
-> The wiring below documents what a human importing this skill into
-> Claude Code, Codex, Opencode, etc. should add to their agent's
-> configuration.
+> **For human readers** importing the skill into another harness (Claude Code, Codex, Opencode…). Not auto-loaded by pi: pi uses the `description:` of `SKILL.md` and the HTML rule in `~/.pi/agent/AGENTS.md`.
 
-## Auto-trigger rule (for cross-harness import)
+## Hard dependency: GenOffice
 
-**Whenever the user asks for any of the following, this skill MUST be the first thing checked:**
+design-pack is the design layer for [GenOffice](https://github.com/genspark-ai/genoffice). Install the GenOffice app (it provides the `genoffice` CLI) **and** its skill ([`skills/genoffice/SKILL.md`](https://github.com/genspark-ai/genoffice/blob/main/skills/genoffice/SKILL.md)) into your harness's skills directory (e.g. `~/.agents/skills/genoffice`). `node bin/preflight.js` verifies both plus Chrome and exits 1 if anything is missing.
 
-| User says…                                                                                             | Use this template                                                          |
-| ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
-| "HTML report", "report HTML", "review page", "reading version"                                         | **report template**                                                        |
-| "HTML deck", "slide deck", "slides", "presentation", "talk"                                            | **svg-slides** (compose → PNG + merged PDF; "review deck" → report)          |
-| "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", "status page", "live metrics view" | **dashboard template**                                                     |
-| "Convert this to HTML", "Make this reviewable"                                                         | **report template** (default)                                              |
-| "Annotated HTML", "HTML with comments"                                                                 | **report template** (better annotation system)                             |
-| "Single-file HTML the team can comment on"                                                             | **report template**                                                        |
-| "Pitch deck", "internal readout", "lightning talk"                                                     | **svg-slides**                                                             |
-| Specific filename ending in `.md` or `.docx` or `.pdf` to convert                                      | **report template** if ≥3 sections, **svg-slides** if 1 idea per slide     |
-| Wants filtering/sorting/polling against live or server-backed data                                     | **dashboard template**                                                     |
+## Auto-trigger rule
 
-**Do not reach for `lumen-guide`, `lumen-slides`, `frontend-create`, or any other HTML skill first.** Those skills build demo decks and guides; they are not production-ready for human review or live-data monitoring. This skill covers the review use case (report/bento), the live-data use case (dashboard), and designed decks (svg-slides → PNG + PDF).
+| User says… | Use |
+| --- | --- |
+| "slide deck", "presentation", "designed slides", "pitch deck", "talk" | `design-pack-svg` → `bin/genoffice-bridge.js` (native pptx) |
+| "SVG diagram", "infographic", "mind map", "figure for my slides/doc/paper" | `design-pack-svg` library → `svg-export.js --palette <host> --png` → genoffice |
+| "recolour/match this diagram to my pptx/docx" | `svg-export.js --palette file.pptx` |
+| "HTML report", "reading version", "annotated report", "MD → polished PDF" | report template → `genoffice convert … --to pdf` |
+| edit/convert/create plain docx/pptx/xlsx/pdf | **genoffice only** |
 
-## When NOT to use this skill
+Retired in v1.0.0 (use tag `v0.37.0-final`): `design-pack-html`, bento one-pager, htmx dashboard.
 
-- **Web apps / form handlers / login pages** → `frontend-create` / `pi-frontend-create`
-- **One-shot diagrams** for embedding into other docs → `lumen-mermaid`
-- **Live presentation decks** where the audience watches you present (no review) → `lumen-slides` (fullscreen engine is better for stage); if a designed deck is wanted anyway, svg-slides → PNG + PDF also works
-- **Single slides / posters** → `lumen-slides` (one slide, no deck)
-- **A chart/diagram embedded inside a report**, not a standalone dashboard page → `lumen-chart` / `lumen-diagram` (or embed Mermaid directly in the report template)
-
-Interactive dashboards with live data are now handled by **this** skill's dashboard template — do not route those to `lumen-chart`/`lumen-diagram` unless the user specifically wants a chart/diagram embedded in an existing report, not a standalone dashboard.
-
-If the request is ambiguous, ask with `ask_user_question` offering the template options.
+## Not this skill
+Web apps/form handlers → `frontend-create`; live-data charts → `chartz`; Mermaid-only diagrams → `lumen-mermaid`.
 
 ## Workflow
-
-1. **Read** this skill's root `SKILL.md` (router), then the sub-skill it points to: `html/SKILL.md` (report/bento/dashboard) or `svg/SKILL.md` (decks, SVG library, export). Sub-skills can also be symlinked and invoked independently as `design-pack-html` / `design-pack-svg`.
-2. **Build the artifact**: templates (`templates/report/template.html`, `templates/bento/bento-template.html`, `templates/dashboard/dashboard-template.html`) are copied to the working directory; decks are composed (`bin/compose-slide.js --set <name>`) and exported (`bin/svg-export.js … --png --pdf --pdf-out deck.pdf`).
-3. **Edit** the placeholders:
-   - Report: title, `data-report-id`, content blocks.
-   - Deck: one JSON payload per slide, compose with `bin/compose-slide.js --set <set>`, fix composer-gate failures by shortening lines (never edit budgets), then `bin/svg-export.js slide-*.svg --theme <t> --out deck/ --png --pdf --pdf-out deck.pdf`.
-   - Dashboard: title, sidebar nav, table columns / KPI meaning; leave demo mode in place until a real backend exists, then delete the `« BEGIN/END DEMO MODE »` block and `data-demo-mode` attribute.
-4. **Verify** the file works by opening it in a browser OR running a headless test (`google-chrome --headless --dump-dom` to check the DOM). For the dashboard template, also confirm the KPI row/chart/feed/table populate (demo mode should make this visible without a backend).
-5. **Document** the choice in the user's session log (one line: "Built `<filename>` from design-pack `<report|bento|dashboard|svg-deck>` template").
-6. **Update** this skill's `wiki` with what you learned if you encountered any new patterns (via `wiki_observe` or `wiki_retro`).
+1. `node bin/preflight.js`; read the genoffice `SKILL.md`; read this skill's root `SKILL.md`, then `svg/SKILL.md`.
+2. Build: decks via the bridge (payload JSON per slide; fix composer gates by shortening text, never by editing budgets); diagrams via the exporter; reports via the template + genoffice convert.
+3. Verify with genoffice's own checks (`slides audit`, `docs check`, `render`) and look at the PNGs.
+4. `node test/run-all.js` after any change to bin/, templates/ or the library (background it; > 120 s).
+5. Log the choice in the session log (one line) and update the wiki if a new pattern appears.
 
 ## Cross-skill composition
-
-This skill **composes with**:
-
-- **`lumen-mermaid`**: for adding Mermaid diagrams to the report template (the template already wires Mermaid 10 via CDN).
-- **`lumen-chart`**: for adding Chart.js charts to the report template (drop in a `<canvas>` block + script) — or a chart *embedded inside* the dashboard template's panels if the built-in inline-SVG sparkline isn't enough.
-- **`lumen-diagram`**: for adding fgraph diagrams.
-- **v2 annotation engine** (`features/report/highlight-annotate.js`, `annotate.css`, `theme-toggle.js`, `theme-toggle.css`): the engine was extracted from the previous internal-codename template on 2026-07-10 (see the 2026-07-10 wiki entry on the v1→v2 offset-anchored annotation upgrade) and lives in this skill under its current name. There is no separate source-of-truth skill to sync from — this folder is the canonical home. Not applicable to the dashboard template (no annotation system). The former `features/slide/` copies were removed with the HTML slide template in v0.26.0; report and bento carry their own copies.
-- **`md2pdf`**: for converting the final HTML to PDF (use `google-chrome --headless --print-to-pdf`, not `md2pdf`, because the template has `@media print` rules). Applies to the report template; the dashboard template is not designed as a print/PDF artifact. Decks print via `bin/svg-export.js --pdf` instead.
-- **Backend frameworks (Flask/FastAPI/Express/Django/etc.)**: the dashboard template's `/api/*` routes need a real server once demo mode is removed. This skill does not build that backend — it only defines the fragment contract each route must satisfy (see the dashboard template's header comment and `DASHBOARD_MOCK` for the exact shape).
-
-## What "self-contained" means here
-
-Each template is **portable**: copy the file (plus its `features/<report|dashboard>/` JS/CSS if you want to keep them out-of-line) to any directory, and it works without other files in the tree. The report and bento templates have all CSS inline; the dashboard template has all CSS/JS inline or local except the pinned, SRI-verified htmx CDN script. Decks need `bin/compose-slide.js` + `bin/svg-export.js` + Chrome for PNG/PDF delivery. Mermaid, Google Fonts, and htmx are the only external dependencies, all CDN-served.
-
-For math, do NOT add MathJax/KaTeX — render LaTeX with CodeCogs and inline the SVG: author `<span class="math" data-tex="..."></span>` (or `<!-- eq: ... -->`) placeholders, then run `python3 bin/codecogs_render.py page.html`. The script themes every fill to `currentColor` so the theme toggle keeps working. Full guide: [`docs/latex-equations.md`](./docs/latex-equations.md).
+`chartz` (real charts, embedded as PNG), `lumen-mermaid`, `codecogs_render.py` (LaTeX → inline SVG for the report template; no MathJax/KaTeX), `herdr-lab` (delegated batches), `skill-forge` (lint with `bin/skill-lint.py`).
 
 ## Known limitations
-
-- **Decks are baked artifacts**: composed SVG slides carry hex colours and locked text, so there is no annotation system on them (a baked SVG is not a stable text anchor) and no live theme toggle — re-theme by re-composing from the payload JSONs. Review-capable surfaces without decks: report + bento templates.
-- The report template's tab switcher + Mermaid interaction can require a `beforeprint` re-render. The template already handles this; don't remove the `beforeprint` listener.
-- The dashboard template's demo mode intercepts `XMLHttpRequest`, not `fetch`. If you add code that calls `/api/*` via `fetch` instead of htmx's XHR-based requests, demo mode will not intercept it and the call will hit the network and fail (no server exists in demo mode). Stick to htmx's own request mechanism for anything meant to work in demo mode.
-- The dashboard template's built-in chart is an inline SVG sparkline generated client-side (demo mode) or server-side (real backend) — it is intentionally not a full charting library. If the user needs interactive charts (zoom, tooltips, multiple series), compose with `lumen-chart` inside the `#chart-panel` element instead of extending the sparkline.
-- Both templates assume Western left-to-right scripts. RTL languages need additional CSS.
+- GenOffice deck specs take PNG/JPG pictures, not SVG; the bridge therefore bakes art to 2x PNG (diagrams in a bridged deck are not individually editable).
+- The full report template hangs `genoffice convert --to docx`; use Markdown/fragment → `create --type docx` for editable Word.
+- Bridge supports 1280×720 slide designs only (not `info-*`/`card-*`).
+- Fallback decks (`compose` + `svg-export --png --pdf`) are baked: no editing, no live theme.
+- Report template assumes left-to-right scripts; Mermaid, Google Fonts are its only CDN dependencies.
