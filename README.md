@@ -250,18 +250,7 @@ When you open a report in a browser, you can leave tracked-changes-style notes d
 
 ### The review cycle
 
-```mermaid
-sequenceDiagram
-    autonumber
-    participant Agent as AI Agent
-    actor Human as Human Reviewer
-    participant Page as HTML Page
-
-    Human->>Page: Add annotations (💬/✂/➕/✎)
-    Page-->>Human: Export JSON file
-    Human->>Agent: Submit JSON + HTML
-    Agent-->>Human: Revised HTML file
-```
+![Report review cycle: the agent generates the report, a human annotates it and exports the notes as JSON, the agent applies them and revises](./docs/assets/review-cycle.svg)
 
 ### Advanced note management
 

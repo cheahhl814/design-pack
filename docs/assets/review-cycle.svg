@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Report review cycle: the agent generates the report, a human annotates it, exports the notes as JSON, and the agent revises the report" width="800" height="450">
+  <title>Report review cycle</title>
+  <rect width="800" height="450" style="fill:#ffffff"/>
+  <path d="M 542.4 178 A 150 150 0 0 1 542.4 272" fill="none" style="stroke:#64748b;stroke-width:2.5" stroke-linecap="round"/>
+  <polygon points="540.6,277.2 538.2,262.9 550.7,266.7" style="fill:#64748b"/>
+  <path d="M 447 367.4 A 150 150 0 0 1 353 367.4" fill="none" style="stroke:#64748b;stroke-width:2.5" stroke-linecap="round"/>
+  <polygon points="347.8,365.6 362.1,363.2 358.3,375.7" style="fill:#64748b"/>
+  <path d="M 257.6 272 A 150 150 0 0 1 257.6 178" fill="none" style="stroke:#64748b;stroke-width:2.5" stroke-linecap="round"/>
+  <polygon points="259.4,172.8 261.8,187.1 249.3,183.3" style="fill:#64748b"/>
+  <path d="M 353 82.6 A 150 150 0 0 1 447 82.6" fill="none" style="stroke:#64748b;stroke-width:2.5" stroke-linecap="round"/>
+  <polygon points="452.2,84.4 437.9,86.8 441.7,74.3" style="fill:#64748b"/>
+  <text x="400" y="223" text-anchor="middle" style="font-family:Outfit, Inter, Segoe UI, Helvetica, Arial, sans-serif;font-size:20px;font-weight:700;fill:#0f172a">Review cycle</text>
+  <text x="400" y="245" text-anchor="middle" style="font-family:Inter, Segoe UI, Helvetica, Arial, sans-serif;font-size:12px;fill:#64748b">until approved</text>
+  <circle cx="506.1" cy="118.9" r="54" transform="translate(4 5)" style="fill:#0d9488;fill-opacity:0.22;stroke:#0d9488;stroke-opacity:0.45;stroke-width:1.5"/>
+    <circle cx="506.1" cy="118.9" r="54" style="fill:#d3ecea;stroke:#0d9488;stroke-width:2"/>
+  <text x="506.1" y="108.9" text-anchor="middle" letter-spacing="1.2" style="font-family:Outfit, Inter, Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;font-weight:700;fill:#0e6f6c">01</text>
+  <text x="506.1" y="130.9" text-anchor="middle" style="font-family:Outfit, Inter, Segoe UI, Helvetica, Arial, sans-serif;font-size:16px;font-weight:600;fill:#0f172a">Generate</text>
+  <text x="574.1" y="116.9" style="font-family:Inter, Segoe UI, Helvetica, Arial, sans-serif;font-size:12px;fill:#64748b">agent builds</text>
+  <text x="574.1" y="134.9" style="font-family:Inter, Segoe UI, Helvetica, Arial, sans-serif;font-size:12px;fill:#64748b">report.html</text>
+  <circle cx="506.1" cy="331.1" r="54" transform="translate(4 5)" style="fill:#10b981;fill-opacity:0.22;stroke:#10b981;stroke-opacity:0.45;stroke-width:1.5"/>
+    <circle cx="506.1" cy="331.1" r="54" style="fill:#d4f2e8;stroke:#10b981;stroke-width:2"/>
+  <text x="506.1" y="321.1" text-anchor="middle" letter-spacing="1.2" style="font-family:Outfit, Inter, Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;font-weight:700;fill:#108867">02</text>
+  <text x="506.1" y="343.1" text-anchor="middle" style="font-family:Outfit, Inter, Segoe UI, Helvetica, Arial, sans-serif;font-size:16px;font-weight:600;fill:#0f172a">Annotate</text>
+  <text x="574.1" y="329.1" style="font-family:Inter, Segoe UI, Helvetica, Arial, sans-serif;font-size:12px;fill:#64748b">reviewer marks</text>
+  <text x="574.1" y="347.1" style="font-family:Inter, Segoe UI, Helvetica, Arial, sans-serif;font-size:12px;fill:#64748b">text in browser</text>
+  <circle cx="293.9" cy="331.1" r="54" transform="translate(4 5)" style="fill:#ef4444;fill-opacity:0.22;stroke:#ef4444;stroke-opacity:0.45;stroke-width:1.5"/>
+    <circle cx="293.9" cy="331.1" r="54" style="fill:#fcdddd;stroke:#ef4444;stroke-width:2"/>
+  <text x="293.9" y="321.1" text-anchor="middle" letter-spacing="1.2" style="font-family:Outfit, Inter, Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;font-weight:700;fill:#ac363c">03</text>
+  <text x="293.9" y="343.1" text-anchor="middle" style="font-family:Outfit, Inter, Segoe UI, Helvetica, Arial, sans-serif;font-size:16px;font-weight:600;fill:#0f172a">Export</text>
+  <text x="225.9" y="329.1" text-anchor="end" style="font-family:Inter, Segoe UI, Helvetica, Arial, sans-serif;font-size:12px;fill:#64748b">notes saved as</text>
+  <text x="225.9" y="347.1" text-anchor="end" style="font-family:Inter, Segoe UI, Helvetica, Arial, sans-serif;font-size:12px;fill:#64748b">JSON file</text>
+  <circle cx="293.9" cy="118.9" r="54" transform="translate(4 5)" style="fill:#f59e0b;fill-opacity:0.22;stroke:#f59e0b;stroke-opacity:0.45;stroke-width:1.5"/>
+    <circle cx="293.9" cy="118.9" r="54" style="fill:#fdeed3;stroke:#f59e0b;stroke-width:2"/>
+  <text x="293.9" y="108.9" text-anchor="middle" letter-spacing="1.2" style="font-family:Outfit, Inter, Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;font-weight:700;fill:#b07614">04</text>
+  <text x="293.9" y="130.9" text-anchor="middle" style="font-family:Outfit, Inter, Segoe UI, Helvetica, Arial, sans-serif;font-size:16px;font-weight:600;fill:#0f172a">Revise</text>
+  <text x="225.9" y="116.9" text-anchor="end" style="font-family:Inter, Segoe UI, Helvetica, Arial, sans-serif;font-size:12px;fill:#64748b">agent applies</text>
+  <text x="225.9" y="134.9" text-anchor="end" style="font-family:Inter, Segoe UI, Helvetica, Arial, sans-serif;font-size:12px;fill:#64748b">the notes</text>
+</svg>
